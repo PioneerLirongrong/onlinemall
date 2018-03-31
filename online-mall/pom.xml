@@ -140,5 +140,11 @@
             <artifactId>junit</artifactId>
             <version>4.12</version>
         </dependency>
+        <!--httpClient-->
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.5.5</version>
+        </dependency>
     </dependencies>
 </project>

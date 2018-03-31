@@ -1,4 +1,4 @@
-package com.onlinemall.util;
+package com.onlinemall.util.util;
 
 
 import com.onlinemall.utils.cache.CacheUtil;
