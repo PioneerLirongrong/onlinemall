@@ -125,4 +125,13 @@ public class JsonUtil {
         }
         return personList;
     }
+
+    /**
+     * 将一个json字符串转为json对象
+     * @param text
+     * @return
+     */
+    public static JSONObject convetJsonObject(String text){
+        return JSON.parseObject(text);
+    }
 }
