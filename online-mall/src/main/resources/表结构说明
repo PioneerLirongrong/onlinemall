@@ -89,6 +89,7 @@ QQ号   qqnumber varchar(64)
 类别 acquireadviceflag varchar(1) (1:咨询 2:意见)
 类型 acquireadvicetype varchar(2) (1:产品问题 2:促销问题 3:支付问题 4:退款问题 5:配送问题 6:售后问题 7:发票问题 8:退换货 9:其他)
 详情 acquireadvicedetail varchar(10000)
+时间 acquireadvicetime datatime
 #=================================================================================
 
 #===========商品模块===============================================
@@ -369,7 +370,7 @@ ID UUID varchar(64) primarykey
 #===============店铺模块============================
 店铺表onlinemall_shop
 记录ID UUID varchar(64) primarykey
-店铺id shop　UUID varchar(64)
+店铺id shopid　UUID varchar(64)
 商品id goodsid varchar(64)
 店铺名称 shopname varchar(64)
 店铺详情 shopinfodetail varchar(64)
@@ -383,6 +384,7 @@ ID UUID varchar(64) primarykey
 订单id(订单号) UUID+时间戳 varchar(128)
 用户ID userid　UUID varchar(64)
 商品ID goodsid UUID varchar(64)
+店铺id shopid　UUID varchar(64)
 商品图片 goodsurl varchar(64)
 订单类型 ordertype varchar(1) (0:所有(待发货和已发货的排在前面) 1:待付款 2:代发货 3:待收货 4:待评价 5:退款)
 商品名称 goodsname varchar(64)
