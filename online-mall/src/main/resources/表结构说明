@@ -1,3 +1,4 @@
+#====用户模块======================================================
 用户表:onlinemall_user
 用户ID userid　  UUID varchar(64) primarykey
 昵称   account varchar(64)
@@ -14,7 +15,7 @@ QQ号   qqnumber varchar(64)
 支付密码 securitypay varchar(1) (1:启动 0:不启动)
 手机验证　securityphone varchar(1) (1:启动 0:不启动)
 邮箱验证 securitymail varchar(1) (1:启动 0:不启动)
-真实姓名　realName varchar(64)
+真实姓名　realname varchar(64)
 身份证号码　identitynumber varchar(64)
 身份证照片正面 photourl1 varchar(64)
 身份证照片背面 photourl2 varchar(64)
@@ -24,93 +25,76 @@ QQ号   qqnumber varchar(64)
 安全问题答案2　securityansower2 varchar(64)
 注册时间 registertime DATE
 
+用户地址表onlinemall_address
+记录id id UUID varchar(64) primarykey
+用户id userid　  UUID varchar(64)
+地址　userAddress varchar(1000)
+
+用户的银行卡表onlinemall_bank
+记录id id UUID varchar(64) primarykey
+用户id userid　  UUID varchar(64)
+银行名称 bankname varchar(64)
+银行卡类型 banktype varchar(2) (1:信用卡 2:储蓄卡 3:借计卡)
+银行卡号 banknumber varchar(64)
+绑定状态 bankbindstatus varchar(2) (1:绑定 0:未绑定)
 
 用户积分表onlinemall_user_point
 记录ID UUID varchar(64)　primarykey　
 用户ID userid　UUID varchar(64)
 积分详情 pointinfodetail varchar(64)
 积分变动 pointchange varchar(10)
-积分类别 pointtype varchar(2) (1:支出 2:获得)
+积分类别 pointtype varchar(2) (1:支出 0:获得)
 积分变动日期 pointtime data
 
 用户优惠券onlinemall_user_discount
 记录ID UUID varchar(64)　primarykey
 用户ID userid　UUID varchar(64)
 优惠券编号　discountid varhcar(64) 随机
-优惠券详情 discountinfodetail varchar(64)
-优惠券类别 discounttype varchar(2) (1:未过期 2:过期)
+优惠券详情　discountinfodetail varchar(64)
+优惠券类别　discounttype varchar(2) (1:未过期 0:过期)
 
 用户红包onlinemall_user_red_envelopes
 记录ID UUID varchar(64)　primarykey
 用户ID userid　UUID varchar(64)
 红包详情 redenvelopesinfodetail varchar(64)
-红包类别 redenvelopestype varchar(2) (1:未过期 2:过期)
+红包类别 redenvelopestype varchar(2) (1:未过期 0:过期)
 红包剩余金额　redenvelopesmoney varchar(20)
 红包有效期 redenvelopesdelinetime date
-红包状态　 redenvelopesstatus　varchar(1) (1:可以用 2:不可以使用)
+红包状态　 redenvelopesstatus　varchar(1) (1:可以用 0:不可以使用)
+
+用户账户余额onlinemall_user_balance
+记录ID UUID varchar(64)　primarykey
+用户ID userid　UUID varchar(64)
+余额详情 balanceinfodetail varchar(1000)
+剩余金额 balancenumber int
+具体的时间 balancetime date
 
 用户的收藏onlinemall_user_collect
 记录ID UUID varchar(64)　primarykey
 用户ID userid　UUID varchar(64)
+商品的id goodsid UUID varchar(64)
 收藏时间 collectime date
 
-用户的收藏onlinemall_user_record
+用户的足迹onlinemall_user_record
 记录ID UUID varchar(64)　primarykey
 用户ID userid　UUID varchar(64)
+商品的id goodsid UUID varchar(64)
 记录时间　recordtime date
+#===================================================================================
 
-
-用户地址表onlinemall_address
-记录id id UUID varchar(64) primarykey
-用户id userid　  UUID varchar(64)
-地址　userAddress varchar(1000)
-
+#===========在线客服模块===========================================================
 咨询及意见表onlinemall_acquire_advice
 记录ID UUID varchar(64) primarkey
 用户ID userid　UUID varchar(64)
 类别 acquireadviceflag varchar(1) (1:咨询 2:意见)
 类型 acquireadvicetype varchar(2) (1:产品问题 2:促销问题 3:支付问题 4:退款问题 5:配送问题 6:售后问题 7:发票问题 8:退换货 9:其他)
 详情 acquireadvicedetail varchar(10000)
+#=================================================================================
 
-
-
-
-订单交表onlinemall_order
-记录的ID id UUID varchar(64)
-订单id(订单号) UUID+时间戳 varchar(128)
-用户ID userid　UUID varchar(64)
-商品ID goodsid UUID varchar(64)
-商品图片 goodsurl varchar(64)
-订单类型 ordertype varchar(1) (0:所有(待发货和已发货的排在前面) 1:待付款 2:代发货 3:待收货 4:待评价 5:退款)
-商品名称 goodsname varchar(64)
-商品单价 goodsprice int
-购买数量 goodscount int
-订单的总金额 ordertotalamount varchar(64)
-商品的运费   orderwuliutotalamount varchar(64)
-商品操作 goodsoperate varchar(1) (0:交易失败 1:交易成功)
-交易时间 ordertime date
-订单的收货地址 orderaddress varchar(1000)
-订单的状态　orderstatus varchar(1) (0:拍下商品 1:卖家发货 2:确认收货 3:交易完成 4:退款中 5:退款成功)
-退款时间 goodsreturntime date
-退款编号 goodsreturnnumber varchar(64)
-退款状态 goodsreturnstatus varchar(2) (1:买家退款 2:银行受理 3:退款成功)
-
-
-订单物流表onelinemall_logistics
-记录的ID id UUID varchar(64)
-快递单号id logisticsid UUID+订单号 varchar(128) primarykey
-订单id(订单号) UUID+时间戳 varchar(128) primarykey
-商品ID goodsid UUID varchar(64)
-商品图片 goodsurl varchar(64)
-物流状态 logisticstatus varchar(1) (0:在运输中 1:已经签收)
-承运公司 logisticscompany varchar(64)
-官方电话 logisticsphone varchar(64)
-物流详情 logisticsinfodetail varhcar(10000)
-
-
-
+#===========商品模块===============================================
 商品表:onlinemall_goods
-商品ID goodsid UUID varchar(64) primarykey
+记录id UUID varchar(64) primarykey
+商品ID goodsid UUID varchar(64)
 商品名称 goodsname varchar(64)
 优惠券id discountid varchar(64)
 商品的原价　originalprice int
@@ -131,17 +115,236 @@ QQ号   qqnumber varchar(64)
 存储方法 saveway varchar(128)
 商品细节 url2varchar(128)
 
-
-
-优惠券onlinemall_discount
-ID UUID varchar(64) primarykey
+***服装类*****
+衣服表:onlinemall_goods_clothes
+记录id UUID varchar(64) primarykey
+商品ID goodsid UUID varchar(64)
+店铺id shop　UUID varchar(64)
+商品名称 goodsname varchar(64)
 优惠券id discountid varchar(64)
-商品id goodsid varchar(64)
-优惠券的内容 discountContext varchar(128)
+商品的原价　originalprice int
+商品的促销价 countprice int
+商品的月销量 salesmonth int
+商品的累计销量 salescount int
+商品的累计评价 evaluatecount int
+商品好评度 evaluateprecent varchar(64)
+衣服类别 clothestype varchar(2) (0:毛衣 1:衬衣 2:裤子 3:鞋子 4:外套 5:棉袄 6:)
+适合的性别 clothessex varchar(0:男 1:女)
+适合的人群 clothesperson varchar(0:婴儿 1:青少年 2:青年 3:中年 4:老年人)
+颜色 clothescolor varchar(64)
+尺码 clothessize varchar(10) (M,L,XL,2XL,3XL,４XL)
+品牌 clothesbrand varchar(64) 衣服品牌
+库存 clothescount varchar(10)
+衣服面料 clothesmianliao varchar(64)
+衣服货号 clothercode varchar(64) 随机
+衣服上市时间 clothesertime date
+产品标号 productid varchar(64)
+原料产地 productplace varchar(64)
+产品许可证 productallow varchar(64)
+产地　place varchar(128)
+商品细节 url varchar(128)
+
+
+***酒品类***
+酒品表:onlinemall_goods_drinking
+记录id UUID varchar(64) primarykey
+商品ID goodsid UUID varchar(64)
+店铺id shop　UUID varchar(64)
+商品名称 goodsname varchar(64)
+优惠券id discountid varchar(64)
+商品的原价　originalprice int
+商品的促销价 countprice int
+商品的月销量 salesmonth int
+商品的累计销量 salescount int
+商品的累计评价 evaluatecount int
+商品好评度     evaluateprecent varchar(64)
+=====商品类型　drinkingtype varchar(2)(0:熟食类 1:家庭护理类 2:烘炒类 3:服装类 4:日常杂货 5:其他)
+配料 peiliao varchar(1000)
+产品标号 productid varchar(64)
+使用方法 useway varchar(64)
+原料产地 productplace varchar(64)
+产品规格 productsize varchar(64)
+产品许可证 productallow varchar(64)
+产地　place varchar(128)
+保质期 delinetime int
+存储方法 saveway varchar(128)
+商品细节 url varchar(128)
+
+***鞋子类***
+衣服表:onlinemall_goods_shoes
+记录id UUID varchar(64) primarykey
+商品ID goodsid UUID varchar(64)
+店铺id shop　UUID varchar(64)
+商品名称 goodsname varchar(64)
+优惠券id discountid varchar(64)
+商品的原价　originalprice int
+商品的促销价 countprice int
+商品的月销量 salesmonth int
+商品的累计销量 salescount int
+商品的累计评价 evaluatecount int
+商品好评度 evaluateprecent varchar(64)
+=====鞋子类别 shoestype varchar(2) (0:毛衣 1:衬衣 2:裤子 3:鞋子 4:外套 5:棉袄 6:)
+适合的性别 shoessex varchar(0:男 1:女)
+适合的人群 shoessperson varchar(0:婴儿 1:青少年 2:青年 3:中年 4:老年人)
+颜色 shoescolor varchar(64)
+尺码  shoessize varchar(10)
+品牌  shoesbrand varchar(64) 衣服品牌
+库存 clothescount varchar(10)
+鞋子面料 shoesmianliao varchar(64)
+鞋子货号 shoescode varchar(64) 随机
+鞋子上市时间 shoestime date
+产品标号 productid varchar(64)
+原料产地 productplace varchar(64)
+产品许可证 productallow varchar(64)
+产地　place varchar(128)
+商品细节 url varchar(128)
+
+***日常用品类***
+商品表:onlinemall_goods_daily_necessities
+记录id UUID varchar(64) primarykey
+商品ID goodsid UUID varchar(64)
+店铺id shop　UUID varchar(64)
+商品名称 goodsname varchar(64)
+优惠券id discountid varchar(64)
+商品的原价　originalprice int
+商品的促销价 countprice int
+商品的月销量 salesmonth int
+商品的累计销量 salescount int
+商品的累计评价 evaluatecount int
+商品好评度     evaluateprecent varchar(64)
+====商品类型　dailynecessitiestype varchar(64)
+产品标号 productid varchar(64)
+使用方法 useway varchar(64)
+原料产地 productplace varchar(64)
+产品规格 productsize varchar(64)
+产品许可证 productallow varchar(64)
+产地　place varchar(128)
+商品细节 url varchar(128)
+
+***熟食类***
+商品表:onlinemall_goods_cooked_food
+记录id UUID varchar(64) primarykey
+商品ID goodsid UUID varchar(64)
+店铺id shop　UUID varchar(64)
+商品名称 goodsname varchar(64)
+店铺id shop　UUID varchar(64)
+优惠券id discountid varchar(64)
+商品的原价　originalprice int
+商品的促销价 countprice int
+商品的月销量 salesmonth int
+商品的累计销量 salescount int
+商品的累计评价 evaluatecount int
+商品好评度     evaluateprecent varchar(64)
+====商品类型　cookedfoodtype varchar(2) (0:熟食类 1:家庭护理类 2:烘炒类 3:服装类 4:日常杂货 5:其他)
+配料 peiliao varchar(1000)
+产品标号 productid varchar(64)
+使用方法 useway varchar(64)
+原料产地 productplace varchar(64)
+产品规格 productsize varchar(64)
+产品许可证 productallow varchar(64)
+产地　place varchar(128)
+保质期 delinetime int
+存储方法 saveway varchar(128)
+商品细节 url varchar(128)
+
+
+***箱包类***
+商品表:onlinemall_goods_bag
+记录id UUID varchar(64) primarykey
+商品ID goodsid UUID varchar(64)
+店铺id shop　UUID varchar(64)
+商品名称 goodsname varchar(64)
+优惠券id discountid varchar(64)
+商品的原价　originalprice int
+商品的促销价 countprice int
+商品的月销量 salesmonth int
+商品的累计销量 salescount int
+商品的累计评价 evaluatecount int
+商品好评度     evaluateprecent varchar(64)
+====箱包类别 bagstype varchar(2)
+适合的性别 bagssex varchar(0:男 1:女)
+适合的人群 bagssperson varchar(0:婴儿 1:青少年 2:青年 3:中年 4:老年人)
+产品标号 productid varchar(64)
+使用方法 useway varchar(64)
+原料产地 productplace varchar(64)
+产品规格 productsize varchar(64)
+产品许可证 productallow varchar(64)
+产地　place varchar(128)
+商品细节 url　varchar(128)
+
+***生鲜类***
+商品表:onlinemall_goods_freshs
+记录id UUID varchar(64) primarykey
+商品ID goodsid UUID varchar(64)
+店铺id shop　UUID varchar(64)
+商品名称 goodsname varchar(64)
+优惠券id discountid varchar(64)
+商品的原价　originalprice int
+商品的促销价 countprice int
+商品的月销量 salesmonth int
+商品的累计销量 salescount int
+商品的累计评价 evaluatecount int
+商品好评度     evaluateprecent varchar(64)
+===商品类型　freshstype(0:熟食类 1:家庭护理类 2:烘炒类 3:服装类 4:日常杂货 5:其他)
+产品标号 productid varchar(64)
+使用方法 useway varchar(64)
+原料产地 productplace varchar(64)
+产品规格 productsize varchar(64)
+产品许可证 productallow varchar(64)
+产地　place varchar(128)
+保质期 delinetime int
+存储方法 saveway varchar(128)
+商品细节 url varchar(128)
+
+
+***文具类***
+商品表:onlinemall_goods_Stationery
+记录id UUID varchar(64) primarykey
+商品ID goodsid UUID varchar(64)
+店铺id shop　UUID varchar(64)
+商品名称 goodsname varchar(64)
+优惠券id discountid varchar(64)
+商品的原价　originalprice int
+商品的促销价 countprice int
+商品的月销量 salesmonth int
+商品的累计销量 salescount int
+商品的累计评价 evaluatecount int
+商品好评度     evaluateprecent varchar(64)
+===商品类型　stationerytype(0:熟食类 1:家庭护理类 2:烘炒类 3:服装类 4:日常杂货 5:其他)
+产品标号 productid varchar(64)
+使用方法 useway varchar(64)
+原料产地 productplace varchar(64)
+产品规格 productsize varchar(64)
+产品许可证 productallow varchar(64)
+产地　place varchar(128)
+商品细节 url varchar(128)
+
+***厨房类***
+商品表:onlinemall_goods_Kitchen
+记录id UUID varchar(64) primarykey
+商品ID goodsid UUID varchar(64)
+店铺id shop　UUID varchar(64)
+商品名称 goodsname varchar(64)
+优惠券id discountid varchar(64)
+商品的原价　originalprice int
+商品的促销价 countprice int
+商品的月销量 salesmonth int
+商品的累计销量 salescount int
+商品的累计评价 evaluatecount int
+商品好评度     evaluateprecent varchar(64)
+===商品类型　int(0:熟食类 1:家庭护理类 2:烘炒类 3:服装类 4:日常杂货 5:其他)
+产品标号 productid varchar(64)
+使用方法 useway varchar(64)
+原料产地 productplace varchar(64)
+产品规格 productsize varchar(64)
+产品许可证 productallow varchar(64)
+产地　place varchar(128)
+商品细节 url varchar(128)
 
 
 商品评论表online_mall_evaluate
-记录id id  UUID varchar(64) primarkey
+记录id id UUID varchar(64) primarkey
+记录id id  UUID varchar(64)
 商品id goodsid varchar(64)
 买家id userid  varchar(64)
 评价人用户名(昵称) account varhcar(64)
@@ -150,11 +353,65 @@ ID UUID varchar(64) primarykey
 评论时间　time date
 评价内容　content varchar(10000)
 
+优惠券onlinemall_goods_discount
+ID UUID varchar(64) primarykey
+优惠券id discountid varchar(64)
+商品id goodsid varchar(64)
+优惠券的内容 discountContext varchar(128)
 
 商品的卖家印象表onlinemall_impression
-ID UUID varchar(64) primarykey
+记录id id UUID varchar(64) primarykey
 商品id goodsid varchar(64)
 商品的印象内容 goodimpressioncontext varchar(1000)
+
+#==========================================================================================
+
+#===============店铺模块============================
+店铺表onlinemall_shop
+记录ID UUID varchar(64) primarykey
+店铺id shop　UUID varchar(64)
+商品id goodsid varchar(64)
+店铺名称 shopname varchar(64)
+店铺详情 shopinfodetail varchar(64)
+服务     shopservicedegree varchar(5)
+物流     shoplogisticsdegree varchar(5)
+#===================================================
+
+#=======订单模块===================================================
+订单交表onlinemall_order
+记录的ID id UUID varchar(64)
+订单id(订单号) UUID+时间戳 varchar(128)
+用户ID userid　UUID varchar(64)
+商品ID goodsid UUID varchar(64)
+商品图片 goodsurl varchar(64)
+订单类型 ordertype varchar(1) (0:所有(待发货和已发货的排在前面) 1:待付款 2:代发货 3:待收货 4:待评价 5:退款)
+商品名称 goodsname varchar(64)
+商品单价 goodsprice int
+购买数量 goodscount int
+订单的总金额 ordertotalamount varchar(64)
+商品的运费   orderwuliutotalamount varchar(64)
+商品操作 goodsoperate varchar(1) (0:交易失败 1:交易成功)
+交易时间 ordertime date
+订单的收货地址 orderaddress varchar(1000)
+订单的状态　orderstatus varchar(1) (0:拍下商品 1:卖家发货 2:确认收货 3:交易完成 4:退款中 5:退款成功)
+退款时间 goodsreturntime date
+退款编号 goodsreturnnumber varchar(64)
+退款状态 goodsreturnstatus varchar(2) (1:买家退款 2:银行受理 3:退款成功)
+#=============================================================================
+
+#============物流模块============================================
+订单物流表onelinemall_logistics
+记录的ID id UUID varchar(64)
+快递单号id logisticsid UUID+订单号 varchar(128) primarykey
+订单id(订单号) UUID+时间戳 varchar(128) primarykey
+商品ID goodsid UUID varchar(64)
+商品图片 goodsurl varchar(64)
+物流状态 logisticstatus varchar(1) (0:在运输中 1:已经签收)
+承运公司 logisticscompany varchar(64)
+官方电话 logisticsphone varchar(64)
+物流详情 logisticsinfodetail varhcar(10000)
+#================================================================
+
 
 
 

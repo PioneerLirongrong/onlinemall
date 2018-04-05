@@ -43,6 +43,6 @@
     
     <!--欢迎页的配置-->
     <welcome-file-list>
-        <welcome-file>home/home2.html</welcome-file>
+        <welcome-file>home/home3.html</welcome-file>
     </welcome-file-list>
 </web-app>
