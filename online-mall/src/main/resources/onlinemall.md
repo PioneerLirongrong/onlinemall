@@ -35,9 +35,9 @@ create table onlinemall_user(
 
 ```
 
-###****用户地址表onlinemall_address****
+###****用户地址表onlinemall_user_address****
 ```
-create table onlinemall_address(
+create table onlinemall_user_address(
   id varchar(64) comment '记录id',
   userid varchar(64) comment '用户id',
   useraddress varchar(1000) comment '地址',
@@ -45,9 +45,9 @@ create table onlinemall_address(
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 ```
-###****用户的银行卡表onlinemall_bank****
+###****用户的银行卡表onlinemall_user_bank****
 ```
-create table onlinemall_bank(
+create table onlinemall_user_bank(
   id varchar(64) comment '记录id UUID',
   userid varchar(64) comment '用户id',
   bankname varchar(64) comment '银行名称',

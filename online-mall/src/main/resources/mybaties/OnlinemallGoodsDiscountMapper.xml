@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.onlinemall.dao.mapper.OnlinemallGoodsDiscountMapper" >
+  <resultMap id="BaseResultMap" type="com.onlinemall.dao.model.OnlinemallGoodsDiscount" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="discountid" property="discountid" jdbcType="VARCHAR" />
+    <result column="goodsid" property="goodsid" jdbcType="VARCHAR" />
+    <result column="discountContext" property="discountcontext" jdbcType="VARCHAR" />
+    <result column="deadtime" property="deadtime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, discountid, goodsid, discountContext, deadtime
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.onlinemall.dao.model.OnlinemallGoodsDiscountExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from onlinemall_goods_discount
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from onlinemall_goods_discount
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from onlinemall_goods_discount
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.onlinemall.dao.model.OnlinemallGoodsDiscountExample" >
+    delete from onlinemall_goods_discount
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.onlinemall.dao.model.OnlinemallGoodsDiscount" >
+    insert into onlinemall_goods_discount (id, discountid, goodsid, 
+      discountContext, deadtime)
+    values (#{id,jdbcType=VARCHAR}, #{discountid,jdbcType=VARCHAR}, #{goodsid,jdbcType=VARCHAR}, 
+      #{discountcontext,jdbcType=VARCHAR}, #{deadtime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.onlinemall.dao.model.OnlinemallGoodsDiscount" >
+    insert into onlinemall_goods_discount
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="discountid != null" >
+        discountid,
+      </if>
+      <if test="goodsid != null" >
+        goodsid,
+      </if>
+      <if test="discountcontext != null" >
+        discountContext,
+      </if>
+      <if test="deadtime != null" >
+        deadtime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="discountid != null" >
+        #{discountid,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsid != null" >
+        #{goodsid,jdbcType=VARCHAR},
+      </if>
+      <if test="discountcontext != null" >
+        #{discountcontext,jdbcType=VARCHAR},
+      </if>
+      <if test="deadtime != null" >
+        #{deadtime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.onlinemall.dao.model.OnlinemallGoodsDiscountExample" resultType="java.lang.Integer" >
+    select count(*) from onlinemall_goods_discount
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update onlinemall_goods_discount
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.discountid != null" >
+        discountid = #{record.discountid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.goodsid != null" >
+        goodsid = #{record.goodsid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.discountcontext != null" >
+        discountContext = #{record.discountcontext,jdbcType=VARCHAR},
+      </if>
+      <if test="record.deadtime != null" >
+        deadtime = #{record.deadtime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update onlinemall_goods_discount
+    set id = #{record.id,jdbcType=VARCHAR},
+      discountid = #{record.discountid,jdbcType=VARCHAR},
+      goodsid = #{record.goodsid,jdbcType=VARCHAR},
+      discountContext = #{record.discountcontext,jdbcType=VARCHAR},
+      deadtime = #{record.deadtime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.onlinemall.dao.model.OnlinemallGoodsDiscount" >
+    update onlinemall_goods_discount
+    <set >
+      <if test="discountid != null" >
+        discountid = #{discountid,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsid != null" >
+        goodsid = #{goodsid,jdbcType=VARCHAR},
+      </if>
+      <if test="discountcontext != null" >
+        discountContext = #{discountcontext,jdbcType=VARCHAR},
+      </if>
+      <if test="deadtime != null" >
+        deadtime = #{deadtime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.onlinemall.dao.model.OnlinemallGoodsDiscount" >
+    update onlinemall_goods_discount
+    set discountid = #{discountid,jdbcType=VARCHAR},
+      goodsid = #{goodsid,jdbcType=VARCHAR},
+      discountContext = #{discountcontext,jdbcType=VARCHAR},
+      deadtime = #{deadtime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

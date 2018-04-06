@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.onlinemall.dao.mapper.OnelinemallLogisticsMapper" >
+  <resultMap id="BaseResultMap" type="com.onlinemall.dao.model.OnelinemallLogistics" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="logisticsid" property="logisticsid" jdbcType="VARCHAR" />
+    <result column="orderid" property="orderid" jdbcType="VARCHAR" />
+    <result column="goodsid" property="goodsid" jdbcType="VARCHAR" />
+    <result column="goodsurl" property="goodsurl" jdbcType="VARCHAR" />
+    <result column="logisticstatus" property="logisticstatus" jdbcType="VARCHAR" />
+    <result column="logisticscompany" property="logisticscompany" jdbcType="VARCHAR" />
+    <result column="logisticsphone" property="logisticsphone" jdbcType="VARCHAR" />
+    <result column="logisticsinfodetail" property="logisticsinfodetail" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, logisticsid, orderid, goodsid, goodsurl, logisticstatus, logisticscompany, logisticsphone, 
+    logisticsinfodetail
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.onlinemall.dao.model.OnelinemallLogisticsExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from onelinemall_logistics
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from onelinemall_logistics
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from onelinemall_logistics
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.onlinemall.dao.model.OnelinemallLogisticsExample" >
+    delete from onelinemall_logistics
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.onlinemall.dao.model.OnelinemallLogistics" >
+    insert into onelinemall_logistics (id, logisticsid, orderid, 
+      goodsid, goodsurl, logisticstatus, 
+      logisticscompany, logisticsphone, logisticsinfodetail
+      )
+    values (#{id,jdbcType=VARCHAR}, #{logisticsid,jdbcType=VARCHAR}, #{orderid,jdbcType=VARCHAR}, 
+      #{goodsid,jdbcType=VARCHAR}, #{goodsurl,jdbcType=VARCHAR}, #{logisticstatus,jdbcType=VARCHAR}, 
+      #{logisticscompany,jdbcType=VARCHAR}, #{logisticsphone,jdbcType=VARCHAR}, #{logisticsinfodetail,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.onlinemall.dao.model.OnelinemallLogistics" >
+    insert into onelinemall_logistics
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="logisticsid != null" >
+        logisticsid,
+      </if>
+      <if test="orderid != null" >
+        orderid,
+      </if>
+      <if test="goodsid != null" >
+        goodsid,
+      </if>
+      <if test="goodsurl != null" >
+        goodsurl,
+      </if>
+      <if test="logisticstatus != null" >
+        logisticstatus,
+      </if>
+      <if test="logisticscompany != null" >
+        logisticscompany,
+      </if>
+      <if test="logisticsphone != null" >
+        logisticsphone,
+      </if>
+      <if test="logisticsinfodetail != null" >
+        logisticsinfodetail,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="logisticsid != null" >
+        #{logisticsid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderid != null" >
+        #{orderid,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsid != null" >
+        #{goodsid,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsurl != null" >
+        #{goodsurl,jdbcType=VARCHAR},
+      </if>
+      <if test="logisticstatus != null" >
+        #{logisticstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="logisticscompany != null" >
+        #{logisticscompany,jdbcType=VARCHAR},
+      </if>
+      <if test="logisticsphone != null" >
+        #{logisticsphone,jdbcType=VARCHAR},
+      </if>
+      <if test="logisticsinfodetail != null" >
+        #{logisticsinfodetail,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.onlinemall.dao.model.OnelinemallLogisticsExample" resultType="java.lang.Integer" >
+    select count(*) from onelinemall_logistics
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update onelinemall_logistics
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.logisticsid != null" >
+        logisticsid = #{record.logisticsid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderid != null" >
+        orderid = #{record.orderid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.goodsid != null" >
+        goodsid = #{record.goodsid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.goodsurl != null" >
+        goodsurl = #{record.goodsurl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.logisticstatus != null" >
+        logisticstatus = #{record.logisticstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.logisticscompany != null" >
+        logisticscompany = #{record.logisticscompany,jdbcType=VARCHAR},
+      </if>
+      <if test="record.logisticsphone != null" >
+        logisticsphone = #{record.logisticsphone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.logisticsinfodetail != null" >
+        logisticsinfodetail = #{record.logisticsinfodetail,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update onelinemall_logistics
+    set id = #{record.id,jdbcType=VARCHAR},
+      logisticsid = #{record.logisticsid,jdbcType=VARCHAR},
+      orderid = #{record.orderid,jdbcType=VARCHAR},
+      goodsid = #{record.goodsid,jdbcType=VARCHAR},
+      goodsurl = #{record.goodsurl,jdbcType=VARCHAR},
+      logisticstatus = #{record.logisticstatus,jdbcType=VARCHAR},
+      logisticscompany = #{record.logisticscompany,jdbcType=VARCHAR},
+      logisticsphone = #{record.logisticsphone,jdbcType=VARCHAR},
+      logisticsinfodetail = #{record.logisticsinfodetail,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.onlinemall.dao.model.OnelinemallLogistics" >
+    update onelinemall_logistics
+    <set >
+      <if test="logisticsid != null" >
+        logisticsid = #{logisticsid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderid != null" >
+        orderid = #{orderid,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsid != null" >
+        goodsid = #{goodsid,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsurl != null" >
+        goodsurl = #{goodsurl,jdbcType=VARCHAR},
+      </if>
+      <if test="logisticstatus != null" >
+        logisticstatus = #{logisticstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="logisticscompany != null" >
+        logisticscompany = #{logisticscompany,jdbcType=VARCHAR},
+      </if>
+      <if test="logisticsphone != null" >
+        logisticsphone = #{logisticsphone,jdbcType=VARCHAR},
+      </if>
+      <if test="logisticsinfodetail != null" >
+        logisticsinfodetail = #{logisticsinfodetail,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.onlinemall.dao.model.OnelinemallLogistics" >
+    update onelinemall_logistics
+    set logisticsid = #{logisticsid,jdbcType=VARCHAR},
+      orderid = #{orderid,jdbcType=VARCHAR},
+      goodsid = #{goodsid,jdbcType=VARCHAR},
+      goodsurl = #{goodsurl,jdbcType=VARCHAR},
+      logisticstatus = #{logisticstatus,jdbcType=VARCHAR},
+      logisticscompany = #{logisticscompany,jdbcType=VARCHAR},
+      logisticsphone = #{logisticsphone,jdbcType=VARCHAR},
+      logisticsinfodetail = #{logisticsinfodetail,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

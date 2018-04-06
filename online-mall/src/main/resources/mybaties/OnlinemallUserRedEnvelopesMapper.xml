@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.onlinemall.dao.mapper.OnlinemallUserRedEnvelopesMapper" >
+  <resultMap id="BaseResultMap" type="com.onlinemall.dao.model.OnlinemallUserRedEnvelopes" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="userid" property="userid" jdbcType="VARCHAR" />
+    <result column="redenvelopesinfodetail" property="redenvelopesinfodetail" jdbcType="VARCHAR" />
+    <result column="redenvelopestype" property="redenvelopestype" jdbcType="VARCHAR" />
+    <result column="redenvelopesmoney" property="redenvelopesmoney" jdbcType="INTEGER" />
+    <result column="redenvelopesdelinetime" property="redenvelopesdelinetime" jdbcType="TIMESTAMP" />
+    <result column="redenvelopesstatus" property="redenvelopesstatus" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, userid, redenvelopesinfodetail, redenvelopestype, redenvelopesmoney, redenvelopesdelinetime, 
+    redenvelopesstatus
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.onlinemall.dao.model.OnlinemallUserRedEnvelopesExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from onlinemall_user_red_envelopes
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from onlinemall_user_red_envelopes
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from onlinemall_user_red_envelopes
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.onlinemall.dao.model.OnlinemallUserRedEnvelopesExample" >
+    delete from onlinemall_user_red_envelopes
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.onlinemall.dao.model.OnlinemallUserRedEnvelopes" >
+    insert into onlinemall_user_red_envelopes (id, userid, redenvelopesinfodetail, 
+      redenvelopestype, redenvelopesmoney, redenvelopesdelinetime, 
+      redenvelopesstatus)
+    values (#{id,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, #{redenvelopesinfodetail,jdbcType=VARCHAR}, 
+      #{redenvelopestype,jdbcType=VARCHAR}, #{redenvelopesmoney,jdbcType=INTEGER}, #{redenvelopesdelinetime,jdbcType=TIMESTAMP}, 
+      #{redenvelopesstatus,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.onlinemall.dao.model.OnlinemallUserRedEnvelopes" >
+    insert into onlinemall_user_red_envelopes
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userid != null" >
+        userid,
+      </if>
+      <if test="redenvelopesinfodetail != null" >
+        redenvelopesinfodetail,
+      </if>
+      <if test="redenvelopestype != null" >
+        redenvelopestype,
+      </if>
+      <if test="redenvelopesmoney != null" >
+        redenvelopesmoney,
+      </if>
+      <if test="redenvelopesdelinetime != null" >
+        redenvelopesdelinetime,
+      </if>
+      <if test="redenvelopesstatus != null" >
+        redenvelopesstatus,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="redenvelopesinfodetail != null" >
+        #{redenvelopesinfodetail,jdbcType=VARCHAR},
+      </if>
+      <if test="redenvelopestype != null" >
+        #{redenvelopestype,jdbcType=VARCHAR},
+      </if>
+      <if test="redenvelopesmoney != null" >
+        #{redenvelopesmoney,jdbcType=INTEGER},
+      </if>
+      <if test="redenvelopesdelinetime != null" >
+        #{redenvelopesdelinetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="redenvelopesstatus != null" >
+        #{redenvelopesstatus,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.onlinemall.dao.model.OnlinemallUserRedEnvelopesExample" resultType="java.lang.Integer" >
+    select count(*) from onlinemall_user_red_envelopes
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update onlinemall_user_red_envelopes
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userid != null" >
+        userid = #{record.userid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.redenvelopesinfodetail != null" >
+        redenvelopesinfodetail = #{record.redenvelopesinfodetail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.redenvelopestype != null" >
+        redenvelopestype = #{record.redenvelopestype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.redenvelopesmoney != null" >
+        redenvelopesmoney = #{record.redenvelopesmoney,jdbcType=INTEGER},
+      </if>
+      <if test="record.redenvelopesdelinetime != null" >
+        redenvelopesdelinetime = #{record.redenvelopesdelinetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.redenvelopesstatus != null" >
+        redenvelopesstatus = #{record.redenvelopesstatus,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update onlinemall_user_red_envelopes
+    set id = #{record.id,jdbcType=VARCHAR},
+      userid = #{record.userid,jdbcType=VARCHAR},
+      redenvelopesinfodetail = #{record.redenvelopesinfodetail,jdbcType=VARCHAR},
+      redenvelopestype = #{record.redenvelopestype,jdbcType=VARCHAR},
+      redenvelopesmoney = #{record.redenvelopesmoney,jdbcType=INTEGER},
+      redenvelopesdelinetime = #{record.redenvelopesdelinetime,jdbcType=TIMESTAMP},
+      redenvelopesstatus = #{record.redenvelopesstatus,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.onlinemall.dao.model.OnlinemallUserRedEnvelopes" >
+    update onlinemall_user_red_envelopes
+    <set >
+      <if test="userid != null" >
+        userid = #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="redenvelopesinfodetail != null" >
+        redenvelopesinfodetail = #{redenvelopesinfodetail,jdbcType=VARCHAR},
+      </if>
+      <if test="redenvelopestype != null" >
+        redenvelopestype = #{redenvelopestype,jdbcType=VARCHAR},
+      </if>
+      <if test="redenvelopesmoney != null" >
+        redenvelopesmoney = #{redenvelopesmoney,jdbcType=INTEGER},
+      </if>
+      <if test="redenvelopesdelinetime != null" >
+        redenvelopesdelinetime = #{redenvelopesdelinetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="redenvelopesstatus != null" >
+        redenvelopesstatus = #{redenvelopesstatus,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.onlinemall.dao.model.OnlinemallUserRedEnvelopes" >
+    update onlinemall_user_red_envelopes
+    set userid = #{userid,jdbcType=VARCHAR},
+      redenvelopesinfodetail = #{redenvelopesinfodetail,jdbcType=VARCHAR},
+      redenvelopestype = #{redenvelopestype,jdbcType=VARCHAR},
+      redenvelopesmoney = #{redenvelopesmoney,jdbcType=INTEGER},
+      redenvelopesdelinetime = #{redenvelopesdelinetime,jdbcType=TIMESTAMP},
+      redenvelopesstatus = #{redenvelopesstatus,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

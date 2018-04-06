@@ -1,0 +1,513 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.onlinemall.dao.mapper.OnlinemallUserMapper" >
+  <resultMap id="BaseResultMap" type="com.onlinemall.dao.model.OnlinemallUser" >
+    <id column="userid" property="userid" jdbcType="VARCHAR" />
+    <result column="account" property="account" jdbcType="VARCHAR" />
+    <result column="phonenumber" property="phonenumber" jdbcType="VARCHAR" />
+    <result column="mail" property="mail" jdbcType="VARCHAR" />
+    <result column="qqnumber" property="qqnumber" jdbcType="VARCHAR" />
+    <result column="weixinnumber" property="weixinnumber" jdbcType="VARCHAR" />
+    <result column="weibonumber" property="weibonumber" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="VARCHAR" />
+    <result column="birthday" property="birthday" jdbcType="VARCHAR" />
+    <result column="securitydegree" property="securitydegree" jdbcType="INTEGER" />
+    <result column="securitypay" property="securitypay" jdbcType="VARCHAR" />
+    <result column="securityphone" property="securityphone" jdbcType="VARCHAR" />
+    <result column="securitymail" property="securitymail" jdbcType="VARCHAR" />
+    <result column="realname" property="realname" jdbcType="VARCHAR" />
+    <result column="identitynumber" property="identitynumber" jdbcType="VARCHAR" />
+    <result column="photourl1" property="photourl1" jdbcType="VARCHAR" />
+    <result column="photourl2" property="photourl2" jdbcType="VARCHAR" />
+    <result column="securityproblem1" property="securityproblem1" jdbcType="VARCHAR" />
+    <result column="securityansower1" property="securityansower1" jdbcType="VARCHAR" />
+    <result column="securityproblem2" property="securityproblem2" jdbcType="VARCHAR" />
+    <result column="securityansower2" property="securityansower2" jdbcType="VARCHAR" />
+    <result column="registertime" property="registertime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    userid, account, phonenumber, mail, qqnumber, weixinnumber, weibonumber, password, 
+    name, sex, birthday, securitydegree, securitypay, securityphone, securitymail, realname, 
+    identitynumber, photourl1, photourl2, securityproblem1, securityansower1, securityproblem2, 
+    securityansower2, registertime
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.onlinemall.dao.model.OnlinemallUserExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from onlinemall_user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from onlinemall_user
+    where userid = #{userid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from onlinemall_user
+    where userid = #{userid,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.onlinemall.dao.model.OnlinemallUserExample" >
+    delete from onlinemall_user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.onlinemall.dao.model.OnlinemallUser" >
+    insert into onlinemall_user (userid, account, phonenumber, 
+      mail, qqnumber, weixinnumber, 
+      weibonumber, password, name, 
+      sex, birthday, securitydegree, 
+      securitypay, securityphone, securitymail, 
+      realname, identitynumber, photourl1, 
+      photourl2, securityproblem1, securityansower1, 
+      securityproblem2, securityansower2, registertime
+      )
+    values (#{userid,jdbcType=VARCHAR}, #{account,jdbcType=VARCHAR}, #{phonenumber,jdbcType=VARCHAR}, 
+      #{mail,jdbcType=VARCHAR}, #{qqnumber,jdbcType=VARCHAR}, #{weixinnumber,jdbcType=VARCHAR}, 
+      #{weibonumber,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=VARCHAR}, #{birthday,jdbcType=VARCHAR}, #{securitydegree,jdbcType=INTEGER}, 
+      #{securitypay,jdbcType=VARCHAR}, #{securityphone,jdbcType=VARCHAR}, #{securitymail,jdbcType=VARCHAR}, 
+      #{realname,jdbcType=VARCHAR}, #{identitynumber,jdbcType=VARCHAR}, #{photourl1,jdbcType=VARCHAR}, 
+      #{photourl2,jdbcType=VARCHAR}, #{securityproblem1,jdbcType=VARCHAR}, #{securityansower1,jdbcType=VARCHAR}, 
+      #{securityproblem2,jdbcType=VARCHAR}, #{securityansower2,jdbcType=VARCHAR}, #{registertime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.onlinemall.dao.model.OnlinemallUser" >
+    insert into onlinemall_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userid != null" >
+        userid,
+      </if>
+      <if test="account != null" >
+        account,
+      </if>
+      <if test="phonenumber != null" >
+        phonenumber,
+      </if>
+      <if test="mail != null" >
+        mail,
+      </if>
+      <if test="qqnumber != null" >
+        qqnumber,
+      </if>
+      <if test="weixinnumber != null" >
+        weixinnumber,
+      </if>
+      <if test="weibonumber != null" >
+        weibonumber,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="birthday != null" >
+        birthday,
+      </if>
+      <if test="securitydegree != null" >
+        securitydegree,
+      </if>
+      <if test="securitypay != null" >
+        securitypay,
+      </if>
+      <if test="securityphone != null" >
+        securityphone,
+      </if>
+      <if test="securitymail != null" >
+        securitymail,
+      </if>
+      <if test="realname != null" >
+        realname,
+      </if>
+      <if test="identitynumber != null" >
+        identitynumber,
+      </if>
+      <if test="photourl1 != null" >
+        photourl1,
+      </if>
+      <if test="photourl2 != null" >
+        photourl2,
+      </if>
+      <if test="securityproblem1 != null" >
+        securityproblem1,
+      </if>
+      <if test="securityansower1 != null" >
+        securityansower1,
+      </if>
+      <if test="securityproblem2 != null" >
+        securityproblem2,
+      </if>
+      <if test="securityansower2 != null" >
+        securityansower2,
+      </if>
+      <if test="registertime != null" >
+        registertime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userid != null" >
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null" >
+        #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="phonenumber != null" >
+        #{phonenumber,jdbcType=VARCHAR},
+      </if>
+      <if test="mail != null" >
+        #{mail,jdbcType=VARCHAR},
+      </if>
+      <if test="qqnumber != null" >
+        #{qqnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="weixinnumber != null" >
+        #{weixinnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="weibonumber != null" >
+        #{weibonumber,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null" >
+        #{birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="securitydegree != null" >
+        #{securitydegree,jdbcType=INTEGER},
+      </if>
+      <if test="securitypay != null" >
+        #{securitypay,jdbcType=VARCHAR},
+      </if>
+      <if test="securityphone != null" >
+        #{securityphone,jdbcType=VARCHAR},
+      </if>
+      <if test="securitymail != null" >
+        #{securitymail,jdbcType=VARCHAR},
+      </if>
+      <if test="realname != null" >
+        #{realname,jdbcType=VARCHAR},
+      </if>
+      <if test="identitynumber != null" >
+        #{identitynumber,jdbcType=VARCHAR},
+      </if>
+      <if test="photourl1 != null" >
+        #{photourl1,jdbcType=VARCHAR},
+      </if>
+      <if test="photourl2 != null" >
+        #{photourl2,jdbcType=VARCHAR},
+      </if>
+      <if test="securityproblem1 != null" >
+        #{securityproblem1,jdbcType=VARCHAR},
+      </if>
+      <if test="securityansower1 != null" >
+        #{securityansower1,jdbcType=VARCHAR},
+      </if>
+      <if test="securityproblem2 != null" >
+        #{securityproblem2,jdbcType=VARCHAR},
+      </if>
+      <if test="securityansower2 != null" >
+        #{securityansower2,jdbcType=VARCHAR},
+      </if>
+      <if test="registertime != null" >
+        #{registertime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.onlinemall.dao.model.OnlinemallUserExample" resultType="java.lang.Integer" >
+    select count(*) from onlinemall_user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update onlinemall_user
+    <set >
+      <if test="record.userid != null" >
+        userid = #{record.userid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.account != null" >
+        account = #{record.account,jdbcType=VARCHAR},
+      </if>
+      <if test="record.phonenumber != null" >
+        phonenumber = #{record.phonenumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mail != null" >
+        mail = #{record.mail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.qqnumber != null" >
+        qqnumber = #{record.qqnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.weixinnumber != null" >
+        weixinnumber = #{record.weixinnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.weibonumber != null" >
+        weibonumber = #{record.weibonumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.password != null" >
+        password = #{record.password,jdbcType=VARCHAR},
+      </if>
+      <if test="record.name != null" >
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sex != null" >
+        sex = #{record.sex,jdbcType=VARCHAR},
+      </if>
+      <if test="record.birthday != null" >
+        birthday = #{record.birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="record.securitydegree != null" >
+        securitydegree = #{record.securitydegree,jdbcType=INTEGER},
+      </if>
+      <if test="record.securitypay != null" >
+        securitypay = #{record.securitypay,jdbcType=VARCHAR},
+      </if>
+      <if test="record.securityphone != null" >
+        securityphone = #{record.securityphone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.securitymail != null" >
+        securitymail = #{record.securitymail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.realname != null" >
+        realname = #{record.realname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.identitynumber != null" >
+        identitynumber = #{record.identitynumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.photourl1 != null" >
+        photourl1 = #{record.photourl1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.photourl2 != null" >
+        photourl2 = #{record.photourl2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.securityproblem1 != null" >
+        securityproblem1 = #{record.securityproblem1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.securityansower1 != null" >
+        securityansower1 = #{record.securityansower1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.securityproblem2 != null" >
+        securityproblem2 = #{record.securityproblem2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.securityansower2 != null" >
+        securityansower2 = #{record.securityansower2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.registertime != null" >
+        registertime = #{record.registertime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update onlinemall_user
+    set userid = #{record.userid,jdbcType=VARCHAR},
+      account = #{record.account,jdbcType=VARCHAR},
+      phonenumber = #{record.phonenumber,jdbcType=VARCHAR},
+      mail = #{record.mail,jdbcType=VARCHAR},
+      qqnumber = #{record.qqnumber,jdbcType=VARCHAR},
+      weixinnumber = #{record.weixinnumber,jdbcType=VARCHAR},
+      weibonumber = #{record.weibonumber,jdbcType=VARCHAR},
+      password = #{record.password,jdbcType=VARCHAR},
+      name = #{record.name,jdbcType=VARCHAR},
+      sex = #{record.sex,jdbcType=VARCHAR},
+      birthday = #{record.birthday,jdbcType=VARCHAR},
+      securitydegree = #{record.securitydegree,jdbcType=INTEGER},
+      securitypay = #{record.securitypay,jdbcType=VARCHAR},
+      securityphone = #{record.securityphone,jdbcType=VARCHAR},
+      securitymail = #{record.securitymail,jdbcType=VARCHAR},
+      realname = #{record.realname,jdbcType=VARCHAR},
+      identitynumber = #{record.identitynumber,jdbcType=VARCHAR},
+      photourl1 = #{record.photourl1,jdbcType=VARCHAR},
+      photourl2 = #{record.photourl2,jdbcType=VARCHAR},
+      securityproblem1 = #{record.securityproblem1,jdbcType=VARCHAR},
+      securityansower1 = #{record.securityansower1,jdbcType=VARCHAR},
+      securityproblem2 = #{record.securityproblem2,jdbcType=VARCHAR},
+      securityansower2 = #{record.securityansower2,jdbcType=VARCHAR},
+      registertime = #{record.registertime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.onlinemall.dao.model.OnlinemallUser" >
+    update onlinemall_user
+    <set >
+      <if test="account != null" >
+        account = #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="phonenumber != null" >
+        phonenumber = #{phonenumber,jdbcType=VARCHAR},
+      </if>
+      <if test="mail != null" >
+        mail = #{mail,jdbcType=VARCHAR},
+      </if>
+      <if test="qqnumber != null" >
+        qqnumber = #{qqnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="weixinnumber != null" >
+        weixinnumber = #{weixinnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="weibonumber != null" >
+        weibonumber = #{weibonumber,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null" >
+        birthday = #{birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="securitydegree != null" >
+        securitydegree = #{securitydegree,jdbcType=INTEGER},
+      </if>
+      <if test="securitypay != null" >
+        securitypay = #{securitypay,jdbcType=VARCHAR},
+      </if>
+      <if test="securityphone != null" >
+        securityphone = #{securityphone,jdbcType=VARCHAR},
+      </if>
+      <if test="securitymail != null" >
+        securitymail = #{securitymail,jdbcType=VARCHAR},
+      </if>
+      <if test="realname != null" >
+        realname = #{realname,jdbcType=VARCHAR},
+      </if>
+      <if test="identitynumber != null" >
+        identitynumber = #{identitynumber,jdbcType=VARCHAR},
+      </if>
+      <if test="photourl1 != null" >
+        photourl1 = #{photourl1,jdbcType=VARCHAR},
+      </if>
+      <if test="photourl2 != null" >
+        photourl2 = #{photourl2,jdbcType=VARCHAR},
+      </if>
+      <if test="securityproblem1 != null" >
+        securityproblem1 = #{securityproblem1,jdbcType=VARCHAR},
+      </if>
+      <if test="securityansower1 != null" >
+        securityansower1 = #{securityansower1,jdbcType=VARCHAR},
+      </if>
+      <if test="securityproblem2 != null" >
+        securityproblem2 = #{securityproblem2,jdbcType=VARCHAR},
+      </if>
+      <if test="securityansower2 != null" >
+        securityansower2 = #{securityansower2,jdbcType=VARCHAR},
+      </if>
+      <if test="registertime != null" >
+        registertime = #{registertime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where userid = #{userid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.onlinemall.dao.model.OnlinemallUser" >
+    update onlinemall_user
+    set account = #{account,jdbcType=VARCHAR},
+      phonenumber = #{phonenumber,jdbcType=VARCHAR},
+      mail = #{mail,jdbcType=VARCHAR},
+      qqnumber = #{qqnumber,jdbcType=VARCHAR},
+      weixinnumber = #{weixinnumber,jdbcType=VARCHAR},
+      weibonumber = #{weibonumber,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      birthday = #{birthday,jdbcType=VARCHAR},
+      securitydegree = #{securitydegree,jdbcType=INTEGER},
+      securitypay = #{securitypay,jdbcType=VARCHAR},
+      securityphone = #{securityphone,jdbcType=VARCHAR},
+      securitymail = #{securitymail,jdbcType=VARCHAR},
+      realname = #{realname,jdbcType=VARCHAR},
+      identitynumber = #{identitynumber,jdbcType=VARCHAR},
+      photourl1 = #{photourl1,jdbcType=VARCHAR},
+      photourl2 = #{photourl2,jdbcType=VARCHAR},
+      securityproblem1 = #{securityproblem1,jdbcType=VARCHAR},
+      securityansower1 = #{securityansower1,jdbcType=VARCHAR},
+      securityproblem2 = #{securityproblem2,jdbcType=VARCHAR},
+      securityansower2 = #{securityansower2,jdbcType=VARCHAR},
+      registertime = #{registertime,jdbcType=TIMESTAMP}
+    where userid = #{userid,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,560 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.onlinemall.dao.mapper.OnlinemallGoodsShoesMapper" >
+  <resultMap id="BaseResultMap" type="com.onlinemall.dao.model.OnlinemallGoodsShoes" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="goodsid" property="goodsid" jdbcType="VARCHAR" />
+    <result column="shop" property="shop" jdbcType="VARCHAR" />
+    <result column="goodsname" property="goodsname" jdbcType="VARCHAR" />
+    <result column="discountid" property="discountid" jdbcType="VARCHAR" />
+    <result column="originalprice" property="originalprice" jdbcType="INTEGER" />
+    <result column="discouuntprice" property="discouuntprice" jdbcType="INTEGER" />
+    <result column="salesmonth" property="salesmonth" jdbcType="INTEGER" />
+    <result column="salescount" property="salescount" jdbcType="INTEGER" />
+    <result column="evaluatecount" property="evaluatecount" jdbcType="INTEGER" />
+    <result column="evaluateprecent" property="evaluateprecent" jdbcType="VARCHAR" />
+    <result column="shoestype" property="shoestype" jdbcType="VARCHAR" />
+    <result column="shoessex" property="shoessex" jdbcType="VARCHAR" />
+    <result column="shoesperson" property="shoesperson" jdbcType="VARCHAR" />
+    <result column="shoescolor" property="shoescolor" jdbcType="VARCHAR" />
+    <result column="shoessize" property="shoessize" jdbcType="VARCHAR" />
+    <result column="shoesbrand" property="shoesbrand" jdbcType="VARCHAR" />
+    <result column="shoescount" property="shoescount" jdbcType="VARCHAR" />
+    <result column="shoescode" property="shoescode" jdbcType="VARCHAR" />
+    <result column="shoestime" property="shoestime" jdbcType="TIMESTAMP" />
+    <result column="producttime" property="producttime" jdbcType="TIMESTAMP" />
+    <result column="productcompany" property="productcompany" jdbcType="VARCHAR" />
+    <result column="productid" property="productid" jdbcType="VARCHAR" />
+    <result column="productplace" property="productplace" jdbcType="VARCHAR" />
+    <result column="productallow" property="productallow" jdbcType="VARCHAR" />
+    <result column="place" property="place" jdbcType="VARCHAR" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, goodsid, shop, goodsname, discountid, originalprice, discouuntprice, salesmonth, 
+    salescount, evaluatecount, evaluateprecent, shoestype, shoessex, shoesperson, shoescolor, 
+    shoessize, shoesbrand, shoescount, shoescode, shoestime, producttime, productcompany, 
+    productid, productplace, productallow, place, url
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.onlinemall.dao.model.OnlinemallGoodsShoesExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from onlinemall_goods_shoes
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from onlinemall_goods_shoes
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from onlinemall_goods_shoes
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.onlinemall.dao.model.OnlinemallGoodsShoesExample" >
+    delete from onlinemall_goods_shoes
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.onlinemall.dao.model.OnlinemallGoodsShoes" >
+    insert into onlinemall_goods_shoes (id, goodsid, shop, 
+      goodsname, discountid, originalprice, 
+      discouuntprice, salesmonth, salescount, 
+      evaluatecount, evaluateprecent, shoestype, 
+      shoessex, shoesperson, shoescolor, 
+      shoessize, shoesbrand, shoescount, 
+      shoescode, shoestime, producttime, 
+      productcompany, productid, productplace, 
+      productallow, place, url
+      )
+    values (#{id,jdbcType=VARCHAR}, #{goodsid,jdbcType=VARCHAR}, #{shop,jdbcType=VARCHAR}, 
+      #{goodsname,jdbcType=VARCHAR}, #{discountid,jdbcType=VARCHAR}, #{originalprice,jdbcType=INTEGER}, 
+      #{discouuntprice,jdbcType=INTEGER}, #{salesmonth,jdbcType=INTEGER}, #{salescount,jdbcType=INTEGER}, 
+      #{evaluatecount,jdbcType=INTEGER}, #{evaluateprecent,jdbcType=VARCHAR}, #{shoestype,jdbcType=VARCHAR}, 
+      #{shoessex,jdbcType=VARCHAR}, #{shoesperson,jdbcType=VARCHAR}, #{shoescolor,jdbcType=VARCHAR}, 
+      #{shoessize,jdbcType=VARCHAR}, #{shoesbrand,jdbcType=VARCHAR}, #{shoescount,jdbcType=VARCHAR}, 
+      #{shoescode,jdbcType=VARCHAR}, #{shoestime,jdbcType=TIMESTAMP}, #{producttime,jdbcType=TIMESTAMP}, 
+      #{productcompany,jdbcType=VARCHAR}, #{productid,jdbcType=VARCHAR}, #{productplace,jdbcType=VARCHAR}, 
+      #{productallow,jdbcType=VARCHAR}, #{place,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.onlinemall.dao.model.OnlinemallGoodsShoes" >
+    insert into onlinemall_goods_shoes
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="goodsid != null" >
+        goodsid,
+      </if>
+      <if test="shop != null" >
+        shop,
+      </if>
+      <if test="goodsname != null" >
+        goodsname,
+      </if>
+      <if test="discountid != null" >
+        discountid,
+      </if>
+      <if test="originalprice != null" >
+        originalprice,
+      </if>
+      <if test="discouuntprice != null" >
+        discouuntprice,
+      </if>
+      <if test="salesmonth != null" >
+        salesmonth,
+      </if>
+      <if test="salescount != null" >
+        salescount,
+      </if>
+      <if test="evaluatecount != null" >
+        evaluatecount,
+      </if>
+      <if test="evaluateprecent != null" >
+        evaluateprecent,
+      </if>
+      <if test="shoestype != null" >
+        shoestype,
+      </if>
+      <if test="shoessex != null" >
+        shoessex,
+      </if>
+      <if test="shoesperson != null" >
+        shoesperson,
+      </if>
+      <if test="shoescolor != null" >
+        shoescolor,
+      </if>
+      <if test="shoessize != null" >
+        shoessize,
+      </if>
+      <if test="shoesbrand != null" >
+        shoesbrand,
+      </if>
+      <if test="shoescount != null" >
+        shoescount,
+      </if>
+      <if test="shoescode != null" >
+        shoescode,
+      </if>
+      <if test="shoestime != null" >
+        shoestime,
+      </if>
+      <if test="producttime != null" >
+        producttime,
+      </if>
+      <if test="productcompany != null" >
+        productcompany,
+      </if>
+      <if test="productid != null" >
+        productid,
+      </if>
+      <if test="productplace != null" >
+        productplace,
+      </if>
+      <if test="productallow != null" >
+        productallow,
+      </if>
+      <if test="place != null" >
+        place,
+      </if>
+      <if test="url != null" >
+        url,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsid != null" >
+        #{goodsid,jdbcType=VARCHAR},
+      </if>
+      <if test="shop != null" >
+        #{shop,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsname != null" >
+        #{goodsname,jdbcType=VARCHAR},
+      </if>
+      <if test="discountid != null" >
+        #{discountid,jdbcType=VARCHAR},
+      </if>
+      <if test="originalprice != null" >
+        #{originalprice,jdbcType=INTEGER},
+      </if>
+      <if test="discouuntprice != null" >
+        #{discouuntprice,jdbcType=INTEGER},
+      </if>
+      <if test="salesmonth != null" >
+        #{salesmonth,jdbcType=INTEGER},
+      </if>
+      <if test="salescount != null" >
+        #{salescount,jdbcType=INTEGER},
+      </if>
+      <if test="evaluatecount != null" >
+        #{evaluatecount,jdbcType=INTEGER},
+      </if>
+      <if test="evaluateprecent != null" >
+        #{evaluateprecent,jdbcType=VARCHAR},
+      </if>
+      <if test="shoestype != null" >
+        #{shoestype,jdbcType=VARCHAR},
+      </if>
+      <if test="shoessex != null" >
+        #{shoessex,jdbcType=VARCHAR},
+      </if>
+      <if test="shoesperson != null" >
+        #{shoesperson,jdbcType=VARCHAR},
+      </if>
+      <if test="shoescolor != null" >
+        #{shoescolor,jdbcType=VARCHAR},
+      </if>
+      <if test="shoessize != null" >
+        #{shoessize,jdbcType=VARCHAR},
+      </if>
+      <if test="shoesbrand != null" >
+        #{shoesbrand,jdbcType=VARCHAR},
+      </if>
+      <if test="shoescount != null" >
+        #{shoescount,jdbcType=VARCHAR},
+      </if>
+      <if test="shoescode != null" >
+        #{shoescode,jdbcType=VARCHAR},
+      </if>
+      <if test="shoestime != null" >
+        #{shoestime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="producttime != null" >
+        #{producttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="productcompany != null" >
+        #{productcompany,jdbcType=VARCHAR},
+      </if>
+      <if test="productid != null" >
+        #{productid,jdbcType=VARCHAR},
+      </if>
+      <if test="productplace != null" >
+        #{productplace,jdbcType=VARCHAR},
+      </if>
+      <if test="productallow != null" >
+        #{productallow,jdbcType=VARCHAR},
+      </if>
+      <if test="place != null" >
+        #{place,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.onlinemall.dao.model.OnlinemallGoodsShoesExample" resultType="java.lang.Integer" >
+    select count(*) from onlinemall_goods_shoes
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update onlinemall_goods_shoes
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.goodsid != null" >
+        goodsid = #{record.goodsid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shop != null" >
+        shop = #{record.shop,jdbcType=VARCHAR},
+      </if>
+      <if test="record.goodsname != null" >
+        goodsname = #{record.goodsname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.discountid != null" >
+        discountid = #{record.discountid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.originalprice != null" >
+        originalprice = #{record.originalprice,jdbcType=INTEGER},
+      </if>
+      <if test="record.discouuntprice != null" >
+        discouuntprice = #{record.discouuntprice,jdbcType=INTEGER},
+      </if>
+      <if test="record.salesmonth != null" >
+        salesmonth = #{record.salesmonth,jdbcType=INTEGER},
+      </if>
+      <if test="record.salescount != null" >
+        salescount = #{record.salescount,jdbcType=INTEGER},
+      </if>
+      <if test="record.evaluatecount != null" >
+        evaluatecount = #{record.evaluatecount,jdbcType=INTEGER},
+      </if>
+      <if test="record.evaluateprecent != null" >
+        evaluateprecent = #{record.evaluateprecent,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shoestype != null" >
+        shoestype = #{record.shoestype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shoessex != null" >
+        shoessex = #{record.shoessex,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shoesperson != null" >
+        shoesperson = #{record.shoesperson,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shoescolor != null" >
+        shoescolor = #{record.shoescolor,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shoessize != null" >
+        shoessize = #{record.shoessize,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shoesbrand != null" >
+        shoesbrand = #{record.shoesbrand,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shoescount != null" >
+        shoescount = #{record.shoescount,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shoescode != null" >
+        shoescode = #{record.shoescode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shoestime != null" >
+        shoestime = #{record.shoestime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.producttime != null" >
+        producttime = #{record.producttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.productcompany != null" >
+        productcompany = #{record.productcompany,jdbcType=VARCHAR},
+      </if>
+      <if test="record.productid != null" >
+        productid = #{record.productid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.productplace != null" >
+        productplace = #{record.productplace,jdbcType=VARCHAR},
+      </if>
+      <if test="record.productallow != null" >
+        productallow = #{record.productallow,jdbcType=VARCHAR},
+      </if>
+      <if test="record.place != null" >
+        place = #{record.place,jdbcType=VARCHAR},
+      </if>
+      <if test="record.url != null" >
+        url = #{record.url,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update onlinemall_goods_shoes
+    set id = #{record.id,jdbcType=VARCHAR},
+      goodsid = #{record.goodsid,jdbcType=VARCHAR},
+      shop = #{record.shop,jdbcType=VARCHAR},
+      goodsname = #{record.goodsname,jdbcType=VARCHAR},
+      discountid = #{record.discountid,jdbcType=VARCHAR},
+      originalprice = #{record.originalprice,jdbcType=INTEGER},
+      discouuntprice = #{record.discouuntprice,jdbcType=INTEGER},
+      salesmonth = #{record.salesmonth,jdbcType=INTEGER},
+      salescount = #{record.salescount,jdbcType=INTEGER},
+      evaluatecount = #{record.evaluatecount,jdbcType=INTEGER},
+      evaluateprecent = #{record.evaluateprecent,jdbcType=VARCHAR},
+      shoestype = #{record.shoestype,jdbcType=VARCHAR},
+      shoessex = #{record.shoessex,jdbcType=VARCHAR},
+      shoesperson = #{record.shoesperson,jdbcType=VARCHAR},
+      shoescolor = #{record.shoescolor,jdbcType=VARCHAR},
+      shoessize = #{record.shoessize,jdbcType=VARCHAR},
+      shoesbrand = #{record.shoesbrand,jdbcType=VARCHAR},
+      shoescount = #{record.shoescount,jdbcType=VARCHAR},
+      shoescode = #{record.shoescode,jdbcType=VARCHAR},
+      shoestime = #{record.shoestime,jdbcType=TIMESTAMP},
+      producttime = #{record.producttime,jdbcType=TIMESTAMP},
+      productcompany = #{record.productcompany,jdbcType=VARCHAR},
+      productid = #{record.productid,jdbcType=VARCHAR},
+      productplace = #{record.productplace,jdbcType=VARCHAR},
+      productallow = #{record.productallow,jdbcType=VARCHAR},
+      place = #{record.place,jdbcType=VARCHAR},
+      url = #{record.url,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.onlinemall.dao.model.OnlinemallGoodsShoes" >
+    update onlinemall_goods_shoes
+    <set >
+      <if test="goodsid != null" >
+        goodsid = #{goodsid,jdbcType=VARCHAR},
+      </if>
+      <if test="shop != null" >
+        shop = #{shop,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsname != null" >
+        goodsname = #{goodsname,jdbcType=VARCHAR},
+      </if>
+      <if test="discountid != null" >
+        discountid = #{discountid,jdbcType=VARCHAR},
+      </if>
+      <if test="originalprice != null" >
+        originalprice = #{originalprice,jdbcType=INTEGER},
+      </if>
+      <if test="discouuntprice != null" >
+        discouuntprice = #{discouuntprice,jdbcType=INTEGER},
+      </if>
+      <if test="salesmonth != null" >
+        salesmonth = #{salesmonth,jdbcType=INTEGER},
+      </if>
+      <if test="salescount != null" >
+        salescount = #{salescount,jdbcType=INTEGER},
+      </if>
+      <if test="evaluatecount != null" >
+        evaluatecount = #{evaluatecount,jdbcType=INTEGER},
+      </if>
+      <if test="evaluateprecent != null" >
+        evaluateprecent = #{evaluateprecent,jdbcType=VARCHAR},
+      </if>
+      <if test="shoestype != null" >
+        shoestype = #{shoestype,jdbcType=VARCHAR},
+      </if>
+      <if test="shoessex != null" >
+        shoessex = #{shoessex,jdbcType=VARCHAR},
+      </if>
+      <if test="shoesperson != null" >
+        shoesperson = #{shoesperson,jdbcType=VARCHAR},
+      </if>
+      <if test="shoescolor != null" >
+        shoescolor = #{shoescolor,jdbcType=VARCHAR},
+      </if>
+      <if test="shoessize != null" >
+        shoessize = #{shoessize,jdbcType=VARCHAR},
+      </if>
+      <if test="shoesbrand != null" >
+        shoesbrand = #{shoesbrand,jdbcType=VARCHAR},
+      </if>
+      <if test="shoescount != null" >
+        shoescount = #{shoescount,jdbcType=VARCHAR},
+      </if>
+      <if test="shoescode != null" >
+        shoescode = #{shoescode,jdbcType=VARCHAR},
+      </if>
+      <if test="shoestime != null" >
+        shoestime = #{shoestime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="producttime != null" >
+        producttime = #{producttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="productcompany != null" >
+        productcompany = #{productcompany,jdbcType=VARCHAR},
+      </if>
+      <if test="productid != null" >
+        productid = #{productid,jdbcType=VARCHAR},
+      </if>
+      <if test="productplace != null" >
+        productplace = #{productplace,jdbcType=VARCHAR},
+      </if>
+      <if test="productallow != null" >
+        productallow = #{productallow,jdbcType=VARCHAR},
+      </if>
+      <if test="place != null" >
+        place = #{place,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.onlinemall.dao.model.OnlinemallGoodsShoes" >
+    update onlinemall_goods_shoes
+    set goodsid = #{goodsid,jdbcType=VARCHAR},
+      shop = #{shop,jdbcType=VARCHAR},
+      goodsname = #{goodsname,jdbcType=VARCHAR},
+      discountid = #{discountid,jdbcType=VARCHAR},
+      originalprice = #{originalprice,jdbcType=INTEGER},
+      discouuntprice = #{discouuntprice,jdbcType=INTEGER},
+      salesmonth = #{salesmonth,jdbcType=INTEGER},
+      salescount = #{salescount,jdbcType=INTEGER},
+      evaluatecount = #{evaluatecount,jdbcType=INTEGER},
+      evaluateprecent = #{evaluateprecent,jdbcType=VARCHAR},
+      shoestype = #{shoestype,jdbcType=VARCHAR},
+      shoessex = #{shoessex,jdbcType=VARCHAR},
+      shoesperson = #{shoesperson,jdbcType=VARCHAR},
+      shoescolor = #{shoescolor,jdbcType=VARCHAR},
+      shoessize = #{shoessize,jdbcType=VARCHAR},
+      shoesbrand = #{shoesbrand,jdbcType=VARCHAR},
+      shoescount = #{shoescount,jdbcType=VARCHAR},
+      shoescode = #{shoescode,jdbcType=VARCHAR},
+      shoestime = #{shoestime,jdbcType=TIMESTAMP},
+      producttime = #{producttime,jdbcType=TIMESTAMP},
+      productcompany = #{productcompany,jdbcType=VARCHAR},
+      productid = #{productid,jdbcType=VARCHAR},
+      productplace = #{productplace,jdbcType=VARCHAR},
+      productallow = #{productallow,jdbcType=VARCHAR},
+      place = #{place,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

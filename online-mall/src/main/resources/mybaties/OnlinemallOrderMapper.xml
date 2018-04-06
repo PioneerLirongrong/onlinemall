@@ -1,0 +1,481 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.onlinemall.dao.mapper.OnlinemallOrderMapper" >
+  <resultMap id="BaseResultMap" type="com.onlinemall.dao.model.OnlinemallOrder" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="orderid" property="orderid" jdbcType="VARCHAR" />
+    <result column="userid" property="userid" jdbcType="VARCHAR" />
+    <result column="goodsid" property="goodsid" jdbcType="VARCHAR" />
+    <result column="shopid" property="shopid" jdbcType="VARCHAR" />
+    <result column="goodsurl" property="goodsurl" jdbcType="VARCHAR" />
+    <result column="ordertype" property="ordertype" jdbcType="VARCHAR" />
+    <result column="goodsname" property="goodsname" jdbcType="VARCHAR" />
+    <result column="goodsprice" property="goodsprice" jdbcType="VARCHAR" />
+    <result column="goodscount" property="goodscount" jdbcType="INTEGER" />
+    <result column="ordertotalamount" property="ordertotalamount" jdbcType="VARCHAR" />
+    <result column="orderwuliutotalamount" property="orderwuliutotalamount" jdbcType="VARCHAR" />
+    <result column="goodsoperate" property="goodsoperate" jdbcType="VARCHAR" />
+    <result column="ordertime" property="ordertime" jdbcType="TIMESTAMP" />
+    <result column="orderaddress" property="orderaddress" jdbcType="VARCHAR" />
+    <result column="orderstatus" property="orderstatus" jdbcType="VARCHAR" />
+    <result column="goodsreturntime" property="goodsreturntime" jdbcType="TIMESTAMP" />
+    <result column="goodsreturnnumber" property="goodsreturnnumber" jdbcType="VARCHAR" />
+    <result column="goodsreturnstatus" property="goodsreturnstatus" jdbcType="VARCHAR" />
+    <result column="ordercreatetime" property="ordercreatetime" jdbcType="TIMESTAMP" />
+    <result column="orderpaytime" property="orderpaytime" jdbcType="TIMESTAMP" />
+    <result column="orderchengjiaotime" property="orderchengjiaotime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, orderid, userid, goodsid, shopid, goodsurl, ordertype, goodsname, goodsprice, 
+    goodscount, ordertotalamount, orderwuliutotalamount, goodsoperate, ordertime, orderaddress, 
+    orderstatus, goodsreturntime, goodsreturnnumber, goodsreturnstatus, ordercreatetime, 
+    orderpaytime, orderchengjiaotime
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.onlinemall.dao.model.OnlinemallOrderExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from onlinemall_order
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from onlinemall_order
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from onlinemall_order
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.onlinemall.dao.model.OnlinemallOrderExample" >
+    delete from onlinemall_order
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.onlinemall.dao.model.OnlinemallOrder" >
+    insert into onlinemall_order (id, orderid, userid, 
+      goodsid, shopid, goodsurl, 
+      ordertype, goodsname, goodsprice, 
+      goodscount, ordertotalamount, orderwuliutotalamount, 
+      goodsoperate, ordertime, orderaddress, 
+      orderstatus, goodsreturntime, goodsreturnnumber, 
+      goodsreturnstatus, ordercreatetime, orderpaytime, 
+      orderchengjiaotime)
+    values (#{id,jdbcType=VARCHAR}, #{orderid,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, 
+      #{goodsid,jdbcType=VARCHAR}, #{shopid,jdbcType=VARCHAR}, #{goodsurl,jdbcType=VARCHAR}, 
+      #{ordertype,jdbcType=VARCHAR}, #{goodsname,jdbcType=VARCHAR}, #{goodsprice,jdbcType=VARCHAR}, 
+      #{goodscount,jdbcType=INTEGER}, #{ordertotalamount,jdbcType=VARCHAR}, #{orderwuliutotalamount,jdbcType=VARCHAR}, 
+      #{goodsoperate,jdbcType=VARCHAR}, #{ordertime,jdbcType=TIMESTAMP}, #{orderaddress,jdbcType=VARCHAR}, 
+      #{orderstatus,jdbcType=VARCHAR}, #{goodsreturntime,jdbcType=TIMESTAMP}, #{goodsreturnnumber,jdbcType=VARCHAR}, 
+      #{goodsreturnstatus,jdbcType=VARCHAR}, #{ordercreatetime,jdbcType=TIMESTAMP}, #{orderpaytime,jdbcType=TIMESTAMP}, 
+      #{orderchengjiaotime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.onlinemall.dao.model.OnlinemallOrder" >
+    insert into onlinemall_order
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="orderid != null" >
+        orderid,
+      </if>
+      <if test="userid != null" >
+        userid,
+      </if>
+      <if test="goodsid != null" >
+        goodsid,
+      </if>
+      <if test="shopid != null" >
+        shopid,
+      </if>
+      <if test="goodsurl != null" >
+        goodsurl,
+      </if>
+      <if test="ordertype != null" >
+        ordertype,
+      </if>
+      <if test="goodsname != null" >
+        goodsname,
+      </if>
+      <if test="goodsprice != null" >
+        goodsprice,
+      </if>
+      <if test="goodscount != null" >
+        goodscount,
+      </if>
+      <if test="ordertotalamount != null" >
+        ordertotalamount,
+      </if>
+      <if test="orderwuliutotalamount != null" >
+        orderwuliutotalamount,
+      </if>
+      <if test="goodsoperate != null" >
+        goodsoperate,
+      </if>
+      <if test="ordertime != null" >
+        ordertime,
+      </if>
+      <if test="orderaddress != null" >
+        orderaddress,
+      </if>
+      <if test="orderstatus != null" >
+        orderstatus,
+      </if>
+      <if test="goodsreturntime != null" >
+        goodsreturntime,
+      </if>
+      <if test="goodsreturnnumber != null" >
+        goodsreturnnumber,
+      </if>
+      <if test="goodsreturnstatus != null" >
+        goodsreturnstatus,
+      </if>
+      <if test="ordercreatetime != null" >
+        ordercreatetime,
+      </if>
+      <if test="orderpaytime != null" >
+        orderpaytime,
+      </if>
+      <if test="orderchengjiaotime != null" >
+        orderchengjiaotime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="orderid != null" >
+        #{orderid,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsid != null" >
+        #{goodsid,jdbcType=VARCHAR},
+      </if>
+      <if test="shopid != null" >
+        #{shopid,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsurl != null" >
+        #{goodsurl,jdbcType=VARCHAR},
+      </if>
+      <if test="ordertype != null" >
+        #{ordertype,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsname != null" >
+        #{goodsname,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsprice != null" >
+        #{goodsprice,jdbcType=VARCHAR},
+      </if>
+      <if test="goodscount != null" >
+        #{goodscount,jdbcType=INTEGER},
+      </if>
+      <if test="ordertotalamount != null" >
+        #{ordertotalamount,jdbcType=VARCHAR},
+      </if>
+      <if test="orderwuliutotalamount != null" >
+        #{orderwuliutotalamount,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsoperate != null" >
+        #{goodsoperate,jdbcType=VARCHAR},
+      </if>
+      <if test="ordertime != null" >
+        #{ordertime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderaddress != null" >
+        #{orderaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="orderstatus != null" >
+        #{orderstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsreturntime != null" >
+        #{goodsreturntime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="goodsreturnnumber != null" >
+        #{goodsreturnnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsreturnstatus != null" >
+        #{goodsreturnstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="ordercreatetime != null" >
+        #{ordercreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderpaytime != null" >
+        #{orderpaytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderchengjiaotime != null" >
+        #{orderchengjiaotime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.onlinemall.dao.model.OnlinemallOrderExample" resultType="java.lang.Integer" >
+    select count(*) from onlinemall_order
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update onlinemall_order
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderid != null" >
+        orderid = #{record.orderid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userid != null" >
+        userid = #{record.userid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.goodsid != null" >
+        goodsid = #{record.goodsid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shopid != null" >
+        shopid = #{record.shopid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.goodsurl != null" >
+        goodsurl = #{record.goodsurl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ordertype != null" >
+        ordertype = #{record.ordertype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.goodsname != null" >
+        goodsname = #{record.goodsname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.goodsprice != null" >
+        goodsprice = #{record.goodsprice,jdbcType=VARCHAR},
+      </if>
+      <if test="record.goodscount != null" >
+        goodscount = #{record.goodscount,jdbcType=INTEGER},
+      </if>
+      <if test="record.ordertotalamount != null" >
+        ordertotalamount = #{record.ordertotalamount,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderwuliutotalamount != null" >
+        orderwuliutotalamount = #{record.orderwuliutotalamount,jdbcType=VARCHAR},
+      </if>
+      <if test="record.goodsoperate != null" >
+        goodsoperate = #{record.goodsoperate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ordertime != null" >
+        ordertime = #{record.ordertime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.orderaddress != null" >
+        orderaddress = #{record.orderaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderstatus != null" >
+        orderstatus = #{record.orderstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.goodsreturntime != null" >
+        goodsreturntime = #{record.goodsreturntime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.goodsreturnnumber != null" >
+        goodsreturnnumber = #{record.goodsreturnnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.goodsreturnstatus != null" >
+        goodsreturnstatus = #{record.goodsreturnstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ordercreatetime != null" >
+        ordercreatetime = #{record.ordercreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.orderpaytime != null" >
+        orderpaytime = #{record.orderpaytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.orderchengjiaotime != null" >
+        orderchengjiaotime = #{record.orderchengjiaotime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update onlinemall_order
+    set id = #{record.id,jdbcType=VARCHAR},
+      orderid = #{record.orderid,jdbcType=VARCHAR},
+      userid = #{record.userid,jdbcType=VARCHAR},
+      goodsid = #{record.goodsid,jdbcType=VARCHAR},
+      shopid = #{record.shopid,jdbcType=VARCHAR},
+      goodsurl = #{record.goodsurl,jdbcType=VARCHAR},
+      ordertype = #{record.ordertype,jdbcType=VARCHAR},
+      goodsname = #{record.goodsname,jdbcType=VARCHAR},
+      goodsprice = #{record.goodsprice,jdbcType=VARCHAR},
+      goodscount = #{record.goodscount,jdbcType=INTEGER},
+      ordertotalamount = #{record.ordertotalamount,jdbcType=VARCHAR},
+      orderwuliutotalamount = #{record.orderwuliutotalamount,jdbcType=VARCHAR},
+      goodsoperate = #{record.goodsoperate,jdbcType=VARCHAR},
+      ordertime = #{record.ordertime,jdbcType=TIMESTAMP},
+      orderaddress = #{record.orderaddress,jdbcType=VARCHAR},
+      orderstatus = #{record.orderstatus,jdbcType=VARCHAR},
+      goodsreturntime = #{record.goodsreturntime,jdbcType=TIMESTAMP},
+      goodsreturnnumber = #{record.goodsreturnnumber,jdbcType=VARCHAR},
+      goodsreturnstatus = #{record.goodsreturnstatus,jdbcType=VARCHAR},
+      ordercreatetime = #{record.ordercreatetime,jdbcType=TIMESTAMP},
+      orderpaytime = #{record.orderpaytime,jdbcType=TIMESTAMP},
+      orderchengjiaotime = #{record.orderchengjiaotime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.onlinemall.dao.model.OnlinemallOrder" >
+    update onlinemall_order
+    <set >
+      <if test="orderid != null" >
+        orderid = #{orderid,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null" >
+        userid = #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsid != null" >
+        goodsid = #{goodsid,jdbcType=VARCHAR},
+      </if>
+      <if test="shopid != null" >
+        shopid = #{shopid,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsurl != null" >
+        goodsurl = #{goodsurl,jdbcType=VARCHAR},
+      </if>
+      <if test="ordertype != null" >
+        ordertype = #{ordertype,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsname != null" >
+        goodsname = #{goodsname,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsprice != null" >
+        goodsprice = #{goodsprice,jdbcType=VARCHAR},
+      </if>
+      <if test="goodscount != null" >
+        goodscount = #{goodscount,jdbcType=INTEGER},
+      </if>
+      <if test="ordertotalamount != null" >
+        ordertotalamount = #{ordertotalamount,jdbcType=VARCHAR},
+      </if>
+      <if test="orderwuliutotalamount != null" >
+        orderwuliutotalamount = #{orderwuliutotalamount,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsoperate != null" >
+        goodsoperate = #{goodsoperate,jdbcType=VARCHAR},
+      </if>
+      <if test="ordertime != null" >
+        ordertime = #{ordertime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderaddress != null" >
+        orderaddress = #{orderaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="orderstatus != null" >
+        orderstatus = #{orderstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsreturntime != null" >
+        goodsreturntime = #{goodsreturntime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="goodsreturnnumber != null" >
+        goodsreturnnumber = #{goodsreturnnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsreturnstatus != null" >
+        goodsreturnstatus = #{goodsreturnstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="ordercreatetime != null" >
+        ordercreatetime = #{ordercreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderpaytime != null" >
+        orderpaytime = #{orderpaytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderchengjiaotime != null" >
+        orderchengjiaotime = #{orderchengjiaotime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.onlinemall.dao.model.OnlinemallOrder" >
+    update onlinemall_order
+    set orderid = #{orderid,jdbcType=VARCHAR},
+      userid = #{userid,jdbcType=VARCHAR},
+      goodsid = #{goodsid,jdbcType=VARCHAR},
+      shopid = #{shopid,jdbcType=VARCHAR},
+      goodsurl = #{goodsurl,jdbcType=VARCHAR},
+      ordertype = #{ordertype,jdbcType=VARCHAR},
+      goodsname = #{goodsname,jdbcType=VARCHAR},
+      goodsprice = #{goodsprice,jdbcType=VARCHAR},
+      goodscount = #{goodscount,jdbcType=INTEGER},
+      ordertotalamount = #{ordertotalamount,jdbcType=VARCHAR},
+      orderwuliutotalamount = #{orderwuliutotalamount,jdbcType=VARCHAR},
+      goodsoperate = #{goodsoperate,jdbcType=VARCHAR},
+      ordertime = #{ordertime,jdbcType=TIMESTAMP},
+      orderaddress = #{orderaddress,jdbcType=VARCHAR},
+      orderstatus = #{orderstatus,jdbcType=VARCHAR},
+      goodsreturntime = #{goodsreturntime,jdbcType=TIMESTAMP},
+      goodsreturnnumber = #{goodsreturnnumber,jdbcType=VARCHAR},
+      goodsreturnstatus = #{goodsreturnstatus,jdbcType=VARCHAR},
+      ordercreatetime = #{ordercreatetime,jdbcType=TIMESTAMP},
+      orderpaytime = #{orderpaytime,jdbcType=TIMESTAMP},
+      orderchengjiaotime = #{orderchengjiaotime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

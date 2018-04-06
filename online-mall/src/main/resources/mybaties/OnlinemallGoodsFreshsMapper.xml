@@ -1,0 +1,528 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.onlinemall.dao.mapper.OnlinemallGoodsFreshsMapper" >
+  <resultMap id="BaseResultMap" type="com.onlinemall.dao.model.OnlinemallGoodsFreshs" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="goodsid" property="goodsid" jdbcType="VARCHAR" />
+    <result column="shop" property="shop" jdbcType="VARCHAR" />
+    <result column="goodsname" property="goodsname" jdbcType="VARCHAR" />
+    <result column="discountid" property="discountid" jdbcType="VARCHAR" />
+    <result column="originalprice" property="originalprice" jdbcType="INTEGER" />
+    <result column="discouuntprice" property="discouuntprice" jdbcType="INTEGER" />
+    <result column="salesmonth" property="salesmonth" jdbcType="INTEGER" />
+    <result column="salescount" property="salescount" jdbcType="INTEGER" />
+    <result column="evaluatecount" property="evaluatecount" jdbcType="INTEGER" />
+    <result column="evaluateprecent" property="evaluateprecent" jdbcType="VARCHAR" />
+    <result column="freshstype" property="freshstype" jdbcType="VARCHAR" />
+    <result column="freshsbrand" property="freshsbrand" jdbcType="VARCHAR" />
+    <result column="saveway" property="saveway" jdbcType="VARCHAR" />
+    <result column="delinetime" property="delinetime" jdbcType="INTEGER" />
+    <result column="freshscount" property="freshscount" jdbcType="INTEGER" />
+    <result column="peiliao" property="peiliao" jdbcType="VARCHAR" />
+    <result column="productid" property="productid" jdbcType="VARCHAR" />
+    <result column="useway" property="useway" jdbcType="VARCHAR" />
+    <result column="producttime" property="producttime" jdbcType="TIMESTAMP" />
+    <result column="productcompany" property="productcompany" jdbcType="VARCHAR" />
+    <result column="productallow" property="productallow" jdbcType="VARCHAR" />
+    <result column="productplace" property="productplace" jdbcType="VARCHAR" />
+    <result column="place" property="place" jdbcType="VARCHAR" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, goodsid, shop, goodsname, discountid, originalprice, discouuntprice, salesmonth, 
+    salescount, evaluatecount, evaluateprecent, freshstype, freshsbrand, saveway, delinetime, 
+    freshscount, peiliao, productid, useway, producttime, productcompany, productallow, 
+    productplace, place, url
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.onlinemall.dao.model.OnlinemallGoodsFreshsExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from onlinemall_goods_freshs
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from onlinemall_goods_freshs
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from onlinemall_goods_freshs
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.onlinemall.dao.model.OnlinemallGoodsFreshsExample" >
+    delete from onlinemall_goods_freshs
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.onlinemall.dao.model.OnlinemallGoodsFreshs" >
+    insert into onlinemall_goods_freshs (id, goodsid, shop, 
+      goodsname, discountid, originalprice, 
+      discouuntprice, salesmonth, salescount, 
+      evaluatecount, evaluateprecent, freshstype, 
+      freshsbrand, saveway, delinetime, 
+      freshscount, peiliao, productid, 
+      useway, producttime, productcompany, 
+      productallow, productplace, place, 
+      url)
+    values (#{id,jdbcType=VARCHAR}, #{goodsid,jdbcType=VARCHAR}, #{shop,jdbcType=VARCHAR}, 
+      #{goodsname,jdbcType=VARCHAR}, #{discountid,jdbcType=VARCHAR}, #{originalprice,jdbcType=INTEGER}, 
+      #{discouuntprice,jdbcType=INTEGER}, #{salesmonth,jdbcType=INTEGER}, #{salescount,jdbcType=INTEGER}, 
+      #{evaluatecount,jdbcType=INTEGER}, #{evaluateprecent,jdbcType=VARCHAR}, #{freshstype,jdbcType=VARCHAR}, 
+      #{freshsbrand,jdbcType=VARCHAR}, #{saveway,jdbcType=VARCHAR}, #{delinetime,jdbcType=INTEGER}, 
+      #{freshscount,jdbcType=INTEGER}, #{peiliao,jdbcType=VARCHAR}, #{productid,jdbcType=VARCHAR}, 
+      #{useway,jdbcType=VARCHAR}, #{producttime,jdbcType=TIMESTAMP}, #{productcompany,jdbcType=VARCHAR}, 
+      #{productallow,jdbcType=VARCHAR}, #{productplace,jdbcType=VARCHAR}, #{place,jdbcType=VARCHAR}, 
+      #{url,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.onlinemall.dao.model.OnlinemallGoodsFreshs" >
+    insert into onlinemall_goods_freshs
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="goodsid != null" >
+        goodsid,
+      </if>
+      <if test="shop != null" >
+        shop,
+      </if>
+      <if test="goodsname != null" >
+        goodsname,
+      </if>
+      <if test="discountid != null" >
+        discountid,
+      </if>
+      <if test="originalprice != null" >
+        originalprice,
+      </if>
+      <if test="discouuntprice != null" >
+        discouuntprice,
+      </if>
+      <if test="salesmonth != null" >
+        salesmonth,
+      </if>
+      <if test="salescount != null" >
+        salescount,
+      </if>
+      <if test="evaluatecount != null" >
+        evaluatecount,
+      </if>
+      <if test="evaluateprecent != null" >
+        evaluateprecent,
+      </if>
+      <if test="freshstype != null" >
+        freshstype,
+      </if>
+      <if test="freshsbrand != null" >
+        freshsbrand,
+      </if>
+      <if test="saveway != null" >
+        saveway,
+      </if>
+      <if test="delinetime != null" >
+        delinetime,
+      </if>
+      <if test="freshscount != null" >
+        freshscount,
+      </if>
+      <if test="peiliao != null" >
+        peiliao,
+      </if>
+      <if test="productid != null" >
+        productid,
+      </if>
+      <if test="useway != null" >
+        useway,
+      </if>
+      <if test="producttime != null" >
+        producttime,
+      </if>
+      <if test="productcompany != null" >
+        productcompany,
+      </if>
+      <if test="productallow != null" >
+        productallow,
+      </if>
+      <if test="productplace != null" >
+        productplace,
+      </if>
+      <if test="place != null" >
+        place,
+      </if>
+      <if test="url != null" >
+        url,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsid != null" >
+        #{goodsid,jdbcType=VARCHAR},
+      </if>
+      <if test="shop != null" >
+        #{shop,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsname != null" >
+        #{goodsname,jdbcType=VARCHAR},
+      </if>
+      <if test="discountid != null" >
+        #{discountid,jdbcType=VARCHAR},
+      </if>
+      <if test="originalprice != null" >
+        #{originalprice,jdbcType=INTEGER},
+      </if>
+      <if test="discouuntprice != null" >
+        #{discouuntprice,jdbcType=INTEGER},
+      </if>
+      <if test="salesmonth != null" >
+        #{salesmonth,jdbcType=INTEGER},
+      </if>
+      <if test="salescount != null" >
+        #{salescount,jdbcType=INTEGER},
+      </if>
+      <if test="evaluatecount != null" >
+        #{evaluatecount,jdbcType=INTEGER},
+      </if>
+      <if test="evaluateprecent != null" >
+        #{evaluateprecent,jdbcType=VARCHAR},
+      </if>
+      <if test="freshstype != null" >
+        #{freshstype,jdbcType=VARCHAR},
+      </if>
+      <if test="freshsbrand != null" >
+        #{freshsbrand,jdbcType=VARCHAR},
+      </if>
+      <if test="saveway != null" >
+        #{saveway,jdbcType=VARCHAR},
+      </if>
+      <if test="delinetime != null" >
+        #{delinetime,jdbcType=INTEGER},
+      </if>
+      <if test="freshscount != null" >
+        #{freshscount,jdbcType=INTEGER},
+      </if>
+      <if test="peiliao != null" >
+        #{peiliao,jdbcType=VARCHAR},
+      </if>
+      <if test="productid != null" >
+        #{productid,jdbcType=VARCHAR},
+      </if>
+      <if test="useway != null" >
+        #{useway,jdbcType=VARCHAR},
+      </if>
+      <if test="producttime != null" >
+        #{producttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="productcompany != null" >
+        #{productcompany,jdbcType=VARCHAR},
+      </if>
+      <if test="productallow != null" >
+        #{productallow,jdbcType=VARCHAR},
+      </if>
+      <if test="productplace != null" >
+        #{productplace,jdbcType=VARCHAR},
+      </if>
+      <if test="place != null" >
+        #{place,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.onlinemall.dao.model.OnlinemallGoodsFreshsExample" resultType="java.lang.Integer" >
+    select count(*) from onlinemall_goods_freshs
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update onlinemall_goods_freshs
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.goodsid != null" >
+        goodsid = #{record.goodsid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shop != null" >
+        shop = #{record.shop,jdbcType=VARCHAR},
+      </if>
+      <if test="record.goodsname != null" >
+        goodsname = #{record.goodsname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.discountid != null" >
+        discountid = #{record.discountid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.originalprice != null" >
+        originalprice = #{record.originalprice,jdbcType=INTEGER},
+      </if>
+      <if test="record.discouuntprice != null" >
+        discouuntprice = #{record.discouuntprice,jdbcType=INTEGER},
+      </if>
+      <if test="record.salesmonth != null" >
+        salesmonth = #{record.salesmonth,jdbcType=INTEGER},
+      </if>
+      <if test="record.salescount != null" >
+        salescount = #{record.salescount,jdbcType=INTEGER},
+      </if>
+      <if test="record.evaluatecount != null" >
+        evaluatecount = #{record.evaluatecount,jdbcType=INTEGER},
+      </if>
+      <if test="record.evaluateprecent != null" >
+        evaluateprecent = #{record.evaluateprecent,jdbcType=VARCHAR},
+      </if>
+      <if test="record.freshstype != null" >
+        freshstype = #{record.freshstype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.freshsbrand != null" >
+        freshsbrand = #{record.freshsbrand,jdbcType=VARCHAR},
+      </if>
+      <if test="record.saveway != null" >
+        saveway = #{record.saveway,jdbcType=VARCHAR},
+      </if>
+      <if test="record.delinetime != null" >
+        delinetime = #{record.delinetime,jdbcType=INTEGER},
+      </if>
+      <if test="record.freshscount != null" >
+        freshscount = #{record.freshscount,jdbcType=INTEGER},
+      </if>
+      <if test="record.peiliao != null" >
+        peiliao = #{record.peiliao,jdbcType=VARCHAR},
+      </if>
+      <if test="record.productid != null" >
+        productid = #{record.productid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.useway != null" >
+        useway = #{record.useway,jdbcType=VARCHAR},
+      </if>
+      <if test="record.producttime != null" >
+        producttime = #{record.producttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.productcompany != null" >
+        productcompany = #{record.productcompany,jdbcType=VARCHAR},
+      </if>
+      <if test="record.productallow != null" >
+        productallow = #{record.productallow,jdbcType=VARCHAR},
+      </if>
+      <if test="record.productplace != null" >
+        productplace = #{record.productplace,jdbcType=VARCHAR},
+      </if>
+      <if test="record.place != null" >
+        place = #{record.place,jdbcType=VARCHAR},
+      </if>
+      <if test="record.url != null" >
+        url = #{record.url,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update onlinemall_goods_freshs
+    set id = #{record.id,jdbcType=VARCHAR},
+      goodsid = #{record.goodsid,jdbcType=VARCHAR},
+      shop = #{record.shop,jdbcType=VARCHAR},
+      goodsname = #{record.goodsname,jdbcType=VARCHAR},
+      discountid = #{record.discountid,jdbcType=VARCHAR},
+      originalprice = #{record.originalprice,jdbcType=INTEGER},
+      discouuntprice = #{record.discouuntprice,jdbcType=INTEGER},
+      salesmonth = #{record.salesmonth,jdbcType=INTEGER},
+      salescount = #{record.salescount,jdbcType=INTEGER},
+      evaluatecount = #{record.evaluatecount,jdbcType=INTEGER},
+      evaluateprecent = #{record.evaluateprecent,jdbcType=VARCHAR},
+      freshstype = #{record.freshstype,jdbcType=VARCHAR},
+      freshsbrand = #{record.freshsbrand,jdbcType=VARCHAR},
+      saveway = #{record.saveway,jdbcType=VARCHAR},
+      delinetime = #{record.delinetime,jdbcType=INTEGER},
+      freshscount = #{record.freshscount,jdbcType=INTEGER},
+      peiliao = #{record.peiliao,jdbcType=VARCHAR},
+      productid = #{record.productid,jdbcType=VARCHAR},
+      useway = #{record.useway,jdbcType=VARCHAR},
+      producttime = #{record.producttime,jdbcType=TIMESTAMP},
+      productcompany = #{record.productcompany,jdbcType=VARCHAR},
+      productallow = #{record.productallow,jdbcType=VARCHAR},
+      productplace = #{record.productplace,jdbcType=VARCHAR},
+      place = #{record.place,jdbcType=VARCHAR},
+      url = #{record.url,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.onlinemall.dao.model.OnlinemallGoodsFreshs" >
+    update onlinemall_goods_freshs
+    <set >
+      <if test="goodsid != null" >
+        goodsid = #{goodsid,jdbcType=VARCHAR},
+      </if>
+      <if test="shop != null" >
+        shop = #{shop,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsname != null" >
+        goodsname = #{goodsname,jdbcType=VARCHAR},
+      </if>
+      <if test="discountid != null" >
+        discountid = #{discountid,jdbcType=VARCHAR},
+      </if>
+      <if test="originalprice != null" >
+        originalprice = #{originalprice,jdbcType=INTEGER},
+      </if>
+      <if test="discouuntprice != null" >
+        discouuntprice = #{discouuntprice,jdbcType=INTEGER},
+      </if>
+      <if test="salesmonth != null" >
+        salesmonth = #{salesmonth,jdbcType=INTEGER},
+      </if>
+      <if test="salescount != null" >
+        salescount = #{salescount,jdbcType=INTEGER},
+      </if>
+      <if test="evaluatecount != null" >
+        evaluatecount = #{evaluatecount,jdbcType=INTEGER},
+      </if>
+      <if test="evaluateprecent != null" >
+        evaluateprecent = #{evaluateprecent,jdbcType=VARCHAR},
+      </if>
+      <if test="freshstype != null" >
+        freshstype = #{freshstype,jdbcType=VARCHAR},
+      </if>
+      <if test="freshsbrand != null" >
+        freshsbrand = #{freshsbrand,jdbcType=VARCHAR},
+      </if>
+      <if test="saveway != null" >
+        saveway = #{saveway,jdbcType=VARCHAR},
+      </if>
+      <if test="delinetime != null" >
+        delinetime = #{delinetime,jdbcType=INTEGER},
+      </if>
+      <if test="freshscount != null" >
+        freshscount = #{freshscount,jdbcType=INTEGER},
+      </if>
+      <if test="peiliao != null" >
+        peiliao = #{peiliao,jdbcType=VARCHAR},
+      </if>
+      <if test="productid != null" >
+        productid = #{productid,jdbcType=VARCHAR},
+      </if>
+      <if test="useway != null" >
+        useway = #{useway,jdbcType=VARCHAR},
+      </if>
+      <if test="producttime != null" >
+        producttime = #{producttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="productcompany != null" >
+        productcompany = #{productcompany,jdbcType=VARCHAR},
+      </if>
+      <if test="productallow != null" >
+        productallow = #{productallow,jdbcType=VARCHAR},
+      </if>
+      <if test="productplace != null" >
+        productplace = #{productplace,jdbcType=VARCHAR},
+      </if>
+      <if test="place != null" >
+        place = #{place,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.onlinemall.dao.model.OnlinemallGoodsFreshs" >
+    update onlinemall_goods_freshs
+    set goodsid = #{goodsid,jdbcType=VARCHAR},
+      shop = #{shop,jdbcType=VARCHAR},
+      goodsname = #{goodsname,jdbcType=VARCHAR},
+      discountid = #{discountid,jdbcType=VARCHAR},
+      originalprice = #{originalprice,jdbcType=INTEGER},
+      discouuntprice = #{discouuntprice,jdbcType=INTEGER},
+      salesmonth = #{salesmonth,jdbcType=INTEGER},
+      salescount = #{salescount,jdbcType=INTEGER},
+      evaluatecount = #{evaluatecount,jdbcType=INTEGER},
+      evaluateprecent = #{evaluateprecent,jdbcType=VARCHAR},
+      freshstype = #{freshstype,jdbcType=VARCHAR},
+      freshsbrand = #{freshsbrand,jdbcType=VARCHAR},
+      saveway = #{saveway,jdbcType=VARCHAR},
+      delinetime = #{delinetime,jdbcType=INTEGER},
+      freshscount = #{freshscount,jdbcType=INTEGER},
+      peiliao = #{peiliao,jdbcType=VARCHAR},
+      productid = #{productid,jdbcType=VARCHAR},
+      useway = #{useway,jdbcType=VARCHAR},
+      producttime = #{producttime,jdbcType=TIMESTAMP},
+      productcompany = #{productcompany,jdbcType=VARCHAR},
+      productallow = #{productallow,jdbcType=VARCHAR},
+      productplace = #{productplace,jdbcType=VARCHAR},
+      place = #{place,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

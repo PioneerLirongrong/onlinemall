@@ -26,21 +26,68 @@
             <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
         <!-- 生成模型的包名和位置 -->
-        <javaModelGenerator targetPackage="com.onlinemall.model" targetProject="/opt/bishe/online-mall/src/main/java/">
+        <javaModelGenerator targetPackage="com.onlinemall.dao.model" targetProject="/opt/lironrong/onlinemall/online-mall/src/main/java/">
             <property name="enableSubPackages" value="true"/>
             <!-- 是否对数据库查询结果进行trim操作，如果设置为true在model的实体类中就会出现例如this.* = * == null ? null : *.trim(); -->
             <property name="trimStrings" value="false"/>
         </javaModelGenerator>
         <!-- 生成映射文件的包名和位置 -->
-        <sqlMapGenerator targetPackage="mybaties" targetProject="/opt/bishe/online-mall/src/main/resources/">
+        <sqlMapGenerator targetPackage="mybaties" targetProject="/opt/lironrong/onlinemall/online-mall/src/main/resources/">
             <property name="enableSubPackages" value="false"/>
         </sqlMapGenerator>
         <!-- 生成map接口的包名和位置 -->
         <javaClientGenerator type="XMLMAPPER" targetPackage="com.onlinemall.dao.mapper"
-                             targetProject="/opt/bishe/online-mall/src/main/java">
+                             targetProject="/opt/lironrong/onlinemall/online-mall/src/main/java/">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
         <!--数据库中要生成对象的表名称-->
-        <table tableName="user"></table>
+        <!--用户表-->
+        <table tableName="onlinemall_user"></table>
+        <!--用户地址表-->
+        <table tableName="onlinemall_user_address"></table>
+        <!--用户的银行卡表onlinemall_bank-->
+        <table tableName="onlinemall_user_bank"></table>
+        <!--用户积分表onlinemall_user_point-->
+        <table tableName="onlinemall_user_point"></table>
+        <!--用户优惠券onlinemall_user_discount-->
+        <table tableName="onlinemall_user_discount"></table>
+        <!--用户红包onlinemall_user_red_envelopes-->
+        <table tableName="onlinemall_user_red_envelopes"></table>
+        <!--用户账户余额onlinemall_user_balance-->
+        <table tableName="onlinemall_user_balance"></table>
+        <!--用户的收藏onlinemall_user_collect-->
+        <table tableName="onlinemall_user_collect"></table>
+        <!--用户的足迹onlinemall_user_record-->
+        <table tableName="onlinemall_user_record"></table>
+        <!--咨询及意见表onlinemall_acquire_advice-->
+        <table tableName="onlinemall_acquire_advice"></table>
+        <!--服装类onlinemall_goods_clothes-->
+        <table tableName="onlinemall_goods_clothes"></table>
+        <!--酒品类onlinemall_goods_drinking-->
+        <table tableName="onlinemall_goods_drinking"></table>
+        <!--鞋子类onlinemall_goods_shoes-->
+        <table tableName="onlinemall_goods_shoes"></table>
+        <!--日常用品类onlinemall_goods_daily_necessities-->
+        <table tableName="onlinemall_goods_daily_necessities"></table>
+        <!--熟食类onlinemall_goods_cooked_food-->
+        <table tableName="onlinemall_goods_cooked_food"></table>
+        <!--箱包类onlinemall_goods_bag-->
+        <table tableName="onlinemall_goods_bag"></table>
+        <!--生鲜类onlinemall_goods_freshs-->
+        <table tableName="onlinemall_goods_freshs"></table>
+        <!--文具类onlinemall_goods_Stationery-->
+        <table tableName="onlinemall_goods_stationery"></table>
+        <!--厨房类onlinemall_goods_Kitchen-->
+        <table tableName="onlinemall_goods_kitchen"></table>
+        <!--商品评论表online_mall_evaluate-->
+        <table tableName="online_mall_evaluate"></table>
+        <!--优惠券onlinemall_goods_discount-->
+        <table tableName="onlinemall_goods_discount"></table>
+        <!--店铺表onlinemall_shop-->
+        <table tableName="onlinemall_shop"></table>
+        <!--订单交表onlinemall_order-->
+        <table tableName="onlinemall_order"></table>
+        <!--订单物流表onelinemall_logistics-->
+        <table tableName="onelinemall_logistics"></table>
     </context>
 </generatorConfiguration>
