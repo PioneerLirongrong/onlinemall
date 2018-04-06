@@ -70,7 +70,7 @@ create table onlinemall_user_point(
   primary key (id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 ```
-#****用户优惠券onlinemall_user_discount***
+###***用户优惠券onlinemall_user_discount***
 ```
 create table onlinemall_user_discount(
   id varchar(64) comment '记录ID',
@@ -108,7 +108,7 @@ create table onlinemall_user_balance(
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 ```
-###***用户收藏onlinemall_user_collect****
+###***用户收藏onlinemall_user_collect***
 ```
 create table onlinemall_user_collect(
   id varchar(64) comment '记录ID',
@@ -146,7 +146,7 @@ create table onlinemall_acquire_advice(
 
 ```
 ##店铺表模块
-###***店铺表onlinemall_shop*****
+###***店铺表onlinemall_shop***
 create table onlinemall_shop(
   id varchar(64) comment '记录ID',
   shopid varchar(64) comment '店铺id',
@@ -158,7 +158,7 @@ create table onlinemall_shop(
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 ##订单模块
-###***订单交表onlinemall_order****
+###***订单交表onlinemall_order***
 ```
 create table onlinemall_order(
   id varchar(64) comment '记录ID',
@@ -203,5 +203,326 @@ create table onelinemall_logistics(
   logisticsinfodetail varchar(10000) comment '物流详情',
   primary key (id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+```
+
+##商品模块
+###***服装类***
+```
+create table onlinemall_goods_clothes(
+  id varchar(64) comment '记录ID',
+  goodsid  varchar(64) comment '商品id',
+  shop varchar(64) comment '店铺id',
+  goodsname varchar(64) comment '商品的名字',
+  discountid varchar(64) comment '优惠券id',
+  originalprice int comment '商品的原价',
+  discouuntprice int comment '商品的促销价',
+  salesmonth int comment '商品月销量',
+  salescount int comment '商品累计销量',
+  evaluatecount int comment '商品的累计评价',
+  evaluateprecent varchar(64) comment '商品好评度',
+  clothestype varchar(2) comment '衣服类别 0:羽绒服 1:毛呢外套 2:棉服 3:毛衣 4:针织衫 5:连衣裙 6:风衣 7:卫衣 8:T恤 9:衬衫 10:打底衫 11:皮衣 12:皮草 13:夹克 14:西装 15:棒球服 16:牛仔外套 17:Polo衫 18:小西装 19:马夹 20:半身裙 21:连衣裙 22:包臀裙 23:A字裙 24:百褶裙 25:休闲裤 26:阔腿裤 27:牛仔裤 28:运动裤 29:小脚裤 30:连体裤 31:背带裤 32:打底裤 33:文胸 34:内裤 35:抹胸 36:背心 37:睡裙 38:睡衣 39:睡裤 40:睡袍 41:安全裤 42:袜子 43:保暖内衣 44:秋衣 45:秋裤 46:丝袜 47:塑身内衣 48:吊带裙',
+  clothessex varchar(2) comment '适合的性别 0:男 1:女',
+  clothesperson varchar(2) comment '适合的人群 0:婴儿 1:青少年 2:青年 3:中年 4:老年人',
+  clothescolor varchar(64) comment '颜色',
+  clothessize varchar(10) comment '尺码 M,L,XL,2XL,3XL,4XL',
+  clothesbrand varchar(64) comment '品牌',
+  clothescount varchar(64) comment '库存',
+  clothesmianliao varchar(64) comment '面料',
+  clothercode varchar(64) comment '衣服货号 随机',
+  clothesertime datetime comment '衣服上市时间',
+  producttime datetime comment '生产日期',
+  productcompany varchar(64) comment '所属公司',
+  productid varchar(64) comment '产品标号',
+  productplace varchar(64) comment '原料产地',
+  productallow varchar(64) comment '产品许可证',
+  place varchar(128) comment '产地',
+  url varchar(128) comment '商品图片url',
+  primary key (id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+```
+###***酒品类***
+```
+create table onlinemall_goods_drinking(
+  id varchar(64) comment '记录ID',
+  goodsid  varchar(64) comment '商品id',
+  shop varchar(64) comment '店铺id',
+  goodsname varchar(64) comment '商品的名字',
+  discountid varchar(64) comment '优惠券id',
+  originalprice int comment '商品的原价',
+  discouuntprice int comment '商品的促销价',
+  salesmonth int comment '商品月销量',
+  salescount int comment '商品累计销量',
+  evaluatecount int comment '商品的累计评价',
+  evaluateprecent varchar(64) comment '商品好评度',
+  drinkingtype varchar(2) comment '酒类型　0:白酒 1:啤酒 2:葡萄酒 3:洋酒 4:调制酒 5:暖身黄酒',
+  drinkbrand varchar(64) comment '酒的品牌',
+  drinkingtsize varchar(64) comment '产品规格',
+  alcoholdegree int comment '酒精的含量',
+  saveway varchar(128) comment '存储方法',
+  delinetime int comment '保质期',
+  drinkingcount int comment '库存',
+  peiliao varchar(1000) comment '酒配料',
+  productid varchar(64) comment '产品标号',
+  useway varchar(64) comment '使用方法',
+  producttime datetime comment '生产日期',
+  productcompany varchar(64) comment '所属公司',
+  productallow varchar(64) comment '产品许可证',
+  productplace varchar(64) comment '原料产地',
+  place varchar(128) comment '产地',
+  url varchar(128) comment '商品图片url',
+  primary key (id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+```
+
+###***鞋子类***
+```
+create table onlinemall_goods_shoes(
+  id varchar(64) comment '记录ID',
+  goodsid  varchar(64) comment '商品id',
+  shop varchar(64) comment '店铺id',
+  goodsname varchar(64) comment '商品的名字',
+  discountid varchar(64) comment '优惠券id',
+  originalprice int comment '商品的原价',
+  discouuntprice int comment '商品的促销价',
+  salesmonth int comment '商品月销量',
+  salescount int comment '商品累计销量',
+  evaluatecount int comment '商品的累计评价',
+  evaluateprecent varchar(64) comment '商品好评度',
+  shoestype varchar(2) comment '0:短靴 1:棉鞋 2:雪地靴 3:过膝靴 4:切尔西靴 5:时装靴 6:单鞋 7:深口单鞋加绒单鞋 8:高跟鞋 9:内增高 10:平底鞋 11:尖头鞋 12:厚底鞋 13:休闲鞋 14:小白鞋 15:乐福鞋 16:帆布鞋 17:运动鞋 18:粗跟鞋 19:浅口单鞋 20:马丁靴 21:工装靴 22:商务鞋 23:布洛克鞋 23:英伦鞋 24:休闲皮鞋 25:板鞋',
+  shoessex varchar(2) comment '适合的性别 (0:男 1:女)',
+  shoesperson varchar(2) comment '适合的人群 0:婴儿 1:青少年 2:青年 3:中年 4:老年人',
+  shoescolor varchar(64) comment '颜色',
+  shoessize varchar(10) comment '尺码',
+  shoesbrand varchar(64) comment '品牌',
+  shoescount varchar(64) comment '鞋子库存',
+  shoescode varchar(64) comment '鞋子货号 随机',
+  shoestime datetime comment '鞋子上市时间',
+  producttime datetime comment '生产日期',
+  productcompany varchar(64) comment '所属公司',
+  productid varchar(64) comment '产品标号',
+  productplace varchar(64) comment '原料产地',
+  productallow varchar(64) comment '产品许可证',
+  place varchar(128) comment '产地',
+  url varchar(128) comment '商品图片url',
+  primary key (id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+```
+
+###***日常用品类***
+```
+create table onlinemall_goods_daily_necessities(
+  id varchar(64) comment '记录ID',
+  goodsid  varchar(64) comment '商品id',
+  shop varchar(64) comment '店铺id',
+  goodsname varchar(64) comment '商品的名字',
+  discountid varchar(64) comment '优惠券id',
+  originalprice int comment '商品的原价',
+  discouuntprice int comment '商品的促销价',
+  salesmonth int comment '商品月销量',
+  salescount int comment '商品累计销量',
+  evaluatecount int comment '商品的累计评价',
+  evaluateprecent varchar(64) comment '商品好评度',
+  dailynecessitiestype varchar(2) comment '0洗发水 1护发素 2沐浴露 3洗衣液 4洗衣粉 5香皂 6肥皂 7金纺 8牙膏 9牙刷 10毛巾 11刷子 12抽纸 13卷纸 14盆 15:84消毒液 16花露水 17杯子 18碗 19排插 20台灯 21镜子 22梳子 23暖水瓶 24衣架 25垃圾桶 26风扇 27蚊帐 28洗洁精 29鞋架 30手电筒',
+  dailynecessitiesbrand varchar(64) comment '日用品品牌',
+  dailynecessitiescode varchar(64) comment '日常用品类货号 随机',
+  producttime datetime comment '生产日期',
+  productcompany varchar(64) comment '所属公司',
+  productid varchar(64) comment '产品标号',
+  productplace varchar(64) comment '原料产地',
+  productallow varchar(64) comment '产品许可证',
+  place varchar(128) comment '产地',
+  url varchar(128) comment '商品图片url',
+  primary key (id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+```
+
+####***熟食类***
+```
+create table onlinemall_goods_cooked_food(
+  id varchar(64) comment '记录ID',
+  goodsid  varchar(64) comment '商品id',
+  shop varchar(64) comment '店铺id',
+  goodsname varchar(64) comment '商品的名字',
+  discountid varchar(64) comment '优惠券id',
+  originalprice int comment '商品的原价',
+  discouuntprice int comment '商品的促销价',
+  salesmonth int comment '商品月销量',
+  salescount int comment '商品累计销量',
+  evaluatecount int comment '商品的累计评价',
+  evaluateprecent varchar(64) comment '商品好评度',
+  cookedfoodtype varchar(2) comment '0咸鸭蛋 1皮蛋 2烤鸭酱鸭 3卤肉 4凉菜 5熟鸡 6馒头',
+  cookedfoodbrand varchar(64) comment '熟食的品牌',
+  saveway varchar(128) comment '存储方法',
+  delinetime int comment '保质期',
+  cookedfoodcount int comment '库存',
+  peiliao varchar(1000) comment '熟食配料',
+  productid varchar(64) comment '产品标号',
+  useway varchar(64) comment '使用方法',
+  producttime datetime comment '生产日期',
+  productcompany varchar(64) comment '所属公司',
+  productallow varchar(64) comment '产品许可证',
+  productplace varchar(64) comment '原料产地',
+  place varchar(128) comment '产地',
+  url varchar(128) comment '商品图片url',
+  primary key (id)
+)ENGINE=InnoDB DEFAULT charset=utf8;
+
+```
+
+###***箱包类***
+```
+create table onlinemall_goods_bag(
+  id varchar(64) comment '记录ID',
+  goodsid  varchar(64) comment '商品id',
+  shop varchar(64) comment '店铺id',
+  goodsname varchar(64) comment '商品的名字',
+  discountid varchar(64) comment '优惠券id',
+  originalprice int comment '商品的原价',
+  discouuntprice int comment '商品的促销价',
+  salesmonth int comment '商品月销量',
+  salescount int comment '商品累计销量',
+  evaluatecount int comment '商品的累计评价',
+  evaluateprecent varchar(64) comment '商品好评度',
+  bagtype varchar(2) comment '0单肩包 1斜挎包 2手提包 3双肩包 4手拿包 5钱包 6卡包 7钥匙包 8零钱包 9真皮包 10实用大包 11商务公文包 12电脑包 13拉杆箱旅行包运动包 14胸包/腰包',
+  bagsex varchar(2) comment '适合的性别 0:男 1:女',
+  bagperson varchar(2) comment '适合的人群 0:婴儿 1:青少年 2:青年 3:中年 4:老年人',
+  bagcolor varchar(64) comment '颜色',
+  bagsize varchar(10) comment '尺码 24,26,27,32',
+  bagrand varchar(64) comment '品牌',
+  bagcount varchar(64) comment '库存',
+  bagmianliao varchar(64) comment '面料',
+  bagcode varchar(64) comment '包货号 随机',
+  bagtime datetime comment '包上市时间',
+  producttime datetime comment '生产日期',
+  productcompany varchar(64) comment '所属公司',
+  productid varchar(64) comment '产品标号',
+  productplace varchar(64) comment '原料产地',
+  productallow varchar(64) comment '产品许可证',
+  place varchar(128) comment '产地',
+  url varchar(128) comment '商品图片url',
+  primary key (id)
+)ENGINE=InnoDB DEFAULT charset=utf8;
+```
+###***生鲜类***
+```
+create table onlinemall_goods_freshs(
+  id varchar(64) comment '记录ID',
+  goodsid  varchar(64) comment '商品id',
+  shop varchar(64) comment '店铺id',
+  goodsname varchar(64) comment '商品的名字',
+  discountid varchar(64) comment '优惠券id',
+  originalprice int comment '商品的原价',
+  discouuntprice int comment '商品的促销价',
+  salesmonth int comment '商品月销量',
+  salescount int comment '商品累计销量',
+  evaluatecount int comment '商品的累计评价',
+  evaluateprecent varchar(64) comment '商品好评度',
+  freshstype varchar(2) comment '0芒果 1车厘子 2苹果 3橙子 4猕猴桃 5柠檬 6大闸蟹 7帝王蟹 8海参 9金枪鱼 10鲍鱼 11红虾 12牛排 13猪肉 14土鸡 15羊肉 16山药 17番薯 18土豆 19莲藕 20鸡蛋 21鸽子蛋 22鸭蛋 23咸鸭蛋 24皮蛋 25喜蛋 26烤鸭酱鸭 27卤肉 28凉菜 29熟鸡 30鱼类龙利鱼 31秋刀鱼 32三文鱼 33鳕鱼 34斑鱼 35比目鱼 36带鱼 37金枪鱼',
+  freshsbrand varchar(64) comment '生鲜的品牌',
+  saveway varchar(128) comment '存储方法',
+  delinetime int comment '保质期',
+  freshscount int comment '库存',
+  peiliao varchar(1000) comment '生鲜配料',
+  productid varchar(64) comment '产品标号',
+  useway varchar(64) comment '使用方法',
+  producttime datetime comment '生产日期',
+  productcompany varchar(64) comment '所属公司',
+  productallow varchar(64) comment '产品许可证',
+  productplace varchar(64) comment '原料产地',
+  place varchar(128) comment '产地',
+  url varchar(128) comment '商品图片url',
+  primary key (id)
+)ENGINE=InnoDB DEFAULT charset=utf8;
+```
+
+###***文具类***
+```
+create table onlinemall_goods_stationery(
+  id varchar(64) comment '记录ID',
+  goodsid  varchar(64) comment '商品id',
+  shop varchar(64) comment '店铺id',
+  goodsname varchar(64) comment '商品的名字',
+  discountid varchar(64) comment '优惠券id',
+  originalprice int comment '商品的原价',
+  discouuntprice int comment '商品的促销价',
+  salesmonth int comment '商品月销量',
+  salescount int comment '商品累计销量',
+  evaluatecount int comment '商品的累计评价',
+  evaluateprecent varchar(64) comment '商品好评度',
+  stationerytype varchar(2) comment '1橡皮擦 2中性笔 3圆珠笔 4铅笔 5记号笔 6可擦笔 7橡皮 8小刀 9卷笔刀 10文具盒 11订书机 12胶水 13铅笔芯 14彩笔 15蜡笔 16毛笔 17墨水 18钢笔 19墨汁 20中性笔芯 21作业纸 22信纸 23稿纸 24A4纸 25活页笔记本 26密码本 27便利贴 28改正带',
+  stationeryperson varchar(2) comment '适合的人群 0:婴儿 1:青少年 2:青年 3:中年 4:老年人',
+  stationerybrand varchar(64) comment '品牌',
+  stationerycount varchar(64) comment '库存',
+  stationerycode varchar(64) comment '文具货号 随机',
+  stationerytime datetime comment '文具上市时间',
+  producttime datetime comment '生产日期',
+  productcompany varchar(64) comment '所属公司',
+  productid varchar(64) comment '产品标号',
+  productplace varchar(64) comment '原料产地',
+  productallow varchar(64) comment '产品许可证',
+  place varchar(128) comment '产地',
+  url varchar(128) comment '商品图片url',
+  primary key (id)
+)ENGINE=InnoDB DEFAULT charset=utf8;
+```
+
+###***厨房类***
+```
+create table onlinemall_goods_kitchen(
+  id varchar(64) comment '记录ID',
+  goodsid  varchar(64) comment '商品id',
+  shop varchar(64) comment '店铺id',
+  goodsname varchar(64) comment '商品的名字',
+  discountid varchar(64) comment '优惠券id',
+  originalprice int comment '商品的原价',
+  discouuntprice int comment '商品的促销价',
+  salesmonth int comment '商品月销量',
+  salescount int comment '商品累计销量',
+  evaluatecount int comment '商品的累计评价',
+  evaluateprecent varchar(64) comment '商品好评度',
+  kitchentype varchar(2) comment '１保温杯 ２保温壶 ３焖烧罐 ４储物罐 ５烧烤炉 ６刀具套组 ７砂锅 ８炒锅 ９汤锅煲 10烘焙 11调味瓶罐 12厨房 13小工具 14厨房置物架 15压力锅 16餐具套装 17碗 18餐盘 19茶壶 20茶杯 21茶具套装 22玻璃杯 23饭盒 24紫砂壶 25手套抹布 26围裙 27洗碗巾 28垃圾袋 29厨房用刷',
+  kitchenperson varchar(2) comment '适合的人群 0:婴儿 1:青少年 2:青年 3:中年 4:老年人',
+  kitchenbrand varchar(64) comment '品牌',
+  kitchencount varchar(64) comment '库存',
+  kitchencode varchar(64) comment '厨房货号 随机',
+  kitchentime datetime comment '厨房上市时间',
+  producttime datetime comment '生产日期',
+  productcompany varchar(64) comment '所属公司',
+  productid varchar(64) comment '产品标号',
+  productplace varchar(64) comment '原料产地',
+  productallow varchar(64) comment '产品许可证',
+  place varchar(128) comment '产地',
+  url varchar(128) comment '商品图片url',
+  primary key (id)
+)ENGINE=InnoDB DEFAULT charset=utf8;
+```
+
+###商品评论表online_mall_evaluate
+```
+create table online_mall_evaluate(
+  id varchar(64) comment '记录ID',
+  goodsid varchar(64) comment '商品id',
+  userid  varchar(64) comment '买家id',
+  account varchar(64) comment '评价人用户名(昵称)',
+  type int comment '评价类别 1:匿名 2:实名',
+  degree int comment '评价等级 1:好评 2:中评 3:差评)',
+  time datetime comment '时间',
+  content varchar(10000) comment '评价内容',
+  primary key (id)
+)ENGINE=InnoDB DEFAULT charset=utf8;
+```
+###优惠券onlinemall_goods_discount
+```
+create table onlinemall_goods_discount(
+  id varchar(64) comment '记录ID',
+  discountid varchar(64) comment '优惠券id',
+  goodsid varchar(64) comment '商品id',
+  discountContext varchar(128) comment '优惠券的内容',
+  deadtime datetime comment '有效期',
+  primary key (id)
+)ENGINE=InnoDB DEFAULT charset=utf8;
 
 ```

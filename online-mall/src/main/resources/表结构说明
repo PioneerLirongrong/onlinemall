@@ -124,7 +124,7 @@ QQ号   qqnumber varchar(64)
 商品名称 goodsname varchar(64)
 优惠券id discountid varchar(64)
 商品的原价　originalprice int
-商品的促销价 countprice int
+商品的促销价 discouuntprice int
 商品的月销量 salesmonth int
 商品的累计销量 salescount int
 商品的累计评价 evaluatecount int
@@ -143,7 +143,7 @@ QQ号   qqnumber varchar(64)
 原料产地 productplace varchar(64)
 产品许可证 productallow varchar(64)
 产地　place varchar(128)
-商品细节 url varchar(128)
+商品图片 url varchar(128)
 
 
 ***酒品类***
@@ -345,7 +345,6 @@ QQ号   qqnumber varchar(64)
 
 商品评论表online_mall_evaluate
 记录id id UUID varchar(64) primarkey
-记录id id  UUID varchar(64)
 商品id goodsid varchar(64)
 买家id userid  varchar(64)
 评价人用户名(昵称) account varhcar(64)
