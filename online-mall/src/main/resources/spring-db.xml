@@ -30,13 +30,13 @@
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="mysqlDataSource"></property>
         <!--<property name="configLocation" value="mybatiesconfig.xml"></property>-->
-        <property name="typeAliasesPackage" value="org.shoop.dao.model"></property>
+        <property name="typeAliasesPackage" value="com.onlinemall.dao.mapper"></property>
         <property name="mapperLocations" value="classpath*:mybaties/*Mapper.xml"></property>
     </bean>
 
     <!--&lt;!&ndash;自动扫描接口&ndash;&gt;-->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="org.shoop.dao.mapper"></property>
+        <property name="basePackage" value="com.onlinemall.dao.mapper"></property>
     </bean>
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="mysqlDataSource"></property>
@@ -45,7 +45,7 @@
     <!-- 哪些类哪些方法使用事务 -->
     <aop:config proxy-target-class="true">
         <aop:pointcut id="serviceOperation2"
-                      expression="execution(* com.onlinemall.nettyservice.*.*(..))"/>
+                      expression="execution(* com.onlinemall.springservice.*.*(..))"/>
         <aop:advisor pointcut-ref="serviceOperation2" advice-ref="txAdvice"/>
     </aop:config>
 
@@ -69,32 +69,31 @@
         </tx:attributes>
     </tx:advice>
 
-    <!-- 哪些类哪些方法使用事务 -->
-    <aop:config proxy-target-class="true">
-        <aop:pointcut id="serviceOperation"
-                      expression="execution(* com.onlinemall.springservice.*.*(..))"/>
-        <aop:advisor pointcut-ref="serviceOperation" advice-ref="txAdvice2"/>
-    </aop:config>
+    <!--&lt;!&ndash; 哪些类哪些方法使用事务 &ndash;&gt;-->
+    <!--<aop:config proxy-target-class="true">-->
+        <!--<aop:pointcut id="serviceOperation"-->
+                      <!--expression="execution(* com.onlinemall.springservice.*.*(..))"/>-->
+        <!--<aop:advisor pointcut-ref="serviceOperation" advice-ref="txAdvice2"/>-->
+    <!--</aop:config>-->
 
-    <!--&lt;!&ndash; 事务的传播特性 &ndash;&gt;-->
-    <tx:advice id="txAdvice2" transaction-manager="transactionManager">
-        <tx:attributes>
-            <tx:method name="add*" propagation="REQUIRED"
-                       rollback-for="Throwable" timeout="600"/>
-            <tx:method name="truckAudit*" propagation="REQUIRED"
-                       rollback-for="Throwable" timeout="600"/>
-            <tx:method name="priSyn*" propagation="REQUIRED"
-                       rollback-for="Throwable" timeout="600"/>
-            <tx:method name="*Audit*" propagation="REQUIRED"
-                       rollback-for="Throwable" timeout="600"/>
-            <tx:method name="update*" propagation="REQUIRED"
-                       rollback-for="Throwable" timeout="600"/>
-            <tx:method name="delete*" propagation="REQUIRED"
-                       rollback-for="Throwable" timeout="600"/>
-            <tx:method name="verify*" propagation="REQUIRED"
-                       rollback-for="Throwable" timeout="600"/>
-        </tx:attributes>
-    </tx:advice>
-
+    <!--&lt;!&ndash;&lt;!&ndash; 事务的传播特性 &ndash;&gt;&ndash;&gt;-->
+    <!--<tx:advice id="txAdvice2" transaction-manager="transactionManager">-->
+        <!--<tx:attributes>-->
+            <!--<tx:method name="add*" propagation="REQUIRED"-->
+                       <!--rollback-for="Throwable" timeout="600"/>-->
+            <!--<tx:method name="truckAudit*" propagation="REQUIRED"-->
+                       <!--rollback-for="Throwable" timeout="600"/>-->
+            <!--<tx:method name="priSyn*" propagation="REQUIRED"-->
+                       <!--rollback-for="Throwable" timeout="600"/>-->
+            <!--<tx:method name="*Audit*" propagation="REQUIRED"-->
+                       <!--rollback-for="Throwable" timeout="600"/>-->
+            <!--<tx:method name="update*" propagation="REQUIRED"-->
+                       <!--rollback-for="Throwable" timeout="600"/>-->
+            <!--<tx:method name="delete*" propagation="REQUIRED"-->
+                       <!--rollback-for="Throwable" timeout="600"/>-->
+            <!--<tx:method name="verify*" propagation="REQUIRED"-->
+                       <!--rollback-for="Throwable" timeout="600"/>-->
+        <!--</tx:attributes>-->
+    <!--</tx:advice>-->
 
 </beans>
