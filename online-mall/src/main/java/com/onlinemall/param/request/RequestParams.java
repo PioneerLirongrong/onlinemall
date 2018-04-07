@@ -15,8 +15,10 @@ import java.util.Map;
 public class RequestParams<T> implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    private Map<String, Object> equal = new HashMap<String, Object>();
-    private Map<String, Object> notEqual = new HashMap<String, Object>();
+    private Map<String, String> equal = new HashMap<String, String>();
+    private Map<String, String> notEqual = new HashMap<String, String>();
+
+    private Map<String,Object> params = new HashMap<String, Object>();
 
     private List<T> objs;
 
@@ -53,20 +55,28 @@ public class RequestParams<T> implements Serializable {
         return serialVersionUID;
     }
 
-    public Map<String, Object> getEqual() {
+    public Map<String, String> getEqual() {
         return equal;
     }
 
-    public void setEqual(Map<String, Object> equal) {
+    public void setEqual(Map<String, String> equal) {
         this.equal = equal;
     }
 
-    public Map<String, Object> getNotEqual() {
+    public Map<String, String> getNotEqual() {
         return notEqual;
     }
 
-    public void setNotEqual(Map<String, Object> notEqual) {
+    public void setNotEqual(Map<String, String> notEqual) {
         this.notEqual = notEqual;
+    }
+
+    public Map<String, Object> getParams() {
+        return params;
+    }
+
+    public void setParams(Map<String, Object> params) {
+        this.params = params;
     }
 
     public List<T> getObjs() {
@@ -162,6 +172,7 @@ public class RequestParams<T> implements Serializable {
         return "RequestParams{" +
                 "equal=" + equal +
                 ", notEqual=" + notEqual +
+                ", params=" + params +
                 ", objs=" + objs +
                 ", obj=" + obj +
                 ", like=" + like +
