@@ -1,5 +1,7 @@
 package com.onlinemall.param.response;
 
+import com.onlinemall.utils.error.Errors;
+
 import java.io.Serializable;
 import java.util.Collection;
 
@@ -17,6 +19,7 @@ public class BaseResult<T> implements Serializable {
     private Collection<T> dataList;
     private Object dataObj;
     private long timeStamp;
+    private Errors errors;
 
     public long getRecordsFiltered() {
         return recordsFiltered;
@@ -65,5 +68,26 @@ public class BaseResult<T> implements Serializable {
 
     public void setTimeStamp(long timeStamp) {
         this.timeStamp = timeStamp;
+    }
+
+    public Errors getErrors() {
+        return errors;
+    }
+
+    public void setErrors(Errors errors) {
+        this.errors = errors;
+    }
+
+    @Override
+    public String toString() {
+        return "BaseResult{" +
+                "recordsFiltered=" + recordsFiltered +
+                ", code='" + code + '\'' +
+                ", message='" + message + '\'' +
+                ", dataList=" + dataList +
+                ", dataObj=" + dataObj +
+                ", timeStamp=" + timeStamp +
+                ", errors=" + errors +
+                '}';
     }
 }

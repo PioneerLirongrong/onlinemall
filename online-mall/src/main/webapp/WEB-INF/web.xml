@@ -5,6 +5,10 @@
 		  http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
          version="3.0">
     <description>onlinemall的web.xml的配置</description>
+    <!--欢迎页的配置-->
+    <welcome-file-list>
+        <welcome-file>home/home3.jsp</welcome-file>
+    </welcome-file-list>
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>classpath:spring-all.xml</param-value>
@@ -40,9 +44,4 @@
         <servlet-name>handlerServlet</servlet-name>
         <url-pattern>*.do</url-pattern>
     </servlet-mapping>
-    
-    <!--欢迎页的配置-->
-    <welcome-file-list>
-        <welcome-file>home/home3.html</welcome-file>
-    </welcome-file-list>
 </web-app>

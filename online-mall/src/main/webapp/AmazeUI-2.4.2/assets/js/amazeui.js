@@ -10977,7 +10977,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  qq: {
 	    title: 'QQ 好友',
-	    url: 'http://connect.qq.com/widget/shareqq/index.html',
+	    url: 'http://connect.qq.com/widget/shareqq/error.jsp',
 	    icon: 'qq'
 	  },
 	  // url:,

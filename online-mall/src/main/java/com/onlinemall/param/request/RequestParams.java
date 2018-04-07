@@ -1,5 +1,7 @@
 package com.onlinemall.param.request;
 
+import org.omg.CORBA.ObjectHelper;
+
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
@@ -13,8 +15,8 @@ import java.util.Map;
 public class RequestParams<T> implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    private Map<String, String> equal = new HashMap<String, String>();
-    private Map<String, String> notEqual = new HashMap<String, String>();
+    private Map<String, Object> equal = new HashMap<String, Object>();
+    private Map<String, Object> notEqual = new HashMap<String, Object>();
 
     private List<T> objs;
 
@@ -47,44 +49,24 @@ public class RequestParams<T> implements Serializable {
      */
     private int page = 0;
 
-    public Map<String, String> getNotEqual() {
-        return notEqual;
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
     }
 
-    public void setNotEqual(Map<String, String> notEqual) {
-        this.notEqual = notEqual;
-    }
-
-    public Map<String, String> getIsExists() {
-        return isExists;
-    }
-
-    public void setIsExists(Map<String, String> isExists) {
-        this.isExists = isExists;
-    }
-
-    public int getLength() {
-        return length;
-    }
-
-    public void setLength(int length) {
-        this.length = length;
-    }
-
-    public int getStart() {
-        return start;
-    }
-
-    public void setStart(int start) {
-        this.start = start;
-    }
-
-    public Map<String, String> getEqual() {
+    public Map<String, Object> getEqual() {
         return equal;
     }
 
-    public void setEqual(Map<String, String> equal) {
+    public void setEqual(Map<String, Object> equal) {
         this.equal = equal;
+    }
+
+    public Map<String, Object> getNotEqual() {
+        return notEqual;
+    }
+
+    public void setNotEqual(Map<String, Object> notEqual) {
+        this.notEqual = notEqual;
     }
 
     public List<T> getObjs() {
@@ -143,11 +125,54 @@ public class RequestParams<T> implements Serializable {
         this.orderName = orderName;
     }
 
+    public Map<String, String> getIsExists() {
+        return isExists;
+    }
+
+    public void setIsExists(Map<String, String> isExists) {
+        this.isExists = isExists;
+    }
+
+    public int getLength() {
+        return length;
+    }
+
+    public void setLength(int length) {
+        this.length = length;
+    }
+
+    public int getStart() {
+        return start;
+    }
+
+    public void setStart(int start) {
+        this.start = start;
+    }
+
     public int getPage() {
         return page;
     }
 
     public void setPage(int page) {
         this.page = page;
+    }
+
+    @Override
+    public String toString() {
+        return "RequestParams{" +
+                "equal=" + equal +
+                ", notEqual=" + notEqual +
+                ", objs=" + objs +
+                ", obj=" + obj +
+                ", like=" + like +
+                ", startWith=" + startWith +
+                ", endWith=" + endWith +
+                ", sortName='" + sortName + '\'' +
+                ", orderName='" + orderName + '\'' +
+                ", isExists=" + isExists +
+                ", length=" + length +
+                ", start=" + start +
+                ", page=" + page +
+                '}';
     }
 }
