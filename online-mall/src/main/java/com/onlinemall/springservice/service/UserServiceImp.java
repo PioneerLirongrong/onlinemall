@@ -8,6 +8,7 @@ import com.onlinemall.param.response.BaseResult;
 import com.onlinemall.springservice.interfaces.IUserService;
 import com.onlinemall.utils.UUID.CommonUtils;
 import com.onlinemall.utils.beanutil.RequestParamConvertBeanUtil;
+import com.onlinemall.utils.cache.CacheUtil;
 import com.onlinemall.utils.error.Errors;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
@@ -21,6 +22,7 @@ import static com.onlinemall.constants.Params.PHONENUMBER;
 
 /**
  * 用户服务
+ *
  * @author lrr
  */
 @Service
@@ -39,27 +41,43 @@ public class UserServiceImp implements IUserService {
         //先验用户是否已经注册
         OnlinemallUserExample onlinemallUserExample = new OnlinemallUserExample();
         OnlinemallUserExample.Criteria criteria = onlinemallUserExample.createCriteria();
-        if(StringUtils.isNotBlank((String)params.getParams().get(PHONENUMBER))) {
+        if (StringUtils.isNotBlank((String) params.getParams().get(PHONENUMBER))) {
             criteria.andPhonenumberEqualTo((String) params.getParams().get(PHONENUMBER));
         }
-        if(StringUtils.isNotBlank((String)params.getParams().get(MAIL))){
-            criteria.andMailEqualTo((String)params.getParams().get(MAIL));
+        if (StringUtils.isNotBlank((String) params.getParams().get(MAIL))) {
+            criteria.andMailEqualTo((String) params.getParams().get(MAIL));
         }
         //查询数据
         List<OnlinemallUser> onlinemallUsers = onlinemallUserMapper.selectByExample(onlinemallUserExample);
-        logger.info("{selectByExample的结果为"+onlinemallUsers.size()+"\t"+onlinemallUsers.toString()+"}");
-        if(onlinemallUsers.size() != 0){
+        logger.info("{selectByExample的结果为" + onlinemallUsers.size() + "\t" + onlinemallUsers.toString() + "}");
+        if (onlinemallUsers.size() != 0) {
             //用户已经存在
             baseResult.setErrors(Errors.USER_AREADY_EXIST_ERRPOR);
             logger.info("{用户已经存在}");
-        }else {
+        } else {
             //用户不存在,创建新的用户
             OnlinemallUser onlinemallUser = new RequestParamConvertBeanUtil<OnlinemallUser>().convertBean(params, new OnlinemallUser());
             onlinemallUser.setUserid(CommonUtils.createUuid());
+            //在redis里缓存一份数据,方便登录是做校验
+            //缓存用户名
+            CacheUtil.set(onlinemallUser.getAccount(), "");
+            //缓存手机号
+            CacheUtil.set(onlinemallUser.getPhonenumber(), "");
+            //缓存邮箱
+            CacheUtil.set(onlinemallUser.getMail(),"");
             onlinemallUserMapper.insert(onlinemallUser);
             baseResult.setCode(BaseResult.SUCCESS);
             baseResult.setDataObj(onlinemallUser);
         }
         return baseResult;
+    }
+
+    public BaseResult<OnlinemallUser> checkUser(RequestParams<OnlinemallUser> params) {
+        logger.info("{调用增加用户的服务,由springservice提供服务}");
+        BaseResult<OnlinemallUser> baseResult = new BaseResult<OnlinemallUser>();
+        baseResult.setCode(BaseResult.FAIL);
+        //校验前台的数据
+
+        return null;
     }
 }

@@ -17,4 +17,12 @@ public interface IUserService {
      */
     BaseResult<OnlinemallUser> addUser(RequestParams<OnlinemallUser> params);
 
+
+    /**
+     * 用户登录接口
+     * @param params
+     * @return
+     */
+    BaseResult<OnlinemallUser> checkUser(RequestParams<OnlinemallUser> params);
+
 }

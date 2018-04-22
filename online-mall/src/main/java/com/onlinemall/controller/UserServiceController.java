@@ -29,8 +29,17 @@ public class UserServiceController {
     public BaseResult<OnlinemallUser> registerUser(@ModelAttribute RequestParams<OnlinemallUser> params){
         logger.info("{请求后台接口\'/onlinemall/registerUser\'}");
         logger.info("{前台的请求参数"+params.toString()+"}");
-        BaseResult<OnlinemallUser> onlinemallUserBaseResult = iUserService.addUser(params);
-        logger.info("{后台返给前台的结果"+onlinemallUserBaseResult.toString()+"}");
-        return onlinemallUserBaseResult;
+        BaseResult<OnlinemallUser> baseResult = iUserService.addUser(params);
+        logger.info("{后台返给前台的结果"+baseResult.toString()+"}");
+        return baseResult;
+    }
+
+    @RequestMapping("/loginUser")
+    public BaseResult<OnlinemallUser> loginUser(@ModelAttribute RequestParams<OnlinemallUser> params){
+        logger.info("{请求后台接口\'/onlinemall/loginUser\'}");
+        logger.info("{前台的请求参数"+params.toString()+"}");
+        BaseResult<OnlinemallUser> baseResult = iUserService.checkUser(params);
+        logger.info("{后台返给前台的结果"+baseResult.toString()+"}");
+        return baseResult;
     }
 }
