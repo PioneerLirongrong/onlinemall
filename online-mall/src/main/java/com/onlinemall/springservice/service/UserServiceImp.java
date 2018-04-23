@@ -17,8 +17,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-import static com.onlinemall.constants.Params.MAIL;
-import static com.onlinemall.constants.Params.PHONENUMBER;
+import static com.onlinemall.constants.Params.*;
 
 /**
  * 用户服务
@@ -42,9 +41,23 @@ public class UserServiceImp implements IUserService {
         OnlinemallUserExample onlinemallUserExample = new OnlinemallUserExample();
         OnlinemallUserExample.Criteria criteria = onlinemallUserExample.createCriteria();
         if (StringUtils.isNotBlank((String) params.getParams().get(PHONENUMBER))) {
+            //校验前台的数据
+            boolean bool = CommonUtils.checkValidPhone((String) params.getParams().get(PHONENUMBER));
+            if(!bool){
+                baseResult.setErrors(Errors.USER_MOBILE_PHONE_FORMAT_ERROR);
+                logger.info("{用户手机号码格式有误}");
+                return baseResult;
+            }
             criteria.andPhonenumberEqualTo((String) params.getParams().get(PHONENUMBER));
         }
         if (StringUtils.isNotBlank((String) params.getParams().get(MAIL))) {
+            //校验前台的数据
+            boolean bool = CommonUtils.checkValidEmail((String) params.getParams().get(MAIL));
+            if(!bool){
+                baseResult.setErrors(Errors.USER_MAIL_FORMAT_ERROR);
+                logger.info("{用户邮箱格式错误}");
+                return baseResult;
+            }
             criteria.andMailEqualTo((String) params.getParams().get(MAIL));
         }
         //查询数据
@@ -54,30 +67,78 @@ public class UserServiceImp implements IUserService {
             //用户已经存在
             baseResult.setErrors(Errors.USER_AREADY_EXIST_ERRPOR);
             logger.info("{用户已经存在}");
+            return baseResult;
         } else {
             //用户不存在,创建新的用户
             OnlinemallUser onlinemallUser = new RequestParamConvertBeanUtil<OnlinemallUser>().convertBean(params, new OnlinemallUser());
             onlinemallUser.setUserid(CommonUtils.createUuid());
+            String passwordMD5 = CommonUtils.getMD5(((String)params.getParams().get(PASSWORD)) + PASSWORD_PARA);
+            onlinemallUser.setPassword(passwordMD5);
             //在redis里缓存一份数据,方便登录是做校验
             //缓存用户名
-            CacheUtil.set(onlinemallUser.getAccount(), "");
+            CacheUtil.set(onlinemallUser.getAccount(), passwordMD5);
             //缓存手机号
-            CacheUtil.set(onlinemallUser.getPhonenumber(), "");
+            CacheUtil.set(onlinemallUser.getPhonenumber(), passwordMD5);
             //缓存邮箱
-            CacheUtil.set(onlinemallUser.getMail(),"");
+            CacheUtil.set(onlinemallUser.getMail(),passwordMD5);
             onlinemallUserMapper.insert(onlinemallUser);
             baseResult.setCode(BaseResult.SUCCESS);
             baseResult.setDataObj(onlinemallUser);
+            return baseResult;
         }
-        return baseResult;
     }
 
     public BaseResult<OnlinemallUser> checkUser(RequestParams<OnlinemallUser> params) {
         logger.info("{调用增加用户的服务,由springservice提供服务}");
         BaseResult<OnlinemallUser> baseResult = new BaseResult<OnlinemallUser>();
         baseResult.setCode(BaseResult.FAIL);
+        String redisKey = null;
+        String redisValue = null;
         //校验前台的数据
-
-        return null;
+        OnlinemallUserExample onlinemallUserExample = new OnlinemallUserExample();
+        OnlinemallUserExample.Criteria criteria = onlinemallUserExample.createCriteria();
+        if (StringUtils.isNotBlank((String) params.getParams().get(PHONENUMBER))) {
+            //校验前台的数据
+            boolean bool = CommonUtils.checkValidPhone((String) params.getParams().get(PHONENUMBER));
+            if(!bool){
+                baseResult.setErrors(Errors.USER_MOBILE_PHONE_FORMAT_ERROR);
+                logger.info("{用户手机号码格式有误}");
+                return baseResult;
+            }
+            redisKey = (String) params.getParams().get(PHONENUMBER);
+            criteria.andPhonenumberEqualTo(redisKey);
+        }
+        if (StringUtils.isNotBlank((String) params.getParams().get(MAIL))) {
+            //校验前台的数据
+            boolean bool = CommonUtils.checkValidEmail((String) params.getParams().get(MAIL));
+            if(!bool){
+                baseResult.setErrors(Errors.USER_MAIL_FORMAT_ERROR);
+                logger.info("{用户邮箱格式错误}");
+                return baseResult;
+            }
+            redisKey = (String) params.getParams().get(MAIL);
+            criteria.andMailEqualTo(redisKey);
+        }
+        if(StringUtils.isNotBlank((String) params.getParams().get(ACCOUNT))){
+            redisKey = (String) params.getParams().get(ACCOUNT);
+            criteria.andAccountEqualTo(redisKey);
+        }
+        if(StringUtils.isNotBlank((String) params.getParams().get(PASSWORD))){
+            redisValue = (String) params.getParams().get(PASSWORD);
+            redisValue = CommonUtils.getMD5(redisValue+PASSWORD_PARA);
+        }
+        //现在redis里面找数据,如果没有，再去mysql找数据
+        String redisV = CacheUtil.get(redisKey);
+        if(redisValue.equals(redisV)){
+            OnlinemallUser onlinemallUser = new RequestParamConvertBeanUtil<OnlinemallUser>().convertBean(params, new OnlinemallUser());
+            baseResult.setCode(BaseResult.SUCCESS);
+            baseResult.setDataObj(onlinemallUser);
+            return baseResult;
+        }else {
+            List<OnlinemallUser> onlinemallUser = onlinemallUserMapper.selectByExample(onlinemallUserExample);
+            baseResult.setDataObj(onlinemallUser.get(0));
+            baseResult.setCode(BaseResult.SUCCESS);
+            return baseResult;
+        }
     }
 }

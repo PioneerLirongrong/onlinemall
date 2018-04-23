@@ -17,12 +17,14 @@ public class Params {
     /**
      * 用户模块
      */
-    public static final String USERNAME = "USERNAME";
-    public static final String PASSWORD = "PASSWORD";
+    public static final String USERNAME = "username";
+    public static final String PASSWORD = "password";
     public static final String PHONENUMBER = "phonenumber";
     public static final String MAIL = "mail";
     public static final String QQNUMBER = "qqnumber";
     public static final String WEIXINNUMBER = "weixinnumber";
     public static final String WEIBONUMBER = "weibonumber";
+    public static final String ACCOUNT = "account";
+    public static final String PASSWORD_PARA = "MD5";
 
 }
