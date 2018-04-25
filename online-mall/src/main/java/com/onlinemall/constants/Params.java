@@ -19,6 +19,8 @@ public class Params {
      */
     public static final String USERNAME = "username";
     public static final String PASSWORD = "password";
+    public static final String PASSWORD_1 = "password1";
+    public static final String PASSWORD_2 = "password2";
     public static final String PHONENUMBER = "phonenumber";
     public static final String MAIL = "mail";
     public static final String QQNUMBER = "qqnumber";

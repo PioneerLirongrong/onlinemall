@@ -10,6 +10,8 @@
     <result column="weixinnumber" property="weixinnumber" jdbcType="VARCHAR" />
     <result column="weibonumber" property="weibonumber" jdbcType="VARCHAR" />
     <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="password1" property="password1" jdbcType="VARCHAR" />
+    <result column="password2" property="password2" jdbcType="VARCHAR" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="sex" property="sex" jdbcType="VARCHAR" />
     <result column="birthday" property="birthday" jdbcType="VARCHAR" />
@@ -87,9 +89,9 @@
   </sql>
   <sql id="Base_Column_List" >
     userid, account, phonenumber, mail, qqnumber, weixinnumber, weibonumber, password, 
-    name, sex, birthday, securitydegree, securitypay, securityphone, securitymail, realname, 
-    identitynumber, photourl1, photourl2, securityproblem1, securityansower1, securityproblem2, 
-    securityansower2, registertime
+    password1, password2, name, sex, birthday, securitydegree, securitypay, securityphone, 
+    securitymail, realname, identitynumber, photourl1, photourl2, securityproblem1, securityansower1, 
+    securityproblem2, securityansower2, registertime
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.onlinemall.dao.model.OnlinemallUserExample" >
     select
@@ -124,22 +126,22 @@
   <insert id="insert" parameterType="com.onlinemall.dao.model.OnlinemallUser" >
     insert into onlinemall_user (userid, account, phonenumber, 
       mail, qqnumber, weixinnumber, 
-      weibonumber, password, name, 
-      sex, birthday, securitydegree, 
-      securitypay, securityphone, securitymail, 
-      realname, identitynumber, photourl1, 
-      photourl2, securityproblem1, securityansower1, 
-      securityproblem2, securityansower2, registertime
-      )
+      weibonumber, password, password1, 
+      password2, name, sex, 
+      birthday, securitydegree, securitypay, 
+      securityphone, securitymail, realname, 
+      identitynumber, photourl1, photourl2, 
+      securityproblem1, securityansower1, securityproblem2, 
+      securityansower2, registertime)
     values (#{userid,jdbcType=VARCHAR}, #{account,jdbcType=VARCHAR}, #{phonenumber,jdbcType=VARCHAR}, 
       #{mail,jdbcType=VARCHAR}, #{qqnumber,jdbcType=VARCHAR}, #{weixinnumber,jdbcType=VARCHAR}, 
-      #{weibonumber,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
-      #{sex,jdbcType=VARCHAR}, #{birthday,jdbcType=VARCHAR}, #{securitydegree,jdbcType=INTEGER}, 
-      #{securitypay,jdbcType=VARCHAR}, #{securityphone,jdbcType=VARCHAR}, #{securitymail,jdbcType=VARCHAR}, 
-      #{realname,jdbcType=VARCHAR}, #{identitynumber,jdbcType=VARCHAR}, #{photourl1,jdbcType=VARCHAR}, 
-      #{photourl2,jdbcType=VARCHAR}, #{securityproblem1,jdbcType=VARCHAR}, #{securityansower1,jdbcType=VARCHAR}, 
-      #{securityproblem2,jdbcType=VARCHAR}, #{securityansower2,jdbcType=VARCHAR}, #{registertime,jdbcType=TIMESTAMP}
-      )
+      #{weibonumber,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{password1,jdbcType=VARCHAR}, 
+      #{password2,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, 
+      #{birthday,jdbcType=VARCHAR}, #{securitydegree,jdbcType=INTEGER}, #{securitypay,jdbcType=VARCHAR}, 
+      #{securityphone,jdbcType=VARCHAR}, #{securitymail,jdbcType=VARCHAR}, #{realname,jdbcType=VARCHAR}, 
+      #{identitynumber,jdbcType=VARCHAR}, #{photourl1,jdbcType=VARCHAR}, #{photourl2,jdbcType=VARCHAR}, 
+      #{securityproblem1,jdbcType=VARCHAR}, #{securityansower1,jdbcType=VARCHAR}, #{securityproblem2,jdbcType=VARCHAR}, 
+      #{securityansower2,jdbcType=VARCHAR}, #{registertime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.onlinemall.dao.model.OnlinemallUser" >
     insert into onlinemall_user
@@ -167,6 +169,12 @@
       </if>
       <if test="password != null" >
         password,
+      </if>
+      <if test="password1 != null" >
+        password1,
+      </if>
+      <if test="password2 != null" >
+        password2,
       </if>
       <if test="name != null" >
         name,
@@ -241,6 +249,12 @@
       </if>
       <if test="password != null" >
         #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="password1 != null" >
+        #{password1,jdbcType=VARCHAR},
+      </if>
+      <if test="password2 != null" >
+        #{password2,jdbcType=VARCHAR},
       </if>
       <if test="name != null" >
         #{name,jdbcType=VARCHAR},
@@ -325,6 +339,12 @@
       <if test="record.password != null" >
         password = #{record.password,jdbcType=VARCHAR},
       </if>
+      <if test="record.password1 != null" >
+        password1 = #{record.password1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.password2 != null" >
+        password2 = #{record.password2,jdbcType=VARCHAR},
+      </if>
       <if test="record.name != null" >
         name = #{record.name,jdbcType=VARCHAR},
       </if>
@@ -388,6 +408,8 @@
       weixinnumber = #{record.weixinnumber,jdbcType=VARCHAR},
       weibonumber = #{record.weibonumber,jdbcType=VARCHAR},
       password = #{record.password,jdbcType=VARCHAR},
+      password1 = #{record.password1,jdbcType=VARCHAR},
+      password2 = #{record.password2,jdbcType=VARCHAR},
       name = #{record.name,jdbcType=VARCHAR},
       sex = #{record.sex,jdbcType=VARCHAR},
       birthday = #{record.birthday,jdbcType=VARCHAR},
@@ -431,6 +453,12 @@
       </if>
       <if test="password != null" >
         password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="password1 != null" >
+        password1 = #{password1,jdbcType=VARCHAR},
+      </if>
+      <if test="password2 != null" >
+        password2 = #{password2,jdbcType=VARCHAR},
       </if>
       <if test="name != null" >
         name = #{name,jdbcType=VARCHAR},
@@ -492,6 +520,8 @@
       weixinnumber = #{weixinnumber,jdbcType=VARCHAR},
       weibonumber = #{weibonumber,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
+      password1 = #{password1,jdbcType=VARCHAR},
+      password2 = #{password2,jdbcType=VARCHAR},
       name = #{name,jdbcType=VARCHAR},
       sex = #{sex,jdbcType=VARCHAR},
       birthday = #{birthday,jdbcType=VARCHAR},

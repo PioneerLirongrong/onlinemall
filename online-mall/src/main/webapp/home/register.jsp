@@ -45,23 +45,23 @@
                                 <input type="email" name="" id="email" placeholder="请输入邮箱账号">
                             </div>
                             <div class="user-pass">
-                                <label for="password"><i class="am-icon-lock"></i></label>
-                                <input type="password" name="" id="password" placeholder="设置密码">
+                                <label for="passwordMail"><i class="am-icon-lock"></i></label>
+                                <input type="password" name="" id="passwordMail" placeholder="设置密码">
                             </div>
                             <div class="user-pass">
-                                <label for="passwordRepeat"><i class="am-icon-lock"></i></label>
-                                <input type="password" name="" id="passwordRepeat" placeholder="确认密码">
+                                <label for="passwordRepeatMail"><i class="am-icon-lock"></i></label>
+                                <input type="password" name="" id="passwordRepeatMail" placeholder="确认密码">
                             </div>
 
                         </form>
-
                         <div class="login-links">
-                            <label for="reader-me">
-                                <input id="reader-me" type="checkbox"> 点击表示您同意商城《服务协议》
+                            <label for="readerMe">
+                                <input id="readerMe" type="checkbox"> 点击表示您同意商城《服务协议》
                             </label>
                         </div>
                         <div class="am-cf">
-                            <input type="submit" name="" value="注册" class="am-btn am-btn-primary am-btn-sm am-fl">
+                            <input type="submit" id="regisTerSubmitMail" name="" value="注册"
+                                   class="am-btn am-btn-primary am-btn-sm am-fl">
                         </div>
 
                     </div>
@@ -80,12 +80,12 @@
                                     <span id="dyMobileButton">获取</span></a>
                             </div>
                             <div class="user-pass">
-                                <label for="password"><i class="am-icon-lock"></i></label>
-                                <input type="password" name="" id="password" placeholder="设置密码">
+                                <label for="passwordPhone"><i class="am-icon-lock"></i></label>
+                                <input type="password" name="" id="passwordPhone" placeholder="设置密码">
                             </div>
                             <div class="user-pass">
-                                <label for="passwordRepeat"><i class="am-icon-lock"></i></label>
-                                <input type="password" name="" id="passwordRepeat" placeholder="确认密码">
+                                <label for="passwordRepeatPhone"><i class="am-icon-lock"></i></label>
+                                <input type="password" name="" id="passwordRepeatPhone" placeholder="确认密码">
                             </div>
                         </form>
                         <div class="login-links">
@@ -94,7 +94,7 @@
                             </label>
                         </div>
                         <div class="am-cf">
-                            <input type="submit" name="" value="注册" class="am-btn am-btn-primary am-btn-sm am-fl">
+                            <input type="submit" name="" id="regisTerSubmitPhone" value="注册" class="am-btn am-btn-primary am-btn-sm am-fl">
                         </div>
 
                         <hr>

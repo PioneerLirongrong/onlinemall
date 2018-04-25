@@ -29,7 +29,6 @@
     <!--&lt;!&ndash;Mybaaties的配置&ndash;&gt;-->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="mysqlDataSource"></property>
-        <!--<property name="configLocation" value="mybatiesconfig.xml"></property>-->
         <property name="typeAliasesPackage" value="com.onlinemall.dao.model"></property>
         <property name="mapperLocations" value="classpath*:mybaties/*Mapper.xml"></property>
     </bean>

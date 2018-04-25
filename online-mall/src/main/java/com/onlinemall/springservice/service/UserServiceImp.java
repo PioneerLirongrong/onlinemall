@@ -60,6 +60,19 @@ public class UserServiceImp implements IUserService {
             }
             criteria.andMailEqualTo((String) params.getParams().get(MAIL));
         }
+        String p1 = "";
+        String p2 = "";
+        if(StringUtils.isNotBlank((String) params.getParams().get(PASSWORD_1))){
+            p1 = (String) params.getParams().get(PASSWORD_1);
+        }
+        if (StringUtils.isNotBlank((String)params.getParams().get(PASSWORD_2))) {
+            p2 = (String) params.getParams().get(PASSWORD_2);
+        }
+        if(!(p1.equals(p2))){
+            logger.info("{密码不一致}");
+            baseResult.setErrors(Errors.USER_MAIL_PASSWORD_FORMAT_ERROR);
+            return baseResult;
+        }
         //查询数据
         List<OnlinemallUser> onlinemallUsers = onlinemallUserMapper.selectByExample(onlinemallUserExample);
         logger.info("{selectByExample的结果为" + onlinemallUsers.size() + "\t" + onlinemallUsers.toString() + "}");
@@ -72,15 +85,17 @@ public class UserServiceImp implements IUserService {
             //用户不存在,创建新的用户
             OnlinemallUser onlinemallUser = new RequestParamConvertBeanUtil<OnlinemallUser>().convertBean(params, new OnlinemallUser());
             onlinemallUser.setUserid(CommonUtils.createUuid());
-            String passwordMD5 = CommonUtils.getMD5(((String)params.getParams().get(PASSWORD)) + PASSWORD_PARA);
+            String passwordMD5 = CommonUtils.getMD5((params.getParams().get(PASSWORD_1)) + PASSWORD_PARA);
             onlinemallUser.setPassword(passwordMD5);
             //在redis里缓存一份数据,方便登录是做校验
-            //缓存用户名
-            CacheUtil.set(onlinemallUser.getAccount(), passwordMD5);
             //缓存手机号
-            CacheUtil.set(onlinemallUser.getPhonenumber(), passwordMD5);
+            if(StringUtils.isNotBlank(onlinemallUser.getPhonenumber())){
+                CacheUtil.set(onlinemallUser.getPhonenumber(), passwordMD5);
+            }
             //缓存邮箱
-            CacheUtil.set(onlinemallUser.getMail(),passwordMD5);
+            if(StringUtils.isNotBlank(onlinemallUser.getMail())){
+                CacheUtil.set(onlinemallUser.getMail(),passwordMD5);
+            }
             onlinemallUserMapper.insert(onlinemallUser);
             baseResult.setCode(BaseResult.SUCCESS);
             baseResult.setDataObj(onlinemallUser);
@@ -126,6 +141,7 @@ public class UserServiceImp implements IUserService {
         if(StringUtils.isNotBlank((String) params.getParams().get(PASSWORD))){
             redisValue = (String) params.getParams().get(PASSWORD);
             redisValue = CommonUtils.getMD5(redisValue+PASSWORD_PARA);
+            criteria.andPassword1EqualTo(redisValue);
         }
         //现在redis里面找数据,如果没有，再去mysql找数据
         String redisV = CacheUtil.get(redisKey);
@@ -133,11 +149,14 @@ public class UserServiceImp implements IUserService {
             OnlinemallUser onlinemallUser = new RequestParamConvertBeanUtil<OnlinemallUser>().convertBean(params, new OnlinemallUser());
             baseResult.setCode(BaseResult.SUCCESS);
             baseResult.setDataObj(onlinemallUser);
+            logger.info("{Cache中存在当前用户\t"+onlinemallUser.getAccount()+"}");
             return baseResult;
         }else {
             List<OnlinemallUser> onlinemallUser = onlinemallUserMapper.selectByExample(onlinemallUserExample);
             baseResult.setDataObj(onlinemallUser.get(0));
             baseResult.setCode(BaseResult.SUCCESS);
+            logger.info("{mysql中存在当前用户\t"+onlinemallUser.get(0).getAccount()+"}");
+            logger.info("");
             return baseResult;
         }
     }

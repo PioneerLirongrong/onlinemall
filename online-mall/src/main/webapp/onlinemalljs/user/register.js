@@ -3,9 +3,12 @@ var register = function () {
 };
 register.prototype={
     config: {
-        registerUrl:'/account/registerAccount.do',
-        returnUrl:'/view/account/login.jsp'
+        registerUrl:'/onlinemall/registerUser.do',
+        returnUrl:'/home/login.jsp'
 
+    },
+    error:function(message){
+        alert(message);
     },
     login:function () {
         var thatloging = this;
@@ -19,7 +22,7 @@ register.prototype={
                 $("#loginMessage").html("");
             }
         });
-        $("#loginSubmit").click(function () {
+        $("#regisTerSubmitMail").click(function () {
             thatloging.submint();
         })
     },
@@ -27,29 +30,43 @@ register.prototype={
         $("#imgCode_img").attr("src", "/account/rondamImage.do?d" + (new Date().getTime()));
     },
     submint:function () {
-
         var loginObj = this;
-        var userName = $("#userName").val();
-        var password = $("#password").val();
-        if (userName == '' || userName == null || userName == "请输入手机号/账号") {
-            $.ligerDialog.error("请输入手机号");
+        var email = $("#email").val();
+        var password1 = $("#passwordMail").val();
+        var password2 = $("#passwordRepeatMail").val();
+        if (!($('#readerMe').is(':checked'))) {
+            loginObj.error("请勾选同意商城协议")
             return;
         }
-        if (password == '' || password == null || password == "") {
-            $.ligerDialog.error("请输入短信验证码");
+        var reg = new RegExp("[a-zA-Z0-9]{1,10}@[a-zA-Z0-9]{1,5}\\.[a-zA-Z0-9]{1,5}");
+        if(!(reg.test(email))){
+            loginObj.error("邮箱格式不正确!!!请确认后填写")
             return;
         }
-        $("#loginMessage").html("&nbsp;");
-        loginObj.rememberLoginName(userName);// 用户信息写入cookie
-        var phonenumber = $.trim(userName); // 去掉首尾空格
-        var password = $.trim(password);
-        var params = {};
-        params['phonenumber']=phonenumber;
-        params['password']=password;
+        if (email == '' || email == null ) {
+            loginObj.error("请输入邮箱")
+            return;
+        }
+        if (password1 == '' || password1 == null || password2 == '' || password2 == null) {
+            ligerDialog.error("请输入密码");
+            return;
+        }
+        if(password1 != password2){
+            loginObj.error("两次密码不一样,请重新确认密码")
+            return;
+        }
+        // loginObj.rememberLoginName(email);// 用户信息写入cookie
+        var mail = $.trim(email); // 去掉首尾空格
+        var password1 = $.trim(password1);
+        var password2 = $.trim(password2);
+        var data = {};
+        data['params["mail"]']=mail;
+        data['params["password1"]']=password1;
+        data['params["password2"]']=password2;
         $.ajax({
             type : "POST",
             url :this.config.registerUrl,
-            data :params,
+            data :data,
             dataType : "JSON",
             success:function (result) {
                 console.log(result);
@@ -58,7 +75,8 @@ register.prototype={
                 }
             },
             error : function() {
-                $.ligerDialog.error('系统异常，请重试！');
+                console.log("aaaaaa")
+                loginObj.error('系统异常，请重试！');
             }
         });
 

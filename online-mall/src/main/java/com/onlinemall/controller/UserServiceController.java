@@ -6,16 +6,16 @@ import com.onlinemall.param.response.BaseResult;
 import com.onlinemall.springservice.interfaces.IUserService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author lrr
  * 用户服务控制器
  */
-@Controller
+@RestController
 @RequestMapping("/onlinemall")
 public class UserServiceController {
 
@@ -24,8 +24,7 @@ public class UserServiceController {
     @Autowired
     private IUserService iUserService;
 
-    @RequestMapping("/registerUser")
-    @ResponseBody
+    @RequestMapping(value = "/registerUser",method = RequestMethod.POST)
     public BaseResult<OnlinemallUser> registerUser(@ModelAttribute RequestParams<OnlinemallUser> params){
         logger.info("{请求后台接口\'/onlinemall/registerUser\'}");
         logger.info("{前台的请求参数"+params.toString()+"}");

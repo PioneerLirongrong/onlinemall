@@ -20,6 +20,10 @@ public class OnlinemallUser implements Serializable {
 
     private String password;
 
+    private String password1;
+
+    private String password2;
+
     private String name;
 
     private String sex;
@@ -116,6 +120,22 @@ public class OnlinemallUser implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getPassword1() {
+        return password1;
+    }
+
+    public void setPassword1(String password1) {
+        this.password1 = password1;
+    }
+
+    public String getPassword2() {
+        return password2;
+    }
+
+    public void setPassword2(String password2) {
+        this.password2 = password2;
     }
 
     public String getName() {
@@ -266,6 +286,8 @@ public class OnlinemallUser implements Serializable {
             && (this.getWeixinnumber() == null ? other.getWeixinnumber() == null : this.getWeixinnumber().equals(other.getWeixinnumber()))
             && (this.getWeibonumber() == null ? other.getWeibonumber() == null : this.getWeibonumber().equals(other.getWeibonumber()))
             && (this.getPassword() == null ? other.getPassword() == null : this.getPassword().equals(other.getPassword()))
+            && (this.getPassword1() == null ? other.getPassword1() == null : this.getPassword1().equals(other.getPassword1()))
+            && (this.getPassword2() == null ? other.getPassword2() == null : this.getPassword2().equals(other.getPassword2()))
             && (this.getName() == null ? other.getName() == null : this.getName().equals(other.getName()))
             && (this.getSex() == null ? other.getSex() == null : this.getSex().equals(other.getSex()))
             && (this.getBirthday() == null ? other.getBirthday() == null : this.getBirthday().equals(other.getBirthday()))
@@ -296,6 +318,8 @@ public class OnlinemallUser implements Serializable {
         result = prime * result + ((getWeixinnumber() == null) ? 0 : getWeixinnumber().hashCode());
         result = prime * result + ((getWeibonumber() == null) ? 0 : getWeibonumber().hashCode());
         result = prime * result + ((getPassword() == null) ? 0 : getPassword().hashCode());
+        result = prime * result + ((getPassword1() == null) ? 0 : getPassword1().hashCode());
+        result = prime * result + ((getPassword2() == null) ? 0 : getPassword2().hashCode());
         result = prime * result + ((getName() == null) ? 0 : getName().hashCode());
         result = prime * result + ((getSex() == null) ? 0 : getSex().hashCode());
         result = prime * result + ((getBirthday() == null) ? 0 : getBirthday().hashCode());
@@ -329,6 +353,8 @@ public class OnlinemallUser implements Serializable {
         sb.append(", weixinnumber=").append(weixinnumber);
         sb.append(", weibonumber=").append(weibonumber);
         sb.append(", password=").append(password);
+        sb.append(", password1=").append(password1);
+        sb.append(", password2=").append(password2);
         sb.append(", name=").append(name);
         sb.append(", sex=").append(sex);
         sb.append(", birthday=").append(birthday);
