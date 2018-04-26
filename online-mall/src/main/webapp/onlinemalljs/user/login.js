@@ -55,7 +55,7 @@ onlinemallLogin.prototype={
         }else {
             data['params["password"]']=$.trim(password);
         }
-        loginObj.rememberLoginName($.trim(userName));// 用户信息写入cookie
+        loginObj.rememberLoginName($.trim(userName),$.trim(password));// 用户信息写入cookie
         $.ajax({
             type : "POST",
             url :this.config.loingUrl,
@@ -74,11 +74,15 @@ onlinemallLogin.prototype={
         });
 
     },
-    rememberLoginName : function(userName) {
+    rememberLoginName : function(userName,password) {
         var rememberLoginName = $("#remember-me").is(":checked");
         if (rememberLoginName) {
             $.cookie("onlinemall_zc_userName", userName, {
                 path : '/',
+                expires : 30
+            });
+            $.cookie("onlinemall_zc_password",password,{
+                path: '/',
                 expires : 30
             });
             $.cookie("onlinemall_zc_rememberLoginFlag", "1", {
@@ -92,16 +96,24 @@ onlinemallLogin.prototype={
             $.cookie("onlinemall_zc_userName", null, {
                 path : '/'
             });
+            $.cookie("onlinemall_zc_password",null,{
+                path: '/',
+                expires : 30
+            });
         }
     },
     fetchCookieLoginName : function() {
         var ctfo_userName = $.cookie("onlinemall_zc_userName");
+        var ctfo_password = $.cookie("onlinemall_zc_password");
         var ctfo_rememberLoginFlag = $.cookie("onlinemall_zc_rememberLoginFlag");
         if (ctfo_userName != null) {
-            $("input[name=username]").val(ctfo_userName);
+            $("#user").val(ctfo_userName);
+        }
+        if(ctfo_password != null){
+            $("#password").val(ctfo_password);
         }
         if (ctfo_rememberLoginFlag == 1) {
-            $("input[name=rememberLoginName]").attr("checked", true);
+            $("#remember-me").attr("checked", true);
         }
     }
 };

@@ -63,7 +63,10 @@
                             <input type="submit" id="regisTerSubmitMail" name="" value="注册"
                                    class="am-btn am-btn-primary am-btn-sm am-fl">
                         </div>
-
+                        <div class="am-cf">
+                            <a href="login.jsp"><input type="button"  value="已有账号,直接登录"
+                                                       class="am-btn am-btn-primary am-btn-sm am-fl"></a>
+                        </div>
                     </div>
 
                     <div class="am-tab-panel">
@@ -87,9 +90,13 @@
                             </label>
                         </div>
                         <div class="am-cf">
-                            <input type="submit" name="" id="regisTerSubmitPhone" value="注册" class="am-btn am-btn-primary am-btn-sm am-fl">
+                            <input type="submit" name="" id="regisTerSubmitPhone" value="注册"
+                                   class="am-btn am-btn-primary am-btn-sm am-fl">
                         </div>
-
+                        <div class="am-cf">
+                            <a href="login.jsp"><input type="button" id="already" value="已有账号,直接登录"
+                                   class="am-btn am-btn-primary am-btn-sm am-fl"></a>
+                        </div>
                         <hr>
                     </div>
 

@@ -29,5 +29,5 @@ public interface OnlinemallUserMapper {
 
     int updateByPrimaryKeySelective(OnlinemallUser record);
 
-    int updateByPrimaryKey(OnlinemallUser record);
+    int updateByPrimaryKey(String record);
 }

@@ -25,4 +25,12 @@ public interface IUserService {
      */
     BaseResult<OnlinemallUser> checkUser(RequestParams<OnlinemallUser> params);
 
+
+    /**
+     * 找回密码接口
+     * @param params
+     * @return
+     */
+    BaseResult<OnlinemallUser> findPassByMailOrPhone(RequestParams<OnlinemallUser> params);
+
 }
