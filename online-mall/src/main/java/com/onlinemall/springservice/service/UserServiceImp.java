@@ -27,7 +27,7 @@ import static com.onlinemall.constants.Params.*;
 @Service
 public class UserServiceImp implements IUserService {
 
-    public static Logger logger = Logger.getLogger(UserServiceImp.class);
+    private static Logger logger = Logger.getLogger(UserServiceImp.class);
 
     @Autowired
     private OnlinemallUserMapper onlinemallUserMapper;
@@ -145,7 +145,7 @@ public class UserServiceImp implements IUserService {
         }
         //现在redis里面找数据,如果没有，再去mysql找数据
         String redisV = CacheUtil.get(redisKey);
-        if(redisValue.equals(redisV)){
+        if(null != redisValue && redisValue.equals(redisV)){
             OnlinemallUser onlinemallUser = new RequestParamConvertBeanUtil<OnlinemallUser>().convertBean(params, new OnlinemallUser());
             baseResult.setCode(BaseResult.SUCCESS);
             baseResult.setDataObj(onlinemallUser);
@@ -153,7 +153,7 @@ public class UserServiceImp implements IUserService {
             return baseResult;
         }else {
             List<OnlinemallUser> onlinemallUser = onlinemallUserMapper.selectByExample(onlinemallUserExample);
-            if(onlinemallUser.size() == 0){
+            if(onlinemallUser.size() == 0 || null == onlinemallUser){
                 logger.info("{mysql中存在当前用户\t"+onlinemallUser.get(0).getAccount()+"}");
                 return baseResult;
             }

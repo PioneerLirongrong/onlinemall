@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/onlinemall")
 public class UserServiceController {
 
-    public static Logger logger = Logger.getLogger(UserServiceController.class);
+    private static Logger logger = Logger.getLogger(UserServiceController.class);
 
     @Autowired
     private IUserService iUserService;
