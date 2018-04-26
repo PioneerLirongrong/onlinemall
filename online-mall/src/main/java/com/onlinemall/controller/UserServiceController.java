@@ -33,7 +33,7 @@ public class UserServiceController {
         return baseResult;
     }
 
-    @RequestMapping("/loginUser")
+    @RequestMapping(value = "/loginUser",method = RequestMethod.POST)
     public BaseResult<OnlinemallUser> loginUser(@ModelAttribute RequestParams<OnlinemallUser> params){
         logger.info("{请求后台接口\'/onlinemall/loginUser\'}");
         logger.info("{前台的请求参数"+params.toString()+"}");

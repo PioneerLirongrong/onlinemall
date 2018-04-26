@@ -13,6 +13,9 @@
 
     <link rel="stylesheet" href="../AmazeUI-2.4.2/assets/css/amazeui.css"/>
     <link href="../css/dlstyle.css" rel="stylesheet" type="text/css">
+    <script src="../AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
+    <script src="../js/jquerycookie.js"></script>
+    <script src="../onlinemalljs/user/login.js"></script>
 </head>
 
 
@@ -45,13 +48,13 @@
             </div>
 
             <div class="login-links">
-                <label for="remember-me"><input id="remember-me" type="checkbox">记住密码</label>
+                <label for="remember-me"><input name="rememberLoginName" id="remember-me" type="checkbox">记住密码</label>
                 <a href="#" class="am-fr">忘记密码</a>
                 <a href="register.jsp" class="zcnext am-fr am-btn-default">注册</a>
                 <br/>
             </div>
             <div class="am-cf">
-                <input type="submit" name="" value="登 录" class="am-btn am-btn-primary am-btn-sm">
+                <input type="submit" name="" id="loginSubmit" value="登 录" class="am-btn am-btn-primary am-btn-sm">
             </div>
             <div class="partner">
                 <h3>合作账号</h3>

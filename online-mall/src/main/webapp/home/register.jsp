@@ -56,7 +56,7 @@
                         </form>
                         <div class="login-links">
                             <label for="readerMe">
-                                <input id="readerMe" type="checkbox"> 点击表示您同意商城《服务协议》
+                                <input id="readerMe" type="checkbox"> <a href="/home/protocol.jsp">点击表示您同意商城《服务协议》</a>
                             </label>
                         </div>
                         <div class="am-cf">
@@ -72,13 +72,6 @@
                                 <label for="phone"><i class="am-icon-mobile-phone am-icon-md"></i></label>
                                 <input type="tel" name="" id="phone" placeholder="请输入手机号">
                             </div>
-                            <div class="verification">
-                                <label for="code"><i class="am-icon-code-fork"></i></label>
-                                <input type="tel" name="" id="code" placeholder="请输入验证码">
-                                <a class="btn" href="javascript:void(0);" onclick="sendMobileCode();"
-                                   id="sendMobileCode">
-                                    <span id="dyMobileButton">获取</span></a>
-                            </div>
                             <div class="user-pass">
                                 <label for="passwordPhone"><i class="am-icon-lock"></i></label>
                                 <input type="password" name="" id="passwordPhone" placeholder="设置密码">
@@ -90,7 +83,7 @@
                         </form>
                         <div class="login-links">
                             <label for="reader-me">
-                                <input id="reader-me" type="checkbox"> 点击表示您同意商城《服务协议》
+                                <input id="reader-me" type="checkbox"> <a href="/home/protocol.jsp">点击表示您同意商城《服务协议》</a>
                             </label>
                         </div>
                         <div class="am-cf">

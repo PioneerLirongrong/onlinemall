@@ -153,10 +153,13 @@ public class UserServiceImp implements IUserService {
             return baseResult;
         }else {
             List<OnlinemallUser> onlinemallUser = onlinemallUserMapper.selectByExample(onlinemallUserExample);
+            if(onlinemallUser.size() == 0){
+                logger.info("{mysql中存在当前用户\t"+onlinemallUser.get(0).getAccount()+"}");
+                return baseResult;
+            }
             baseResult.setDataObj(onlinemallUser.get(0));
             baseResult.setCode(BaseResult.SUCCESS);
             logger.info("{mysql中存在当前用户\t"+onlinemallUser.get(0).getAccount()+"}");
-            logger.info("");
             return baseResult;
         }
     }

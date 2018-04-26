@@ -1,10 +1,13 @@
-var loginoop = function () {
+var onlinemallLogin = function () {
 
 };
-loginoop.prototype={
+onlinemallLogin.prototype={
     config: {
-        loingUrl:'/account/loginAccount.do',
-        returnUrl:"../../index.jsp"
+        loingUrl:'/onlinemall/loginUser.do',
+        returnUrl:"/home/home3.jsp"
+    },
+    error:function(message){
+        alert(message);
     },
     login:function () {
         var logins = this;
@@ -27,87 +30,83 @@ loginoop.prototype={
         $("#imgCode_img").attr("src", "/account/rondamImage.do?d" + (new Date().getTime()));
     },
     submint:function () {
-
         var loginObj = this;
-        var userName = $("#userName").val();
+        var data={}
+        var userName = $("#user").val();
         var password = $("#password").val();
-        if (userName == '' || userName == null || userName == "请输入手机号/账号") {
-            $.ligerDialog.error("请输入手机号");
+        if (userName == '' || userName == null) {
+            loginObj.error("请输入邮箱/手机/用户名");
             return;
         }
-        if (password == '' || password == null || password == "") {
-            $.ligerDialog.error("请输入短信验证码");
-            return;
+        var reg = new RegExp("[a-zA-Z0-9]{1,10}@[a-zA-Z0-9]{1,5}\\.[a-zA-Z0-9]{1,5}");
+        if((reg.test(userName))){
+            data['params["mail"]']=$.trim(userName);
         }
-        $("#loginMessage").html("&nbsp;");
-        loginObj.rememberLoginName(userName);// 用户信息写入cookie
-        var name = $.trim(userName); // 去掉首尾空格
-        var password = $.trim(password);
-        var params = new Array();
-        params.push({
-            name:'equal[phonenumber]',
-            value:name
-        })
-        params.push({
-            name:'equal[password]',
-            value:password
-        });
-        // params['phonenumber']=name;
-        // params['password']=password;
+        var reg = new RegExp("^[1][3,4,5,7,8][0-9]{9}$");
+        if((reg.test(userName))){
+            data['params["phonenumber"]']=$.trim(userName);
+        }
+        if(data['params["mail"]'] == '' || data['params["phonenumber"]'] == ''){
+            data['params["account"]']=$.trim(userName);
+        }
+        if (password == '' || password == null ) {
+            loginObj.error("请输入密码");
+            return;
+        }else {
+            data['params["password"]']=$.trim(password);
+        }
+        loginObj.rememberLoginName($.trim(userName));// 用户信息写入cookie
         $.ajax({
             type : "POST",
             url :this.config.loingUrl,
-            data :params,
-            dataType : "json",
+            data :data,
+            dataType : "JSON",
             success : function(result) {
                 if (result.code == '1') {
-                    // alert(path)
-                    // window.location.href ="index.jsp";
                     window.location.href=loginObj.config.returnUrl;
                 } else {
-                    $.ligerDialog.error(result.message);
-                    //loginObj.initImgCode();
+                    loginObj.error(result.message);
                 }
             },
             error : function() {
-                $.ligerDialog.error('系统异常，请重试！');
+                loginObj.error('系统异常，请重试！');
             }
         });
 
     },
     rememberLoginName : function(userName) {
-        var rememberLoginName = $('input[name=rememberLoginName]').attr("checked");
+        var rememberLoginName = $("#remember-me").is(":checked");
         if (rememberLoginName) {
-            $.cookie("ctfo_zc_userName", userName, {
+            $.cookie("onlinemall_zc_userName", userName, {
                 path : '/',
                 expires : 30
             });
-            $.cookie("ctfo_zc_rememberLoginFlag", "1", {
+            $.cookie("onlinemall_zc_rememberLoginFlag", "1", {
                 path : '/',
                 expires : 30
             });
         } else {
-            $.cookie("ctfo_zc_rememberLoginFlag", null, {
+            $.cookie("onlinemall_zc_rememberLoginFlag", null, {
                 path : '/'
             });
-            $.cookie("ctfo_zc_userName", null, {
+            $.cookie("onlinemall_zc_userName", null, {
                 path : '/'
             });
         }
     },
     fetchCookieLoginName : function() {
-        var ctfo_userName = $.cookie("ctfo_zc_userName");
-        var ctfo_rememberLoginFlag = $.cookie("ctfo_zc_rememberLoginFlag");
+        var ctfo_userName = $.cookie("onlinemall_zc_userName");
+        var ctfo_rememberLoginFlag = $.cookie("onlinemall_zc_rememberLoginFlag");
         if (ctfo_userName != null) {
             $("input[name=username]").val(ctfo_userName);
         }
         if (ctfo_rememberLoginFlag == 1) {
             $("input[name=rememberLoginName]").attr("checked", true);
         }
-    },
-}
+    }
+};
 $(document).ready(function () {
-    var log = new loginoop();
+    var log = new onlinemallLogin();
     log.initImgCode();
     log.fetchCookieLoginName();
     log.login();
