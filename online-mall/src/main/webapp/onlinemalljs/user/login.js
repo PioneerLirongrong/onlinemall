@@ -6,6 +6,12 @@ onlinemallLogin.prototype={
         loingUrl:'/onlinemall/loginUser.do',
         returnUrl:"/home/home3.jsp"
     },
+    init:function(){
+        var parmValue = MD5_UTILS.getParmValue();
+        //设置登录框的值
+        $("#user").attr("value",parmValue["username"]);
+        $("#password").attr("value","")
+    },
     error:function(message){
         alert(message);
     },
@@ -68,8 +74,8 @@ onlinemallLogin.prototype={
                     loginObj.error(result.message);
                 }
             },
-            error : function() {
-                loginObj.error('系统异常，请重试！');
+            error : function(XMLHttpRequest, textStatus, errorThrown) {
+                loginObj.error(errorThrown);
             }
         });
 
@@ -119,6 +125,7 @@ onlinemallLogin.prototype={
 };
 $(document).ready(function () {
     var log = new onlinemallLogin();
+    log.init();
     log.initImgCode();
     log.fetchCookieLoginName();
     log.login();

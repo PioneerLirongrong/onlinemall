@@ -10,6 +10,15 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import static com.onlinemall.constants.Params.MAIL;
+import static com.onlinemall.constants.Params.PHONENUMBER;
+import static com.onlinemall.constants.Params.USERNAME;
 
 /**
  * @author lrr
@@ -38,6 +47,10 @@ public class UserServiceController {
         logger.info("{请求后台接口\'/onlinemall/loginUser\'}");
         logger.info("{前台的请求参数"+params.toString()+"}");
         BaseResult<OnlinemallUser> baseResult = iUserService.checkUser(params);
+        HttpSession session = getSession();
+        session.setAttribute(USERNAME,((OnlinemallUser) baseResult.getDataObj()).getAccount());
+        session.setAttribute(PHONENUMBER,((OnlinemallUser) baseResult.getDataObj()).getPhonenumber());
+        session.setAttribute(MAIL,((OnlinemallUser) baseResult.getDataObj()).getMail());
         logger.info("{后台返给前台的结果"+baseResult.toString()+"}");
         return baseResult;
     }
@@ -49,5 +62,21 @@ public class UserServiceController {
         BaseResult<OnlinemallUser> baseResult = iUserService.findPassByMailOrPhone(params);
         logger.info("{后台返给前台的结果"+baseResult.toString()+"}");
         return baseResult;
+    }
+
+    /**
+     * 获取session
+     * */
+    public static HttpSession getSession() {
+        HttpSession session = null;
+        try {
+            session = getRequest().getSession();
+        } catch (Exception e) {}
+        return session;
+    }
+
+    public static HttpServletRequest getRequest() {
+        ServletRequestAttributes attrs =(ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+        return attrs.getRequest();
     }
 }

@@ -53,6 +53,8 @@ forgetPass.prototype={
             success:function (result) {
                 if(result.code == '1') {
                     window.location.href = loginObj.config.returnUrl;
+                }else {
+                    loginObj.error(result.message)
                 }
             },
             error : function() {

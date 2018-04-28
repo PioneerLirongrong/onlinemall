@@ -216,7 +216,7 @@ public class UserServiceImp implements IUserService {
             String newPass = CommonUtils.getMD5(p1+PASSWORD_PARA);
             onlinemallUser.setPassword(newPass);
             //更新mysql中的数据
-            onlinemallUserMapper.updateByPrimaryKey(onlinemallUser.getUserid());
+            onlinemallUserMapper.updateByExample(onlinemallUser,onlinemallUserExample);
             //同时跟新缓存中的数
             if(StringUtils.isNotBlank(onlinemallUser.getMail())){
                 CacheUtil.set(onlinemallUser.getMail(),newPass);
@@ -229,6 +229,7 @@ public class UserServiceImp implements IUserService {
             }
             baseResult.setCode(BaseResult.SUCCESS);
             baseResult.setDataObj(onlinemallUser);
+            logger.info("{数据更新成功!!}");
             return baseResult;
         }
     }
