@@ -15,9 +15,9 @@
     <link href="../css/dlstyle.css" rel="stylesheet" type="text/css">
     <script src="../AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
     <script src="../js/jquerycookie.js"></script>
-    <script src="../onlinemalljs/user/login.js"></script>
     <script src="../js/jquery.md5.js"></script>
     <script src="../js/jquery.base64.js"></script>
+    <script src="../onlinemalljs/user/login.js"></script>
     <script src="../onlinemalljs/commonUtils/CommonUtil.js"></script>
 </head>
 

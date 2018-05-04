@@ -74,7 +74,10 @@ onlinemallLogin.prototype={
             success : function(result) {
                 if (result.code == '1') {
                     //在cookie中缓存userId
-                    $.cookie("onlinemall_zc_userId",result.dataObj.userid);
+                    $.cookie("onlinemall_zc_userId",result.dataObj.userid,{
+                        path:'/',
+                        expires : 30
+                    });
                     console.log($.cookie("onlinemall_zc_userId"))
                     window.location.href=loginObj.config.returnUrl;
                 } else {

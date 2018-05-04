@@ -1,19 +1,19 @@
-$(function () {
-    var home = function () {
-        this.init();
-    }
-    user.prototype = {
-        cache: {
+var onlinemalHome = function () {
 
-        },
-        init: function () {
-            this.clickEvent();
-        },
-        clickEvent:function () {
+};
+onlinemalHome.prototype={
+    config: {
 
-        }
+    },
+    init:function(){
+        var data = COMMONUTIL.getUserInfo();
+        console.log(data)
+    },
+    error:function(message){
+        alert(message);
     }
-    $(document).ready(function () {
-        window.home = new home();
-    });
+};
+$(document).ready(function () {
+    var home = new onlinemalHome();
+    home.init();
 });

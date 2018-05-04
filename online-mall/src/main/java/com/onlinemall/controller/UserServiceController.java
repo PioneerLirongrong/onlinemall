@@ -58,7 +58,7 @@ public class UserServiceController {
 
     @RequestMapping(value = "/findPassByMailOrPhone",method = RequestMethod.POST)
     public BaseResult<OnlinemallUser> findPassByMailOrPhone(@ModelAttribute RequestParams<OnlinemallUser> params){
-        logger.info("{请求后台接口\'/onlinemall/loginUser\'}");
+        logger.info("{请求后台接口\'/onlinemall/findPassByMailOrPhone\'}");
         logger.info("{前台的请求参数"+params.toString()+"}");
         BaseResult<OnlinemallUser> baseResult = iUserService.findPassByMailOrPhone(params);
         logger.info("{后台返给前台的结果"+baseResult.toString()+"}");
@@ -67,7 +67,7 @@ public class UserServiceController {
 
     @RequestMapping(value = "/getUserInfo",method = RequestMethod.POST)
     public BaseResult<OnlinemallUser> findById(@ModelAttribute RequestParams<OnlinemallUser> params){
-        logger.info("{请求后台接口\'/onlinemall/loginUser\'}");
+        logger.info("{请求后台接口\'/onlinemall/getUserInfo\'}");
         logger.info("{前台的请求参数"+params.toString()+"}");
         BaseResult<OnlinemallUser> baseResult = iUserService.findOnlineMallUserById(params);
         logger.info("{后台返给前台的结果"+baseResult.toString()+"}");
