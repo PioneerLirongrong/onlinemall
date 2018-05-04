@@ -4,10 +4,14 @@ var onlinemallLogin = function () {
 onlinemallLogin.prototype={
     config: {
         loingUrl:'/onlinemall/loginUser.do',
-        returnUrl:"/home/home3.jsp"
+        returnUrl:"/home/home3.jsp",
+        able:false
     },
     init:function(){
         var parmValue = MD5_UTILS.getParmValue();
+        if(typeof(parmValue["username"]) == "undefined"){
+            return;
+        }
         //设置登录框的值
         $("#user").attr("value",parmValue["username"]);
         $("#password").attr("value","")
@@ -69,6 +73,9 @@ onlinemallLogin.prototype={
             dataType : "JSON",
             success : function(result) {
                 if (result.code == '1') {
+                    //在cookie中缓存userId
+                    $.cookie("onlinemall_zc_userId",result.dataObj.userid);
+                    console.log($.cookie("onlinemall_zc_userId"))
                     window.location.href=loginObj.config.returnUrl;
                 } else {
                     loginObj.error(result.message);
@@ -109,6 +116,10 @@ onlinemallLogin.prototype={
         }
     },
     fetchCookieLoginName : function() {
+        var parmValue = MD5_UTILS.getParmValue();
+        if(typeof(parmValue["username"]) != "undefined"){
+            return;
+        }
         var ctfo_userName = $.cookie("onlinemall_zc_userName");
         var ctfo_password = $.cookie("onlinemall_zc_password");
         var ctfo_rememberLoginFlag = $.cookie("onlinemall_zc_rememberLoginFlag");
@@ -126,7 +137,6 @@ onlinemallLogin.prototype={
 $(document).ready(function () {
     var log = new onlinemallLogin();
     log.init();
-    log.initImgCode();
     log.fetchCookieLoginName();
     log.login();
 });

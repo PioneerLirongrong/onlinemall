@@ -27,10 +27,8 @@ public class ServiceTest {
     @Test
     public void testUser(){
         params = new RequestParams();
-        params.getParams().put("phonenumber","13535689239");
-        params.getParams().put("password1","123456");
-        params.getParams().put("password2","123456");
-        BaseResult result = iUserService.findPassByMailOrPhone(params);
-        System.out.printf(result.toString());
+        params.getParams().put("userid","9f8171eca7b14dd59c1fb65200e78432");
+        BaseResult onlineMallUserById = iUserService.findOnlineMallUserById(params);
+        System.out.println(onlineMallUserById.getDataObj().toString());
     }
 }

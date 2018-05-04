@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
+import javax.management.ObjectName;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -60,6 +61,15 @@ public class UserServiceController {
         logger.info("{请求后台接口\'/onlinemall/loginUser\'}");
         logger.info("{前台的请求参数"+params.toString()+"}");
         BaseResult<OnlinemallUser> baseResult = iUserService.findPassByMailOrPhone(params);
+        logger.info("{后台返给前台的结果"+baseResult.toString()+"}");
+        return baseResult;
+    }
+
+    @RequestMapping(value = "/getUserInfo",method = RequestMethod.POST)
+    public BaseResult<OnlinemallUser> findById(@ModelAttribute RequestParams<OnlinemallUser> params){
+        logger.info("{请求后台接口\'/onlinemall/loginUser\'}");
+        logger.info("{前台的请求参数"+params.toString()+"}");
+        BaseResult<OnlinemallUser> baseResult = iUserService.findOnlineMallUserById(params);
         logger.info("{后台返给前台的结果"+baseResult.toString()+"}");
         return baseResult;
     }

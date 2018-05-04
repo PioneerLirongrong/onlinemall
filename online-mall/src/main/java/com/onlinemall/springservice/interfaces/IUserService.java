@@ -33,4 +33,12 @@ public interface IUserService {
      */
     BaseResult<OnlinemallUser> findPassByMailOrPhone(RequestParams<OnlinemallUser> params);
 
+
+    /**
+     * 通过用户id找用户
+     * @param params
+     * @return
+     */
+    BaseResult<OnlinemallUser> findOnlineMallUserById(RequestParams<OnlinemallUser> params);
+
 }
