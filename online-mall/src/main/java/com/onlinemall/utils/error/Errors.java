@@ -1,6 +1,11 @@
 package com.onlinemall.utils.error;
 
-public class Errors {
+import java.io.Serializable;
+
+/**
+ * @author lrr
+ */
+public class Errors implements Serializable {
     private String errorCode;
     private String errorContent;
 

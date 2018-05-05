@@ -234,10 +234,15 @@ public class UserServiceImp implements IUserService {
             return baseResult;
         }
         String useId = (String) params.getParams().get(USERID);
+        if(StringUtils.isBlank(useId)){
+            baseResult.setCode(BaseResult.SUCCESS);
+            baseResult.setDataObj(new OnlinemallUser());
+        }
         logger.info("{用户ID为"+useId+"}");
         OnlinemallUser onlinemallUser = onlinemallUserMapper.selectByPrimaryKey(useId);
         if(null == onlinemallUser){
-            baseResult.setErrors(Errors.USER_NOT_EXIST_ERRPOR);
+            baseResult.setCode(BaseResult.SUCCESS);
+            baseResult.setDataObj(new OnlinemallUser());
             return baseResult;
         }else {
             baseResult.setCode(BaseResult.SUCCESS);

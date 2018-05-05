@@ -25,22 +25,22 @@
 
 </head>
    <%
-        String account = (String) session.getAttribute("account");
-        String phonenumber = (String) session.getAttribute("phonenumber");
-        String mail = (String) session.getAttribute("mail");
-        String name = "";
-        if (null != account && !("".equals(account))) {
-            name = account;
-            return;
-        } else if (null != phonenumber && !("".equals(phonenumber))) {
-            name = phonenumber;
-            return;
-        } else if (null != mail && !("".equals(mail))) {
-            name = mail;
-            return;
-        } else {
-            name = "亲，请登录";
-        }
+//        String account = (String) session.getAttribute("account");
+//        String phonenumber = (String) session.getAttribute("phonenumber");
+//        String mail = (String) session.getAttribute("mail");
+//        String name = "";
+//        if (null != account && !("".equals(account))) {
+//            name = account;
+//            return;
+//        } else if (null != phonenumber && !("".equals(phonenumber))) {
+//            name = phonenumber;
+//            return;
+//        } else if (null != mail && !("".equals(mail))) {
+//            name = mail;
+//            return;
+//        } else {
+//            name = "亲，请登录";
+//        }
     %>
 <body>
 <div class="hmtop">
@@ -49,7 +49,7 @@
         <ul class="message-l">
             <div class="topMessage">
                 <div class="menu-hd">
-                    <a href="../home/login.jsp" target="_top" class="h"><%= name %>
+                    <a href="../home/login.jsp" target="_top" class="h"><%= session.getAttribute("username") %>
                     </a>
                     <a href="../home/register.jsp" target="_top">免费注册</a>
                 </div>

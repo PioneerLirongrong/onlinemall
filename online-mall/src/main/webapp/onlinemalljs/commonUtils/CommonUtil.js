@@ -2,7 +2,12 @@ var COMMONUTIL = {
     getUserInfo: function () {
         var map = {}
         var data = {};
-        map['params["userid"]'] = $.cookie("onlinemall_zc_userId");
+        var userId = $.cookie("onlinemall_zc_userId");
+        if(null == userId){
+            map['params["userid"]'] = "1bb4df95203e48ea823f18fa53c0895e";
+        }else {
+            map['params["userid"]'] = $.cookie("onlinemall_zc_userId");
+        }
         $.ajax({
             type: "POST",
             url: "/onlinemall/getUserInfo.do",
