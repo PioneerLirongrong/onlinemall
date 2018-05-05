@@ -1,16 +1,19 @@
 var onlinemalHome = function () {
 
 };
-onlinemalHome.prototype={
+onlinemalHome.prototype = {
     config: {
-
+        map: {}
     },
-    init:function(){
-        var data = COMMONUTIL.getUserInfo();
-        console.log(data)
+    excep: function (message) {
+        alert(message)
     },
-    error:function(message){
-        alert(message);
+    init: function () {
+        this.map = COMMONUTIL.getUserInfo();
+        console.log(this.map)
+    },
+    error: function () {
+        this.excep("系统异常")
     }
 };
 $(document).ready(function () {

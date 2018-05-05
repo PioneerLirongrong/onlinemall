@@ -84,8 +84,8 @@ onlinemallLogin.prototype={
                     loginObj.error(result.message);
                 }
             },
-            error : function(XMLHttpRequest, textStatus, errorThrown) {
-                loginObj.error(errorThrown);
+            error : function() {
+                loginObj.error("系统异常");
             }
         });
 
