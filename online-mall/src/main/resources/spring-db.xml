@@ -11,7 +11,7 @@
             </list>
         </property>
     </bean>
-    <bean id="mysqlDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+    <bean id="mysqlDataSource" class="org.apache.commons.dbcp.BasicDataSource">
         <property name="driverClassName" value="${mysql.driver}"></property>
         <property name="url" value="${mysql.live.url}"></property>
         <property name="username" value="${mysql.username}"></property>
@@ -24,6 +24,9 @@
         <property name="minIdle" value="${mysql.minIdle}"/>
         <!-- 最大连接数量 -->
         <property name="maxActive" value="${mysql.maxActive}"/>
+    </bean>
+    <bean id="onlineMallJdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="mysqlDataSource" />
     </bean>
 
     <!--&lt;!&ndash;Mybaaties的配置&ndash;&gt;-->

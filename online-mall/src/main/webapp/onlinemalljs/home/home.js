@@ -2,15 +2,20 @@ var onlinemalHome = function () {
 
 };
 onlinemalHome.prototype = {
-    config: {
-        map: {}
-    },
+    mapdata:{},
+    config: {},
     excep: function (message) {
         alert(message)
     },
+    display: function () {
+    },
     init: function () {
-        this.map = COMMONUTIL.getUserInfo();
-        console.log(this.map)
+        var home = this;
+        COMMONUSERINFOUTIL.getUserInfo(function (data) {
+            home.mapdata = data;
+            console.log("this data is "+home.mapdata["userid"])
+            // alert(home.mapdata["userid"])
+        });
     },
     error: function () {
         this.excep("系统异常")

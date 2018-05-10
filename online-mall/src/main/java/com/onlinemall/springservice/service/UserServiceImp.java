@@ -13,6 +13,7 @@ import com.onlinemall.utils.error.Errors;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -29,6 +30,9 @@ import static com.onlinemall.constants.Params.*;
 public class UserServiceImp implements IUserService {
 
     private static Logger logger = Logger.getLogger(UserServiceImp.class);
+
+    @Autowired
+    private JdbcTemplate onlineMallJdbcTemplate;
 
     @Autowired
     private OnlinemallUserMapper onlinemallUserMapper;
@@ -111,7 +115,7 @@ public class UserServiceImp implements IUserService {
         logger.info("{调用登录用户服务,由springservice的checkUser方法提供服务}");
         BaseResult<OnlinemallUser> baseResult = new BaseResult<OnlinemallUser>();
         baseResult.setCode(BaseResult.FAIL);
-        String redisKey4 = null;
+        String redisKey4;
         //校验前台的数据
         OnlinemallUserExample onlinemallUserExample = new OnlinemallUserExample();
         OnlinemallUserExample.Criteria criteria = onlinemallUserExample.createCriteria();
@@ -144,8 +148,8 @@ public class UserServiceImp implements IUserService {
             criteria.andPasswordEqualTo(redisKey4);
         }
         List<OnlinemallUser> onlinemallUser = onlinemallUserMapper.selectByExample(onlinemallUserExample);
-        if (onlinemallUser.size() == 0 || null == onlinemallUser) {
-            logger.info("{mysql中存在当前用户\t" + onlinemallUser.get(0).getAccount() + "}");
+        if (onlinemallUser.size() == 0) {
+            logger.info("{mysql中不存在当前用户}");
             return baseResult;
         }
         baseResult.setDataObj(onlinemallUser.get(0));
