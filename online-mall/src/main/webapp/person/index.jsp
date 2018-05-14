@@ -120,19 +120,19 @@
                                 <i class="s-icon"></i>商城钱包
                             </div>
                             <p class="m-big squareS">
-                                <a href="#">
+                                <a href="cardlist.jsp">
                                     <i><img src="../images/shopping.png"/></i>
                                     <span class="m-title">能购物</span>
                                 </a>
                             </p>
                             <p class="m-big squareA">
-                                <a href="#">
+                                <a href="safety.jsp">
                                     <i><img src="../images/safe.png"/></i>
                                     <span class="m-title">够安全</span>
                                 </a>
                             </p>
                             <p class="m-big squareL">
-                                <a href="#">
+                                <a href="bonus.jsp">
                                     <i><img src="../images/profit.png"/></i>
                                     <span class="m-title">很灵活</span>
                                 </a>
@@ -295,150 +295,7 @@
 
                 </div>
             </div>
-            <div class="wrap-right">
-
-                <!-- 日历-->
-                <div class="day-list">
-                    <div class="s-title">
-                        每日新鲜事
-                    </div>
-                    <div class="s-box">
-                        <ul>
-                            <li><a><p>粮油冲锋周 满128减18</p></a></li>
-                            <li><a><p>防晒这么重要的事怎能随意</p></a></li>
-                            <li><a><p>春日护肤面膜不可少，你选对了吗？</p></a></li>
-                            <li><a><p>纯粹时尚，摩登出游，吸睛美衣</p></a></li>
-                            <li><a><p>粮油冲锋周 满128减18</p></a></li>
-                            <li><a><p>春日护肤面膜不可少，你选对了吗？</p></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <!--新品 -->
-                <div class="new-goods">
-                    <div class="s-bar">
-                        <i class="s-icon"></i>今日新品
-                        <a class="i-load-more-item-shadow">15款新品</a>
-                    </div>
-                    <div class="new-goods-info">
-                        <a class="shop-info" href="#">
-                            <div class="face-img-panel">
-                                <img src="../images/imgsearch1.jpg" alt="">
-                            </div>
-                            <span class="new-goods-num ">4</span>
-                            <span class="shop-title">剥壳松子</span>
-                        </a>
-                        <a class="follow">收藏</a>
-                    </div>
-                </div>
-
-                <!--热卖推荐 -->
-                <div class="new-goods">
-                    <div class="s-bar">
-                        <i class="s-icon"></i>热卖推荐
-                    </div>
-                    <div class="new-goods-info">
-                        <a class="shop-info" href="#" target="_blank">
-                            <div>
-                                <img src="../images/666.jpg" alt="">
-                            </div>
-                            <span class="one-hot-goods">￥189.60</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
             <div class="clear"></div>
-
-            <!--收藏和足迹-->
-            <div data-am-widget="tabs" class="am-tabs collection">
-                <ul class="am-tabs-nav am-cf">
-                    <li class="am-active"><a href="[data-tab-panel-0]"><i class="am-icon-heart"></i>商品收藏</a></li>
-                    <li class=""><a href="[data-tab-panel-1]"><i class="am-icon-paw"></i>购物足迹</a></li>
-                </ul>
-                <div class="am-tabs-bd">
-
-                    <div data-tab-panel-0 class="am-tab-panel am-active">
-                        <div class="am-slider am-slider-default am-slider-carousel"
-                             data-am-flexslider="{itemWidth:155,slideshow: false}">
-                            <ul class="am-slides">
-                                <li>
-                                    <a><img class="am-thumbnail" src="../images/EZA27501.jpg"/></a>
-                                    <strong class="price">¥32.9</strong>
-                                </li>
-                                <li>
-                                    <a><img class="am-thumbnail" src="../images/BxJk6.jpg"/></a>
-                                    <strong class="price">¥32.9</strong>
-                                </li>
-                                <li>
-                                    <a><img class="am-thumbnail" src="../images/Hxcag60.jpg"/></a>
-                                    <strong class="price">¥32.9</strong>
-                                </li>
-                                <li>
-                                    <a><img class="am-thumbnail" src="../images/youzi.jpg"/></a>
-                                    <strong class="price">¥32.9</strong>
-                                </li>
-                                <li>
-                                    <a><img class="am-thumbnail" src="../images/EZA27501.jpg"/></a>
-                                    <strong class="price">¥32.9</strong>
-                                </li>
-                                <li>
-                                    <a><img class="am-thumbnail" src="../images/BxJk6.jpg"/></a>
-                                    <strong class="price">¥32.9</strong>
-                                </li>
-                                <li>
-                                    <a><img class="am-thumbnail" src="../images/Hxcag60.jpg"/></a>
-                                    <strong class="price">¥32.9</strong>
-                                </li>
-                                <li>
-                                    <a><img class="am-thumbnail" src="../images/youzi.jpg"/></a>
-                                    <strong class="price">¥32.9</strong>
-                                </li>
-
-                            </ul>
-                        </div>
-                    </div>
-                    <div data-tab-panel-1 class="am-tab-panel ">
-                        <div class="am-slider am-slider-default am-slider-carousel"
-                             data-am-flexslider="{itemWidth:155, slideshow: false}">
-                            <ul class="am-slides">
-                                <li>
-                                    <a><img class="am-thumbnail" src="../images/BxJk6.jpg"/></a>
-                                    <strong class="price">¥32.9</strong>
-                                </li>
-                                <li>
-                                    <a><img class="am-thumbnail" src="../images/Hxcag60.jpg"/></a>
-                                    <strong class="price">¥32.9</strong>
-                                </li>
-                                <li>
-                                    <a><img class="am-thumbnail" src="../images/youzi.jpg"/></a>
-                                    <strong class="price">¥32.9</strong>
-                                </li>
-                                <li>
-                                    <a><img class="am-thumbnail" src="../images/EZA27501.jpg"/></a>
-                                    <strong class="price">¥32.9</strong>
-                                </li>
-                                <li>
-                                    <a><img class="am-thumbnail" src="../images/BxJk6.jpg"/></a>
-                                    <strong class="price">¥32.9</strong>
-                                </li>
-                                <li>
-                                    <a><img class="am-thumbnail" src="../images/Hxcag60.jpg"/></a>
-                                    <strong class="price">¥32.9</strong>
-                                </li>
-                                <li>
-                                    <a><img class="am-thumbnail" src="../images/youzi.jpg"/></a>
-                                    <strong class="price">¥32.9</strong>
-                                </li>
-                                <li>
-                                    <a><img class="am-thumbnail" src="../images/EZA27501.jpg"/></a>
-                                    <strong class="price">¥32.9</strong>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
         </div>
         <!--底部-->
         <div class="footer">
@@ -446,7 +303,7 @@
                 <p>
                     <a href="http://www.tute.edu.cn/">天职师大</a>
                     <b>|</b>
-                    <a href="home3.jsp">商城首页</a>
+                    <a href="../home/home3.jsp">商城首页</a>
                     <b>|</b>
                     <a href="https://www.alipay.com/">支付宝</a>
                     <b>|</b>

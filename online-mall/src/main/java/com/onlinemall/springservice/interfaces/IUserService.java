@@ -41,4 +41,7 @@ public interface IUserService {
      */
     BaseResult<OnlinemallUser> findOnlineMallUserById(RequestParams<OnlinemallUser> params);
 
+
+
+
 }

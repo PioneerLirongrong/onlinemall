@@ -1,22 +1,17 @@
-<!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=0">
-
     <title>优惠券</title>
-
     <link href="../AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css">
     <link href="../AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css">
-
     <link href="../css/personal.css" rel="stylesheet" type="text/css">
     <link href="../css/cpstyle.css" rel="stylesheet" type="text/css">
-
     <script src="../AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
     <script src="../AmazeUI-2.4.2/assets/js/amazeui.js"></script>
 </head>
-
 <body>
 <!--头 -->
 <header>
@@ -74,7 +69,6 @@
                     <ul class="am-avg-sm-2 am-tabs-nav am-nav am-nav-tabs">
                         <li class="am-active"><a href="#tab1">可用优惠券</a></li>
                         <li><a href="#tab2">已用/过期优惠券</a></li>
-
                     </ul>
 
                     <div class="am-tabs-bd">

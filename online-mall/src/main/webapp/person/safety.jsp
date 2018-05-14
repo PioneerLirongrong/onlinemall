@@ -88,7 +88,7 @@
                                 </div>
                             </div>
                             <div class="fore3">
-                                <a href="password.html">
+                                <a href="password.jsp">
                                     <div class="am-btn am-btn-secondary">修改</div>
                                 </a>
                             </div>

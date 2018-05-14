@@ -339,7 +339,7 @@ create table onlinemall_goods_daily_necessities(
 
 ```
 
-####***熟食类***
+###***熟食类***
 ```
 create table onlinemall_goods_cooked_food(
   id varchar(64) comment '记录ID',
