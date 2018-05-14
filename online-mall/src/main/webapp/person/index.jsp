@@ -10,6 +10,12 @@
     <link href="../css/vipstyle.css" rel="stylesheet" type="text/css">
     <script src="../AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
     <script src="../AmazeUI-2.4.2/assets/js/amazeui.js"></script>
+    <script src="../js/jquerycookie.js"></script>
+    <script src="../js/jquery.md5.js"></script>
+    <script src="../js/jquery.base64.js"></script>
+    <script src="../onlinemalljs/commonUtils/CommonUtil.js"></script>
+    <script src="../onlinemalljs/commonUtils/CommonUserInfo.js"></script>
+    <script src="../onlinemalljs/person/index.js"></script>
 </head>
 
 <body>
@@ -58,7 +64,7 @@
                 <div class="wrap-list">
                     <div class="m-user">
                         <!--个人信息 -->
-                        <div class="m-userinfo">
+                        <div  class="m-userinfo">
                             <a href="news.jsp">
                                 <div class="tipsBox"><i class="am-icon-envelope"></i></div>
                             </a>
@@ -66,18 +72,8 @@
                                 <a class="m-pic" href="information.jsp">
                                     <img src="../images/getAvatar.do.jpg">
                                 </a>
-                                <div class="m-info">
-                                    <em class="s-name">小叮当</em>
-                                    <div class="vip1"><a href="#"><span></span><em>会员专享</em></a></div>
-                                    <div class="safeText"><a href="safety.jsp">账户安全:<em
-                                            style="margin-left:20px ;">60</em>分</a>
-                                        <div class="progressBar"><span style="left: -95px;" class="progress"></span>
-                                        </div>
-                                    </div>
-                                    <div class="m-address">
-                                        <a href="address.jsp" class="i-trigger">收货地址<i class="am-icon-angle-right"
-                                                                                       style="padding-left:5px ;"></i></a>
-                                    </div>
+                                <div id= 'm-userInfo' class="m-info">
+
                                 </div>
                             </div>
                             <div class="m-right">
@@ -85,7 +81,6 @@
                                     <a href="news.jsp"><i class="am-icon-dropbox  am-icon-md"
                                                           style="padding-right:5px ;"></i>消息盒子</a>
                                 </div>
-
                             </div>
                         </div>
 

@@ -16,7 +16,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import static com.onlinemall.constants.Params.ACCOUNT;
-import static com.onlinemall.constants.Params.USERNAME;
 
 /**
  * @author lrr
@@ -68,6 +67,37 @@ public class UserServiceController {
         logger.info("{后台返给前台的结果"+baseResult.toString()+"}");
         return baseResult;
     }
+
+    @RequestMapping(value = "/getUserLoginOutStatus",method = RequestMethod.POST)
+    public BaseResult<OnlinemallUser> getUserLoginOutStatus(@ModelAttribute RequestParams<OnlinemallUser> params){
+        logger.info("{请求后台接口\'/onlinemall/getUserLoginOutStatus\'}");
+        logger.info("{前台的请求参数"+params.toString()+"}");
+        BaseResult<OnlinemallUser> baseResult = iUserService.getUserLoginOutStatus(params);
+        logger.info("{后台返给前台的结果"+baseResult.toString()+"}");
+        return baseResult;
+    }
+
+    @RequestMapping(value = "updateUserAllInformation",method = RequestMethod.POST)
+    public BaseResult<OnlinemallUser> updateOnlineMallUserByUserId(@ModelAttribute RequestParams params){
+        logger.info("{请求后台接口\'/onlinemall/updateOnlineMallUserByUserId\'}");
+        logger.info("{前台的请求参数"+params.toString()+"}");
+        BaseResult<OnlinemallUser> baseResult = iUserService.updateOnlineMallUserByUserId(params);
+        logger.info("{后台返给前台的结果"+baseResult.toString()+"}");
+        return baseResult;
+    }
+
+    @RequestMapping(value = "loginOut",method = RequestMethod.POST)
+    public BaseResult<OnlinemallUser> loginOut(@ModelAttribute RequestParams params){
+        logger.info("{请求后台接口\'/onlinemall/loginOut\'}");
+        logger.info("{前台的请求参数"+params.toString()+"}");
+        BaseResult<OnlinemallUser> baseResult = iUserService.loginOut(params);
+        HttpSession session = getSession();
+        session.setAttribute(ACCOUNT,((OnlinemallUser) baseResult.getDataObj()).getAccount());
+        session.invalidate();
+        logger.info("{后台返给前台的结果"+baseResult.toString()+"}");
+        return baseResult;
+    }
+
 
     /**
      * 获取session

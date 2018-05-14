@@ -15,7 +15,7 @@ create table onlinemall_user(
   weibonumber varchar(64) comment '微博',
   password varchar(64) comment '密码',
   name varchar(64) comment '用户名',
-  sex varchar(64) comment '账户安全份',
+  sex varchar(1) comment '性别(1:男 0:女)',
   birthday varchar(64) comment '生日',
   securitydegree int comment '账户安全份',
   securitypay varchar(1) comment '(1:启动 0:不启动)',

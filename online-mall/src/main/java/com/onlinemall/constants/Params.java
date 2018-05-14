@@ -26,5 +26,7 @@ public class Params {
     public static final String MAIL = "mail";
     public static final String ACCOUNT = "account";
     public static final String PASSWORD_PARA = "MD5";
+    public static final String LOGIN = "login";
+    public static final String LOGOUT = "logout";
 
 }

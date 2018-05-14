@@ -27,6 +27,14 @@ public interface IUserService {
 
 
     /**
+     * 退出登录的接口
+     * @param params
+     * @return
+     */
+    BaseResult<OnlinemallUser> loginOut(RequestParams<OnlinemallUser> params);
+
+
+    /**
      * 找回密码接口
      * @param params
      * @return
@@ -42,6 +50,18 @@ public interface IUserService {
     BaseResult<OnlinemallUser> findOnlineMallUserById(RequestParams<OnlinemallUser> params);
 
 
+    /**
+     * 跟新用户的信息
+     * @param params
+     * @return
+     */
+    BaseResult<OnlinemallUser> updateOnlineMallUserByUserId(RequestParams<OnlinemallUser> params);
 
+    /**
+     * 得到用户的登录状态
+     * @param params
+     * @return
+     */
+    BaseResult<OnlinemallUser> getUserLoginOutStatus(RequestParams<OnlinemallUser> params);
 
 }

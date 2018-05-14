@@ -88,5 +88,35 @@ var COMMONUSERINFOUTIL = {
             }
 
         })
+    },
+    getUserLoginOut: function (init) {
+        var data = {};
+        var map = {};
+        var userId = $.cookie("onlinemall_zc_userId");
+        if (null == userId) {
+            map['params["userid"]'] = "1bb4df95203e48ea823f18fa53c0895e";
+        } else {
+            map['params["userid"]'] = $.cookie("onlinemall_zc_userId");
+        }
+        $.ajax({
+            type: "POST",
+            url: "/onlinemall/getUserLoginOutStatus.do",
+            data: map,
+            dataType: "JSON",
+            success: function (result) {
+                if (result.code == '1') {
+                    data['status'] = result.status;
+                    if(typeof(result.status)!="undefined"){
+                        init&&init(data);
+                    }
+
+                }
+            },
+            error: function () {
+                console.log("/onlinemall/getUserLoginOutStatus接口异常了")
+                alert("bbbbb")
+            }
+
+        })
     }
 }

@@ -16,6 +16,7 @@ public class BaseResult<T> implements Serializable {
     private long recordsFiltered = 0;
     private String code;
     private String message;
+    private String status;
     private Collection<T> dataList;
     private Object dataObj;
     private long timeStamp;
@@ -78,12 +79,21 @@ public class BaseResult<T> implements Serializable {
         this.errors = errors;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     @Override
     public String toString() {
         return "BaseResult{" +
                 "recordsFiltered=" + recordsFiltered +
                 ", code='" + code + '\'' +
                 ", message='" + message + '\'' +
+                ", status='" + status + '\'' +
                 ", dataList=" + dataList +
                 ", dataObj=" + dataObj +
                 ", timeStamp=" + timeStamp +

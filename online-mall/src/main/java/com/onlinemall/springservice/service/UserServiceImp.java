@@ -1,5 +1,6 @@
 package com.onlinemall.springservice.service;
 
+import com.onlinemall.constants.Params;
 import com.onlinemall.dao.mapper.OnlinemallUserMapper;
 import com.onlinemall.dao.model.OnlinemallUser;
 import com.onlinemall.dao.model.OnlinemallUserExample;
@@ -102,6 +103,8 @@ public class UserServiceImp implements IUserService {
             }else {
                 onlinemallUser.setAccount("幸运"+String.format("%03d",new Random().nextInt(10)+"")+"用户");
             }
+            //设置账户安全分 默认值
+            onlinemallUser.setSecuritydegree(60);
             onlinemallUserMapper.insert(onlinemallUser);
             //在redis里缓存一份数据,方便登录是做校验
             //缓存手机号
@@ -161,11 +164,33 @@ public class UserServiceImp implements IUserService {
             logger.info("{mysql中不存在当前用户}");
             return baseResult;
         }
+        //在redis中记录这当前用户的登录状态
+        CacheUtil.set(onlinemallUser.get(0).getUserid(),Params.LOGIN);
         baseResult.setDataObj(onlinemallUser.get(0));
         baseResult.setCode(BaseResult.SUCCESS);
         logger.info("{mysql中存在当前用户\t" + onlinemallUser.get(0).getAccount() + "}");
         return baseResult;
 
+    }
+
+
+    public BaseResult<OnlinemallUser> loginOut(RequestParams<OnlinemallUser> params) {
+        logger.info("{调用修改用户密码的服务,由springservice的方法loginOut提供服务}");
+        BaseResult<OnlinemallUser> baseResult = new BaseResult<OnlinemallUser>();
+        baseResult.setCode(BaseResult.FAIL);
+        if(StringUtils.isNotBlank((String) params.getParams().get(USERID))){
+            //清除掉redis里的数据
+            String userId = (String) params.getParams().get(USERID);
+            CacheUtil.set(userId,Params.LOGOUT);
+            baseResult.setCode(BaseResult.SUCCESS);
+            baseResult.setStatus(Params.LOGOUT);
+            baseResult.setDataObj(new OnlinemallUser());
+        }else{
+            baseResult.setCode(BaseResult.SUCCESS);
+            baseResult.setStatus(Params.LOGOUT);
+            baseResult.setDataObj(new OnlinemallUser());
+        }
+        return baseResult;
     }
 
     public BaseResult<OnlinemallUser> findPassByMailOrPhone(RequestParams<OnlinemallUser> params) {
@@ -262,5 +287,36 @@ public class UserServiceImp implements IUserService {
             baseResult.setDataObj(onlinemallUser);
             return baseResult;
         }
+    }
+
+    public BaseResult<OnlinemallUser> updateOnlineMallUserByUserId(RequestParams<OnlinemallUser> params) {
+        logger.info("{调用获取用户详细信息服务,由springservice中的方法updateOnlineMallUserByUserId提供服务}");
+        BaseResult<OnlinemallUser> baseResult = new BaseResult<OnlinemallUser>();
+        baseResult.setCode(BaseResult.FAIL);
+        return null;
+    }
+
+    public BaseResult<OnlinemallUser> getUserLoginOutStatus(RequestParams<OnlinemallUser> params) {
+        logger.info("{调用获取用户详细信息服务,由springservice中的方法getUserLoginOutStatus提供服务}");
+        BaseResult<OnlinemallUser> baseResult = new BaseResult<OnlinemallUser>();
+        baseResult.setStatus(Params.LOGOUT);
+        baseResult.setCode(BaseResult.FAIL);
+        if(StringUtils.isNotBlank((String) params.getParams().get(USERID))){
+            String status = CacheUtil.get((String) params.getParams().get(USERID));
+            logger.info("{redis里存储的状态为"+status+"}");
+            if(StringUtils.isBlank(status)){
+                baseResult.setCode(BaseResult.SUCCESS);
+                baseResult.setStatus(Params.LOGOUT);
+            }else {
+                if(Params.LOGIN.equals(status)){
+                    baseResult.setCode(BaseResult.SUCCESS);
+                    baseResult.setStatus(Params.LOGIN);
+                }else {
+                    baseResult.setCode(BaseResult.SUCCESS);
+                    baseResult.setStatus(Params.LOGOUT);
+                }
+            }
+        }
+        return baseResult;
     }
 }

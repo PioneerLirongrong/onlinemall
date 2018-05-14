@@ -1,7 +1,7 @@
-var onlineMallIndex = function () {
+var onlineMallAddress = function () {
 
 };
-onlineMallIndex.prototype = {
+onlineMallAddress.prototype = {
     mapData:{},
     config: {},
     exception: function (message) {
@@ -21,6 +21,6 @@ onlineMallIndex.prototype = {
     }
 };
 $(document).ready(function () {
-    var index = new onlineMallIndex();
-    index.init();
+    var address = new onlineMallAddress();
+    address.init();
 });

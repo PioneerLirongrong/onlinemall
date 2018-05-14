@@ -40,7 +40,11 @@
                     <%
                     } else {
                     %>
-                    <a href="../person/index.jsp" target="_top"><i class="am-icon-user am-icon-fw"></i><%= username%></a>
+                    <a href="../person/index.jsp" target="_top"><i class="am-icon-user am-icon-fw"></i><%= username%>
+                    </a>
+                    <a href="javascript:void(0)" onclick="getUserLoginOutStatus('6')" target="_top"><i
+                            class="am-icon-user am-icon-fw"></i>退出当前登录的用户
+                    </a>
                     <%
                         }
                     %>
@@ -48,21 +52,23 @@
             </div>
         </ul>
         <ul class="message-r">
-            <div class="topMessage home">
-                <div class="menu-hd"><a href="#" target="_top" class="h">商城首页</a></div>
-            </div>
             <div class="topMessage my-shangcheng">
-                <div class="menu-hd MyShangcheng"><a href="../person/index.jsp" target="_top"><i class="am-icon-user am-icon-fw"></i>个人中心</a>
+                <div class="menu-hd MyShangcheng"><a id='mc-menu-hd_1' target="_top" href="javascript:void(0)"
+                                                     onclick="getUserLoginOutStatus('1')"><i
+                        class="am-icon-user am-icon-fw"></i>个人中心</a>
                 </div>
             </div>
             <div class="topMessage mini-cart">
-                <div class="menu-hd"><a id="mc-menu-hd" href="#" target="_top"><i
+                <div class="menu-hd"><a id="mc-menu-hd_2" target="_top" href="javascript:void(0)"
+                                        onclick="getUserLoginOutStatus('2')"><i
                         class="am-icon-shopping-cart  am-icon-fw"></i><span>购物车</span><strong id="J_MiniCartNum"
                                                                                               class="h">0</strong></a>
                 </div>
             </div>
             <div class="topMessage favorite">
-                <div class="menu-hd"><a href="#" target="_top"><i class="am-icon-heart am-icon-fw"></i><span>收藏夹</span></a>
+                <div class="menu-hd"><a id='mc-menu-hd_3' target="_top" href="javascript:void(0)"
+                                        onclick="getUserLoginOutStatus('3')"><i
+                        class="am-icon-heart am-icon-fw"></i><span>收藏夹</span></a>
                 </div>
             </div>
         </ul>
@@ -84,7 +90,6 @@
             </form>
         </div>
     </div>
-
     <div class="clear"></div>
 </div>
 
@@ -1261,25 +1266,24 @@
     <div class="footer ">
         <div class="footer-hd ">
             <p>
-                <a href="# ">天职师大</a>
+                <a href="http://www.tute.edu.cn/">天职师大</a>
                 <b>|</b>
-                <a href="# ">商城首页</a>
+                <a href="../home/home3.jsp">商城首页</a>
                 <b>|</b>
-                <a href="# ">支付宝</a>
+                <a href="https://www.alipay.com/">支付宝</a>
                 <b>|</b>
-                <a href="# ">物流</a>
+                <a href="../error/error.jsp">物流</a>
             </p>
         </div>
         <div class="footer-bd ">
             <p>
-                <a href="#">关于我们</a>
-                <a href="# ">合作伙伴</a>
-                <a href="# ">联系我们</a>
-                <a href="# ">网站地图</a>
+                <a href="../error/friend.jsp">关于我们</a>
+                <a href="../error/friend.jsp">合作伙伴</a>
+                <a href="../error/friend.jsp">联系我们</a>
+                <a href="../error/friend.jsp">网站地图</a>
             </p>
         </div>
     </div>
-</div>
 </div>
 </div>
 </div>
@@ -1295,28 +1299,8 @@
 <div class=tip>
     <div id="sidebar">
         <div id="wrap">
-            <div id="prof" class="item ">
-                <a href="# ">
-                    <span class="setting "></span>
-                </a>
-                <div class="ibar_login_box status_login ">
-                    <div class="avatar_box ">
-                        <p class="avatar_imgbox "><img src="../images/no-img_mid_.jpg "/></p>
-                        <ul class="user_info ">
-                            <li>用户名：sl1903</li>
-                            <li>级&nbsp;别：普通会员</li>
-                        </ul>
-                    </div>
-                    <div class="login_btnbox ">
-                        <a href="# " class="login_order ">我的订单</a>
-                        <a href="# " class="login_favorite ">我的收藏</a>
-                    </div>
-                    <i class="icon_arrow_white "></i>
-                </div>
-
-            </div>
             <div id="shopCart " class="item ">
-                <a href="# ">
+                <a id='mc-menu-hd_4' href="javascript:void(0)" onclick="getUserLoginOutStatus('4')">
                     <span class="message "></span>
                 </a>
                 <p>
@@ -1324,28 +1308,8 @@
                 </p>
                 <p class="cart_num ">0</p>
             </div>
-            <div id="asset " class="item ">
-                <a href="# ">
-                    <span class="view "></span>
-                </a>
-                <div class="mp_tooltip ">
-                    我的资产
-                    <i class="icon_arrow_right_black "></i>
-                </div>
-            </div>
-
-            <div id="foot " class="item ">
-                <a href="# ">
-                    <span class="zuji "></span>
-                </a>
-                <div class="mp_tooltip ">
-                    我的足迹
-                    <i class="icon_arrow_right_black "></i>
-                </div>
-            </div>
-
             <div id="brand " class="item ">
-                <a href="#">
+                <a id='mc-menu-hd_5' href="javascript:void(0)" onclick="getUserLoginOutStatus('5')">
                     <span class="wdsc "><img src="../images/wdsc.png "/></span>
                 </a>
                 <div class="mp_tooltip ">
@@ -1354,27 +1318,7 @@
                 </div>
             </div>
 
-            <div id="broadcast " class="item ">
-                <a href="# ">
-                    <span class="chongzhi "><img src="../images/chongzhi.png "/></span>
-                </a>
-                <div class="mp_tooltip ">
-                    我要充值
-                    <i class="icon_arrow_right_black "></i>
-                </div>
-            </div>
-
             <div class="quick_toggle ">
-                <li class="qtitem ">
-                    <a href="# "><span class="kfzx "></span></a>
-                    <div class="mp_tooltip ">客服中心<i class="icon_arrow_right_black "></i></div>
-                </li>
-                <!--二维码 -->
-                <li class="qtitem ">
-                    <a href="#none "><span class="mpbtn_qrcode "></span></a>
-                    <div class="mp_qrcode " style="display:none; "><img src="../images/weixin_code_145.png "/><i
-                            class="icon_arrow_white "></i></div>
-                </li>
                 <li class="qtitem ">
                     <a href="#top " class="return_top "><span class="top "></span></a>
                 </li>
@@ -1456,5 +1400,80 @@
 </script>
 <script type="text/javascript " src="../basic/js/quick_links.js "></script>
 </body>
+<script>
+    function getUserLoginOutStatus(data) {
+        if ('1' == data) {
+            COMMONUSERINFOUTIL.getUserLoginOut(function (data) {
+                if (data['status'] == "login") {
+                    $('#mc-menu-hd_1').attr('href', '../person/index.jsp');
+                } else {
+                    alert("请登录后操作")
+                    return;
+                }
+            })
+            //href="../person/index.jsp"
+        } else if ('2' == data) {
+            COMMONUSERINFOUTIL.getUserLoginOut(function (data) {
+                if (data['status'] == "login") {
+                    $('#mc-menu-hd_2').attr('href', '../home/shopcart.jsp');
+                } else {
+                    alert("请登录后操作")
+                    return;
+                }
+            })
+            //href="../home/shopcart.jsp"
+        } else if ('3' == data) {
+            COMMONUSERINFOUTIL.getUserLoginOut(function (data) {
+                if (data['status'] == "login") {
+                    $('#mc-menu-hd_3').attr('href', '../person/collection.jsp');
+                } else {
+                    alert("请登录后操作")
+                    return;
+                }
+            })
+            //href="../person/collection.jsp"
+        } else if ('4' == data) {
+            COMMONUSERINFOUTIL.getUserLoginOut(function (data) {
+                if (data['status'] == "login") {
+                    $('#mc-menu-hd_4').attr('href', '../home/shopcart.jsp');
+                } else {
+                    alert("请登录后操作")
+                    return;
+                }
+            })
+        } else if ('5' == data) {
+            COMMONUSERINFOUTIL.getUserLoginOut(function (data) {
+                if (data['status'] == "login") {
+                    $('#mc-menu-hd_5').attr('href', '../person/collection.jsp');
+                } else {
+                    alert("请登录后操作")
+                    return;
+                }
+            })
+        } else {
+            var map = {};
+            var userId = $.cookie("onlinemall_zc_userId");
+            if (null == userId) {
+                map['params["userid"]'] = "1bb4df95203e48ea823f18fa53c0895e";
+            } else {
+                map['params["userid"]'] = $.cookie("onlinemall_zc_userId");
+            }
+            $.ajax({
+                type: "POST",
+                url: "/onlinemall/loginOut.do",
+                data: map,
+                dataType: "JSON",
+                success: function (result) {
+                    if (result.code == '1') {
+                        window.location.href = "../home/home3.jsp";
+                    }
+                },
+                error: function () {
+                    alert("网络异常，退出登录失败")
+                }
 
+            })
+        }
+    }
+</script>
 </html>

@@ -27,5 +27,6 @@ public class Errors implements Serializable {
     public final static Errors USER_MAIL_FORMAT_ERROR = new Errors("1002","用户邮箱格式错误");
     public final static Errors USER_MAIL_PASSWORD_FORMAT_ERROR = new Errors("1003","用户密码不一致");
     public final static Errors USER_NOT_EXIST_ERRPOR = new Errors("1004","用户不存在");
+    public final static Errors USER_NOT_LOGIN = new Errors("1005","用户可能不存在或未登录过");
 
 }

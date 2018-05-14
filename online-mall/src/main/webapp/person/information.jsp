@@ -11,6 +11,12 @@
     <link href="../css/infstyle.css" rel="stylesheet" type="text/css">
     <script src="../AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
     <script src="../AmazeUI-2.4.2/assets/js/amazeui.js"></script>
+    <script src="../js/jquerycookie.js"></script>
+    <script src="../js/jquery.md5.js"></script>
+    <script src="../js/jquery.base64.js"></script>
+    <script src="../onlinemalljs/commonUtils/CommonUtil.js"></script>
+    <script src="../onlinemalljs/commonUtils/CommonUserInfo.js"></script>
+    <script src="../onlinemalljs/person/infomation.js"></script>
 </head>
 
 <body>
@@ -69,17 +75,16 @@
                 <div class="user-infoPic">
 
                     <div class="filePic">
-                        <input type="file" class="inputPic" allowexts="gif,jpeg,jpg,png,bmp" accept="image/*">
                         <img class="am-circle am-img-thumbnail" src="../images/getAvatar.do.jpg" alt=""/>
                     </div>
 
                     <p class="am-form-help">头像</p>
 
-                    <div class="info-m">
-                        <div><b>用户名：<i>小叮当</i></b></div>
-                        <div class="vip">
-                            <span></span><a href="#">会员专享</a>
-                        </div>
+                    <div id= 'info1' class="info-m">
+                        <%--<div><b>用户名：<i>小叮当</i></b></div>--%>
+                        <%--<div class="vip">--%>
+                            <%--<span></span><a >会员专享</a>--%>
+                        <%--</div>--%>
                     </div>
                 </div>
 
@@ -159,7 +164,7 @@
                         </div>
                         <div class="am-form-group address">
                             <label for="user-address" class="am-form-label">收货地址</label>
-                            <div id= 'user-address' class="am-form-content address">
+                            <div id='user-address' class="am-form-content address">
                                 <a href="address.jsp">
                                     <p class="new-mu_l2cw">
                                         <span class="province">湖北</span>省
@@ -174,7 +179,7 @@
                         </div>
                         <div class="am-form-group safety">
                             <label for="user-safety" class="am-form-label">账号安全</label>
-                            <div id= 'user-safety' class="am-form-content safety">
+                            <div id='user-safety' class="am-form-content safety">
                                 <a href="safety.jsp">
 
                                     <span class="am-icon-angle-right"></span>
