@@ -100,13 +100,13 @@
                                     <h6 class="s-msg-bar"><span class="s-name">每日新鲜事</span></h6>
                                     <div class="s-msg-content i-msg-downup-wrap">
                                         <div class="i-msg-downup-con">
-                                            <a class="i-markRead" target="_blank" href="blog.html">
+                                            <a class="i-markRead" target="_blank" href="blog.jsp">
                                                 <img src="../images/TB102.jpg">
                                                 <p class="s-main-content">
                                                     最特色的湖北年货都在这儿 ~快来囤年货啦！
                                                 </p>
                                                 <p class="s-row s-main-content">
-                                                    <a href="blog.html">
+                                                    <a href="blog.jsp">
                                                         阅读全文 <i class="am-icon-angle-right"></i>
                                                     </a>
                                                 </p>
@@ -124,7 +124,7 @@
                                 <h6 class="s-msg-bar"><span class="s-name">订单已签收</span></h6>
                                 <div class="s-msg-content i-msg-downup-wrap">
                                     <div class="i-msg-downup-con">
-                                        <a class="i-markRead" target="_blank" href="logistics.html">
+                                        <a class="i-markRead" target="_blank" href="logistics.jsp">
                                             <div class="m-item">
                                                 <div class="item-pic">
                                                     <img src="../images/kouhong.jpg_80x80.jpg"
@@ -153,7 +153,7 @@
                                 <h6 class="s-msg-bar"><span class="s-name">卖家已退款&nbsp;¥12.90元</span></h6>
                                 <div class="s-msg-content i-msg-downup-wrap">
                                     <div class="i-msg-downup-con">
-                                        <a class="i-markRead" target="_blank" href="record.html">
+                                        <a class="i-markRead" target="_blank" href="record.jsp">
                                             <div class="m-item">
                                                 <div class="item-pic">
                                                     <img src="../images/kouhong.jpg_80x80.jpg"
@@ -167,7 +167,7 @@
                                             </div>
 
                                             <p class="s-row s-main-content">
-                                                <a href="record.html">钱款去向</a> <i class="am-icon-angle-right"></i>
+                                                <a href="record.jsp">钱款去向</a> <i class="am-icon-angle-right"></i>
                                             </p>
                                         </a>
                                     </div>
@@ -217,7 +217,7 @@
                 <ul>
                     <li><a href="information.jsp">个人信息</a></li>
                     <li><a href="safety.jsp">安全设置</a></li>
-                    <li><a href="address.html">地址管理</a></li>
+                    <li><a href="address.jsp">地址管理</a></li>
                     <li><a href="cardlist.jsp">快捷支付</a></li>
                 </ul>
             </li>
@@ -252,7 +252,7 @@
                 <p><i class="am-icon-qq"></i>在线客服</p>
                 <ul>
                     <li><a href="consultation.jsp">商品咨询</a></li>
-                    <li><a href="suggest.html">意见反馈</a></li>
+                    <li><a href="suggest.jsp">意见反馈</a></li>
 
                     <li><a href="news.jsp">我的消息</a></li>
                 </ul>

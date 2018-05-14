@@ -160,7 +160,7 @@
                         <div class="am-form-group address">
                             <label for="user-address" class="am-form-label">收货地址</label>
                             <div id= 'user-address' class="am-form-content address">
-                                <a href="address.html">
+                                <a href="address.jsp">
                                     <p class="new-mu_l2cw">
                                         <span class="province">湖北</span>省
                                         <span class="city">武汉</span>市
@@ -227,7 +227,7 @@
                 <ul>
                     <li><a href="information.jsp">个人信息</a></li>
                     <li><a href="safety.jsp">安全设置</a></li>
-                    <li><a href="address.html">地址管理</a></li>
+                    <li><a href="address.jsp">地址管理</a></li>
                     <li><a href="cardlist.jsp">快捷支付</a></li>
                 </ul>
             </li>
@@ -262,7 +262,7 @@
                 <p><i class="am-icon-qq"></i>在线客服</p>
                 <ul>
                     <li><a href="consultation.jsp">商品咨询</a></li>
-                    <li><a href="suggest.html">意见反馈</a></li>
+                    <li><a href="suggest.jsp">意见反馈</a></li>
 
                     <li><a href="news.jsp">我的消息</a></li>
                 </ul>

@@ -42,6 +42,7 @@
 				</div>
 				<div class="topMessage favorite">
 					<div class="menu-hd"><a href="#" target="_top"><i class="am-icon-heart am-icon-fw"></i><span>收藏夹</span></a></div>
+				</div>
 			</ul>
 			</div>
 
@@ -98,7 +99,7 @@
 									<ins class="deftip">默认地址</ins>
 								</div>
 								<div class="address-right">
-									<a href="../person/address.html">
+									<a href="../person/address.jsp">
 										<span class="am-icon-angle-right am-icon-lg"></span></a>
 								</div>
 								<div class="clear"></div>
@@ -266,6 +267,7 @@
 										<div class="clear"></div>
 
 									</div>
+								</div>
 							</tr>
 							<div class="clear"></div>
 							</div>
@@ -331,6 +333,7 @@
 										<div class="clear"></div>
 
 									</div>
+								</div>
 							</tr>
 							</div>
 							<div class="clear"></div>

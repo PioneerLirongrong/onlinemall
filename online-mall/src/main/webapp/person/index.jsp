@@ -75,8 +75,8 @@
                                         </div>
                                     </div>
                                     <div class="m-address">
-                                        <a href="address.html" class="i-trigger">收货地址<i class="am-icon-angle-right"
-                                                                                        style="padding-left:5px ;"></i></a>
+                                        <a href="address.jsp" class="i-trigger">收货地址<i class="am-icon-angle-right"
+                                                                                       style="padding-left:5px ;"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -101,13 +101,13 @@
                                 </a>
                             </p>
                             <p class="m-wallet">
-                                <a href="wallet.html">
+                                <a href="wallet.jsp">
                                     <em class="m-num">0.00</em>
                                     <span class="m-title">账户余额</span>
                                 </a>
                             </p>
                             <p class="m-bill">
-                                <a href="pointnew.html">
+                                <a href="pointnew.jsp">
                                     <em class="m-num">10</em>
                                     <span class="m-title">总积分</span>
                                 </a>
@@ -161,11 +161,11 @@
                             <div class="orderContent">
                                 <div class="orderContentpic">
                                     <div class="imgBox">
-                                        <a href="orderinfo.html"><img src="../images/youzi.jpg"></a>
+                                        <a href="orderinfo.jsp"><img src="../images/youzi.jpg"></a>
                                     </div>
                                 </div>
                                 <div class="detailContent">
-                                    <a href="orderinfo.html" class="delivery">签收</a>
+                                    <a href="orderinfo.jsp" class="delivery">签收</a>
                                     <div class="orderID">
                                         <span class="time">2016-03-09</span>
                                         <span class="splitBorder">|</span>
@@ -186,11 +186,11 @@
                             <div class="orderContent">
                                 <div class="orderContentpic">
                                     <div class="imgBox">
-                                        <a href="orderinfo.html"><img src="../images/heart.jpg"></a>
+                                        <a href="orderinfo.jsp"><img src="../images/heart.jpg"></a>
                                     </div>
                                 </div>
                                 <div class="detailContent">
-                                    <a href="orderinfo.html" class="delivery">派件</a>
+                                    <a href="orderinfo.jsp" class="delivery">派件</a>
                                     <div class="orderID">
                                         <span class="time">2016-03-09</span>
                                         <span class="splitBorder">|</span>
@@ -233,7 +233,7 @@
                                     <p>为你推荐</p>
                                 </li>
                             </a>
-                            <a href="blog.html">
+                            <a href="blog.jsp">
                                 <li class="am-u-sm-4"><i class="am-icon-share-alt am-icon-md"></i>
                                     <p>我的分享</p>
                                 </li>
@@ -252,7 +252,7 @@
                             <i class="s-icon"></i>会员中心
                         </div>
                         <div class="s-bar">
-                            <a href="suggest.html"><i class="s-icon"></i>意见反馈</a>
+                            <a href="suggest.jsp"><i class="s-icon"></i>意见反馈</a>
                         </div>
                     </div>
 
@@ -332,7 +332,7 @@
                 <ul>
                     <li><a href="information.jsp">个人信息</a></li>
                     <li><a href="safety.jsp">安全设置</a></li>
-                    <li><a href="address.html">地址管理</a></li>
+                    <li><a href="address.jsp">地址管理</a></li>
                     <li><a href="cardlist.jsp">快捷支付</a></li>
                 </ul>
             </li>
@@ -367,7 +367,7 @@
                 <p><i class="am-icon-qq"></i>在线客服</p>
                 <ul>
                     <li><a href="consultation.jsp">商品咨询</a></li>
-                    <li><a href="suggest.html">意见反馈</a></li>
+                    <li><a href="suggest.jsp">意见反馈</a></li>
 
                     <li><a href="news.jsp">我的消息</a></li>
                 </ul>

@@ -139,9 +139,11 @@
                             <img src="../images/image.jpg" alt="">
                         </div>
                         <div class="item-opinion">
-                            <li><i class="op1"></i>好评</li>
-                            <li><i class="op2"></i>中评</li>
-                            <li><i class="op3"></i>差评</li>
+                            <ul>
+                                <li><i class="op1"></i>好评</li>
+                                <li><i class="op2"></i>中评</li>
+                                <li><i class="op3"></i>差评</li>
+                            </ul>
                         </div>
                     </div>
 
@@ -238,7 +240,7 @@
                 <ul>
                     <li><a href="information.jsp">个人信息</a></li>
                     <li><a href="safety.jsp">安全设置</a></li>
-                    <li><a href="address.html">地址管理</a></li>
+                    <li><a href="address.jsp">地址管理</a></li>
                     <li><a href="cardlist.jsp">快捷支付</a></li>
                 </ul>
             </li>
@@ -273,7 +275,7 @@
                 <p><i class="am-icon-qq"></i>在线客服</p>
                 <ul>
                     <li><a href="consultation.jsp">商品咨询</a></li>
-                    <li><a href="suggest.html">意见反馈</a></li>
+                    <li><a href="suggest.jsp">意见反馈</a></li>
 
                     <li><a href="news.jsp">我的消息</a></li>
                 </ul>

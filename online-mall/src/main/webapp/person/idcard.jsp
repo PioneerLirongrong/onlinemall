@@ -1,18 +1,17 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=0">
 
-    <title>商品咨询</title>
+    <title>实名认证</title>
 
     <link href="../AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css">
     <link href="../AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css">
 
     <link href="../css/personal.css" rel="stylesheet" type="text/css">
-
-    <script src="../AmazeUI-2.4.2/assets/js/jquery.min.js" type="text/javascript"></script>
-    <script src="../AmazeUI-2.4.2/assets/js/amazeui.js" type="text/javascript"></script>
+    <link href="../css/stepstyle.css" rel="stylesheet" type="text/css">
 
 </head>
 
@@ -45,7 +44,6 @@
         </div>
     </article>
 </header>
-
 <div class="nav-table">
     <div class="long-title"><span class="all-goods">全部分类</span></div>
     <div class="nav-cont">
@@ -56,43 +54,71 @@
     </div>
 </div>
 <b class="line"></b>
-
 <div class="center">
     <div class="col-main">
         <div class="main-wrap">
-            <!--标题 -->
+
             <div class="am-cf am-padding">
-                <div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">商品咨询</strong> /
-                    <small>Commodity&nbsp;Consultation</small>
+                <div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">实名认证</strong> /
+                    <small>Real&nbsp;authentication</small>
                 </div>
             </div>
             <hr/>
-            <div class="suggestmain">
-                <p>咨询问题分类：</p>
-                <div class="suggestlist">
-                    <select data-am-selected>
-                        <option value="a" selected>请选择问题类型</option>
-                        <option value="b">产品问题</option>
-                        <option value="c">促销问题</option>
-                        <option value="d">支付问题</option>
-                        <option value="e">退款问题</option>
-                        <option value="f">配送问题</option>
-                        <option value="g">售后问题</option>
-                        <option value="h">发票问题</option>
-                        <option value="o">退换货</option>
-                        <option value="m">其他</option>
-                    </select>
+            <div class="authentication">
+                <p class="tip">请填写您身份证上的真实信息，以用于报关审核</p>
+                <div class="authenticationInfo">
+                    <p class="title">填写个人信息</p>
+
+                    <div class="am-form-group">
+                        <label for="user-name" class="am-form-label">真实姓名</label>
+                        <div class="am-form-content">
+                            <input type="text" id="user-name" placeholder="请输入您的真实姓名">
+                        </div>
+                    </div>
+                    <div class="am-form-group">
+                        <label for="user-IDcard" class="am-form-label">身份证号</label>
+                        <div class="am-form-content">
+                            <input type="tel" id="user-IDcard" placeholder="请输入您的身份证信息">
+                        </div>
+                    </div>
                 </div>
-                <div class="suggestDetail">
-                    <p>描述问题：</p>
-                    <blockquote class="textArea">
-                        <textarea name="opinionContent" id="say_some" cols="60" rows="5" autocomplete="off"
-                                  placeholder="在此描述您的意见具体内容"></textarea>
-                        <div class="fontTip"><i class="cur">0</i> / <i>200</i></div>
-                    </blockquote>
+                <div class="authenticationPic">
+                    <p class="title">上传身份证照片</p>
+                    <p class="tip">请按要求上传身份证</p>
+                    <ul class="cardlist">
+                        <li>
+                            <div class="cardPic">
+                                <img src="../images/cardbg.jpg">
+                                <div class="cardText"><i class="am-icon-plus"></i>
+                                    <p>正面照片</p>
+                                </div>
+                                <p class="titleText">身份证正面</p>
+                            </div>
+                            <div class="cardExample">
+                                <img src="../images/cardbg.jpg">
+                                <p class="titleText">示例</p>
+                            </div>
+
+                        </li>
+                        <li>
+                            <div class="cardPic">
+                                <img src="../images/cardbg.jpg">
+                                <div class="cardText"><i class="am-icon-plus"></i>
+                                    <p>背面照片</p>
+                                </div>
+                                <p class="titleText">身份证背面</p>
+                            </div>
+                            <div class="cardExample">
+                                <img src="../images/cardbg.jpg">
+                                <p class="titleText">示例</p>
+                            </div>
+
+                        </li>
+                    </ul>
                 </div>
-                <div class="am-btn am-btn-danger anniu">提交</div>
-                <p class="suggestTel"><i class="am-icon-phone"></i>客服电话：400-007-1234</p>
+                <div class="info-btn">
+                    <div class="am-btn am-btn-danger">提交</div>
+                </div>
             </div>
         </div>
         <!--底部-->

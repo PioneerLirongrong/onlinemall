@@ -4,15 +4,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=0">
 
-    <title>商品咨询</title>
+    <title>绑定手机</title>
 
     <link href="../AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css">
     <link href="../AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css">
 
     <link href="../css/personal.css" rel="stylesheet" type="text/css">
+    <link href="../css/stepstyle.css" rel="stylesheet" type="text/css">
 
-    <script src="../AmazeUI-2.4.2/assets/js/jquery.min.js" type="text/javascript"></script>
-    <script src="../AmazeUI-2.4.2/assets/js/amazeui.js" type="text/javascript"></script>
+    <script type="text/javascript" src="../js/jquery-1.7.2.min.js"></script>
+    <script src="../AmazeUI-2.4.2/assets/js/amazeui.js"></script>
 
 </head>
 
@@ -45,7 +46,6 @@
         </div>
     </article>
 </header>
-
 <div class="nav-table">
     <div class="long-title"><span class="all-goods">全部分类</span></div>
     <div class="nav-cont">
@@ -56,44 +56,72 @@
     </div>
 </div>
 <b class="line"></b>
-
 <div class="center">
     <div class="col-main">
         <div class="main-wrap">
-            <!--标题 -->
+
             <div class="am-cf am-padding">
-                <div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">商品咨询</strong> /
-                    <small>Commodity&nbsp;Consultation</small>
+                <div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">绑定手机</strong> /
+                    <small>Bind&nbsp;Phone</small>
                 </div>
             </div>
             <hr/>
-            <div class="suggestmain">
-                <p>咨询问题分类：</p>
-                <div class="suggestlist">
-                    <select data-am-selected>
-                        <option value="a" selected>请选择问题类型</option>
-                        <option value="b">产品问题</option>
-                        <option value="c">促销问题</option>
-                        <option value="d">支付问题</option>
-                        <option value="e">退款问题</option>
-                        <option value="f">配送问题</option>
-                        <option value="g">售后问题</option>
-                        <option value="h">发票问题</option>
-                        <option value="o">退换货</option>
-                        <option value="m">其他</option>
-                    </select>
+            <!--进度条-->
+            <div class="m-progress">
+                <div class="m-progress-list">
+							<span class="step-1 step">
+                                <em class="u-progress-stage-bg"></em>
+                                <i class="u-stage-icon-inner">1<em class="bg"></em></i>
+                                <p class="stage-name">绑定手机</p>
+                            </span>
+                    <span class="step-2 step">
+                                <em class="u-progress-stage-bg"></em>
+                                <i class="u-stage-icon-inner">2<em class="bg"></em></i>
+                                <p class="stage-name">完成</p>
+                            </span>
+                    <span class="u-progress-placeholder"></span>
                 </div>
-                <div class="suggestDetail">
-                    <p>描述问题：</p>
-                    <blockquote class="textArea">
-                        <textarea name="opinionContent" id="say_some" cols="60" rows="5" autocomplete="off"
-                                  placeholder="在此描述您的意见具体内容"></textarea>
-                        <div class="fontTip"><i class="cur">0</i> / <i>200</i></div>
-                    </blockquote>
+                <div class="u-progress-bar total-steps-2">
+                    <div class="u-progress-bar-inner"></div>
                 </div>
-                <div class="am-btn am-btn-danger anniu">提交</div>
-                <p class="suggestTel"><i class="am-icon-phone"></i>客服电话：400-007-1234</p>
             </div>
+            <form class="am-form am-form-horizontal">
+                <div class="am-form-group bind">
+                    <label for="user-phone" class="am-form-label">验证手机</label>
+                    <div class="am-form-content">
+                        <span id="user-phone">186XXXX0531</span>
+                    </div>
+                </div>
+                <div class="am-form-group code">
+                    <label for="user-code" class="am-form-label">验证码</label>
+                    <div class="am-form-content">
+                        <input type="tel" id="user-code" placeholder="短信验证码">
+                    </div>
+                    <a class="btn" href="javascript:void(0);" onclick="sendMobileCode();" id="sendMobileCode">
+                        <div class="am-btn am-btn-danger">验证码</div>
+                    </a>
+                </div>
+                <div class="am-form-group">
+                    <label for="user-new-phone" class="am-form-label">验证手机</label>
+                    <div class="am-form-content">
+                        <input type="tel" id="user-new-phone" placeholder="绑定新手机号">
+                    </div>
+                </div>
+                <div class="am-form-group code">
+                    <label for="user-new-code" class="am-form-label">验证码</label>
+                    <div class="am-form-content">
+                        <input type="tel" id="user-new-code" placeholder="短信验证码">
+                    </div>
+                    <a class="btn" href="javascript:void(0);" onclick="sendMobileCode();" id="sendMobileCode">
+                        <div class="am-btn am-btn-danger">验证码</div>
+                    </a>
+                </div>
+                <div class="info-btn">
+                    <div class="am-btn am-btn-danger">保存修改</div>
+                </div>
+
+            </form>
+
         </div>
         <!--底部-->
         <div class="footer">

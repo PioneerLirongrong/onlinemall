@@ -235,8 +235,8 @@
                                                     <li class="td td-status">
                                                         <div class="item-status">
                                                             <p class="Mystatus">交易成功</p>
-                                                            <p class="order-info"><a href="orderinfo.html">订单详情</a></p>
-                                                            <p class="order-info"><a href="logistics.html">查看物流</a></p>
+                                                            <p class="order-info"><a href="orderinfo.jsp">订单详情</a></p>
+                                                            <p class="order-info"><a href="logistics.jsp">查看物流</a></p>
                                                         </div>
                                                     </li>
                                                     <li class="td td-change">
@@ -426,7 +426,7 @@
                                                     </li>
                                                     <li class="td td-operation">
                                                         <div class="item-operation">
-                                                            <a href="refund.html">退款</a>
+                                                            <a href="refund.jsp">退款</a>
                                                         </div>
                                                     </li>
                                                 </ul>
@@ -461,7 +461,7 @@
                                                     </li>
                                                     <li class="td td-operation">
                                                         <div class="item-operation">
-                                                            <a href="refund.html">退款</a>
+                                                            <a href="refund.jsp">退款</a>
                                                         </div>
                                                     </li>
                                                 </ul>
@@ -496,7 +496,7 @@
                                                     </li>
                                                     <li class="td td-operation">
                                                         <div class="item-operation">
-                                                            <a href="refund.html">退款</a>
+                                                            <a href="refund.jsp">退款</a>
                                                         </div>
                                                     </li>
                                                 </ul>
@@ -512,7 +512,7 @@
                                                     <li class="td td-status">
                                                         <div class="item-status">
                                                             <p class="Mystatus">买家已付款</p>
-                                                            <p class="order-info"><a href="orderinfo.html">订单详情</a></p>
+                                                            <p class="order-info"><a href="orderinfo.jsp">订单详情</a></p>
                                                         </div>
                                                     </li>
                                                     <li class="td td-change">
@@ -564,7 +564,7 @@
                                                     </li>
                                                     <li class="td td-operation">
                                                         <div class="item-operation">
-                                                            <a href="refund.html">退款/退货</a>
+                                                            <a href="refund.jsp">退款/退货</a>
                                                         </div>
                                                     </li>
                                                 </ul>
@@ -599,7 +599,7 @@
                                                     </li>
                                                     <li class="td td-operation">
                                                         <div class="item-operation">
-                                                            <a href="refund.html">退款/退货</a>
+                                                            <a href="refund.jsp">退款/退货</a>
                                                         </div>
                                                     </li>
                                                 </ul>
@@ -616,8 +616,8 @@
                                                     <li class="td td-status">
                                                         <div class="item-status">
                                                             <p class="Mystatus">卖家已发货</p>
-                                                            <p class="order-info"><a href="orderinfo.html">订单详情</a></p>
-                                                            <p class="order-info"><a href="logistics.html">查看物流</a></p>
+                                                            <p class="order-info"><a href="orderinfo.jsp">订单详情</a></p>
+                                                            <p class="order-info"><a href="logistics.jsp">查看物流</a></p>
                                                             <p class="order-info"><a href="#">延长收货</a></p>
                                                         </div>
                                                     </li>
@@ -874,7 +874,7 @@
                                                     </li>
                                                     <li class="td td-operation">
                                                         <div class="item-operation">
-                                                            <a href="refund.html">退款</a>
+                                                            <a href="refund.jsp">退款</a>
                                                         </div>
                                                     </li>
                                                 </ul>
@@ -909,7 +909,7 @@
                                                     </li>
                                                     <li class="td td-operation">
                                                         <div class="item-operation">
-                                                            <a href="refund.html">退款</a>
+                                                            <a href="refund.jsp">退款</a>
                                                         </div>
                                                     </li>
                                                 </ul>
@@ -944,7 +944,7 @@
                                                     </li>
                                                     <li class="td td-operation">
                                                         <div class="item-operation">
-                                                            <a href="refund.html">退款</a>
+                                                            <a href="refund.jsp">退款</a>
                                                         </div>
                                                     </li>
                                                 </ul>
@@ -960,7 +960,7 @@
                                                     <li class="td td-status">
                                                         <div class="item-status">
                                                             <p class="Mystatus">买家已付款</p>
-                                                            <p class="order-info"><a href="orderinfo.html">订单详情</a></p>
+                                                            <p class="order-info"><a href="orderinfo.jsp">订单详情</a></p>
                                                         </div>
                                                     </li>
                                                     <li class="td td-change">
@@ -1040,7 +1040,7 @@
                                                     </li>
                                                     <li class="td td-operation">
                                                         <div class="item-operation">
-                                                            <a href="refund.html">退款/退货</a>
+                                                            <a href="refund.jsp">退款/退货</a>
                                                         </div>
                                                     </li>
                                                 </ul>
@@ -1075,7 +1075,7 @@
                                                     </li>
                                                     <li class="td td-operation">
                                                         <div class="item-operation">
-                                                            <a href="refund.html">退款/退货</a>
+                                                            <a href="refund.jsp">退款/退货</a>
                                                         </div>
                                                     </li>
                                                 </ul>
@@ -1092,8 +1092,8 @@
                                                     <li class="td td-status">
                                                         <div class="item-status">
                                                             <p class="Mystatus">卖家已发货</p>
-                                                            <p class="order-info"><a href="orderinfo.html">订单详情</a></p>
-                                                            <p class="order-info"><a href="logistics.html">查看物流</a></p>
+                                                            <p class="order-info"><a href="orderinfo.jsp">订单详情</a></p>
+                                                            <p class="order-info"><a href="logistics.jsp">查看物流</a></p>
                                                             <p class="order-info"><a href="#">延长收货</a></p>
                                                         </div>
                                                     </li>
@@ -1176,7 +1176,7 @@
                                                     </li>
                                                     <li class="td td-operation">
                                                         <div class="item-operation">
-                                                            <a href="refund.html">退款/退货</a>
+                                                            <a href="refund.jsp">退款/退货</a>
                                                         </div>
                                                     </li>
                                                 </ul>
@@ -1193,12 +1193,12 @@
                                                     <li class="td td-status">
                                                         <div class="item-status">
                                                             <p class="Mystatus">交易成功</p>
-                                                            <p class="order-info"><a href="orderinfo.html">订单详情</a></p>
-                                                            <p class="order-info"><a href="logistics.html">查看物流</a></p>
+                                                            <p class="order-info"><a href="orderinfo.jsp">订单详情</a></p>
+                                                            <p class="order-info"><a href="logistics.jsp">查看物流</a></p>
                                                         </div>
                                                     </li>
                                                     <li class="td td-change">
-                                                        <a href="commentlist.html">
+                                                        <a href="commentlist.jsp">
                                                             <div class="am-btn am-btn-danger anniu">
                                                                 评价商品
                                                             </div>
@@ -1248,7 +1248,7 @@
                                                     </li>
                                                     <li class="td td-operation">
                                                         <div class="item-operation">
-                                                            <a href="refund.html">退款/退货</a>
+                                                            <a href="refund.jsp">退款/退货</a>
                                                         </div>
                                                     </li>
                                                 </ul>
@@ -1283,7 +1283,7 @@
                                                     </li>
                                                     <li class="td td-operation">
                                                         <div class="item-operation">
-                                                            <a href="refund.html">退款/退货</a>
+                                                            <a href="refund.jsp">退款/退货</a>
                                                         </div>
                                                     </li>
                                                 </ul>
@@ -1318,7 +1318,7 @@
                                                     </li>
                                                     <li class="td td-operation">
                                                         <div class="item-operation">
-                                                            <a href="refund.html">退款/退货</a>
+                                                            <a href="refund.jsp">退款/退货</a>
                                                         </div>
                                                     </li>
                                                 </ul>
@@ -1336,12 +1336,12 @@
                                                     <li class="td td-status">
                                                         <div class="item-status">
                                                             <p class="Mystatus">交易成功</p>
-                                                            <p class="order-info"><a href="orderinfo.html">订单详情</a></p>
-                                                            <p class="order-info"><a href="logistics.html">查看物流</a></p>
+                                                            <p class="order-info"><a href="orderinfo.jsp">订单详情</a></p>
+                                                            <p class="order-info"><a href="logistics.jsp">查看物流</a></p>
                                                         </div>
                                                     </li>
                                                     <li class="td td-change">
-                                                        <a href="commentlist.html">
+                                                        <a href="commentlist.jsp">
                                                             <div class="am-btn am-btn-danger anniu">
                                                                 评价商品
                                                             </div>
@@ -1396,7 +1396,7 @@
                 <ul>
                     <li><a href="information.jsp">个人信息</a></li>
                     <li><a href="safety.jsp">安全设置</a></li>
-                    <li><a href="address.html">地址管理</a></li>
+                    <li><a href="address.jsp">地址管理</a></li>
                     <li><a href="cardlist.jsp">快捷支付</a></li>
                 </ul>
             </li>
@@ -1431,7 +1431,7 @@
                 <p><i class="am-icon-qq"></i>在线客服</p>
                 <ul>
                     <li><a href="consultation.jsp">商品咨询</a></li>
-                    <li><a href="suggest.html">意见反馈</a></li>
+                    <li><a href="suggest.jsp">意见反馈</a></li>
 
                     <li><a href="news.jsp">我的消息</a></li>
                 </ul>

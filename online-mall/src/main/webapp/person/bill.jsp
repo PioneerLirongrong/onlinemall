@@ -96,7 +96,7 @@
                                               119.80
                                        </span>
                                     <span class="desc ng-binding">
-                                           <a href="billlist.html">查看支出明细</a>
+                                           <a href="billlist.jsp">查看支出明细</a>
                                          </span>
                                 </h3>
 
@@ -189,7 +189,7 @@
                                               0.00
                                        </span>
                                 <span class="desc ng-binding">
-                                           <a href="billlist.html">查看收入明细</a>
+                                           <a href="billlist.jsp">查看收入明细</a>
                                     </span>
                             </h3>
                         </div>
@@ -478,7 +478,7 @@
                 <ul>
                     <li><a href="information.jsp">个人信息</a></li>
                     <li><a href="safety.jsp">安全设置</a></li>
-                    <li><a href="address.html">地址管理</a></li>
+                    <li><a href="address.jsp">地址管理</a></li>
                     <li><a href="cardlist.jsp">快捷支付</a></li>
                 </ul>
             </li>
@@ -513,7 +513,7 @@
                 <p><i class="am-icon-qq"></i>在线客服</p>
                 <ul>
                     <li><a href="consultation.jsp">商品咨询</a></li>
-                    <li><a href="suggest.html">意见反馈</a></li>
+                    <li><a href="suggest.jsp">意见反馈</a></li>
 
                     <li><a href="news.jsp">我的消息</a></li>
                 </ul>
