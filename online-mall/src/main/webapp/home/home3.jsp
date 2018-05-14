@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 
 <head>
@@ -24,24 +24,6 @@
     <script src="../onlinemalljs/home/home.js"></script>
 
 </head>
-<%
-    //        String account = (String) session.getAttribute("account");
-//        String phonenumber = (String) session.getAttribute("phonenumber");
-//        String mail = (String) session.getAttribute("mail");
-//        String name = "";
-//        if (null != account && !("".equals(account))) {
-//            name = account;
-//            return;
-//        } else if (null != phonenumber && !("".equals(phonenumber))) {
-//            name = phonenumber;
-//            return;
-//        } else if (null != mail && !("".equals(mail))) {
-//            name = mail;
-//            return;
-//        } else {
-//            name = "亲，请登录";
-//        }
-%>
 <body>
 <div class="hmtop">
     <!--顶部导航条 -->
@@ -49,9 +31,19 @@
         <ul class="message-l">
             <div class="topMessage">
                 <div class="menu-hd">
-                    <a href="../home/login.jsp" target="_top" class="h"><%= session.getAttribute("username") %>
-                    </a>
+                    <%
+                        String username = (String) session.getAttribute("account");
+                        if (null == username) {
+                    %>
+                    <a href="../home/login.jsp" target="_top" class="h">您请登录</a>
                     <a href="../home/register.jsp" target="_top">免费注册</a>
+                    <%
+                    } else {
+                    %>
+                    <a href="../person/index.jsp" target="_top"><i class="am-icon-user am-icon-fw"></i><%= username%></a>
+                    <%
+                        }
+                    %>
                 </div>
             </div>
         </ul>
@@ -60,7 +52,7 @@
                 <div class="menu-hd"><a href="#" target="_top" class="h">商城首页</a></div>
             </div>
             <div class="topMessage my-shangcheng">
-                <div class="menu-hd MyShangcheng"><a href="#" target="_top"><i class="am-icon-user am-icon-fw"></i>个人中心</a>
+                <div class="menu-hd MyShangcheng"><a href="../person/index.jsp" target="_top"><i class="am-icon-user am-icon-fw"></i>个人中心</a>
                 </div>
             </div>
             <div class="topMessage mini-cart">
@@ -1297,7 +1289,7 @@
     <li class="active"><a href="home3.jsp"><i class="am-icon-home "></i>首页</a></li>
     <li><a href="sort.jsp"><i class="am-icon-list"></i>分类</a></li>
     <li><a href="shopcart.jsp"><i class="am-icon-shopping-basket"></i>购物车</a></li>
-    <li><a href="../person/index.html"><i class="am-icon-user"></i>我的</a></li>
+    <li><a href="../person/index.jsp"><i class="am-icon-user"></i>我的</a></li>
 </div>
 <!--菜单 -->
 <div class=tip>

@@ -68,8 +68,8 @@ register.prototype = {
                     window.location.href = loginObj.config.returnUrl+"?"+MD5_UTILS.encryption(loginObj.config.param+'='+data);
                 }
             },
-            error: function (result) {
-                loginObj.error(result.message);
+            error: function () {
+                loginObj.error("系统异常");
             }
         });
     },

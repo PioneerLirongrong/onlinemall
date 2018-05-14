@@ -12,13 +12,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
-
-import javax.management.ObjectName;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import static com.onlinemall.constants.Params.MAIL;
-import static com.onlinemall.constants.Params.PHONENUMBER;
+import static com.onlinemall.constants.Params.ACCOUNT;
 import static com.onlinemall.constants.Params.USERNAME;
 
 /**
@@ -49,9 +46,7 @@ public class UserServiceController {
         logger.info("{前台的请求参数"+params.toString()+"}");
         BaseResult<OnlinemallUser> baseResult = iUserService.checkUser(params);
         HttpSession session = getSession();
-        session.setAttribute(USERNAME,((OnlinemallUser) baseResult.getDataObj()).getAccount());
-        session.setAttribute(PHONENUMBER,((OnlinemallUser) baseResult.getDataObj()).getPhonenumber());
-        session.setAttribute(MAIL,((OnlinemallUser) baseResult.getDataObj()).getMail());
+        session.setAttribute(ACCOUNT,((OnlinemallUser) baseResult.getDataObj()).getAccount());
         logger.info("{后台返给前台的结果"+baseResult.toString()+"}");
         return baseResult;
     }

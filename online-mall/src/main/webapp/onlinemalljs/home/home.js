@@ -1,10 +1,10 @@
-var onlinemalHome = function () {
+var onlineMallHome = function () {
 
 };
-onlinemalHome.prototype = {
-    mapdata:{},
+onlineMallHome.prototype = {
+    mapData:{},
     config: {},
-    excep: function (message) {
+    exception: function (message) {
         alert(message)
     },
     display: function () {
@@ -12,16 +12,15 @@ onlinemalHome.prototype = {
     init: function () {
         var home = this;
         COMMONUSERINFOUTIL.getUserInfo(function (data) {
-            home.mapdata = data;
-            console.log("this data is "+home.mapdata["userid"])
-            // alert(home.mapdata["userid"])
+            home.mapData = data;
+            console.log("this data is "+home.mapData["userid"])
         });
     },
     error: function () {
-        this.excep("系统异常")
+        this.exception("系统异常")
     }
 };
 $(document).ready(function () {
-    var home = new onlinemalHome();
+    var home = new onlineMallHome();
     home.init();
 });

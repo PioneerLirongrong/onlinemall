@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 import static com.onlinemall.constants.Params.*;
 
@@ -93,6 +94,14 @@ public class UserServiceImp implements IUserService {
             String passwordMD5 = CommonUtils.getMD5(((String) params.getParams().get(PASSWORD_1)).trim() + PASSWORD_PARA);
             onlinemallUser.setPassword(passwordMD5);
             onlinemallUser.setRegistertime(new Date());
+            //注册时给当前用户设置一个默认的用户名，后期可一做修改
+            if(StringUtils.isNotBlank(onlinemallUser.getPhonenumber())){
+                onlinemallUser.setAccount(onlinemallUser.getPhonenumber()+"用户");
+            }else if(StringUtils.isNotBlank(onlinemallUser.getMail())){
+                onlinemallUser.setAccount(onlinemallUser.getMail()+"用户");
+            }else {
+                onlinemallUser.setAccount("幸运"+String.format("%03d",new Random().nextInt(10)+"")+"用户");
+            }
             onlinemallUserMapper.insert(onlinemallUser);
             //在redis里缓存一份数据,方便登录是做校验
             //缓存手机号
