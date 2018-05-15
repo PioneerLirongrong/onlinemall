@@ -40,6 +40,11 @@ var COMMONUSERINFOUTIL = {
                     } else {
                         data['name'] = result.dataObj.name;
                     }
+                    if (result.dataObj.sex == null) {
+                        data['sex'] = "2";
+                    } else {
+                        data['sex'] = result.dataObj.sex;
+                    }
                     if (result.dataObj.phonenumber == null) {
                         data['phonenumber'] = "";
                     } else {

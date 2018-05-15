@@ -290,14 +290,16 @@ public class UserServiceImp implements IUserService {
         BaseResult<OnlinemallUser> baseResult = new BaseResult<OnlinemallUser>();
         baseResult.setCode(BaseResult.FAIL);
         //先通过userId找到当前的user,然后更新其信息字段
+        OnlinemallUserExample onlinemallUserExample = new OnlinemallUserExample();
+        OnlinemallUserExample.Criteria criteria = onlinemallUserExample.createCriteria();
         String userId = (String) params.getParams().get(USERID);
         if (StringUtils.isBlank(userId)) {
             baseResult.setErrors(Errors.REQUEST_PARAM_ERROR);
         } else {
-            OnlinemallUser onlinemallUser = onlinemallUserMapper.selectByPrimaryKey(userId);
-            if (null != onlinemallUser) {
-                OnlinemallUserExample onlinemallUserExample = new OnlinemallUserExample();
-                OnlinemallUserExample.Criteria criteria = onlinemallUserExample.createCriteria();
+            criteria.andUseridEqualTo(userId);
+            List<OnlinemallUser> onlinemallUsers = onlinemallUserMapper.selectByExample(onlinemallUserExample);
+            if (0 != onlinemallUsers.size()) {
+                OnlinemallUser onlinemallUser = onlinemallUsers.get(0);
                 if (StringUtils.isNotBlank((String) params.getParams().get(QQ_NUMBER))) {
                     criteria.andQqnumberEqualTo((String) params.getParams().get(QQ_NUMBER));
                 }
