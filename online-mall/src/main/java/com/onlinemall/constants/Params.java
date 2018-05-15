@@ -48,11 +48,16 @@ public class Params {
     public static final String SECURITYANSOWER_2 = "securityansower2";
 
     //用户银行卡模块
-    public static final String BANK_NAME = "bankname";
-    public static final String BANK_TYPE = "banktype";
     public static final String BANK_NUMBER = "banknumber";
-    public static final String BANK_BIND_STATUS = "bankbindstatus";
 
+    //用户地址模块
+    public static final String ADDRESS_ID  = "id";
+    public static final String ADDRESS_PROVINCE = "province";
+    public static final String ADDRESS_CITY = "city";
+    public static final String ADDRESS_COUNTY = "county";
+    public static final String ADDRESS_PHONENUMBER = "phonenumber";
+    public static final String ADDRESS_USERNAME = "username";
+    public static final String ADDRESS_USERADDRESS = "useraddress";
 
 
 }

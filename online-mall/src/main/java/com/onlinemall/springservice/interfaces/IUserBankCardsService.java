@@ -6,9 +6,9 @@ import com.onlinemall.param.response.BaseResult;
 
 /**
  * @author lrr
- * @deprecated 用户银行卡接口
+   用户银行卡接口
  */
-public interface IUserBankCards {
+public interface IUserBankCardsService {
 
     /**
      * 绑定银行卡

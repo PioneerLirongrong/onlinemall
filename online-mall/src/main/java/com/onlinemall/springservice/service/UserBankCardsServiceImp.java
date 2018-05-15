@@ -6,7 +6,7 @@ import com.onlinemall.dao.model.OnlinemallUserBank;
 import com.onlinemall.dao.model.OnlinemallUserBankExample;
 import com.onlinemall.param.request.RequestParams;
 import com.onlinemall.param.response.BaseResult;
-import com.onlinemall.springservice.interfaces.IUserBankCards;
+import com.onlinemall.springservice.interfaces.IUserBankCardsService;
 import com.onlinemall.utils.UUID.CommonUtils;
 import com.onlinemall.utils.beanutil.RequestParamConvertBeanUtil;
 import com.onlinemall.utils.error.Errors;
@@ -22,10 +22,10 @@ import static com.onlinemall.constants.Params.USERID;
 
 /**
  * @author lrr
- * @deprecated 用户绑卡的service
+ * 用户绑卡的service
  */
 @Service
-public class UserBankCardsServiceImp implements IUserBankCards {
+public class UserBankCardsServiceImp implements IUserBankCardsService {
 
     private static Logger logger = Logger.getLogger(UserBankCardsServiceImp.class);
 
@@ -74,11 +74,16 @@ public class UserBankCardsServiceImp implements IUserBankCards {
         return baseResult;
     }
 
+    /**
+     * 此接口基本不用，银行卡信基本会不变
+     * @param params
+     * @return
+     */
     public BaseResult<OnlinemallUserBank> updateBankCard(RequestParams<OnlinemallUserBank> params) {
         logger.info("{调用获取用户绑卡详细信息服务,由springservice中的方法updateBankCard提供服务}");
         BaseResult<OnlinemallUserBank> baseResult = new BaseResult<OnlinemallUserBank>();
         baseResult.setCode(BaseResult.FAIL);
-        return null;
+        return baseResult;
     }
 
     public BaseResult<OnlinemallUserBank> deleteBankCard(RequestParams<OnlinemallUserBank> params) {

@@ -4,6 +4,11 @@
   <resultMap id="BaseResultMap" type="com.onlinemall.dao.model.OnlinemallUserAddress" >
     <id column="id" property="id" jdbcType="VARCHAR" />
     <result column="userid" property="userid" jdbcType="VARCHAR" />
+    <result column="county" property="county" jdbcType="VARCHAR" />
+    <result column="city" property="city" jdbcType="VARCHAR" />
+    <result column="province" property="province" jdbcType="VARCHAR" />
+    <result column="phoneNumber" property="phonenumber" jdbcType="VARCHAR" />
+    <result column="userName" property="username" jdbcType="VARCHAR" />
     <result column="useraddress" property="useraddress" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -65,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, userid, useraddress
+    id, userid, county, city, province, phoneNumber, userName, useraddress
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.onlinemall.dao.model.OnlinemallUserAddressExample" >
     select
@@ -98,10 +103,12 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.onlinemall.dao.model.OnlinemallUserAddress" >
-    insert into onlinemall_user_address (id, userid, useraddress
-      )
-    values (#{id,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, #{useraddress,jdbcType=VARCHAR}
-      )
+    insert into onlinemall_user_address (id, userid, county, 
+      city, province, phoneNumber, 
+      userName, useraddress)
+    values (#{id,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, #{county,jdbcType=VARCHAR}, 
+      #{city,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, #{phonenumber,jdbcType=VARCHAR}, 
+      #{username,jdbcType=VARCHAR}, #{useraddress,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.onlinemall.dao.model.OnlinemallUserAddress" >
     insert into onlinemall_user_address
@@ -111,6 +118,21 @@
       </if>
       <if test="userid != null" >
         userid,
+      </if>
+      <if test="county != null" >
+        county,
+      </if>
+      <if test="city != null" >
+        city,
+      </if>
+      <if test="province != null" >
+        province,
+      </if>
+      <if test="phonenumber != null" >
+        phoneNumber,
+      </if>
+      <if test="username != null" >
+        userName,
       </if>
       <if test="useraddress != null" >
         useraddress,
@@ -122,6 +144,21 @@
       </if>
       <if test="userid != null" >
         #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="county != null" >
+        #{county,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="phonenumber != null" >
+        #{phonenumber,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
       </if>
       <if test="useraddress != null" >
         #{useraddress,jdbcType=VARCHAR},
@@ -143,6 +180,21 @@
       <if test="record.userid != null" >
         userid = #{record.userid,jdbcType=VARCHAR},
       </if>
+      <if test="record.county != null" >
+        county = #{record.county,jdbcType=VARCHAR},
+      </if>
+      <if test="record.city != null" >
+        city = #{record.city,jdbcType=VARCHAR},
+      </if>
+      <if test="record.province != null" >
+        province = #{record.province,jdbcType=VARCHAR},
+      </if>
+      <if test="record.phonenumber != null" >
+        phoneNumber = #{record.phonenumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.username != null" >
+        userName = #{record.username,jdbcType=VARCHAR},
+      </if>
       <if test="record.useraddress != null" >
         useraddress = #{record.useraddress,jdbcType=VARCHAR},
       </if>
@@ -155,6 +207,11 @@
     update onlinemall_user_address
     set id = #{record.id,jdbcType=VARCHAR},
       userid = #{record.userid,jdbcType=VARCHAR},
+      county = #{record.county,jdbcType=VARCHAR},
+      city = #{record.city,jdbcType=VARCHAR},
+      province = #{record.province,jdbcType=VARCHAR},
+      phoneNumber = #{record.phonenumber,jdbcType=VARCHAR},
+      userName = #{record.username,jdbcType=VARCHAR},
       useraddress = #{record.useraddress,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -166,6 +223,21 @@
       <if test="userid != null" >
         userid = #{userid,jdbcType=VARCHAR},
       </if>
+      <if test="county != null" >
+        county = #{county,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="phonenumber != null" >
+        phoneNumber = #{phonenumber,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        userName = #{username,jdbcType=VARCHAR},
+      </if>
       <if test="useraddress != null" >
         useraddress = #{useraddress,jdbcType=VARCHAR},
       </if>
@@ -175,6 +247,11 @@
   <update id="updateByPrimaryKey" parameterType="com.onlinemall.dao.model.OnlinemallUserAddress" >
     update onlinemall_user_address
     set userid = #{userid,jdbcType=VARCHAR},
+      county = #{county,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      province = #{province,jdbcType=VARCHAR},
+      phoneNumber = #{phonenumber,jdbcType=VARCHAR},
+      userName = #{username,jdbcType=VARCHAR},
       useraddress = #{useraddress,jdbcType=VARCHAR}
     where id = #{id,jdbcType=VARCHAR}
   </update>

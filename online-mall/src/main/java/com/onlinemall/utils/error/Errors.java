@@ -18,6 +18,7 @@ public class Errors implements Serializable {
      * 公共模块
      */
     public final static Errors REQUEST_PARAM_ERROR = new Errors("6002","参数不合法");
+    public final static Errors SERVICE_DELETE_ERROR = new Errors("6004","删除失败");
 
     /**
      * 用户模块

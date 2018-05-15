@@ -37,12 +37,17 @@ create table onlinemall_user(
 
 ###****用户地址表onlinemall_user_address****
 ```
-create table onlinemall_user_address(
-  id varchar(64) comment '记录id',
-  userid varchar(64) comment '用户id',
-  useraddress varchar(1000) comment '地址',
-  primary key (id)
-)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `onlinemall_user_address` (
+  `id` varchar(64) NOT NULL COMMENT '记录id',
+  `userid` varchar(64) DEFAULT NULL COMMENT '用户id',
+  `county` varchar(64) NOT NULL COMMENT '县',
+  `city` varchar(64) NOT NULL COMMENT '市',
+  `province` varchar(64) NOT NULL COMMENT '省',
+  `phoneNumber` varchar(64) NOT NULL COMMENT '用户手机号',
+  `userName` varchar(64) NOT NULL COMMENT '收件人',
+  `useraddress` varchar(1000) DEFAULT NULL COMMENT '地址',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
 
 ```
 ###****用户的银行卡表onlinemall_user_bank****
