@@ -88,12 +88,6 @@
             </div>
             <form class="am-form am-form-horizontal">
                 <div class="am-form-group">
-                    <label for="user-old-password" class="am-form-label">原密码</label>
-                    <div class="am-form-content">
-                        <input type="password" id="user-old-password" placeholder="请输入原登录密码">
-                    </div>
-                </div>
-                <div class="am-form-group">
                     <label for="user-new-password" class="am-form-label">新密码</label>
                     <div class="am-form-content">
                         <input type="password" id="user-new-password" placeholder="由数字、字母组合">

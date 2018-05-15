@@ -78,6 +78,9 @@ public class UserAddressServiceImp implements IUserAddressService {
         if(StringUtils.isNotBlank((String)params.getParams().get(Params.ADDRESS_COUNTY))){
             criteria.andCountyEqualTo((String)params.getParams().get(Params.ADDRESS_COUNTY));
         }
+        if(StringUtils.isNotBlank((String)params.getParams().get(Params.ADDRESS_PHONENUMBER))){
+            criteria.andPhonenumberEqualTo((String)params.getParams().get(Params.ADDRESS_PHONENUMBER));
+        }
         if(StringUtils.isNotBlank((String)params.getParams().get(Params.ADDRESS_USERNAME))){
             criteria.andUsernameEqualTo((String)params.getParams().get(Params.ADDRESS_USERNAME));
         }
@@ -85,8 +88,12 @@ public class UserAddressServiceImp implements IUserAddressService {
             criteria.andUseraddressEqualTo((String)params.getParams().get(Params.ADDRESS_USERADDRESS));
         }
         OnlinemallUserAddress onlinemallUserAddress = onlinemallUserAddressMapper.selectByPrimaryKey((String) params.getParams().get(Params.ADDRESS_ID));
+        if(null == onlinemallUserAddress){
+            return baseResult;
+        }
         int update = onlinemallUserAddressMapper.updateByExample(onlinemallUserAddress, onlinemallUserAddressExample);
         if(0 == update){
+            baseResult.setErrors(Errors.USER_ADDRESS_NOT_EXITS);
             return baseResult;
         }
         baseResult.setCode(BaseResult.SUCCESS);

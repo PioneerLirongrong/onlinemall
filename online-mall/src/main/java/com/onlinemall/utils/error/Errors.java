@@ -37,5 +37,11 @@ public class Errors implements Serializable {
      */
     public final static Errors USER_BANK_CARD_ALREADY_BIND = new Errors("2000","银行卡已经被绑定了");
 
+
+    /**
+     * 用户地址模块
+     */
+    public final static Errors USER_ADDRESS_NOT_EXITS = new Errors("3000","地址不存在");
+
 }
 

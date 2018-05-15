@@ -38,6 +38,8 @@ public class OnlinemallUser implements Serializable {
 
     private String securitymail;
 
+    private String paypassword;
+
     private String realname;
 
     private String identitynumber;
@@ -194,6 +196,14 @@ public class OnlinemallUser implements Serializable {
         this.securitymail = securitymail;
     }
 
+    public String getPaypassword() {
+        return paypassword;
+    }
+
+    public void setPaypassword(String paypassword) {
+        this.paypassword = paypassword;
+    }
+
     public String getRealname() {
         return realname;
     }
@@ -295,6 +305,7 @@ public class OnlinemallUser implements Serializable {
             && (this.getSecuritypay() == null ? other.getSecuritypay() == null : this.getSecuritypay().equals(other.getSecuritypay()))
             && (this.getSecurityphone() == null ? other.getSecurityphone() == null : this.getSecurityphone().equals(other.getSecurityphone()))
             && (this.getSecuritymail() == null ? other.getSecuritymail() == null : this.getSecuritymail().equals(other.getSecuritymail()))
+            && (this.getPaypassword() == null ? other.getPaypassword() == null : this.getPaypassword().equals(other.getPaypassword()))
             && (this.getRealname() == null ? other.getRealname() == null : this.getRealname().equals(other.getRealname()))
             && (this.getIdentitynumber() == null ? other.getIdentitynumber() == null : this.getIdentitynumber().equals(other.getIdentitynumber()))
             && (this.getPhotourl1() == null ? other.getPhotourl1() == null : this.getPhotourl1().equals(other.getPhotourl1()))
@@ -327,6 +338,7 @@ public class OnlinemallUser implements Serializable {
         result = prime * result + ((getSecuritypay() == null) ? 0 : getSecuritypay().hashCode());
         result = prime * result + ((getSecurityphone() == null) ? 0 : getSecurityphone().hashCode());
         result = prime * result + ((getSecuritymail() == null) ? 0 : getSecuritymail().hashCode());
+        result = prime * result + ((getPaypassword() == null) ? 0 : getPaypassword().hashCode());
         result = prime * result + ((getRealname() == null) ? 0 : getRealname().hashCode());
         result = prime * result + ((getIdentitynumber() == null) ? 0 : getIdentitynumber().hashCode());
         result = prime * result + ((getPhotourl1() == null) ? 0 : getPhotourl1().hashCode());
@@ -362,6 +374,7 @@ public class OnlinemallUser implements Serializable {
         sb.append(", securitypay=").append(securitypay);
         sb.append(", securityphone=").append(securityphone);
         sb.append(", securitymail=").append(securitymail);
+        sb.append(", paypassword=").append(paypassword);
         sb.append(", realname=").append(realname);
         sb.append(", identitynumber=").append(identitynumber);
         sb.append(", photourl1=").append(photourl1);

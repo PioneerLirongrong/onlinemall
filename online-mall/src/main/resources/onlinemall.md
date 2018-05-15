@@ -5,34 +5,36 @@ mysql作为后台存储的数据，中间会用redis非关系型数据库做缓�
 ##户模块
 ###****用户表onlinemall_user****
 ```
-create table onlinemall_user(
-  userid varchar(64) comment '用户id',
-  account varchar(64) comment '昵称',
-  phonenumber varchar(64) comment '手机号',
-  mail varchar(64) comment '邮箱',
-  qqnumber varchar(64) comment 'QQ号',
-  weixinnumber varchar(64) comment '微信',
-  weibonumber varchar(64) comment '微博',
-  password varchar(64) comment '密码',
-  name varchar(64) comment '用户名',
-  sex varchar(1) comment '性别(1:男 0:女)',
-  birthday varchar(64) comment '生日',
-  securitydegree int comment '账户安全份',
-  securitypay varchar(1) comment '(1:启动 0:不启动)',
-  securityphone varchar(1) comment '(1:启动 0:不启动)',
-  securitymail varchar(1) comment '(1:启动 0:不启动)',
-  realname varchar(64) comment '真实姓名',
-  identitynumber varchar(64) comment '身份证号码',
-  photourl1 varchar(64) comment '身份证照片正面',
-  photourl2 varchar(64) comment '身份证照片背面',
-  securityproblem1 varchar(64) comment '安全问题1',
-  securityansower1 varchar(64) comment '安全问题答案1',
-  securityproblem2 varchar(64) comment '安全问题2',
-  securityansower2 varchar(64) comment '安全问题答案2',
-  registertime datetime default now() comment '注册时间 默认为now',
-  primary key (userid)
-)ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
+CREATE TABLE `onlinemall_user` (
+  `userid` varchar(64) NOT NULL COMMENT '用户id',
+  `account` varchar(64) DEFAULT NULL COMMENT '昵称',
+  `phonenumber` varchar(64) DEFAULT NULL COMMENT '手机号',
+  `mail` varchar(64) DEFAULT NULL COMMENT '邮箱',
+  `qqnumber` varchar(64) DEFAULT NULL COMMENT 'QQ号',
+  `weixinnumber` varchar(64) DEFAULT NULL COMMENT '微信',
+  `weibonumber` varchar(64) DEFAULT NULL COMMENT '微博',
+  `password` varchar(64) NOT NULL COMMENT '密码',
+  `password1` varchar(64) DEFAULT NULL COMMENT '密码',
+  `password2` varchar(64) NOT NULL COMMENT '确认密码',
+  `name` varchar(64) DEFAULT NULL COMMENT '用户名',
+  `sex` varchar(1) DEFAULT NULL COMMENT '性别(1:男 0:女)',
+  `birthday` varchar(64) DEFAULT NULL COMMENT '生日',
+  `securitydegree` int(11) DEFAULT NULL COMMENT '账户安全份',
+  `securitypay` varchar(1) DEFAULT NULL COMMENT '(1:启动 0:不启动)',
+  `securityphone` varchar(1) DEFAULT NULL COMMENT '(1:启动 0:不启动)',
+  `securitymail` varchar(1) DEFAULT NULL COMMENT '(1:启动 0:不启动)',
+  `paypassword` varchar(64) NOT NULL COMMENT '支付密码',
+  `realname` varchar(64) DEFAULT NULL COMMENT '真实姓名',
+  `identitynumber` varchar(64) DEFAULT NULL COMMENT '身份证号码',
+  `photourl1` varchar(64) DEFAULT NULL COMMENT '身份证照片正面',
+  `photourl2` varchar(64) DEFAULT NULL COMMENT '身份证照片背面',
+  `securityproblem1` varchar(64) DEFAULT NULL COMMENT '安全问题1',
+  `securityansower1` varchar(64) DEFAULT NULL COMMENT '安全问题答案1',
+  `securityproblem2` varchar(64) DEFAULT NULL COMMENT '安全问题2',
+  `securityansower2` varchar(64) DEFAULT NULL COMMENT '安全问题答案2',
+  `registertime` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '注册时间 默认为now',
+   PRIMARY KEY (`userid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
 ```
 
 ###****用户地址表onlinemall_user_address****

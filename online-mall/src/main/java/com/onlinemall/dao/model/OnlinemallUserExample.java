@@ -1288,6 +1288,76 @@ public class OnlinemallUserExample implements Serializable {
             return (Criteria) this;
         }
 
+        public Criteria andPaypasswordIsNull() {
+            addCriterion("paypassword is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPaypasswordIsNotNull() {
+            addCriterion("paypassword is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPaypasswordEqualTo(String value) {
+            addCriterion("paypassword =", value, "paypassword");
+            return (Criteria) this;
+        }
+
+        public Criteria andPaypasswordNotEqualTo(String value) {
+            addCriterion("paypassword <>", value, "paypassword");
+            return (Criteria) this;
+        }
+
+        public Criteria andPaypasswordGreaterThan(String value) {
+            addCriterion("paypassword >", value, "paypassword");
+            return (Criteria) this;
+        }
+
+        public Criteria andPaypasswordGreaterThanOrEqualTo(String value) {
+            addCriterion("paypassword >=", value, "paypassword");
+            return (Criteria) this;
+        }
+
+        public Criteria andPaypasswordLessThan(String value) {
+            addCriterion("paypassword <", value, "paypassword");
+            return (Criteria) this;
+        }
+
+        public Criteria andPaypasswordLessThanOrEqualTo(String value) {
+            addCriterion("paypassword <=", value, "paypassword");
+            return (Criteria) this;
+        }
+
+        public Criteria andPaypasswordLike(String value) {
+            addCriterion("paypassword like", value, "paypassword");
+            return (Criteria) this;
+        }
+
+        public Criteria andPaypasswordNotLike(String value) {
+            addCriterion("paypassword not like", value, "paypassword");
+            return (Criteria) this;
+        }
+
+        public Criteria andPaypasswordIn(List<String> values) {
+            addCriterion("paypassword in", values, "paypassword");
+            return (Criteria) this;
+        }
+
+        public Criteria andPaypasswordNotIn(List<String> values) {
+            addCriterion("paypassword not in", values, "paypassword");
+            return (Criteria) this;
+        }
+
+        public Criteria andPaypasswordBetween(String value1, String value2) {
+            addCriterion("paypassword between", value1, value2, "paypassword");
+            return (Criteria) this;
+        }
+
+        public Criteria andPaypasswordNotBetween(String value1, String value2) {
+            addCriterion("paypassword not between", value1, value2, "paypassword");
+            return (Criteria) this;
+        }
+
         public Criteria andRealnameIsNull() {
             addCriterion("realname is null");
             return (Criteria) this;

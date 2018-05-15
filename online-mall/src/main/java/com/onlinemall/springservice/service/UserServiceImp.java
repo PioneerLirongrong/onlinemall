@@ -170,7 +170,6 @@ public class UserServiceImp implements IUserService {
 
     }
 
-
     public BaseResult<OnlinemallUser> loginOut(RequestParams<OnlinemallUser> params) {
         logger.info("{调用修改用户密码的服务,由springservice的方法loginOut提供服务}");
         BaseResult<OnlinemallUser> baseResult = new BaseResult<OnlinemallUser>();
@@ -364,6 +363,67 @@ public class UserServiceImp implements IUserService {
     }
 
     public BaseResult<OnlinemallUser> updateUserSecurityDegree(RequestParams<OnlinemallUser> params) {
-        return null;
+        logger.info("{调用获取用户详细信息服务,由springservice中的方法updateUserSecurityDegree提供服务}");
+        BaseResult<OnlinemallUser> baseResult = new BaseResult<OnlinemallUser>();
+        baseResult.setCode(BaseResult.FAIL);
+        String userId = (String) params.getParams().get(Params.USERID);
+        if (StringUtils.isBlank(userId)) {
+            baseResult.setErrors(Errors.REQUEST_PARAM_ERROR);
+            return baseResult;
+        }
+        OnlinemallUserExample onlinemallUserExample = new OnlinemallUserExample();
+        OnlinemallUserExample.Criteria criteria = onlinemallUserExample.createCriteria();
+        criteria.andUseridEqualTo(userId);
+        List<OnlinemallUser> onlinemallUsers = onlinemallUserMapper.selectByExample(onlinemallUserExample);
+        if (0 == onlinemallUsers.size()) {
+            baseResult.setErrors(Errors.USER_NOT_EXIST_ERRPOR);
+            return baseResult;
+        } else {
+            OnlinemallUser onlinemallUser = onlinemallUsers.get(0);
+            int degree = onlinemallUser.getSecuritydegree();
+            String p1 = (String) params.getParams().get(PASSWORD_1);
+            String p2 = (String) params.getParams().get(PASSWORD_2);
+            if (StringUtils.isNotBlank(p1) && StringUtils.isNotBlank(p2) && p1.equals(p2)) {
+                String pass = CommonUtils.getMD5(p1 + Params.PASSWORD_PARA);
+                onlinemallUser.setPassword(pass);
+                onlinemallUser.setPassword1(p1);
+                onlinemallUser.setPassword2(p2);
+                degree = degree + 10;
+            }
+            String pay1 = (String) params.getParams().get(PAY_PASSWORD_1);
+            String pay2 = (String) params.getParams().get(PAY_PASSWORD_2);
+            if (StringUtils.isNotBlank(pay1) && StringUtils.isNotBlank(pay2) && pay1.equals(pay2)) {
+                String pass = CommonUtils.getMD5(pay2 + Params.PASSWORD_PARA);
+                onlinemallUser.setPaypassword(pass);
+                onlinemallUser.setSecuritypay("1");
+                degree = degree + 10;            }
+            if(StringUtils.isNotBlank((String)params.getParams().get(Params.REAL_NAME)) &&
+                    StringUtils.isNotBlank((String)params.getParams().get(Params.IDENTITYNUMBER))){
+                onlinemallUser.setRealname((String)params.getParams().get(Params.REAL_NAME));
+                onlinemallUser.setIdentitynumber((String)params.getParams().get(Params.IDENTITYNUMBER));
+                degree = degree + 10;
+            }
+            String problem1 = (String) params.getParams().get(Params.SECURITYPROBLEM_1);
+            String problem2 = (String) params.getParams().get(Params.SECURITYPROBLEM_2);
+            String ansower1 = (String) params.getParams().get(Params.PASSWORD_1);
+            String ansower2 = (String) params.getParams().get(Params.PASSWORD_2);
+            if(StringUtils.isNotBlank(problem1) && StringUtils.isNotBlank(problem2)
+                    && StringUtils.isNotBlank(ansower1) && StringUtils.isNotBlank(ansower2)){
+                onlinemallUser.setSecurityproblem1(problem1);
+                onlinemallUser.setSecurityproblem2(problem2);
+                onlinemallUser.setSecurityansower1(ansower1);
+                onlinemallUser.setSecurityansower2(ansower2);
+                degree = degree+10;
+            }
+            onlinemallUser.setSecuritydegree(degree);
+            int i = onlinemallUserMapper.updateByExample(onlinemallUser, onlinemallUserExample);
+            if(0 == i){
+                return baseResult;
+            }
+        }
+        List<OnlinemallUser> users = onlinemallUserMapper.selectByExample(onlinemallUserExample);
+        baseResult.setCode(BaseResult.SUCCESS);
+        baseResult.setDataObj(users.get(0));
+        return baseResult;
     }
 }

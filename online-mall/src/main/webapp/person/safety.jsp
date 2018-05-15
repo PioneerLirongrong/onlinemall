@@ -108,34 +108,6 @@
                             </div>
                         </li>
                         <li>
-                            <i class="i-safety-iphone"></i>
-                            <div class="m-left">
-                                <div class="fore1">手机验证</div>
-                                <div class="fore2">
-                                    <small>您验证的手机：186XXXXXXXX 若已丢失或停用，请立即更换</small>
-                                </div>
-                            </div>
-                            <div class="fore3">
-                                <a href="bindphone.jsp">
-                                    <div class="am-btn am-btn-secondary">换绑</div>
-                                </a>
-                            </div>
-                        </li>
-                        <li>
-                            <i class="i-safety-mail"></i>
-                            <div class="m-left">
-                                <div class="fore1">邮箱验证</div>
-                                <div class="fore2">
-                                    <small>您验证的邮箱：5831XXX@qq.com 可用于快速找回登录密码</small>
-                                </div>
-                            </div>
-                            <div class="fore3">
-                                <a href="email.jsp">
-                                    <div class="am-btn am-btn-secondary">换绑</div>
-                                </a>
-                            </div>
-                        </li>
-                        <li>
                             <i class="i-safety-idcard"></i>
                             <div class="m-left">
                                 <div class="fore1">实名认证</div>

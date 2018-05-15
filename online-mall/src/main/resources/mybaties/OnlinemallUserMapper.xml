@@ -19,6 +19,7 @@
     <result column="securitypay" property="securitypay" jdbcType="VARCHAR" />
     <result column="securityphone" property="securityphone" jdbcType="VARCHAR" />
     <result column="securitymail" property="securitymail" jdbcType="VARCHAR" />
+    <result column="paypassword" property="paypassword" jdbcType="VARCHAR" />
     <result column="realname" property="realname" jdbcType="VARCHAR" />
     <result column="identitynumber" property="identitynumber" jdbcType="VARCHAR" />
     <result column="photourl1" property="photourl1" jdbcType="VARCHAR" />
@@ -90,8 +91,8 @@
   <sql id="Base_Column_List" >
     userid, account, phonenumber, mail, qqnumber, weixinnumber, weibonumber, password, 
     password1, password2, name, sex, birthday, securitydegree, securitypay, securityphone, 
-    securitymail, realname, identitynumber, photourl1, photourl2, securityproblem1, securityansower1, 
-    securityproblem2, securityansower2, registertime
+    securitymail, paypassword, realname, identitynumber, photourl1, photourl2, securityproblem1, 
+    securityansower1, securityproblem2, securityansower2, registertime
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.onlinemall.dao.model.OnlinemallUserExample" >
     select
@@ -129,19 +130,21 @@
       weibonumber, password, password1, 
       password2, name, sex, 
       birthday, securitydegree, securitypay, 
-      securityphone, securitymail, realname, 
-      identitynumber, photourl1, photourl2, 
-      securityproblem1, securityansower1, securityproblem2, 
-      securityansower2, registertime)
+      securityphone, securitymail, paypassword, 
+      realname, identitynumber, photourl1, 
+      photourl2, securityproblem1, securityansower1, 
+      securityproblem2, securityansower2, registertime
+      )
     values (#{userid,jdbcType=VARCHAR}, #{account,jdbcType=VARCHAR}, #{phonenumber,jdbcType=VARCHAR}, 
       #{mail,jdbcType=VARCHAR}, #{qqnumber,jdbcType=VARCHAR}, #{weixinnumber,jdbcType=VARCHAR}, 
       #{weibonumber,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{password1,jdbcType=VARCHAR}, 
       #{password2,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, 
       #{birthday,jdbcType=VARCHAR}, #{securitydegree,jdbcType=INTEGER}, #{securitypay,jdbcType=VARCHAR}, 
-      #{securityphone,jdbcType=VARCHAR}, #{securitymail,jdbcType=VARCHAR}, #{realname,jdbcType=VARCHAR}, 
-      #{identitynumber,jdbcType=VARCHAR}, #{photourl1,jdbcType=VARCHAR}, #{photourl2,jdbcType=VARCHAR}, 
-      #{securityproblem1,jdbcType=VARCHAR}, #{securityansower1,jdbcType=VARCHAR}, #{securityproblem2,jdbcType=VARCHAR}, 
-      #{securityansower2,jdbcType=VARCHAR}, #{registertime,jdbcType=TIMESTAMP})
+      #{securityphone,jdbcType=VARCHAR}, #{securitymail,jdbcType=VARCHAR}, #{paypassword,jdbcType=VARCHAR}, 
+      #{realname,jdbcType=VARCHAR}, #{identitynumber,jdbcType=VARCHAR}, #{photourl1,jdbcType=VARCHAR}, 
+      #{photourl2,jdbcType=VARCHAR}, #{securityproblem1,jdbcType=VARCHAR}, #{securityansower1,jdbcType=VARCHAR}, 
+      #{securityproblem2,jdbcType=VARCHAR}, #{securityansower2,jdbcType=VARCHAR}, #{registertime,jdbcType=TIMESTAMP}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.onlinemall.dao.model.OnlinemallUser" >
     insert into onlinemall_user
@@ -196,6 +199,9 @@
       </if>
       <if test="securitymail != null" >
         securitymail,
+      </if>
+      <if test="paypassword != null" >
+        paypassword,
       </if>
       <if test="realname != null" >
         realname,
@@ -276,6 +282,9 @@
       </if>
       <if test="securitymail != null" >
         #{securitymail,jdbcType=VARCHAR},
+      </if>
+      <if test="paypassword != null" >
+        #{paypassword,jdbcType=VARCHAR},
       </if>
       <if test="realname != null" >
         #{realname,jdbcType=VARCHAR},
@@ -366,6 +375,9 @@
       <if test="record.securitymail != null" >
         securitymail = #{record.securitymail,jdbcType=VARCHAR},
       </if>
+      <if test="record.paypassword != null" >
+        paypassword = #{record.paypassword,jdbcType=VARCHAR},
+      </if>
       <if test="record.realname != null" >
         realname = #{record.realname,jdbcType=VARCHAR},
       </if>
@@ -417,6 +429,7 @@
       securitypay = #{record.securitypay,jdbcType=VARCHAR},
       securityphone = #{record.securityphone,jdbcType=VARCHAR},
       securitymail = #{record.securitymail,jdbcType=VARCHAR},
+      paypassword = #{record.paypassword,jdbcType=VARCHAR},
       realname = #{record.realname,jdbcType=VARCHAR},
       identitynumber = #{record.identitynumber,jdbcType=VARCHAR},
       photourl1 = #{record.photourl1,jdbcType=VARCHAR},
@@ -481,6 +494,9 @@
       <if test="securitymail != null" >
         securitymail = #{securitymail,jdbcType=VARCHAR},
       </if>
+      <if test="paypassword != null" >
+        paypassword = #{paypassword,jdbcType=VARCHAR},
+      </if>
       <if test="realname != null" >
         realname = #{realname,jdbcType=VARCHAR},
       </if>
@@ -529,6 +545,7 @@
       securitypay = #{securitypay,jdbcType=VARCHAR},
       securityphone = #{securityphone,jdbcType=VARCHAR},
       securitymail = #{securitymail,jdbcType=VARCHAR},
+      paypassword = #{paypassword,jdbcType=VARCHAR},
       realname = #{realname,jdbcType=VARCHAR},
       identitynumber = #{identitynumber,jdbcType=VARCHAR},
       photourl1 = #{photourl1,jdbcType=VARCHAR},

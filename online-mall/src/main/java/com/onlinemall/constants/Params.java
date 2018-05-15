@@ -34,6 +34,8 @@ public class Params {
     public static final String NAME = "name";
     public static final String SEX = "sex";
     public static final String BIRTHDAY = "birthday";
+    public static final String PAY_PASSWORD_1 = "pay_password_1";
+    public static final String PAY_PASSWORD_2 = "pay_password_2";
     public static final String SECURITY_DEGREE = "securitydegree";
     public static final String SECURITY_PAY = "securitypay";
     public static final String SECURITY_PHONE = "securityphone";
