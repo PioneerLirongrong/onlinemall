@@ -34,9 +34,6 @@ public class UserServiceImp implements IUserService {
     private static Logger logger = Logger.getLogger(UserServiceImp.class);
 
     @Autowired
-    private JdbcTemplate onlineMallJdbcTemplate;
-
-    @Autowired
     private OnlinemallUserMapper onlinemallUserMapper;
 
 
@@ -96,12 +93,12 @@ public class UserServiceImp implements IUserService {
             onlinemallUser.setPassword(passwordMD5);
             onlinemallUser.setRegistertime(new Date());
             //注册时给当前用户设置一个默认的用户名，后期可一做修改
-            if(StringUtils.isNotBlank(onlinemallUser.getPhonenumber())){
-                onlinemallUser.setAccount(onlinemallUser.getPhonenumber()+"用户");
-            }else if(StringUtils.isNotBlank(onlinemallUser.getMail())){
-                onlinemallUser.setAccount(onlinemallUser.getMail()+"用户");
-            }else {
-                onlinemallUser.setAccount("幸运"+String.format("%03d",new Random().nextInt(10)+"")+"用户");
+            if (StringUtils.isNotBlank(onlinemallUser.getPhonenumber())) {
+                onlinemallUser.setAccount(onlinemallUser.getPhonenumber() + "用户");
+            } else if (StringUtils.isNotBlank(onlinemallUser.getMail())) {
+                onlinemallUser.setAccount(onlinemallUser.getMail() + "用户");
+            } else {
+                onlinemallUser.setAccount("幸运" + String.format("%03d", new Random().nextInt(10) + "") + "用户");
             }
             //设置账户安全分 默认值
             onlinemallUser.setSecuritydegree(60);
@@ -165,7 +162,7 @@ public class UserServiceImp implements IUserService {
             return baseResult;
         }
         //在redis中记录这当前用户的登录状态
-        CacheUtil.set(onlinemallUser.get(0).getUserid(),Params.LOGIN);
+        CacheUtil.set(onlinemallUser.get(0).getUserid(), Params.LOGIN);
         baseResult.setDataObj(onlinemallUser.get(0));
         baseResult.setCode(BaseResult.SUCCESS);
         logger.info("{mysql中存在当前用户\t" + onlinemallUser.get(0).getAccount() + "}");
@@ -178,14 +175,14 @@ public class UserServiceImp implements IUserService {
         logger.info("{调用修改用户密码的服务,由springservice的方法loginOut提供服务}");
         BaseResult<OnlinemallUser> baseResult = new BaseResult<OnlinemallUser>();
         baseResult.setCode(BaseResult.FAIL);
-        if(StringUtils.isNotBlank((String) params.getParams().get(USERID))){
+        if (StringUtils.isNotBlank((String) params.getParams().get(USERID))) {
             //清除掉redis里的数据
             String userId = (String) params.getParams().get(USERID);
-            CacheUtil.set(userId,Params.LOGOUT);
+            CacheUtil.set(userId, Params.LOGOUT);
             baseResult.setCode(BaseResult.SUCCESS);
             baseResult.setStatus(Params.LOGOUT);
             baseResult.setDataObj(new OnlinemallUser());
-        }else{
+        } else {
             baseResult.setCode(BaseResult.SUCCESS);
             baseResult.setStatus(Params.LOGOUT);
             baseResult.setDataObj(new OnlinemallUser());
@@ -236,7 +233,7 @@ public class UserServiceImp implements IUserService {
             return baseResult;
         }
         //现在缓存中查找
-        if(!CacheUtil.exists(redisKey)){
+        if (!CacheUtil.exists(redisKey)) {
             baseResult.setErrors(Errors.USER_NOT_EXIST_ERRPOR);
             return baseResult;
         }
@@ -265,24 +262,24 @@ public class UserServiceImp implements IUserService {
         baseResult.setCode(BaseResult.FAIL);
         OnlinemallUserExample onlinemallUserExample = new OnlinemallUserExample();
         OnlinemallUserExample.Criteria criteria = onlinemallUserExample.createCriteria();
-        if(StringUtils.isNotBlank((String) params.getParams().get(USERID))){
+        if (StringUtils.isNotBlank((String) params.getParams().get(USERID))) {
             criteria.andUseridEqualTo((String) params.getParams().get(USERID));
-        }else {
+        } else {
             baseResult.setErrors(Errors.REQUEST_PARAM_ERROR);
             return baseResult;
         }
         String useId = (String) params.getParams().get(USERID);
-        if(StringUtils.isBlank(useId)){
+        if (StringUtils.isBlank(useId)) {
             baseResult.setCode(BaseResult.SUCCESS);
             baseResult.setDataObj(new OnlinemallUser());
         }
-        logger.info("{用户ID为"+useId+"}");
+        logger.info("{用户ID为" + useId + "}");
         OnlinemallUser onlinemallUser = onlinemallUserMapper.selectByPrimaryKey(useId);
-        if(null == onlinemallUser){
+        if (null == onlinemallUser) {
             baseResult.setCode(BaseResult.SUCCESS);
             baseResult.setDataObj(new OnlinemallUser());
             return baseResult;
-        }else {
+        } else {
             baseResult.setCode(BaseResult.SUCCESS);
             baseResult.setDataObj(onlinemallUser);
             return baseResult;
@@ -293,7 +290,53 @@ public class UserServiceImp implements IUserService {
         logger.info("{调用获取用户详细信息服务,由springservice中的方法updateOnlineMallUserByUserId提供服务}");
         BaseResult<OnlinemallUser> baseResult = new BaseResult<OnlinemallUser>();
         baseResult.setCode(BaseResult.FAIL);
-        return null;
+        //先通过userId找到当前的user,然后更新其信息字段
+        String userId = (String) params.getParams().get(USERID);
+        if (StringUtils.isBlank(userId)) {
+            baseResult.setErrors(Errors.REQUEST_PARAM_ERROR);
+        } else {
+            OnlinemallUser onlinemallUser = onlinemallUserMapper.selectByPrimaryKey(userId);
+            if (null != onlinemallUser) {
+                OnlinemallUserExample onlinemallUserExample = new OnlinemallUserExample();
+                OnlinemallUserExample.Criteria criteria = onlinemallUserExample.createCriteria();
+                if (StringUtils.isNotBlank((String) params.getParams().get(QQ_NUMBER))) {
+                    criteria.andQqnumberEqualTo((String) params.getParams().get(QQ_NUMBER));
+                }
+                if (StringUtils.isNotBlank((String) params.getParams().get(WEIXIN_NUMBER))) {
+                    criteria.andWeixinnumberEqualTo((String) params.getParams().get(WEIXIN_NUMBER));
+                }
+                if (StringUtils.isNotBlank((String) params.getParams().get(WEIBO_NUMBER))) {
+                    criteria.andWeibonumberEqualTo((String) params.getParams().get(WEIBO_NUMBER));
+                }
+                if (StringUtils.isNotBlank((String) params.getParams().get(NAME))) {
+                    criteria.andNameEqualTo((String) params.getParams().get(NAME));
+                }
+                if (StringUtils.isNotBlank((String) params.getParams().get(SEX))) {
+                    criteria.andSexEqualTo((String) params.getParams().get(SEX));
+                }
+                if (StringUtils.isNotBlank((String) params.getParams().get(BIRTHDAY))) {
+                    criteria.andBirthdayEqualTo((String) params.getParams().get(BIRTHDAY));
+                }
+                if (StringUtils.isNotBlank((String) params.getParams().get(MAIL))) {
+                    criteria.andMailEqualTo((String) params.getParams().get(MAIL));
+                }
+                if (StringUtils.isNotBlank((String) params.getParams().get(PHONENUMBER))) {
+                    criteria.andPhonenumberEqualTo((String) params.getParams().get(PHONENUMBER));
+                }
+                int updateByExample = onlinemallUserMapper.updateByExample(onlinemallUser, onlinemallUserExample);
+                if (0 == updateByExample) {
+                    baseResult.setErrors(Errors.USER_UPDATE_ERROR);
+                    logger.info("{用户跟新失败" + onlinemallUser.getUserid() + "\t" + onlinemallUser.getAccount() + "}");
+                } else {
+                    logger.info("{用户跟新成功" + onlinemallUser.getUserid() + "\t" + onlinemallUser.getAccount() + "}");
+                    baseResult.setCode(BaseResult.SUCCESS);
+                    baseResult.setDataObj(onlinemallUserMapper.selectByPrimaryKey(userId));
+                }
+            } else {
+                baseResult.setErrors(Errors.USER_NOT_EXIST_ERRPOR);
+            }
+        }
+        return baseResult;
     }
 
     public BaseResult<OnlinemallUser> getUserLoginOutStatus(RequestParams<OnlinemallUser> params) {
@@ -301,22 +344,26 @@ public class UserServiceImp implements IUserService {
         BaseResult<OnlinemallUser> baseResult = new BaseResult<OnlinemallUser>();
         baseResult.setStatus(Params.LOGOUT);
         baseResult.setCode(BaseResult.FAIL);
-        if(StringUtils.isNotBlank((String) params.getParams().get(USERID))){
+        if (StringUtils.isNotBlank((String) params.getParams().get(USERID))) {
             String status = CacheUtil.get((String) params.getParams().get(USERID));
-            logger.info("{redis里存储的状态为"+status+"}");
-            if(StringUtils.isBlank(status)){
+            logger.info("{redis里存储的状态为" + status + "}");
+            if (StringUtils.isBlank(status)) {
                 baseResult.setCode(BaseResult.SUCCESS);
                 baseResult.setStatus(Params.LOGOUT);
-            }else {
-                if(Params.LOGIN.equals(status)){
+            } else {
+                if (Params.LOGIN.equals(status)) {
                     baseResult.setCode(BaseResult.SUCCESS);
                     baseResult.setStatus(Params.LOGIN);
-                }else {
+                } else {
                     baseResult.setCode(BaseResult.SUCCESS);
                     baseResult.setStatus(Params.LOGOUT);
                 }
             }
         }
         return baseResult;
+    }
+
+    public BaseResult<OnlinemallUser> updateUserSecurityDegree(RequestParams<OnlinemallUser> params) {
+        return null;
     }
 }

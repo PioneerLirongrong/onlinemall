@@ -114,7 +114,6 @@ var COMMONUSERINFOUTIL = {
             },
             error: function () {
                 console.log("/onlinemall/getUserLoginOutStatus接口异常了")
-                alert("bbbbb")
             }
 
         })

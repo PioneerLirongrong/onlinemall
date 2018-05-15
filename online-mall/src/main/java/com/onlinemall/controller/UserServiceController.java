@@ -98,6 +98,14 @@ public class UserServiceController {
         return baseResult;
     }
 
+    @RequestMapping(value = "updateUserSecurityDegree",method = RequestMethod.POST)
+    public BaseResult<OnlinemallUser> updateUserSecurityDegree(@ModelAttribute RequestParams params){
+        logger.info("{请求后台接口\'/onlinemall/updateUserSecurityDegree\'}");
+        logger.info("{前台的请求参数"+params.toString()+"}");
+        BaseResult<OnlinemallUser> baseResult = iUserService.updateUserSecurityDegree(params);
+        logger.info("{后台返给前台的结果"+baseResult.toString()+"}");
+        return baseResult;
+    }
 
     /**
      * 获取session

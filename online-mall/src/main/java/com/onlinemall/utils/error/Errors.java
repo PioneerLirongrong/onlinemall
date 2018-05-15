@@ -28,5 +28,13 @@ public class Errors implements Serializable {
     public final static Errors USER_MAIL_PASSWORD_FORMAT_ERROR = new Errors("1003","用户密码不一致");
     public final static Errors USER_NOT_EXIST_ERRPOR = new Errors("1004","用户不存在");
     public final static Errors USER_NOT_LOGIN = new Errors("1005","用户可能不存在或未登录过");
+    public final static Errors USER_UPDATE_ERROR = new Errors("1006","用户更新失败");
+
+
+    /**
+     * 用户银行卡模块
+     */
+    public final static Errors USER_BANK_CARD_ALREADY_BIND = new Errors("2000","银行卡已经被绑定了");
 
 }
+

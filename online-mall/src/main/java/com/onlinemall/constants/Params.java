@@ -28,5 +28,31 @@ public class Params {
     public static final String PASSWORD_PARA = "MD5";
     public static final String LOGIN = "login";
     public static final String LOGOUT = "logout";
+    public static final String QQ_NUMBER = "qqnumber";
+    public static final String WEIXIN_NUMBER = "weixinnumber";
+    public static final String WEIBO_NUMBER = "weibonumber";
+    public static final String NAME = "name";
+    public static final String SEX = "sex";
+    public static final String BIRTHDAY = "birthday";
+    public static final String SECURITY_DEGREE = "securitydegree";
+    public static final String SECURITY_PAY = "securitypay";
+    public static final String SECURITY_PHONE = "securityphone";
+    public static final String SECURITY_MAIL = "securitymail";
+    public static final String REAL_NAME = "realname";
+    public static final String IDENTITYNUMBER = "identitynumber";
+    public static final String PHOTOURL_1 = "photourl1";
+    public static final String PHOTOURL_2 = "photourl2";
+    public static final String SECURITYPROBLEM_1 = "securityproblem1";
+    public static final String SECURITYANSOWER_1 = "securityansower1";
+    public static final String SECURITYPROBLEM_2 = "securityproblem2";
+    public static final String SECURITYANSOWER_2 = "securityansower2";
+
+    //用户银行卡模块
+    public static final String BANK_NAME = "bankname";
+    public static final String BANK_TYPE = "banktype";
+    public static final String BANK_NUMBER = "banknumber";
+    public static final String BANK_BIND_STATUS = "bankbindstatus";
+
+
 
 }

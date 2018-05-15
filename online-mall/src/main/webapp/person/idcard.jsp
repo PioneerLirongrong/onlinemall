@@ -82,40 +82,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="authenticationPic">
-                    <p class="title">上传身份证照片</p>
-                    <p class="tip">请按要求上传身份证</p>
-                    <ul class="cardlist">
-                        <li>
-                            <div class="cardPic">
-                                <img src="../images/cardbg.jpg">
-                                <div class="cardText"><i class="am-icon-plus"></i>
-                                    <p>正面照片</p>
-                                </div>
-                                <p class="titleText">身份证正面</p>
-                            </div>
-                            <div class="cardExample">
-                                <img src="../images/cardbg.jpg">
-                                <p class="titleText">示例</p>
-                            </div>
-
-                        </li>
-                        <li>
-                            <div class="cardPic">
-                                <img src="../images/cardbg.jpg">
-                                <div class="cardText"><i class="am-icon-plus"></i>
-                                    <p>背面照片</p>
-                                </div>
-                                <p class="titleText">身份证背面</p>
-                            </div>
-                            <div class="cardExample">
-                                <img src="../images/cardbg.jpg">
-                                <p class="titleText">示例</p>
-                            </div>
-
-                        </li>
-                    </ul>
-                </div>
                 <div class="info-btn">
                     <div class="am-btn am-btn-danger">提交</div>
                 </div>
