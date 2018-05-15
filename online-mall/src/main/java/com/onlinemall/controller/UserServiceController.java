@@ -77,7 +77,7 @@ public class UserServiceController {
         return baseResult;
     }
 
-    @RequestMapping(value = "updateUserAllInformation",method = RequestMethod.POST)
+    @RequestMapping(value = "/updateUserAllInformation",method = RequestMethod.POST)
     public BaseResult<OnlinemallUser> updateOnlineMallUserByUserId(@ModelAttribute RequestParams params){
         logger.info("{请求后台接口\'/onlinemall/updateOnlineMallUserByUserId\'}");
         logger.info("{前台的请求参数"+params.toString()+"}");
@@ -86,7 +86,7 @@ public class UserServiceController {
         return baseResult;
     }
 
-    @RequestMapping(value = "loginOut",method = RequestMethod.POST)
+    @RequestMapping(value = "/loginOut",method = RequestMethod.POST)
     public BaseResult<OnlinemallUser> loginOut(@ModelAttribute RequestParams params){
         logger.info("{请求后台接口\'/onlinemall/loginOut\'}");
         logger.info("{前台的请求参数"+params.toString()+"}");
@@ -98,7 +98,7 @@ public class UserServiceController {
         return baseResult;
     }
 
-    @RequestMapping(value = "updateUserSecurityDegree",method = RequestMethod.POST)
+    @RequestMapping(value = "/updateUserSecurityDegree",method = RequestMethod.POST)
     public BaseResult<OnlinemallUser> updateUserSecurityDegree(@ModelAttribute RequestParams params){
         logger.info("{请求后台接口\'/onlinemall/updateUserSecurityDegree\'}");
         logger.info("{前台的请求参数"+params.toString()+"}");

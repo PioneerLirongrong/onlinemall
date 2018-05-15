@@ -294,6 +294,7 @@ public class UserServiceImp implements IUserService {
         OnlinemallUserExample.Criteria criteria = onlinemallUserExample.createCriteria();
         String userId = (String) params.getParams().get(USERID);
         if (StringUtils.isBlank(userId)) {
+            baseResult.setDataObj(new OnlinemallUser());
             baseResult.setErrors(Errors.REQUEST_PARAM_ERROR);
         } else {
             criteria.andUseridEqualTo(userId);
@@ -301,40 +302,43 @@ public class UserServiceImp implements IUserService {
             if (0 != onlinemallUsers.size()) {
                 OnlinemallUser onlinemallUser = onlinemallUsers.get(0);
                 if (StringUtils.isNotBlank((String) params.getParams().get(QQ_NUMBER))) {
-                    criteria.andQqnumberEqualTo((String) params.getParams().get(QQ_NUMBER));
+                    onlinemallUser.setQqnumber((String) params.getParams().get(QQ_NUMBER));
                 }
                 if (StringUtils.isNotBlank((String) params.getParams().get(WEIXIN_NUMBER))) {
-                    criteria.andWeixinnumberEqualTo((String) params.getParams().get(WEIXIN_NUMBER));
+                    onlinemallUser.setWeixinnumber((String) params.getParams().get(WEIXIN_NUMBER));
                 }
                 if (StringUtils.isNotBlank((String) params.getParams().get(WEIBO_NUMBER))) {
-                    criteria.andWeibonumberEqualTo((String) params.getParams().get(WEIBO_NUMBER));
+                    onlinemallUser.setWeibonumber((String) params.getParams().get(WEIBO_NUMBER));
                 }
                 if (StringUtils.isNotBlank((String) params.getParams().get(NAME))) {
-                    criteria.andNameEqualTo((String) params.getParams().get(NAME));
+                    onlinemallUser.setName((String) params.getParams().get(NAME));
                 }
                 if (StringUtils.isNotBlank((String) params.getParams().get(SEX))) {
-                    criteria.andSexEqualTo((String) params.getParams().get(SEX));
+                    onlinemallUser.setSex((String) params.getParams().get(SEX));
                 }
                 if (StringUtils.isNotBlank((String) params.getParams().get(BIRTHDAY))) {
-                    criteria.andBirthdayEqualTo((String) params.getParams().get(BIRTHDAY));
+                    onlinemallUser.setBirthday((String) params.getParams().get(BIRTHDAY));
                 }
                 if (StringUtils.isNotBlank((String) params.getParams().get(MAIL))) {
-                    criteria.andMailEqualTo((String) params.getParams().get(MAIL));
+                    onlinemallUser.setMail((String) params.getParams().get(MAIL));
                 }
                 if (StringUtils.isNotBlank((String) params.getParams().get(PHONENUMBER))) {
-                    criteria.andPhonenumberEqualTo((String) params.getParams().get(PHONENUMBER));
+                    onlinemallUser.setPhonenumber((String) params.getParams().get(PHONENUMBER));
                 }
                 int updateByExample = onlinemallUserMapper.updateByExample(onlinemallUser, onlinemallUserExample);
                 if (0 == updateByExample) {
                     baseResult.setErrors(Errors.USER_UPDATE_ERROR);
+                    baseResult.setDataObj(new OnlinemallUser());
                     logger.info("{用户跟新失败" + onlinemallUser.getUserid() + "\t" + onlinemallUser.getAccount() + "}");
                 } else {
                     logger.info("{用户跟新成功" + onlinemallUser.getUserid() + "\t" + onlinemallUser.getAccount() + "}");
                     baseResult.setCode(BaseResult.SUCCESS);
-                    baseResult.setDataObj(onlinemallUserMapper.selectByPrimaryKey(userId));
+                    List<OnlinemallUser> onlinemallUsersNew = onlinemallUserMapper.selectByExample(onlinemallUserExample);
+                    baseResult.setDataObj(onlinemallUsersNew.get(0));
                 }
             } else {
                 baseResult.setErrors(Errors.USER_NOT_EXIST_ERRPOR);
+                baseResult.setDataObj(new OnlinemallUser());
             }
         }
         return baseResult;

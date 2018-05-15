@@ -7,7 +7,7 @@ onlineMallInformation.prototype = {
         updateInfoUrl: "/onlinemall/updateUserAllInformation.do",
         returnUrl: '../person/information.jsp',
     },
-    exception: function (message) {
+    execption: function (message) {
         alert(message)
     },
     init: function () {
@@ -16,53 +16,14 @@ onlineMallInformation.prototype = {
             index.mapData = data;
             index.initUserInfo(index);
         });
+    },
+    updateInfo:function(){
+        var indexnew  = this;
         $("#submit").click(function () {
-            index.submit();
+            indexnew.submit();
         });
     },
     initUserInfo: function (that) {
-        var table = {};
-        // table['1990']='a';
-        // table['1991']='b';
-        // table['1992']='d';
-        // table['1993']='e';
-        // table['1994']='f';
-        // table['1995']='g';
-        // table['1996']='h';
-        // table['1997']='i';
-        // table['1998']='j';
-        // table['1999']='k';
-        // table['2000']='l';
-        // table['2001']='m';
-        // table['2002']='n';
-        // table['2003']='o';
-        // table['2004']='p';
-        // table['2005']='q';
-        // table['2006']='r';
-        // table['2007']='s';
-        // table['2008']='t';
-        // table['2009']='u';
-        // table['2010']='v';
-        // table['2011']='w';
-        // table['2012']='x';
-        // table['2013']='y';
-        // table['2014']='z';
-        // table['2015']='A';
-        // table['2016']='B';
-        // table['2017']='C';
-        // table['2018']='D';
-        // table['1']='E';
-        // table['2']='F';
-        // table['3']='G';
-        // table['4']='H';
-        // table['5']='I';
-        // table['6']='J';
-        // table['7']='K';
-        // table['8']='L';
-        // table['9']='M';
-        // table['10']='N';
-        // table['11']='O';
-        // table['12']='P';
         if (typeof(that.mapData) != "undefined") {
             $("#info1").html(
                 "<div><b>用户名：<i>" + that.mapData["account"] + "</i></b></div>\n" +
@@ -104,7 +65,7 @@ onlineMallInformation.prototype = {
         if ("" != phone || null != phone) {
             var reg = new RegExp("^[1][3,4,5,7,8][0-9]{9}$");
             if (!(reg.test(phone))) {
-                info.exception("手机号格式不正确!!!请确认后填写")
+                info.execption("手机号格式不正确!!!请确认后填写")
                 return;
             }
         }
@@ -112,7 +73,7 @@ onlineMallInformation.prototype = {
         if ("" != mail || null != mail) {
             var reg = new RegExp("[a-zA-Z0-9]{1,10}@[a-zA-Z0-9]{1,5}\\.[a-zA-Z0-9]{1,5}");
             if (!(reg.test(mail))) {
-                info.exception("邮箱格式不正确!!!请确认后填写")
+                info.execption("邮箱格式不正确!!!请确认后填写")
                 return;
             }
         }
@@ -125,16 +86,17 @@ onlineMallInformation.prototype = {
         data['params["mail"]'] = mail;
         $.ajax({
             type: "POST",
-            url: info.config.updateInfoUrl,
+            url: this.config.updateInfoUrl,
             data: data,
             dataType: "JSON",
+            async:false,
             success: function (result) {
                 if (result.code == '1') {
                     window.location.href = info.config.returnUrl;
                 }
             },
             error: function () {
-                info.exception("系统异常");
+                info.execption("系统异常");
             }
         });
 
@@ -143,5 +105,5 @@ onlineMallInformation.prototype = {
 $(document).ready(function () {
     var information = new onlineMallInformation();
     information.init();
-
+    information.updateInfo();
 });
