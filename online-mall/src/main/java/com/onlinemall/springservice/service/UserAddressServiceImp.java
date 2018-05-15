@@ -65,6 +65,10 @@ public class UserAddressServiceImp implements IUserAddressService {
         BaseResult<OnlinemallUserAddress> baseResult = new BaseResult<OnlinemallUserAddress>();
         OnlinemallUserAddressExample onlinemallUserAddressExample = new OnlinemallUserAddressExample();
         OnlinemallUserAddressExample.Criteria criteria = onlinemallUserAddressExample.createCriteria();
+        if(StringUtils.isBlank((String) params.getParams().get(Params.ADDRESS_ID))) {
+            baseResult.setErrors(Errors.REQUEST_PARAM_ERROR);
+            return baseResult;
+        }
         if(StringUtils.isNotBlank((String)params.getParams().get(Params.ADDRESS_PROVINCE))){
             criteria.andProvinceEqualTo((String)params.getParams().get(Params.ADDRESS_PROVINCE));
         }
