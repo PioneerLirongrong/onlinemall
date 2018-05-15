@@ -8,6 +8,14 @@
     <link href="../AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css">
     <link href="../css/personal.css" rel="stylesheet" type="text/css">
     <link href="../css/infstyle.css" rel="stylesheet" type="text/css">
+    <script src="../AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
+    <script src="../AmazeUI-2.4.2/assets/js/amazeui.js"></script>
+    <script src="../js/jquerycookie.js"></script>
+    <script src="../js/jquery.md5.js"></script>
+    <script src="../js/jquery.base64.js"></script>
+    <script src="../onlinemalljs/commonUtils/CommonUtil.js"></script>
+    <script src="../onlinemalljs/commonUtils/CommonUserInfo.js"></script>
+    <script src="../onlinemalljs/person/safety.js"></script>
 </head>
 <body>
 <!--头 -->
@@ -68,12 +76,8 @@
 
                     <p class="am-form-help">头像</p>
 
-                    <div class="info-m">
-                        <div><b>用户名：<i>小叮当</i></b></div>
-                        <div class="safeText">
-                            <a href="safety.jsp">账户安全:<em style="margin-left:20px ;">60</em>分</a>
-                            <div class="progressBar"><span style="left: -95px;" class="progress"></span></div>
-                        </div>
+                    <div class="info-m" id="userinfo">
+
                     </div>
                 </div>
 
@@ -87,7 +91,7 @@
                                     <small>为保证您购物安全，建议您定期更改密码以保护账户安全。</small>
                                 </div>
                             </div>
-                            <div class="fore3">
+                            <div class="fore3" id="check1">
                                 <a href="password.jsp">
                                     <div class="am-btn am-btn-secondary">修改</div>
                                 </a>
@@ -101,10 +105,8 @@
                                     <small>启用支付密码功能，为您资产账户安全加把锁。</small>
                                 </div>
                             </div>
-                            <div class="fore3">
-                                <a href="setpay.jsp">
-                                    <div class="am-btn am-btn-secondary">立即启用</div>
-                                </a>
+                            <div class="fore3" id="check2">
+
                             </div>
                         </li>
                         <li>
@@ -115,10 +117,10 @@
                                     <small>用于提升账号的安全性和信任级别，认证后不能修改认证信息。</small>
                                 </div>
                             </div>
-                            <div class="fore3">
-                                <a href="idcard.jsp">
-                                    <div class="am-btn am-btn-secondary">认证</div>
-                                </a>
+                            <div class="fore3" id="check3">
+                                <%--<a href="idcard.jsp">--%>
+                                    <%--<div class="am-btn am-btn-secondary">认证</div>--%>
+                                <%--</a>--%>
                             </div>
                         </li>
                         <li>
@@ -129,10 +131,8 @@
                                     <small>保护账户安全，验证您身份的工具之一。</small>
                                 </div>
                             </div>
-                            <div class="fore3">
-                                <a href="question.jsp">
-                                    <div class="am-btn am-btn-secondary">认证</div>
-                                </a>
+                            <div class="fore3" id="check4">
+
                             </div>
                         </li>
                     </ul>

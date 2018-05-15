@@ -427,9 +427,9 @@ public class UserServiceImp implements IUserService {
                 return baseResult;
             }
         }
-        List<OnlinemallUser> users = onlinemallUserMapper.selectByExample(onlinemallUserExample);
+        OnlinemallUser onlinemallUser = onlinemallUserMapper.selectByPrimaryKey(userId);
         baseResult.setCode(BaseResult.SUCCESS);
-        baseResult.setDataObj(users.get(0));
+        baseResult.setDataObj(onlinemallUser);
         return baseResult;
     }
 }

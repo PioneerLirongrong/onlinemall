@@ -70,8 +70,13 @@ var COMMONUSERINFOUTIL = {
                     } else {
                         data['realname'] = result.dataObj.realname;
                     }
+                    if (result.dataObj.securitypay == null) {
+                        data['securitypay'] = "";
+                    } else {
+                        data['securitypay'] = result.dataObj.securitypay;
+                    }
                     if (result.dataObj.securitydegree == null) {
-                        data['securitydegree'] = "";
+                        data['securitydegree'] = "60";
                     } else {
                         data['securitydegree'] = result.dataObj.securitydegree;
                     }
@@ -79,6 +84,26 @@ var COMMONUSERINFOUTIL = {
                         data['userid'] = "";
                     } else {
                         data['userid'] = result.dataObj.userid;
+                    }
+                    if (result.dataObj.securityproblem1 == null) {
+                        data['securityproblem1'] = "";
+                    } else {
+                        data['securityproblem1'] = result.dataObj.securityproblem1;
+                    }
+                    if (result.dataObj.securityansower1 == null) {
+                        data['securityansower1'] = "";
+                    } else {
+                        data['securityansower1'] = result.dataObj.securityansower1;
+                    }
+                    if (result.dataObj.securityproblem2 == null) {
+                        data['securityproblem2'] = "";
+                    } else {
+                        data['securityproblem2'] = result.dataObj.securityproblem2;
+                    }
+                    if (result.dataObj.securityansower2 == null) {
+                        data['securityansower2'] = "";
+                    } else {
+                        data['securityansower2'] = result.dataObj.securityansower2;
                     }
                     if(typeof(data.userid)!="undefined"){
                         console.log("=====>" + data.userid);
