@@ -4,15 +4,19 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=0">
-
     <title>实名认证</title>
-
     <link href="../AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css">
     <link href="../AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css">
-
     <link href="../css/personal.css" rel="stylesheet" type="text/css">
     <link href="../css/stepstyle.css" rel="stylesheet" type="text/css">
-
+    <script src="../AmazeUI-2.4.2/assets/js/amazeui.js"></script>
+    <script src="../AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
+    <script src="../js/jquerycookie.js"></script>
+    <script src="../js/jquery.md5.js"></script>
+    <script src="../js/jquery.base64.js"></script>
+    <script src="../onlinemalljs/commonUtils/CommonUtil.js"></script>
+    <script src="../onlinemalljs/commonUtils/CommonUserInfo.js"></script>
+    <script src="../onlinemalljs/person/idcard.js"></script>
 </head>
 
 <body>
@@ -64,28 +68,23 @@
                 </div>
             </div>
             <hr/>
-            <div class="authentication">
-                <p class="tip">请填写您身份证上的真实信息，以用于报关审核</p>
-                <div class="authenticationInfo">
-                    <p class="title">填写个人信息</p>
-
-                    <div class="am-form-group">
-                        <label for="user-name" class="am-form-label">真实姓名</label>
-                        <div class="am-form-content">
-                            <input type="text" id="user-name" placeholder="请输入您的真实姓名">
-                        </div>
+            <form class="am-form am-form-horizontal" id="idCardForm">
+                <div class="am-form-group">
+                    <label for="user-real-name" class="am-form-label">真实姓名</label>
+                    <div class="am-form-content">
+                        <input type="text" id="user-real-name" placeholder="请输入您的真实姓名">
                     </div>
-                    <div class="am-form-group">
-                        <label for="user-IDcard" class="am-form-label">身份证号</label>
-                        <div class="am-form-content">
-                            <input type="tel" id="user-IDcard" placeholder="请输入您的身份证信息">
-                        </div>
+                </div>
+                <div class="am-form-group">
+                    <label for="user-bind-IDcard" class="am-form-label">身份证号</label>
+                    <div class="am-form-content">
+                        <input type="text" id="user-bind-IDcard" placeholder="请输入您的身份证信息">
                     </div>
                 </div>
                 <div class="info-btn">
-                    <div class="am-btn am-btn-danger">提交</div>
+                    <input id="submit" class="am-btn am-btn-danger" type="submit" value="保存修改">
                 </div>
-            </div>
+            </form>
         </div>
         <!--底部-->
         <div class="footer">

@@ -325,6 +325,9 @@ public class UserServiceImp implements IUserService {
                 if (StringUtils.isNotBlank((String) params.getParams().get(PHONENUMBER))) {
                     onlinemallUser.setPhonenumber((String) params.getParams().get(PHONENUMBER));
                 }
+                if(StringUtils.isNotBlank((String)params.getParams().get(ACCOUNT))){
+                    onlinemallUser.setAccount((String)params.getParams().get(ACCOUNT));
+                }
                 int updateByExample = onlinemallUserMapper.updateByExample(onlinemallUser, onlinemallUserExample);
                 if (0 == updateByExample) {
                     baseResult.setErrors(Errors.USER_UPDATE_ERROR);
@@ -411,8 +414,8 @@ public class UserServiceImp implements IUserService {
             }
             String problem1 = (String) params.getParams().get(Params.SECURITYPROBLEM_1);
             String problem2 = (String) params.getParams().get(Params.SECURITYPROBLEM_2);
-            String ansower1 = (String) params.getParams().get(Params.PASSWORD_1);
-            String ansower2 = (String) params.getParams().get(Params.PASSWORD_2);
+            String ansower1 = (String) params.getParams().get(Params.SECURITYANSOWER_1);
+            String ansower2 = (String) params.getParams().get(Params.SECURITYANSOWER_2);
             if(StringUtils.isNotBlank(problem1) && StringUtils.isNotBlank(problem2)
                     && StringUtils.isNotBlank(ansower1) && StringUtils.isNotBlank(ansower2)){
                 onlinemallUser.setSecurityproblem1(problem1);

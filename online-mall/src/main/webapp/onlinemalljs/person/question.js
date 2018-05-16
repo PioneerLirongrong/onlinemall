@@ -1,11 +1,11 @@
-var onlineMallPassword = function () {
+var onlineMallQuestion = function () {
 
 };
-onlineMallPassword.prototype = {
+onlineMallQuestion.prototype = {
     mapData: {},
     config: {
         updateInfoUrl: "/onlinemall/updateUserSecurityDegree.do",
-        returnUrl: '/person/safety.jsp',
+        returnUrl: '../person/safety.jsp'
     },
     execption: function (message) {
         alert(message)
@@ -17,8 +17,8 @@ onlineMallPassword.prototype = {
             index.initUserInfo(index);
         });
     },
-    updateInfo:function(){
-        var indexnew  = this;
+    updateInfo: function () {
+        var indexnew = this;
         $("#submit").click(function () {
             indexnew.submit();
         });
@@ -55,36 +55,35 @@ onlineMallPassword.prototype = {
     submit: function () {
         var info = this;
         var data = {};
-        var newpassword = $("#user-new-password").val().trim();
-        var confirmpassword = $("#user-confirm-password").val().trim();
-        if(newpassword != confirmpassword){
-            alert("两次密码不一样,请确认后重新输入")
-            return
-        }
+        var ansower1 = $("#user-answer1").val().trim();
+        var ansower2 = $("#user-answer2").val().trim();
+        var question1 = $("#data-am-selected_1 option:selected").val().trim();
+        var question2 = $("#data-am-selected_2 option:selected").val().trim();
         data['params["userid"]'] = $.cookie("onlinemall_zc_userId");
-        data['params["password1"]'] = newpassword;
-        data['params["password2"]'] = confirmpassword;
+        data['params["securityproblem1"]'] = question1
+        data['params["securityansower1"]'] = ansower1;
+        data['params["securityproblem2"]'] = question2
+        data['params["securityansower2"]'] = ansower2;
         $.ajax({
             type: "POST",
             url: this.config.updateInfoUrl,
             data: data,
             dataType: "JSON",
-            async:true,
-            async:false,
+            async: false,
             success: function (result) {
                 if (result.code == '1') {
-                    $("#passwordForm").attr('action',info.config.returnUrl);
+                    $("#questionForm").attr('action',info.config.returnUrl);
                 }
             },
             error: function () {
                 info.execption("系统异常");
             }
         });
-        return false;
+
     }
 };
 $(document).ready(function () {
-    var password = new onlineMallPassword();
-    // password.init();
-    password.updateInfo();
+    var question = new onlineMallQuestion();
+    // information.init();
+    question.updateInfo();
 });

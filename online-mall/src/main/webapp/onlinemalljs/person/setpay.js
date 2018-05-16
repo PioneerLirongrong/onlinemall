@@ -1,7 +1,7 @@
-var onlineMallPassword = function () {
+var onlineMallSetppay = function () {
 
 };
-onlineMallPassword.prototype = {
+onlineMallSetppay.prototype = {
     mapData: {},
     config: {
         updateInfoUrl: "/onlinemall/updateUserSecurityDegree.do",
@@ -55,15 +55,15 @@ onlineMallPassword.prototype = {
     submit: function () {
         var info = this;
         var data = {};
-        var newpassword = $("#user-new-password").val().trim();
-        var confirmpassword = $("#user-confirm-password").val().trim();
+        var newpassword = $("#user-pay-password").val().trim();
+        var confirmpassword = $("#user-confirm-pay-password").val().trim();
         if(newpassword != confirmpassword){
             alert("两次密码不一样,请确认后重新输入")
             return
         }
         data['params["userid"]'] = $.cookie("onlinemall_zc_userId");
-        data['params["password1"]'] = newpassword;
-        data['params["password2"]'] = confirmpassword;
+        data['params["realname"]'] = newpassword;
+        data['params["pay_password_2"]'] = confirmpassword;
         $.ajax({
             type: "POST",
             url: this.config.updateInfoUrl,
@@ -84,7 +84,7 @@ onlineMallPassword.prototype = {
     }
 };
 $(document).ready(function () {
-    var password = new onlineMallPassword();
+    var setppay = new onlineMallSetppay();
     // password.init();
-    password.updateInfo();
+    setppay.updateInfo();
 });

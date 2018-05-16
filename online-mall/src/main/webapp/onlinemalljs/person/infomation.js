@@ -5,7 +5,7 @@ onlineMallInformation.prototype = {
     mapData: {},
     config: {
         updateInfoUrl: "/onlinemall/updateUserAllInformation.do",
-        returnUrl: '../person/information.jsp',
+        returnUrl: '../person/setpay.jsp',
     },
     execption: function (message) {
         alert(message)
@@ -17,8 +17,8 @@ onlineMallInformation.prototype = {
             index.initUserInfo(index);
         });
     },
-    updateInfo:function(){
-        var indexnew  = this;
+    updateInfo: function () {
+        var indexnew = this;
         $("#submit").click(function () {
             indexnew.submit();
         });
@@ -78,18 +78,16 @@ onlineMallInformation.prototype = {
             }
         }
         data['params["userid"]'] = $.cookie("onlinemall_zc_userId");
-        data['params["accout"]'] = account
+        data['params["account"]'] = account
         data['params["name"]'] = name;
         data['params["sex"]'] = sex;
         data['params["birthday"]'] = birthday;
-        data['params["phonenumber"]'] = phone;
-        data['params["mail"]'] = mail;
         $.ajax({
             type: "POST",
             url: this.config.updateInfoUrl,
             data: data,
             dataType: "JSON",
-            async:false,
+            async: false,
             success: function (result) {
                 if (result.code == '1') {
                     window.location.href = info.config.returnUrl;

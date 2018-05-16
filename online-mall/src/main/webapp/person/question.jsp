@@ -14,7 +14,14 @@
     <link href="../css/stepstyle.css" rel="stylesheet" type="text/css">
 
     <script src="../AmazeUI-2.4.2/assets/js/jquery.min.js" type="text/javascript"></script>
-    <script src="../AmazeUI-2.4.2/assets/js/amazeui.js" type="text/javascript"></script>
+    <script src="../AmazeUI-2.4.2/assets/js/amazeui.js"></script>
+    <script src="../AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
+    <script src="../js/jquerycookie.js"></script>
+    <script src="../js/jquery.md5.js"></script>
+    <script src="../js/jquery.base64.js"></script>
+    <script src="../onlinemalljs/commonUtils/CommonUtil.js"></script>
+    <script src="../onlinemalljs/commonUtils/CommonUserInfo.js"></script>
+    <script src="../onlinemalljs/person/question.js"></script>
 
 </head>
 
@@ -86,14 +93,16 @@
                     <div class="u-progress-bar-inner"></div>
                 </div>
             </div>
-            <form class="am-form am-form-horizontal">
+            <form class="am-form am-form-horizontal" id="questionForm">
                 <div class="am-form-group select">
                     <label for="user-question1" class="am-form-label">问题一</label>
                     <div id='user-question1' class="am-form-content">
-                        <select data-am-selected>
+                        <select id = 'data-am-selected_1'>
                             <option value="a" selected>请选择安全问题</option>
-                            <option value="b">您最喜欢的颜色是什么？</option>
-                            <option value="c">您的故乡在哪里？</option>
+                            <option value="您的最好的朋友是谁？">您的最好的朋友是谁？</option>
+                            <option value="您的故乡在哪里？">您的故乡在哪里？</option>
+                            <option value="您最喜欢什么颜色？">您最喜欢什么颜色？</option>
+                            <option value="您最喜欢什么的零食是什么？">您最喜欢什么的零食是什么？</option>
                         </select>
                     </div>
                 </div>
@@ -106,10 +115,12 @@
                 <div class="am-form-group select">
                     <label for="user-question2" class="am-form-label">问题二</label>
                     <div id='user-question2' class="am-form-content">
-                        <select data-am-selected>
+                        <select id = 'data-am-selected_2'>
                             <option value="a" selected>请选择安全问题</option>
-                            <option value="b">您最喜欢的颜色是什么？</option>
-                            <option value="c">您的故乡在哪里？</option>
+                            <option value="您最喜欢做什么？">您最喜欢做什么？</option>
+                            <option value="您喜欢去哪旅游？">您喜欢去哪旅游？</option>
+                            <option value="您父亲的名字？">您父亲的名字？</option>
+                            <option value="您母亲的名字？">您母亲的名字？</option>
                         </select>
                     </div>
                 </div>
@@ -120,7 +131,7 @@
                     </div>
                 </div>
                 <div class="info-btn">
-                    <div class="am-btn am-btn-danger">保存修改</div>
+                    <input id="submit" class="am-btn am-btn-danger" type="submit" value="保存修改">
                 </div>
 
             </form>

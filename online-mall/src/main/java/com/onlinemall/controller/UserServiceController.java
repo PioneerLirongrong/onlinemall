@@ -82,6 +82,8 @@ public class UserServiceController {
         logger.info("{请求后台接口\'/onlinemall/updateOnlineMallUserByUserId\'}");
         logger.info("{前台的请求参数"+params.toString()+"}");
         BaseResult<OnlinemallUser> baseResult = iUserService.updateOnlineMallUserByUserId(params);
+        HttpSession session = getSession();
+        session.setAttribute(ACCOUNT,((OnlinemallUser) baseResult.getDataObj()).getAccount());
         logger.info("{后台返给前台的结果"+baseResult.toString()+"}");
         return baseResult;
     }

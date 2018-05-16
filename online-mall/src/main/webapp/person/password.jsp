@@ -93,7 +93,7 @@
                     <div class="u-progress-bar-inner"></div>
                 </div>
             </div>
-            <form class="am-form am-form-horizontal">
+            <form class="am-form am-form-horizontal" id = "passwordForm">
                 <div class="am-form-group">
                     <label for="user-new-password" class="am-form-label">新密码</label>
                     <div class="am-form-content">
@@ -111,7 +111,6 @@
                 </div>
 
             </form>
-
         </div>
         <!--底部-->
         <div class="footer">

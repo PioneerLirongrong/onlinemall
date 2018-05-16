@@ -15,6 +15,13 @@
 
     <script type="text/javascript" src="../js/jquery-1.7.2.min.js"></script>
     <script src="../AmazeUI-2.4.2/assets/js/amazeui.js"></script>
+    <script src="../AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
+    <script src="../js/jquerycookie.js"></script>
+    <script src="../js/jquery.md5.js"></script>
+    <script src="../js/jquery.base64.js"></script>
+    <script src="../onlinemalljs/commonUtils/CommonUtil.js"></script>
+    <script src="../onlinemalljs/commonUtils/CommonUserInfo.js"></script>
+    <script src="../onlinemalljs/person/setpay.js"></script>
 
 </head>
 
@@ -86,21 +93,21 @@
                     <div class="u-progress-bar-inner"></div>
                 </div>
             </div>
-            <form class="am-form am-form-horizontal">
+            <form class="am-form am-form-horizontal" id="passwordForm">
                 <div class="am-form-group">
-                    <label for="user-password" class="am-form-label">支付密码</label>
+                    <label for="user-pay-password" class="am-form-label">支付密码</label>
                     <div class="am-form-content">
-                        <input type="tel" id="user-password" placeholder="6位数字">
+                        <input type="password" id="user-pay-password" placeholder="请输入支付密码">
                     </div>
                 </div>
                 <div class="am-form-group">
-                    <label for="user-confirm-password" class="am-form-label">确认密码</label>
+                    <label for="user-confirm-pay-password" class="am-form-label">确认密码</label>
                     <div class="am-form-content">
-                        <input type="tel" id="user-confirm-password" placeholder="请再次输入上面的密码">
+                        <input type="password" id="user-confirm-pay-password" placeholder="请再次输入上面的密码">
                     </div>
                 </div>
                 <div class="info-btn">
-                    <div class="am-btn am-btn-danger">保存修改</div>
+                    <input id="submit" class="am-btn am-btn-danger" type="submit" value="保存修改">
                 </div>
 
             </form>
