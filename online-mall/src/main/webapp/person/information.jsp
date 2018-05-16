@@ -170,7 +170,8 @@
                                         <option value="11">11</option>
                                         <option value="12">12</option>
                                     </select>
-                                    <em>月</em></div>
+                                    <em>月</em>
+                                </div>
                             </div>
 
                         </div>

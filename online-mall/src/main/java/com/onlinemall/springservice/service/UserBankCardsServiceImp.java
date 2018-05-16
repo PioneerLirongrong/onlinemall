@@ -15,6 +15,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.onlinemall.constants.Params.BANK_NUMBER;
@@ -43,16 +44,17 @@ public class UserBankCardsServiceImp implements IUserBankCardsService {
         }
         //先验证改卡是否被绑定
         List<OnlinemallUserBank> onlinemallUserBanks = onlinemallUserBankMapper.selectByExample(onlinemallUserBankExample);
-        if(0 == onlinemallUserBanks.size()){
+        if(0 != onlinemallUserBanks.size()){
             baseResult.setErrors(Errors.USER_BANK_CARD_ALREADY_BIND);
             return baseResult;
         }
         OnlinemallUserBank onlinemallUserBank = new RequestParamConvertBeanUtil<OnlinemallUserBank>().convertBean(params, new OnlinemallUserBank());
         onlinemallUserBank.setId(CommonUtils.createUuid());
+        onlinemallUserBank.setBankbindstatus("1");
         baseResult.setCode(BaseResult.SUCCESS);
         onlinemallUserBankMapper.insert(onlinemallUserBank);
         baseResult.setDataObj(onlinemallUserBank);
-        return null;
+        return baseResult;
     }
 
     public BaseResult<OnlinemallUserBank> listBankCard(RequestParams<OnlinemallUserBank> params) {
@@ -61,10 +63,11 @@ public class UserBankCardsServiceImp implements IUserBankCardsService {
         baseResult.setCode(BaseResult.FAIL);
         OnlinemallUserBankExample onlinemallUserBankExample = new OnlinemallUserBankExample();
         OnlinemallUserBankExample.Criteria criteria = onlinemallUserBankExample.createCriteria();
-        if(StringUtils.isNotBlank((CharSequence) params.getParams().get(USERID))){
+        if(StringUtils.isNotBlank((String) params.getParams().get(USERID))){
             criteria.andUseridEqualTo((String )params.getParams().get(USERID));
         }else {
             baseResult.setErrors(Errors.REQUEST_PARAM_ERROR);
+            baseResult.setDataList(new ArrayList<OnlinemallUserBank>());
             return baseResult;
         }
         List<OnlinemallUserBank> onlinemallUserBanks = onlinemallUserBankMapper.selectByExample(onlinemallUserBankExample);

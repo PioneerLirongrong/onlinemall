@@ -54,15 +54,16 @@ CREATE TABLE `onlinemall_user_address` (
 ```
 ###****用户的银行卡表onlinemall_user_bank****
 ```
-create table onlinemall_user_bank(
-  id varchar(64) comment '记录id UUID',
-  userid varchar(64) comment '用户id',
-  bankname varchar(64) comment '银行名称',
-  banktype varchar(2) comment '银行卡类型(1:信用卡 2:储蓄卡 3:借计卡)',
-  banknumber varchar(64) comment '银行卡号',
-  bankbindstatus varchar(2) comment '绑定状态(1:绑定 0:未绑定)',
-  primary key (id)
-)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `onlinemall_user_bank` (
+  `id` varchar(64) NOT NULL COMMENT '记录id UUID',
+  `userid` varchar(64) DEFAULT NULL COMMENT '用户id',
+  `bankname` varchar(64) DEFAULT NULL COMMENT '银行名称',
+  `banktype` varchar(2) DEFAULT NULL COMMENT '银行卡类型(1:信用卡 2:储蓄卡 3:借计卡)',
+  `banknumber` varchar(64) DEFAULT NULL COMMENT '银行卡号',
+  `bankbindstatus` varchar(2) DEFAULT NULL COMMENT '绑定状态(1:绑定 0:未绑定)',
+  `bankPhoneNumber` varchar(64) NOT NULL COMMENT '预留手机号',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
 
 ```
 ###****用户积分表onlinemall_user_point****

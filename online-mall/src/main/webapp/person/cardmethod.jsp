@@ -15,7 +15,14 @@
 
     <script type="text/javascript" src="../js/jquery-1.7.2.min.js"></script>
     <script src="../AmazeUI-2.4.2/assets/js/amazeui.js"></script>
-
+    <script src="../AmazeUI-2.4.2/assets/js/amazeui.js"></script>
+    <script src="../AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
+    <script src="../js/jquerycookie.js"></script>
+    <script src="../js/jquery.md5.js"></script>
+    <script src="../js/jquery.base64.js"></script>
+    <script src="../onlinemalljs/commonUtils/CommonUtil.js"></script>
+    <script src="../onlinemalljs/commonUtils/CommonUserInfo.js"></script>
+    <script src="../onlinemalljs/person/cardAdd.js"></script>
 </head>
 
 <body>
@@ -86,7 +93,7 @@
                     <div class="u-progress-bar-inner"></div>
                 </div>
             </div>
-            <form class="am-form am-form-horizontal">
+            <form class="am-form am-form-horizontal" id="bankCardAdd">
                 <div class="am-form-group">
                     <label for="user-name" class="am-form-label">真实姓名</label>
                     <div class="am-form-content">
@@ -100,28 +107,44 @@
                     </div>
                 </div>
                 <div class="am-form-group">
-                    <label for="user-BankID" class="am-form-label">银行卡号</label>
+                    <label for="bankSelect" class="am-form-label">银行名称</label>
                     <div class="am-form-content">
-                        <input type="tel" id="user-BankID" placeholder="请输入要绑定的银行卡卡号">
+                        <select id="bankSelect">
+                            <option value="中国建设银行">中国建设银行</option>
+                            <option value="中国农业银行">中国农业银行</option>
+                            <option value="中国工商银行">中国工商银行</option>
+                            <option value="浦发银行">浦发银行</option>
+                            <option value="北京银行">北京银行</option>
+                            <option value="平安银行">平安银行</option>
+                            <option value="光大银行">光大银行</option>
+                            <option value="中国银行">中国银行</option>
+                        </select>
                     </div>
                 </div>
                 <div class="am-form-group">
-                    <label for="user-phone" class="am-form-label">手机号码</label>
+                    <label for="bankTypeSelect" class="am-form-label">卡的类型</label>
                     <div class="am-form-content">
-                        <input type="tel" id="user-phone" placeholder="请输入此卡的预留手机号">
+                        <select id="bankTypeSelect">
+                            <option value="1">信用卡</option>
+                            <option value="2">储蓄卡</option>
+                            <option value="3">借计卡</option>
+                        </select>
                     </div>
                 </div>
-                <div class="am-form-group code">
-                    <label for="user-new-code" class="am-form-label">验证码</label>
+                <div class="am-form-group">
+                    <label for="BankID" class="am-form-label">银行卡号</label>
                     <div class="am-form-content">
-                        <input type="tel" id="user-new-code" placeholder="短信验证码">
+                        <input type="text" id="BankID" placeholder="请输入要绑定的银行卡卡号">
                     </div>
-                    <a class="btn" href="javascript:void(0);" onclick="sendMobileCode();" id="sendMobileCode">
-                        <div class="am-btn am-btn-danger">验证码</div>
-                    </a>
+                </div>
+                <div class="am-form-group">
+                    <label for="phone" class="am-form-label">手机号码</label>
+                    <div class="am-form-content">
+                        <input type="text" id="phone" placeholder="请输入此卡的预留手机号">
+                    </div>
                 </div>
                 <div class="info-btn">
-                    <div class="am-btn am-btn-danger">开通协议并确定</div>
+                    <input id="submit" class="am-btn am-btn-danger" type="submit" value="开通协议并确定">
                 </div>
 
             </form>

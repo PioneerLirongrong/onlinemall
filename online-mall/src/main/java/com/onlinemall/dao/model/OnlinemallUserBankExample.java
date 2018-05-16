@@ -526,6 +526,76 @@ public class OnlinemallUserBankExample implements Serializable {
             addCriterion("bankbindstatus not between", value1, value2, "bankbindstatus");
             return (Criteria) this;
         }
+
+        public Criteria andBankphonenumberIsNull() {
+            addCriterion("bankPhoneNumber is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBankphonenumberIsNotNull() {
+            addCriterion("bankPhoneNumber is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBankphonenumberEqualTo(String value) {
+            addCriterion("bankPhoneNumber =", value, "bankphonenumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andBankphonenumberNotEqualTo(String value) {
+            addCriterion("bankPhoneNumber <>", value, "bankphonenumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andBankphonenumberGreaterThan(String value) {
+            addCriterion("bankPhoneNumber >", value, "bankphonenumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andBankphonenumberGreaterThanOrEqualTo(String value) {
+            addCriterion("bankPhoneNumber >=", value, "bankphonenumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andBankphonenumberLessThan(String value) {
+            addCriterion("bankPhoneNumber <", value, "bankphonenumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andBankphonenumberLessThanOrEqualTo(String value) {
+            addCriterion("bankPhoneNumber <=", value, "bankphonenumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andBankphonenumberLike(String value) {
+            addCriterion("bankPhoneNumber like", value, "bankphonenumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andBankphonenumberNotLike(String value) {
+            addCriterion("bankPhoneNumber not like", value, "bankphonenumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andBankphonenumberIn(List<String> values) {
+            addCriterion("bankPhoneNumber in", values, "bankphonenumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andBankphonenumberNotIn(List<String> values) {
+            addCriterion("bankPhoneNumber not in", values, "bankphonenumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andBankphonenumberBetween(String value1, String value2) {
+            addCriterion("bankPhoneNumber between", value1, value2, "bankphonenumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andBankphonenumberNotBetween(String value1, String value2) {
+            addCriterion("bankPhoneNumber not between", value1, value2, "bankphonenumber");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria implements Serializable {

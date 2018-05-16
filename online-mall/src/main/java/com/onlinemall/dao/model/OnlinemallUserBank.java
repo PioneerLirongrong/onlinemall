@@ -15,6 +15,8 @@ public class OnlinemallUserBank implements Serializable {
 
     private String bankbindstatus;
 
+    private String bankphonenumber;
+
     private static final long serialVersionUID = 1L;
 
     public String getId() {
@@ -65,6 +67,14 @@ public class OnlinemallUserBank implements Serializable {
         this.bankbindstatus = bankbindstatus;
     }
 
+    public String getBankphonenumber() {
+        return bankphonenumber;
+    }
+
+    public void setBankphonenumber(String bankphonenumber) {
+        this.bankphonenumber = bankphonenumber;
+    }
+
     @Override
     public boolean equals(Object that) {
         if (this == that) {
@@ -82,7 +92,8 @@ public class OnlinemallUserBank implements Serializable {
             && (this.getBankname() == null ? other.getBankname() == null : this.getBankname().equals(other.getBankname()))
             && (this.getBanktype() == null ? other.getBanktype() == null : this.getBanktype().equals(other.getBanktype()))
             && (this.getBanknumber() == null ? other.getBanknumber() == null : this.getBanknumber().equals(other.getBanknumber()))
-            && (this.getBankbindstatus() == null ? other.getBankbindstatus() == null : this.getBankbindstatus().equals(other.getBankbindstatus()));
+            && (this.getBankbindstatus() == null ? other.getBankbindstatus() == null : this.getBankbindstatus().equals(other.getBankbindstatus()))
+            && (this.getBankphonenumber() == null ? other.getBankphonenumber() == null : this.getBankphonenumber().equals(other.getBankphonenumber()));
     }
 
     @Override
@@ -95,6 +106,7 @@ public class OnlinemallUserBank implements Serializable {
         result = prime * result + ((getBanktype() == null) ? 0 : getBanktype().hashCode());
         result = prime * result + ((getBanknumber() == null) ? 0 : getBanknumber().hashCode());
         result = prime * result + ((getBankbindstatus() == null) ? 0 : getBankbindstatus().hashCode());
+        result = prime * result + ((getBankphonenumber() == null) ? 0 : getBankphonenumber().hashCode());
         return result;
     }
 
@@ -110,6 +122,7 @@ public class OnlinemallUserBank implements Serializable {
         sb.append(", banktype=").append(banktype);
         sb.append(", banknumber=").append(banknumber);
         sb.append(", bankbindstatus=").append(bankbindstatus);
+        sb.append(", bankphonenumber=").append(bankphonenumber);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

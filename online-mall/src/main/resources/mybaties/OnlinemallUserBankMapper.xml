@@ -8,6 +8,7 @@
     <result column="banktype" property="banktype" jdbcType="VARCHAR" />
     <result column="banknumber" property="banknumber" jdbcType="VARCHAR" />
     <result column="bankbindstatus" property="bankbindstatus" jdbcType="VARCHAR" />
+    <result column="bankPhoneNumber" property="bankphonenumber" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -68,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, userid, bankname, banktype, banknumber, bankbindstatus
+    id, userid, bankname, banktype, banknumber, bankbindstatus, bankPhoneNumber
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.onlinemall.dao.model.OnlinemallUserBankExample" >
     select
@@ -102,11 +103,11 @@
   </delete>
   <insert id="insert" parameterType="com.onlinemall.dao.model.OnlinemallUserBank" >
     insert into onlinemall_user_bank (id, userid, bankname, 
-      banktype, banknumber, bankbindstatus
-      )
+      banktype, banknumber, bankbindstatus, 
+      bankPhoneNumber)
     values (#{id,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, #{bankname,jdbcType=VARCHAR}, 
-      #{banktype,jdbcType=VARCHAR}, #{banknumber,jdbcType=VARCHAR}, #{bankbindstatus,jdbcType=VARCHAR}
-      )
+      #{banktype,jdbcType=VARCHAR}, #{banknumber,jdbcType=VARCHAR}, #{bankbindstatus,jdbcType=VARCHAR}, 
+      #{bankphonenumber,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.onlinemall.dao.model.OnlinemallUserBank" >
     insert into onlinemall_user_bank
@@ -129,6 +130,9 @@
       <if test="bankbindstatus != null" >
         bankbindstatus,
       </if>
+      <if test="bankphonenumber != null" >
+        bankPhoneNumber,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -148,6 +152,9 @@
       </if>
       <if test="bankbindstatus != null" >
         #{bankbindstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="bankphonenumber != null" >
+        #{bankphonenumber,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -178,6 +185,9 @@
       <if test="record.bankbindstatus != null" >
         bankbindstatus = #{record.bankbindstatus,jdbcType=VARCHAR},
       </if>
+      <if test="record.bankphonenumber != null" >
+        bankPhoneNumber = #{record.bankphonenumber,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -190,7 +200,8 @@
       bankname = #{record.bankname,jdbcType=VARCHAR},
       banktype = #{record.banktype,jdbcType=VARCHAR},
       banknumber = #{record.banknumber,jdbcType=VARCHAR},
-      bankbindstatus = #{record.bankbindstatus,jdbcType=VARCHAR}
+      bankbindstatus = #{record.bankbindstatus,jdbcType=VARCHAR},
+      bankPhoneNumber = #{record.bankphonenumber,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -213,6 +224,9 @@
       <if test="bankbindstatus != null" >
         bankbindstatus = #{bankbindstatus,jdbcType=VARCHAR},
       </if>
+      <if test="bankphonenumber != null" >
+        bankPhoneNumber = #{bankphonenumber,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=VARCHAR}
   </update>
@@ -222,7 +236,8 @@
       bankname = #{bankname,jdbcType=VARCHAR},
       banktype = #{banktype,jdbcType=VARCHAR},
       banknumber = #{banknumber,jdbcType=VARCHAR},
-      bankbindstatus = #{bankbindstatus,jdbcType=VARCHAR}
+      bankbindstatus = #{bankbindstatus,jdbcType=VARCHAR},
+      bankPhoneNumber = #{bankphonenumber,jdbcType=VARCHAR}
     where id = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>

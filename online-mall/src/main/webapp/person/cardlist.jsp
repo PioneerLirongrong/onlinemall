@@ -8,6 +8,15 @@
     <link href="../AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css">
     <link href="../AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css">
     <link href="../css/personal.css" rel="stylesheet" type="text/css">
+    <script src="../AmazeUI-2.4.2/assets/js/amazeui.js"></script>
+    <script src="../AmazeUI-2.4.2/assets/js/amazeui.js"></script>
+    <script src="../AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
+    <script src="../js/jquerycookie.js"></script>
+    <script src="../js/jquery.md5.js"></script>
+    <script src="../js/jquery.base64.js"></script>
+    <script src="../onlinemalljs/commonUtils/CommonUtil.js"></script>
+    <script src="../onlinemalljs/commonUtils/CommonUserInfo.js"></script>
+    <script src="../onlinemalljs/person/cardList.js"></script>
 </head>
 
 <body>
@@ -62,98 +71,71 @@
             </div>
             <hr/>
             <div class="card-box-list">
-                <ul>
+                <ul id="cardListUl">
                     <li>
                         <div class="card-box">
                             <div class="card-box-name">
-                                <span class="bank-logo"><a href="#"><img src="../images/bankjh.png"></a></span>
+                                <span class="bank-logo"><a><img src="../images/bankjh.png"></a></span>
                                 <span title="中国建设银行" class="bank-name">中国建设银行</span>
                                 <span class="bank-num4">尾号9098</span>
-                                <span class="card-type card-type-CC"></span>
-                            </div>
-                            <div class="card-box-express">
-                                <div class="express-status">
-                                    <span class="asset-icon asset-icon-express-s"></span> <span>已开通</span>
-                                </div>
-                                <div class="express-else"><a href="#">管理</a></div>
-                            </div>
-                            <div class="card-detail">
-                                <div class="card-detail-list">
-                                    <div class="card-detail-value" title="账单"><a
-                                            href="billlist.jsp"><strong>账单</strong><span></span></a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="card-box">
-                            <div class="card-box-name">
-                                <span class="bank-logo"><a href="#"><img src="../images/bankns.png"></a></span>
-                                <span title="湖北省农村信用合作联社" class="bank-name">湖北省农村信用合作联社</span>
-                                <span class="bank-num4">尾号8652</span>
                                 <span class="card-type card-type-DC"></span>
                             </div>
                             <div class="card-box-express">
                                 <div class="express-status">
                                     <span class="asset-icon asset-icon-express-s"></span> <span>已开通</span>
                                 </div>
-                                <div class="express-else"><a href="#">管理</a></div>
-                            </div>
-                            <div class="card-detail">
-                                <div class="card-detail-value" title="账单"><a
-                                        href="billlist.jsp"><strong>账单</strong><span></span></a></div>
                             </div>
                         </div>
                     </li>
-                    <li>
-                        <div class="card-box">
-                            <div class="card-box-name">
-                                <span class="bank-logo"><a href="#"><img src="../images/bankjh.png"></a></span>
-                                <span title="中国建设银行" class="bank-name">中国建设银行</span>
-                                <span class="bank-num4">尾号9098</span>
-                                <span class="card-type card-type-CC"></span>
-                            </div>
-                            <div class="card-box-express">
-                                <div class="express-status">
-                                    <span class="asset-icon asset-icon-express-s"></span> <span>已开通</span>
-                                </div>
-                                <div class="express-else"><a href="#">管理</a></div>
-                            </div>
-                            <div class="card-detail">
-                                <div class="card-detail-list">
-                                    <div class="card-detail-value" title="账单"><a
-                                            href="billlist.jsp"><strong>账单</strong><span></span></a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="card-box">
-                            <div class="card-box-name">
-                                <span class="bank-logo"><a href="#"><img src="../images/bankns.png"></a></span>
-                                <span title="湖北省农村信用合作联社" class="bank-name">湖北省农村信用合作联社</span>
-                                <span class="bank-num4">尾号8652</span>
-                                <span class="card-type card-type-DC"></span>
-                            </div>
-                            <div class="card-box-express">
-                                <div class="express-status">
-                                    <span class="asset-icon asset-icon-express-s"></span> <span>已开通</span>
-                                </div>
-                                <div class="express-else"><a href="#">管理</a></div>
-                            </div>
-                            <div class="card-detail">
-                                <div class="card-detail-value" title="账单"><a
-                                        href="billlist.jsp"><strong>账单</strong><span></span></a></div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="add-card">
-                            <a href="cardmethod.jsp" target="_blank"><i class="am-icon-plus"></i>添加银行卡</a>
-                        </div>
-                    </li>
+                    <%--<li>--%>
+                        <%--<div class="card-box">--%>
+                            <%--<div class="card-box-name">--%>
+                                <%--<span class="bank-logo"><a><img src="../images/bankns.png"></a></span>--%>
+                                <%--<span title="湖北省农村信用合作联社" class="bank-name">湖北省农村信用合作联社</span>--%>
+                                <%--<span class="bank-num4">尾号8652</span>--%>
+                            <%--</div>--%>
+                            <%--<div class="card-box-express">--%>
+                                <%--<div class="express-status">--%>
+                                    <%--<span class="asset-icon asset-icon-express-s"></span> <span>已开通</span>--%>
+                                <%--</div>--%>
+                            <%--</div>--%>
+                        <%--</div>--%>
+                    <%--</li>--%>
+                    <%--<li>--%>
+                        <%--<div class="card-box">--%>
+                            <%--<div class="card-box-name">--%>
+                                <%--<span class="bank-logo"><a><img src="../images/bankjh.png"></a></span>--%>
+                                <%--<span title="中国建设银行" class="bank-name">中国建设银行</span>--%>
+                                <%--<span class="bank-num4">尾号9098</span>--%>
+                            <%--</div>--%>
+                            <%--<div class="card-box-express">--%>
+                                <%--<div class="express-status">--%>
+                                    <%--<span class="asset-icon asset-icon-express-s"></span> <span>已开通</span>--%>
+                                <%--</div>--%>
+                            <%--</div>--%>
+                        <%--</div>--%>
+                    <%--</li>--%>
+                    <%--<li>--%>
+                        <%--<div class="card-box">--%>
+                            <%--<div class="card-box-name">--%>
+                                <%--<span class="bank-logo"><a><img src="../images/bankns.png"></a></span>--%>
+                                <%--<span title="湖北省农村信用合作联社" class="bank-name">湖北省农村信用合作联社</span>--%>
+                                <%--<span class="bank-num4">尾号8652</span>--%>
+                            <%--</div>--%>
+                            <%--<div class="card-box-express">--%>
+                                <%--<div class="express-status">--%>
+                                    <%--<span class="asset-icon asset-icon-express-s"></span> <span>已开通</span>--%>
+                                <%--</div>--%>
+                            <%--</div>--%>
+                        <%--</div>--%>
+                    <%--</li>--%>
                 </ul>
             </div>
+            <li>
+                <div class="add-card">
+                    <a href="cardmethod.jsp" target="_blank"><i class="am-icon-plus"></i>添加银行卡</a>
+                </div>
+            </li>
         </div>
         <!--底部-->
         <div class="footer">
