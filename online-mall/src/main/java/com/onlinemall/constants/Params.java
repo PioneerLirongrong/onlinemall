@@ -18,7 +18,6 @@ public class Params {
      * 用户模块
      */
     public static final String USERID = "userid";
-    public static final String USERNAME = "username";
     public static final String PASSWORD = "password";
     public static final String PASSWORD_1 = "password1";
     public static final String PASSWORD_2 = "password2";
@@ -36,14 +35,8 @@ public class Params {
     public static final String BIRTHDAY = "birthday";
     public static final String PAY_PASSWORD_1 = "pay_password_1";
     public static final String PAY_PASSWORD_2 = "pay_password_2";
-    public static final String SECURITY_DEGREE = "securitydegree";
-    public static final String SECURITY_PAY = "securitypay";
-    public static final String SECURITY_PHONE = "securityphone";
-    public static final String SECURITY_MAIL = "securitymail";
     public static final String REAL_NAME = "realname";
     public static final String IDENTITYNUMBER = "identitynumber";
-    public static final String PHOTOURL_1 = "photourl1";
-    public static final String PHOTOURL_2 = "photourl2";
     public static final String SECURITYPROBLEM_1 = "securityproblem1";
     public static final String SECURITYANSOWER_1 = "securityansower1";
     public static final String SECURITYPROBLEM_2 = "securityproblem2";
@@ -63,5 +56,9 @@ public class Params {
 
     //用户模块
     public static final String USER_GOODS_ID ="goodsid";
+
+    //用户积分模块
+    public static final String USER_POINT_INCR = "2";
+    public static final String USER_POINT_UN_INCR = "1";
 
 }
