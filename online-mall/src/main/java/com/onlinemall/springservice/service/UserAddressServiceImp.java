@@ -8,6 +8,7 @@ import com.onlinemall.dao.model.OnlinemallUserAddressExample;
 import com.onlinemall.param.request.RequestParams;
 import com.onlinemall.param.response.BaseResult;
 import com.onlinemall.springservice.interfaces.IUserAddressService;
+import com.onlinemall.utils.UUID.CommonUtils;
 import com.onlinemall.utils.beanutil.RequestParamConvertBeanUtil;
 import com.onlinemall.utils.error.Errors;
 import org.apache.commons.lang3.StringUtils;
@@ -15,6 +16,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -33,6 +35,7 @@ public class UserAddressServiceImp implements IUserAddressService {
         BaseResult<OnlinemallUserAddress> baseResult = new BaseResult<OnlinemallUserAddress>();
         baseResult.setCode(BaseResult.FAIL);
         OnlinemallUserAddress onlinemallUserAddress = new RequestParamConvertBeanUtil<OnlinemallUserAddress>().convertBean(params, new OnlinemallUserAddress());
+        onlinemallUserAddress.setId(CommonUtils.createUuid());
         int insert = onlinemallUserAddressMapper.insert(onlinemallUserAddress);
         if (0 != insert) {
             baseResult.setCode(BaseResult.SUCCESS);
@@ -51,6 +54,7 @@ public class UserAddressServiceImp implements IUserAddressService {
         if(StringUtils.isNotBlank((String)params.getParams().get(Params.USERID))){
             criteria.andUseridEqualTo((String)params.getParams().get(Params.USERID));
         }else {
+            baseResult.setDataList(new ArrayList<OnlinemallUserAddress>());
             return baseResult;
         }
         List<OnlinemallUserAddress> onlinemallUserAddresses = onlinemallUserAddressMapper.selectByExample(onlinemallUserAddressExample);

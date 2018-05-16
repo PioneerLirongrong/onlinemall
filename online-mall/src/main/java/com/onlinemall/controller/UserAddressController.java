@@ -24,7 +24,7 @@ public class UserAddressController {
     @Autowired
     private IUserAddressService iUserAddressService;
 
-    @RequestMapping(value = "addAddress" ,method = RequestMethod.POST)
+    @RequestMapping(value = "/addAddress" ,method = RequestMethod.POST)
     public BaseResult addAddress(@ModelAttribute RequestParams<OnlinemallUserAddress> params){
         logger.info("{请求后台接口\'/userAddress/addAddress\'}");
         logger.info("{前台的请求参数" + params.toString() + "}");
@@ -33,7 +33,7 @@ public class UserAddressController {
         return baseResult;
     }
 
-    @RequestMapping(value = "listAddress" ,method = RequestMethod.POST)
+    @RequestMapping(value = "/listAddress" ,method = RequestMethod.POST)
     public BaseResult listAddress(@ModelAttribute RequestParams<OnlinemallUserAddress> params){
         logger.info("{请求后台接口\'/userAddress/listAddress\'}");
         logger.info("{前台的请求参数" + params.toString() + "}");
@@ -42,7 +42,7 @@ public class UserAddressController {
         return baseResult;
     }
 
-    @RequestMapping(value = "updateAddress" ,method = RequestMethod.POST)
+    @RequestMapping(value = "/updateAddress" ,method = RequestMethod.POST)
     public BaseResult updateAddress(@ModelAttribute RequestParams<OnlinemallUserAddress> params){
         logger.info("{请求后台接口\'/userAddress/updateAddress\'}");
         logger.info("{前台的请求参数" + params.toString() + "}");
@@ -51,7 +51,7 @@ public class UserAddressController {
         return baseResult;
     }
 
-    @RequestMapping(value = "deleteAddress" ,method = RequestMethod.POST)
+    @RequestMapping(value = "/deleteAddress" ,method = RequestMethod.POST)
     public BaseResult deleteAddress(@ModelAttribute RequestParams<OnlinemallUserAddress> params){
         logger.info("{请求后台接口\'/userAddress/deleteAddress\'}");
         logger.info("{前台的请求参数" + params.toString() + "}");

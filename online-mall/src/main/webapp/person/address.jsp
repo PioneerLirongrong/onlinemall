@@ -10,7 +10,14 @@
     <link href="../css/personal.css" rel="stylesheet" type="text/css">
     <link href="../css/addstyle.css" rel="stylesheet" type="text/css">
     <script src="../AmazeUI-2.4.2/assets/js/jquery.min.js" type="text/javascript"></script>
+    <script src="../AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
     <script src="../AmazeUI-2.4.2/assets/js/amazeui.js"></script>
+    <script src="../js/jquerycookie.js"></script>
+    <script src="../js/jquery.md5.js"></script>
+    <script src="../js/jquery.base64.js"></script>
+    <script src="../onlinemalljs/commonUtils/CommonUtil.js"></script>
+    <script src="../onlinemalljs/commonUtils/CommonUserInfo.js"></script>
+    <script src="../onlinemalljs/person/address.js"></script>
 </head>
 
 <body>
@@ -66,69 +73,8 @@
                     </div>
                 </div>
                 <hr/>
-                <ul class="am-avg-sm-1 am-avg-md-3 am-thumbnails">
+                <ul class="am-avg-sm-1 am-avg-md-3 am-thumbnails" id="addressUl">
 
-                    <li class="user-addresslist defaultAddr">
-                        <span class="new-option-r"><i class="am-icon-check-circle"></i>默认地址</span>
-                        <p class="new-tit new-p-re">
-                            <span class="new-txt">小叮当</span>
-                            <span class="new-txt-rd2">159****1622</span>
-                        </p>
-                        <div class="new-mu_l2a new-p-re">
-                            <p class="new-mu_l2cw">
-                                <span class="title">地址：</span>
-                                <span class="province">湖北</span>省
-                                <span class="city">武汉</span>市
-                                <span class="dist">洪山</span>区
-                                <span class="street">雄楚大道666号(中南财经政法大学)</span></p>
-                        </div>
-                        <div class="new-addr-btn">
-                            <a href="#"><i class="am-icon-edit"></i>编辑</a>
-                            <span class="new-addr-bar">|</span>
-                            <a href="javascript:void(0);" onclick="delClick(this);"><i class="am-icon-trash"></i>删除</a>
-                        </div>
-                    </li>
-
-                    <li class="user-addresslist">
-                        <span class="new-option-r"><i class="am-icon-check-circle"></i>设为默认</span>
-                        <p class="new-tit new-p-re">
-                            <span class="new-txt">小叮当</span>
-                            <span class="new-txt-rd2">159****1622</span>
-                        </p>
-                        <div class="new-mu_l2a new-p-re">
-                            <p class="new-mu_l2cw">
-                                <span class="title">地址：</span>
-                                <span class="province">湖北</span>省
-                                <span class="city">武汉</span>市
-                                <span class="dist">洪山</span>区
-                                <span class="street">雄楚大道666号(中南财经政法大学)</span></p>
-                        </div>
-                        <div class="new-addr-btn">
-                            <a href="#"><i class="am-icon-edit"></i>编辑</a>
-                            <span class="new-addr-bar">|</span>
-                            <a href="javascript:void(0);" onclick="delClick(this);"><i class="am-icon-trash"></i>删除</a>
-                        </div>
-                    </li>
-                    <li class="user-addresslist">
-                        <span class="new-option-r"><i class="am-icon-check-circle"></i>设为默认</span>
-                        <p class="new-tit new-p-re">
-                            <span class="new-txt">小叮当</span>
-                            <span class="new-txt-rd2">159****1622</span>
-                        </p>
-                        <div class="new-mu_l2a new-p-re">
-                            <p class="new-mu_l2cw">
-                                <span class="title">地址：</span>
-                                <span class="province">湖北</span>省
-                                <span class="city">武汉</span>市
-                                <span class="dist">洪山</span>区
-                                <span class="street">雄楚大道666号(中南财经政法大学)</span></p>
-                        </div>
-                        <div class="new-addr-btn">
-                            <a href="#"><i class="am-icon-edit"></i>编辑</a>
-                            <span class="new-addr-bar">|</span>
-                            <a href="javascript:void(0);" onclick="delClick(this);"><i class="am-icon-trash"></i>删除</a>
-                        </div>
-                    </li>
                 </ul>
                 <div class="clear"></div>
                 <a class="new-abtn-type" data-am-modal="{target: '#doc-modal-1', closeViaDimmer: 0}">添加新地址</a>
@@ -146,50 +92,53 @@
                         <hr/>
 
                         <div class="am-u-md-12 am-u-lg-8" style="margin-top: 20px;">
-                            <form class="am-form am-form-horizontal">
+                            <form class="am-form am-form-horizontal" id="addressForm">
 
                                 <div class="am-form-group">
-                                    <label for="user-name" class="am-form-label">收货人</label>
+                                    <label for="username" class="am-form-label">收货人</label>
                                     <div class="am-form-content">
-                                        <input type="text" id="user-name" placeholder="收货人">
+                                        <input type="text" id="username" placeholder="收货人">
                                     </div>
                                 </div>
 
                                 <div class="am-form-group">
-                                    <label for="user-phone" class="am-form-label">手机号码</label>
+                                    <label for="userphone" class="am-form-label">手机号码</label>
                                     <div class="am-form-content">
-                                        <input id="user-phone" placeholder="手机号必填" type="email">
-                                    </div>
-                                </div>
-                                <div class="am-form-group">
-                                    <label for="user-address" class="am-form-label">所在地</label>
-                                    <div id= 'user-address' class="am-form-content address">
-                                        <select data-am-selected>
-                                            <option value="a">浙江省</option>
-                                            <option value="b" selected>湖北省</option>
-                                        </select>
-                                        <select data-am-selected>
-                                            <option value="a">温州市</option>
-                                            <option value="b" selected>武汉市</option>
-                                        </select>
-                                        <select data-am-selected>
-                                            <option value="a">瑞安区</option>
-                                            <option value="b" selected>洪山区</option>
-                                        </select>
+                                        <input id="userphone" placeholder="手机号必填" type="text">
                                     </div>
                                 </div>
 
                                 <div class="am-form-group">
-                                    <label for="user-intro" class="am-form-label">详细地址</label>
+                                    <label for="province" class="am-form-label">所属省</label>
                                     <div class="am-form-content">
-                                        <textarea class="" rows="3" id="user-intro" placeholder="输入详细地址"></textarea>
+                                        <input id="province" placeholder="所属省必填" type="text">
+                                    </div>
+                                </div>
+
+                                <div class="am-form-group">
+                                    <label for="city" class="am-form-label">所属市</label>
+                                    <div class="am-form-content">
+                                        <input id="city" placeholder="所属市必填" type="text">
+                                    </div>
+                                </div>
+
+                                <div class="am-form-group">
+                                    <label for="county" class="am-form-label">所属区</label>
+                                    <div class="am-form-content">
+                                        <input id="county" placeholder="所属区必填" type="text">
+                                    </div>
+                                </div>
+                                <div class="am-form-group">
+                                    <label for="userintro" class="am-form-label">详细地址</label>
+                                    <div class="am-form-content">
+                                        <textarea class="" rows="3" id="userintro" placeholder="输入详细地址"></textarea>
                                         <small>100字以内写出你的详细地址...</small>
                                     </div>
                                 </div>
 
                                 <div class="am-form-group">
                                     <div class="am-u-sm-9 am-u-sm-push-3">
-                                        <a class="am-btn am-btn-danger">保存</a>
+                                        <input id="submit" class="am-btn am-btn-danger" type="submit" value="保存">
                                         <a href="javascript: void(0)" class="am-close am-btn am-btn-danger"
                                            data-am-modal-close>取消</a>
                                     </div>
