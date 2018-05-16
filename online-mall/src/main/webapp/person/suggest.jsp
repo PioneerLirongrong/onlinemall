@@ -14,7 +14,15 @@
 
     <script src="../AmazeUI-2.4.2/assets/js/jquery.min.js" type="text/javascript"></script>
     <script src="../AmazeUI-2.4.2/assets/js/amazeui.js" type="text/javascript"></script>
-
+    <script src="../AmazeUI-2.4.2/assets/js/amazeui.js" type="text/javascript"></script>
+    <script src="../AmazeUI-2.4.2/assets/js/amazeui.js"></script>
+    <script src="../AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
+    <script src="../js/jquerycookie.js"></script>
+    <script src="../js/jquery.md5.js"></script>
+    <script src="../js/jquery.base64.js"></script>
+    <script src="../onlinemalljs/commonUtils/CommonUtil.js"></script>
+    <script src="../onlinemalljs/commonUtils/CommonUserInfo.js"></script>
+    <script src="../onlinemalljs/person/suggest.js"></script>
 </head>
 
 <body>
@@ -55,40 +63,43 @@
 <div class="center">
     <div class="col-main">
         <div class="main-wrap">
-            <!--标题 -->
-            <div class="am-cf am-padding">
-                <div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">意见反馈</strong> /
-                    <small>Suggest</small>
+            <form id="suggestFormId">
+                <!--标题 -->
+                <div class="am-cf am-padding">
+                    <div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">意见反馈</strong> /
+                        <small>Suggest</small>
+                    </div>
                 </div>
-            </div>
-            <hr/>
-            <div class="suggestmain">
-                <p>请留下您的宝贵意见：</p>
-                <div class="suggestlist">
-                    <select data-am-selected>
-                        <option value="a" selected>请选择意见类型</option>
-                        <option value="b">产品问题</option>
-                        <option value="c">促销问题</option>
-                        <option value="d">支付问题</option>
-                        <option value="e">退款问题</option>
-                        <option value="f">配送问题</option>
-                        <option value="g">售后问题</option>
-                        <option value="h">发票问题</option>
-                        <option value="o">退换货</option>
-                        <option value="m">其他</option>
-                    </select>
-                </div>
-                <div class="suggestDetail">
-                    <p>描述问题：</p>
-                    <blockquote class="textArea">
-                        <textarea name="opinionContent" id="say_some" cols="60" rows="5" autocomplete="off"
+                <hr/>
+                <div class="suggestmain">
+                    <p>请留下您的宝贵意见：</p>
+                    <div class="suggestlist">
+                        <select id="data-am-selected">
+                            <option value="a" selected>请选择意见类型</option>
+                            <option value="1">产品问题</option>
+                            <option value="2">促销问题</option>
+                            <option value="3">支付问题</option>
+                            <option value="4">退款问题</option>
+                            <option value="5">配送问题</option>
+                            <option value="6">售后问题</option>
+                            <option value="7">发票问题</option>
+                            <option value="8">退换货</option>
+                            <option value="9">其他</option>
+                        </select>
+                    </div>
+                    <div class="suggestDetail">
+                        <p>描述问题：</p>
+                        <blockquote class="textArea">
+                        <textarea id="textareId" name="opinionContent" id="say_some" cols="60" rows="5"
+                                  autocomplete="off"
                                   placeholder="在此描述您的意见具体内容"></textarea>
-                        <div class="fontTip"><i class="cur">0</i> / <i>200</i></div>
-                    </blockquote>
+                            <div class="fontTip"><i class="cur">0</i> / <i>200</i></div>
+                        </blockquote>
+                    </div>
+                    <input id="submit" class="am-btn am-btn-danger anniu" type="submit" value="提交">
+                    <p class="suggestTel"><i class="am-icon-phone"></i>客服电话：400-007-1234</p>
                 </div>
-                <div class="am-btn am-btn-danger anniu">提交</div>
-                <p class="suggestTel"><i class="am-icon-phone"></i>客服电话：400-007-1234</p>
-            </div>
+            </form>
         </div>
         <!--底部-->
         <div class="footer">
