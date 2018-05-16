@@ -49,12 +49,6 @@
 </header>
 <div class="nav-table">
     <div class="long-title"><span class="all-goods">全部分类</span></div>
-    <div class="nav-cont">
-        <div class="nav-extra">
-            <i class="am-icon-user-secret am-icon-md nav-user"></i><b></b>我的福利
-            <i class="am-icon-angle-right" style="padding-left: 10px;"></i>
-        </div>
-    </div>
 </div>
 <b class="line"></b>
 <div class="center">
@@ -250,47 +244,9 @@
                             <a href="suggest.jsp"><i class="s-icon"></i>意见反馈</a>
                         </div>
                     </div>
-
-                    <!--优惠券积分-->
-                    <div class="twoTab">
-                        <div class="twoTabModel Coupon">
-                            <h5 class="squareTitle"><a href="#"><span class="splitBorder"></span>优惠券<i
-                                    class="am-icon-angle-right"></i></a></h5>
-                            <div class="Box">
-                                <div class="CouponList">
-                                    <span class="price">¥<strong class="num">50</strong></span>
-                                    <p class="brandName"><a href="#">ABC品牌499减50</a></p>
-                                    <p class="discount">满<span>499</span>元抵扣</p>
-                                    <a href="#" class="btnReceive">立即领取</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="twoTabModel credit">
-                            <h5 class="squareTitle"><a href="#"><span class="splitBorder"></span>积分商城<i
-                                    class="am-icon-angle-right"></i></a></h5>
-                            <div class="Box">
-                                <p class="countDown">
-                                    <span class="hour">12</span>：<span class="minute">09</span>：<span
-                                        class="second">02</span><em class="txtStart">即将开始</em>
-                                </p>
-                                <div class="am-slider am-slider-default am-slider-carousel"
-                                     data-am-flexslider="{itemWidth:108, itemMargin:3, slideshow: false}">
-                                    <ul class="am-slides">
-                                        <li><a href="#"><img src="../images/333.jpg"/></a></li>
-                                        <li><a href="#"><img src="../images/222.jpg"/></a></li>
-                                        <li><a href="#"><img src="../images/111.jpg"/></a></li>
-                                        <li><a href="#"><img src="../images/333.jpg"/></a></li>
-                                        <li><a href="#"><img src="../images/222.jpg"/></a></li>
-                                        <li><a href="#"><img src="../images/111.jpg"/></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
             </div>
-            <div class="clear"></div>
+            <%--<div class="clear"></div>--%>
         </div>
         <!--底部-->
         <div class="footer">
@@ -340,17 +296,6 @@
                 </ul>
             </li>
             <li class="person">
-                <p><i class="am-icon-dollar"></i>我的资产</p>
-                <ul>
-                    <li><a href="points.jsp">我的积分</a></li>
-                    <li><a href="coupon.jsp">优惠券 </a></li>
-                    <li><a href="bonus.jsp">红包</a></li>
-                    <li><a href="walletlist.jsp">账户余额</a></li>
-                    <li><a href="bill.jsp">账单明细</a></li>
-                </ul>
-            </li>
-
-            <li class="person">
                 <p><i class="am-icon-tags"></i>我的收藏</p>
                 <ul>
                     <li><a href="collection.jsp">收藏</a></li>
@@ -363,8 +308,6 @@
                 <ul>
                     <li><a href="consultation.jsp">商品咨询</a></li>
                     <li><a href="suggest.jsp">意见反馈</a></li>
-
-                    <li><a href="news.jsp">我的消息</a></li>
                 </ul>
             </li>
         </ul>

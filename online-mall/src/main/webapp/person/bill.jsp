@@ -491,17 +491,6 @@
                 </ul>
             </li>
             <li class="person">
-                <p><i class="am-icon-dollar"></i>我的资产</p>
-                <ul>
-                    <li><a href="points.jsp">我的积分</a></li>
-                    <li><a href="coupon.jsp">优惠券 </a></li>
-                    <li><a href="bonus.jsp">红包</a></li>
-                    <li><a href="walletlist.jsp">账户余额</a></li>
-                    <li><a href="bill.jsp">账单明细</a></li>
-                </ul>
-            </li>
-
-            <li class="person">
                 <p><i class="am-icon-tags"></i>我的收藏</p>
                 <ul>
                     <li><a href="collection.jsp">收藏</a></li>
@@ -514,8 +503,6 @@
                 <ul>
                     <li><a href="consultation.jsp">商品咨询</a></li>
                     <li><a href="suggest.jsp">意见反馈</a></li>
-
-                    <li><a href="news.jsp">我的消息</a></li>
                 </ul>
             </li>
         </ul>

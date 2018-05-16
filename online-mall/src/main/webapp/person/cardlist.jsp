@@ -51,12 +51,6 @@
 
 <div class="nav-table">
     <div class="long-title"><span class="all-goods">全部分类</span></div>
-    <div class="nav-cont">
-        <div class="nav-extra">
-            <i class="am-icon-user-secret am-icon-md nav-user"></i><b></b>我的福利
-            <i class="am-icon-angle-right" style="padding-left: 10px;"></i>
-        </div>
-    </div>
 </div>
 <b class="line"></b>
 
@@ -72,63 +66,6 @@
             <hr/>
             <div class="card-box-list">
                 <ul id="cardListUl">
-                    <li>
-                        <div class="card-box">
-                            <div class="card-box-name">
-                                <span class="bank-logo"><a><img src="../images/bankjh.png"></a></span>
-                                <span title="中国建设银行" class="bank-name">中国建设银行</span>
-                                <span class="bank-num4">尾号9098</span>
-                                <span class="card-type card-type-DC"></span>
-                            </div>
-                            <div class="card-box-express">
-                                <div class="express-status">
-                                    <span class="asset-icon asset-icon-express-s"></span> <span>已开通</span>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <%--<li>--%>
-                        <%--<div class="card-box">--%>
-                            <%--<div class="card-box-name">--%>
-                                <%--<span class="bank-logo"><a><img src="../images/bankns.png"></a></span>--%>
-                                <%--<span title="湖北省农村信用合作联社" class="bank-name">湖北省农村信用合作联社</span>--%>
-                                <%--<span class="bank-num4">尾号8652</span>--%>
-                            <%--</div>--%>
-                            <%--<div class="card-box-express">--%>
-                                <%--<div class="express-status">--%>
-                                    <%--<span class="asset-icon asset-icon-express-s"></span> <span>已开通</span>--%>
-                                <%--</div>--%>
-                            <%--</div>--%>
-                        <%--</div>--%>
-                    <%--</li>--%>
-                    <%--<li>--%>
-                        <%--<div class="card-box">--%>
-                            <%--<div class="card-box-name">--%>
-                                <%--<span class="bank-logo"><a><img src="../images/bankjh.png"></a></span>--%>
-                                <%--<span title="中国建设银行" class="bank-name">中国建设银行</span>--%>
-                                <%--<span class="bank-num4">尾号9098</span>--%>
-                            <%--</div>--%>
-                            <%--<div class="card-box-express">--%>
-                                <%--<div class="express-status">--%>
-                                    <%--<span class="asset-icon asset-icon-express-s"></span> <span>已开通</span>--%>
-                                <%--</div>--%>
-                            <%--</div>--%>
-                        <%--</div>--%>
-                    <%--</li>--%>
-                    <%--<li>--%>
-                        <%--<div class="card-box">--%>
-                            <%--<div class="card-box-name">--%>
-                                <%--<span class="bank-logo"><a><img src="../images/bankns.png"></a></span>--%>
-                                <%--<span title="湖北省农村信用合作联社" class="bank-name">湖北省农村信用合作联社</span>--%>
-                                <%--<span class="bank-num4">尾号8652</span>--%>
-                            <%--</div>--%>
-                            <%--<div class="card-box-express">--%>
-                                <%--<div class="express-status">--%>
-                                    <%--<span class="asset-icon asset-icon-express-s"></span> <span>已开通</span>--%>
-                                <%--</div>--%>
-                            <%--</div>--%>
-                        <%--</div>--%>
-                    <%--</li>--%>
                 </ul>
             </div>
             <li>
@@ -183,16 +120,6 @@
                     <li><a href="comment.jsp">评价商品</a></li>
                 </ul>
             </li>
-            <li class="person">
-                <p><i class="am-icon-dollar"></i>我的资产</p>
-                <ul>
-                    <li><a href="points.jsp">我的积分</a></li>
-                    <li><a href="coupon.jsp">优惠券 </a></li>
-                    <li><a href="bonus.jsp">红包</a></li>
-                    <li><a href="walletlist.jsp">账户余额</a></li>
-                    <li><a href="bill.jsp">账单明细</a></li>
-                </ul>
-            </li>
 
             <li class="person">
                 <p><i class="am-icon-tags"></i>我的收藏</p>
@@ -207,8 +134,6 @@
                 <ul>
                     <li><a href="consultation.jsp">商品咨询</a></li>
                     <li><a href="suggest.jsp">意见反馈</a></li>
-
-                    <li><a href="news.jsp">我的消息</a></li>
                 </ul>
             </li>
         </ul>
