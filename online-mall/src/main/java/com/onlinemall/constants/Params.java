@@ -61,5 +61,7 @@ public class Params {
     public static final String ADDRESS_USERNAME = "username";
     public static final String ADDRESS_USERADDRESS = "useraddress";
 
+    //用户模块
+    public static final String USER_GOODS_ID ="goodsid";
 
 }
