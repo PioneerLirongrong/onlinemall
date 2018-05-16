@@ -4,5 +4,5 @@ package com.onlinemall.springservice.interfaces;
  * @author lrr
  * 用户订单
  */
-public class IOrderService {
+public interface IOrderService {
 }
