@@ -23,7 +23,7 @@ public class RefMethodTool {
             Object object = c.newInstance();
             Log.info("{Object is "+object+"}");
 
-            method = c.getDeclaredMethod(methodname,String.class);
+            method = c.getDeclaredMethod(methodname,Map.class);
             Log.info("{method "+method+"}");
 
             result= (String) method.invoke(object, data);

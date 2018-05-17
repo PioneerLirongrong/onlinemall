@@ -14,6 +14,8 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -59,39 +61,89 @@ public class ShopGoodServiceImp implements IShopGoodService {
         logger.info("{调用增加用户的服务,由nettyservice的clothesHandlerResponse方法提供服务}");
         BaseResult<OnlinemallGoodsClothes> baseResult = new BaseResult<OnlinemallGoodsClothes>();
         baseResult.setCode(BaseResult.FAIL);
-        String head = env.getPropertyValue("shopGoods.response");
+        String head = env.getPropertyValue("shopGoods.clothesHandlerResponse");
         String body = MessageJsonUtil.makeBody(params);
         String message = MessageJsonUtil.convertJsonMessage(head, body);
         try {
             data = HttpClients.send(env.getPropertyValue("NETTY_SERVER_URL"), message, "UTF-8");
             List<OnlinemallGoodsClothes> onlinemallGoodsClothes = JSON.parseObject(data, new TypeReference<List<OnlinemallGoodsClothes>>() {});
+            baseResult.setCode(BaseResult.SUCCESS);
             baseResult.setDataList(onlinemallGoodsClothes);
         } catch (Exception e) {
             logger.error("{后台服务异常"+e.getMessage()+"}");
+            baseResult.setDataList(new ArrayList<OnlinemallGoodsClothes>());
+            return baseResult;
         }
-
-        return null;
+        return baseResult;
     }
 
     /**
      * 酒类
      */
     public BaseResult<OnlinemallGoodsDrinking> searchAndListDrinkings(RequestParams<OnlinemallGoodsDrinking> params) {
-        return null;
+        logger.info("{调用增加用户的服务,由nettyservice的clothesHandlerResponse方法提供服务}");
+        BaseResult<OnlinemallGoodsDrinking> baseResult = new BaseResult<OnlinemallGoodsDrinking>();
+        baseResult.setCode(BaseResult.FAIL);
+        String head = env.getPropertyValue("shopGoods.drinkingHandlerResponse");
+        String body = MessageJsonUtil.makeBody(params);
+        String message = MessageJsonUtil.convertJsonMessage(head, body);
+        try {
+            data = HttpClients.send(env.getPropertyValue("NETTY_SERVER_URL"), message, "UTF-8");
+            List<OnlinemallGoodsDrinking> onlinemallGoodsDrinkings = JSON.parseObject(data, new TypeReference<List<OnlinemallGoodsDrinking>>() {});
+            baseResult.setCode(BaseResult.SUCCESS);
+            baseResult.setDataList(onlinemallGoodsDrinkings);
+        } catch (Exception e) {
+            logger.error("{后台服务异常"+e.getMessage()+"}");
+            baseResult.setDataList(new ArrayList<OnlinemallGoodsDrinking>());
+            return baseResult;
+        }
+        return baseResult;
     }
 
     /**
      * 鞋子类
      */
     public BaseResult<OnlinemallGoodsShoes> searchAndListShoes(RequestParams<OnlinemallGoodsShoes> params) {
-        return null;
+        logger.info("{调用增加用户的服务,由nettyservice的clothesHandlerResponse方法提供服务}");
+        BaseResult<OnlinemallGoodsShoes> baseResult = new BaseResult<OnlinemallGoodsShoes>();
+        baseResult.setCode(BaseResult.FAIL);
+        String head = env.getPropertyValue("shopGoods.shoesingHandlerResponse");
+        String body = MessageJsonUtil.makeBody(params);
+        String message = MessageJsonUtil.convertJsonMessage(head, body);
+        try {
+            data = HttpClients.send(env.getPropertyValue("NETTY_SERVER_URL"), message, "UTF-8");
+            List<OnlinemallGoodsShoes> onlinemallGoodsShoes = JSON.parseObject(data, new TypeReference<List<OnlinemallGoodsShoes>>() {});
+            baseResult.setCode(BaseResult.SUCCESS);
+            baseResult.setDataList(onlinemallGoodsShoes);
+        } catch (Exception e) {
+            logger.error("{后台服务异常"+e.getMessage()+"}");
+            baseResult.setDataList(new ArrayList<OnlinemallGoodsShoes>());
+            return baseResult;
+        }
+        return baseResult;
     }
 
     /**
      * 日常生活类
      */
     public BaseResult<OnlinemallGoodsDailyNecessities> searchAndListNecessities(RequestParams<OnlinemallGoodsDailyNecessities> params) {
-        return null;
+        logger.info("{调用增加用户的服务,由nettyservice的clothesHandlerResponse方法提供服务}");
+        BaseResult<OnlinemallGoodsDailyNecessities> baseResult = new BaseResult<OnlinemallGoodsDailyNecessities>();
+        baseResult.setCode(BaseResult.FAIL);
+        String head = env.getPropertyValue("shopGoods.dailyNecessitiesingHandlerResponse");
+        String body = MessageJsonUtil.makeBody(params);
+        String message = MessageJsonUtil.convertJsonMessage(head, body);
+        try {
+            data = HttpClients.send(env.getPropertyValue("NETTY_SERVER_URL"), message, "UTF-8");
+            List<OnlinemallGoodsDailyNecessities> onlinemallGoodsDailyNecessitiesList = JSON.parseObject(data, new TypeReference<List<OnlinemallGoodsDailyNecessities>>() {});
+            baseResult.setCode(BaseResult.SUCCESS);
+            baseResult.setDataList(onlinemallGoodsDailyNecessitiesList);
+        } catch (Exception e) {
+            logger.error("{后台服务异常"+e.getMessage()+"}");
+            baseResult.setDataList(new ArrayList<OnlinemallGoodsDailyNecessities>());
+            return baseResult;
+        }
+        return baseResult;
     }
 
     /**

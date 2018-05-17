@@ -1,11 +1,9 @@
 package com.onlinemall.nettyservice.process;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONArray;
 import com.onlinemall.JdbcTemplateDao.BaseDaoImpl;
-import com.onlinemall.dao.model.OnlinemallGoodsClothes;
+import com.onlinemall.dao.model.OnlinemallGoodsDrinking;
 import com.onlinemall.utils.jdbcUtil.SqlUtil;
-import com.onlinemall.utils.json.JsonUtil;
 import com.onlinemall.utils.properties.EnvironmentUtil;
 import org.apache.log4j.Logger;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -15,31 +13,29 @@ import java.util.Map;
 
 /**
  * @author lrr
- * 衣服类搜索的netty处理程序
+ * 酒品类的netty
  */
-public class ClothesHandler extends BaseDaoImpl<OnlinemallGoodsClothes> {
+public class DrinkingHandler extends BaseDaoImpl<OnlinemallGoodsDrinking> {
 
     private static Logger logger = Logger.getLogger(ClothesHandler.class);
     private static EnvironmentUtil env = new EnvironmentUtil("sql.properties");
 
-
-    public String clothesHandlerResponse(Map<String,Object> data){
+    public String drinkingHandlerResponse(Map<String,Object> data){
         logger.info("{前台的请求的参数"+data.toString()+"}");
-        String sql = env.getPropertyValue("onlinemallClothes");
+        String sql = env.getPropertyValue("onlinemallgoodsdrinking");
         String selectSql = SqlUtil.MakeSql(sql, data);
         logger.info("{查询的sql"+selectSql+"}");
-        List<OnlinemallGoodsClothes> search = search(selectSql, new Object(), new String[]{});
+        List<OnlinemallGoodsDrinking> search = search(selectSql, new Object(), new String[]{});
         logger.info("{查询的结果"+search.toString()+"}");
         String jsonString = JSON.toJSONString(search);
         logger.info("{查询的结果"+jsonString+"}");
         return jsonString;
     }
 
-    @Override
-    public List<OnlinemallGoodsClothes> search(String sql, Object obj, String... args) {
+    public List<OnlinemallGoodsDrinking> search(String sql, Object obj, String... args) {
         logger.info("{查询的sql为"+sql+"}");
-        List<OnlinemallGoodsClothes> onlinemallGoodsClothes = jdbcTemplate.query(sql,new BeanPropertyRowMapper(OnlinemallGoodsClothes.class));
-        logger.info("{jdbcTemplate查询的结果"+onlinemallGoodsClothes.toString()+"}");
-        return onlinemallGoodsClothes;
+        List<OnlinemallGoodsDrinking> onlinemallGoodsDrinkings = jdbcTemplate.query(sql,new BeanPropertyRowMapper(OnlinemallGoodsDrinking.class));
+        logger.info("{jdbcTemplate查询的结果"+onlinemallGoodsDrinkings.toString()+"}");
+        return onlinemallGoodsDrinkings;
     }
 }

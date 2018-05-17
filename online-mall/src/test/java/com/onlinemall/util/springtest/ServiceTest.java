@@ -4,6 +4,7 @@ package com.onlinemall.util.springtest;
 import com.onlinemall.dao.model.OnlinemallUser;
 import com.onlinemall.param.request.RequestParams;
 import com.onlinemall.param.response.BaseResult;
+import com.onlinemall.springservice.interfaces.IShopGoodService;
 import com.onlinemall.springservice.interfaces.IUserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -29,6 +30,9 @@ public class ServiceTest {
 
     @Autowired
     private JdbcTemplate onlineMallJdbcTemplate;
+
+    @Autowired
+    private IShopGoodService iShopGoodService;
 
     /**
      * 用户模块的测试
@@ -64,5 +68,12 @@ public class ServiceTest {
         params.getParams().put("mail","750136676@qq.com");
         BaseResult result = iUserService.updateOnlineMallUserByUserId(params);
         System.out.println(result.toString());
+    }
+
+    @Test
+    public void listClothes(){
+        params = new RequestParams();
+        BaseResult result = iShopGoodService.searchAndListClothes(params);
+        System.out.println(result.getDataList().toString());
     }
 }
