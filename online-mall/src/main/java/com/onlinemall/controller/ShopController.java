@@ -89,9 +89,9 @@ public class ShopController {
         return baseResult;
     }
 
-    @RequestMapping(value = "/listGoodsFreshs",method = RequestMethod.POST)
+    @RequestMapping(value = "/listGoodsStationerys",method = RequestMethod.POST)
     public BaseResult<OnlinemallGoodsStationery> searchAndListShopGoodsStationerys(@ModelAttribute RequestParams<OnlinemallGoodsStationery> params){
-        logger.info("{请求后台接口\'/shop/listGoodsFreshs\'}");
+        logger.info("{请求后台接口\'/shop/listGoodsStationerys\'}");
         logger.info("{前台的请求参数" + params.toString() + "}");
         BaseResult<OnlinemallGoodsStationery> baseResult = iShopGoodService.searchAndListGoodsStationerys(params);
         logger.info("{后台返给前台的结果" + baseResult.toString() + "}");
