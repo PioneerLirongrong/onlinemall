@@ -1,6 +1,5 @@
 package com.onlinemall.nettyservice.service;
 
-import com.onlinemall.controller.PointCrontroller;
 import com.onlinemall.nettyservice.handler.ChannelOriginalHanndler;
 import com.onlinemall.nettyservice.handler.HttpServerHanndler;
 import com.onlinemall.utils.properties.EnvironmentUtil;

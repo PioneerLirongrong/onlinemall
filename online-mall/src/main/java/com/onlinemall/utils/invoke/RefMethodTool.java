@@ -3,6 +3,7 @@ package com.onlinemall.utils.invoke;
 import org.apache.log4j.Logger;
 
 import java.lang.reflect.Method;
+import java.util.Map;
 
 
 /**
@@ -14,7 +15,7 @@ public class RefMethodTool {
     private static String result ;
     private static Class c ;
     private static Method method;
-    public static String methodIvoke(String data,String classinfo, String methodname) {
+    public static String methodIvoke(Map<String,Object> data, String classinfo, String methodname) {
         try{
             c = Class.forName(classinfo);
             Log.info("{Class c is "+c+"}");

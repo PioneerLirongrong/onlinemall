@@ -1,7 +1,11 @@
 package com.onlinemall.utils.json;
 
 import com.alibaba.fastjson.JSONObject;
+import com.onlinemall.param.request.RequestParams;
+import org.apache.commons.lang3.StringUtils;
+import sun.swing.StringUIClientPropertyKey;
 
+import java.util.Iterator;
 import java.util.Map;
 
 import static com.onlinemall.constants.Params.*;
@@ -19,28 +23,32 @@ public class MessageJsonUtil {
      */
     public static String convertJsonMessage(String head,String body){
         //消息的格式:{"HEAD":{"class":"","method":""},"BODY":{"key":"value"}}
-        StringBuffer jsonBuffer = new StringBuffer();
+        String message;
         String[] arr1 = head.split(",");
         String classname = "\""+CLASSNAME+"\""+":"+"\""+arr1[0]+"\"";
         String methodname = "\""+METHODNAME+"\""+":"+"\""+arr1[1]+"\"";
         String mess1 = "\""+HEAD+"\""+":{"+classname+","+methodname+"}";
-        String[] arr2 = body.split(",");
         StringBuffer jsonTemp = new StringBuffer();
-        jsonTemp.append("{");
-        int i = 0;
-        for(String text:arr2){
-            String[] KV = text.split(":");
-            String json = "\""+KV[0]+"\""+":"+"\""+KV[1]+"\"";
-            if(i == 0){
-                jsonTemp.append(json);
-                i++;
-            }else {
-                jsonTemp.append(","+json);
+        if(StringUtils.isBlank(body)){
+            jsonTemp.append("{}");
+        }else {
+            String[] arr2 = body.split(",");
+            jsonTemp.append("{");
+            int i = 0;
+            for(String text:arr2){
+                String[] KV = text.split(":");
+                String json = "\""+KV[0]+"\""+":"+"\""+KV[1]+"\"";
+                if(i == 0){
+                    jsonTemp.append(json);
+                    i++;
+                }else {
+                    jsonTemp.append(","+json);
+                }
             }
+            jsonTemp.append("}");
+            //拼装数据
         }
-        jsonTemp.append("}");
-        //拼装数据
-        String message = "{"+mess1+","+"\""+BODY+"\""+":"+jsonTemp.toString()+"}";
+        message = "{"+mess1+","+"\""+BODY+"\""+":"+jsonTemp.toString()+"}";
         return message;
     }
 
@@ -66,5 +74,22 @@ public class MessageJsonUtil {
         String body = object.getString(BODY);
         Map<String, Object> map = JsonUtil.strToMap(body);
         return map;
+    }
+
+    public static String makeBody(RequestParams params){
+        Map<String,Object> paramsParams = params.getParams();
+        Iterator<Map.Entry<String, Object>> it = paramsParams.entrySet().iterator();
+        String body = "";
+        int i = 0;
+        while (it.hasNext()) {
+            Map.Entry<String, Object> entry = it.next();
+            if(i == 0){
+                body = entry.getKey()+":"+entry.getValue();
+                i++;
+            }else {
+                body = body+","+entry.getKey()+":"+entry.getValue();
+            }
+        }
+        return body;
     }
 }

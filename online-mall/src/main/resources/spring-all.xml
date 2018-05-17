@@ -8,6 +8,5 @@
     <description>spring的总的配置</description>
     <context:annotation-config/>
     <context:component-scan base-package="com.onlinemall"/>
-    <bean id="netty" class="com.onlinemall.nettyservice.service.InitService"></bean>
     <import resource="spring-db.xml"></import>
 </beans>
