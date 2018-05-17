@@ -31,4 +31,11 @@ public abstract class BaseDaoImpl<T>{
      */
     public abstract  List<T> search(String sql,Object obj,String ...args);
 
+    /**
+     * 导数据的内部程序
+     */
+    public void importData(){
+
+    }
+
 }
