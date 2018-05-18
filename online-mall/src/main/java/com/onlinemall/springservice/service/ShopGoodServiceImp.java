@@ -150,34 +150,114 @@ public class ShopGoodServiceImp implements IShopGoodService {
      * 熟食类
      */
     public BaseResult<OnlinemallGoodsCookedFood> searchAndListCookedFoods(RequestParams<OnlinemallGoodsCookedFood> params) {
-        return null;
+        logger.info("{调用增加用户的服务,由nettyservice的cookedFoodsHandlerResponse方法提供服务}");
+        BaseResult<OnlinemallGoodsCookedFood> baseResult = new BaseResult<OnlinemallGoodsCookedFood>();
+        baseResult.setCode(BaseResult.FAIL);
+        String head = env.getPropertyValue("shopGoods.cookedFoodsHandlerResponse");
+        String body = MessageJsonUtil.makeBody(params);
+        String message = MessageJsonUtil.convertJsonMessage(head, body);
+        try {
+            data = HttpClients.send(env.getPropertyValue("NETTY_SERVER_URL"), message, "UTF-8");
+            List<OnlinemallGoodsCookedFood> onlinemallGoodsCookedFoodList = JSON.parseObject(data, new TypeReference<List<OnlinemallGoodsCookedFood>>() {});
+            baseResult.setCode(BaseResult.SUCCESS);
+            baseResult.setDataList(onlinemallGoodsCookedFoodList);
+        } catch (Exception e) {
+            logger.error("{后台服务异常"+e.getMessage()+"}");
+            baseResult.setDataList(new ArrayList<OnlinemallGoodsCookedFood>());
+            return baseResult;
+        }
+        return baseResult;
     }
 
     /**
      * 包类
      */
     public BaseResult<OnlinemallGoodsBag> searchAndListGoodsBags(RequestParams<OnlinemallGoodsBag> params) {
-        return null;
+        logger.info("{调用增加用户的服务,由nettyservice的goodsBagHandlerResponse方法提供服务}");
+        BaseResult<OnlinemallGoodsBag> baseResult = new BaseResult<OnlinemallGoodsBag>();
+        baseResult.setCode(BaseResult.FAIL);
+        String head = env.getPropertyValue("shopGoods.goodsBagHandlerResponse");
+        String body = MessageJsonUtil.makeBody(params);
+        String message = MessageJsonUtil.convertJsonMessage(head, body);
+        try {
+            data = HttpClients.send(env.getPropertyValue("NETTY_SERVER_URL"), message, "UTF-8");
+            List<OnlinemallGoodsBag> onlinemallGoodsBags = JSON.parseObject(data, new TypeReference<List<OnlinemallGoodsBag>>() {});
+            baseResult.setCode(BaseResult.SUCCESS);
+            baseResult.setDataList(onlinemallGoodsBags);
+        } catch (Exception e) {
+            logger.error("{后台服务异常"+e.getMessage()+"}");
+            baseResult.setDataList(new ArrayList<OnlinemallGoodsBag>());
+            return baseResult;
+        }
+        return baseResult;
     }
 
     /**
      * 生鲜类
      */
     public BaseResult<OnlinemallGoodsFreshs> searchAndListGoodsFreshs(RequestParams<OnlinemallGoodsFreshs> params) {
-        return null;
+        logger.info("{调用增加用户的服务,由nettyservice的goodsFreshsResponse方法提供服务}");
+        BaseResult<OnlinemallGoodsFreshs> baseResult = new BaseResult<OnlinemallGoodsFreshs>();
+        baseResult.setCode(BaseResult.FAIL);
+        String head = env.getPropertyValue("shopGoods.goodsFreshsResponse");
+        String body = MessageJsonUtil.makeBody(params);
+        String message = MessageJsonUtil.convertJsonMessage(head, body);
+        try {
+            data = HttpClients.send(env.getPropertyValue("NETTY_SERVER_URL"), message, "UTF-8");
+            List<OnlinemallGoodsFreshs> onlinemallGoodsFreshs = JSON.parseObject(data, new TypeReference<List<OnlinemallGoodsFreshs>>() {});
+            baseResult.setCode(BaseResult.SUCCESS);
+            baseResult.setDataList(onlinemallGoodsFreshs);
+        } catch (Exception e) {
+            logger.error("{后台服务异常"+e.getMessage()+"}");
+            baseResult.setDataList(new ArrayList<OnlinemallGoodsFreshs>());
+            return baseResult;
+        }
+        return baseResult;
     }
 
     /**
      * 文具类
      */
     public BaseResult<OnlinemallGoodsStationery> searchAndListGoodsStationerys(RequestParams<OnlinemallGoodsStationery> params) {
-        return null;
+        logger.info("{调用增加用户的服务,由nettyservice的goodsStationeryResponse方法提供服务}");
+        BaseResult<OnlinemallGoodsStationery> baseResult = new BaseResult<OnlinemallGoodsStationery>();
+        baseResult.setCode(BaseResult.FAIL);
+        String head = env.getPropertyValue("shopGoods.goodsStationeryResponse");
+        String body = MessageJsonUtil.makeBody(params);
+        String message = MessageJsonUtil.convertJsonMessage(head, body);
+        try {
+            data = HttpClients.send(env.getPropertyValue("NETTY_SERVER_URL"), message, "UTF-8");
+            List<OnlinemallGoodsStationery> onlinemallGoodsStationeries = JSON.parseObject(data, new TypeReference<List<OnlinemallGoodsStationery>>() {});
+            baseResult.setCode(BaseResult.SUCCESS);
+            baseResult.setDataList(onlinemallGoodsStationeries);
+        } catch (Exception e) {
+            logger.error("{后台服务异常"+e.getMessage()+"}");
+            baseResult.setDataList(new ArrayList<OnlinemallGoodsStationery>());
+            return baseResult;
+        }
+        return baseResult;
     }
 
     /**
      * 厨房用品类
      */
     public BaseResult<OnlinemallGoodsKitchen> searchAndListGoodsKitchens(RequestParams<OnlinemallGoodsKitchen> params) {
-        return null;
+        logger.info("{调用增加用户的服务,由nettyservice的goodsStationeryResponse方法提供服务}");
+        BaseResult<OnlinemallGoodsKitchen> baseResult = new BaseResult<OnlinemallGoodsKitchen>();
+        baseResult.setCode(BaseResult.FAIL);
+        String head = env.getPropertyValue("shopGoods.goodsKitchenResponse");
+        String body = MessageJsonUtil.makeBody(params);
+        String message = MessageJsonUtil.convertJsonMessage(head, body);
+        try {
+            data = HttpClients.send(env.getPropertyValue("NETTY_SERVER_URL"), message, "UTF-8");
+            List<OnlinemallGoodsKitchen> onlinemallGoodsKitchens = JSON.parseObject(data, new TypeReference<List<OnlinemallGoodsKitchen>>() {});
+            baseResult.setCode(BaseResult.SUCCESS);
+            baseResult.setDataList(onlinemallGoodsKitchens);
+        } catch (Exception e) {
+            logger.error("{后台服务异常"+e.getMessage()+"}");
+            baseResult.setDataList(new ArrayList<OnlinemallGoodsKitchen>());
+            return baseResult;
+        }
+        return baseResult;
     }
 }

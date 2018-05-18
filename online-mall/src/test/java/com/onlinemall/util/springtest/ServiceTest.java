@@ -73,7 +73,14 @@ public class ServiceTest {
     @Test
     public void listClothes(){
         params = new RequestParams();
-        BaseResult result = iShopGoodService.searchAndListClothes(params);
-        System.out.println(result.getDataList().toString());
+//        iShopGoodService.searchAndListClothes(params);
+//        iShopGoodService.searchAndListCookedFoods(params);
+//        iShopGoodService.searchAndListDrinkings(params);
+//        iShopGoodService.searchAndListGoodsBags(params);
+//        iShopGoodService.searchAndListGoodsFreshs(params);
+        iShopGoodService.searchAndListGoodsKitchens(params);
+        iShopGoodService.searchAndListGoodsStationerys(params);
+        iShopGoodService.searchAndListShoes(params);
+        iShopGoodService.searchAndListNecessities(params);
     }
 }

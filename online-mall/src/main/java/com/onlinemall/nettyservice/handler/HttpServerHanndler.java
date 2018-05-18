@@ -54,6 +54,7 @@ public class HttpServerHanndler extends ChannelInboundHandlerAdapter {
             classinfo = MessageJsonUtil.analysisHead(message, CLASSNAME);
             methodname = MessageJsonUtil.analysisHead(message, METHODNAME);
             Map<String, Object> body = MessageJsonUtil.analysisBody(message);
+            Log.info("{反射的类:"+classinfo+"\t"+"方法名:"+methodname+"\t"+"消息为:"+body.toString()+"}");
             String result = RefMethodTool.methodIvoke(body, classinfo, methodname);
             Log.info("{netty服务成处理的结果为" + result + "}");
             FullHttpResponse response =

@@ -1,7 +1,7 @@
 package com.onlinemall.nettyservice.process;
 
 import com.alibaba.fastjson.JSON;
-import com.onlinemall.JdbcTemplateDao.BaseDaoImpl;
+import com.onlinemall.mysqlbasedao.BaseDaoImpl;
 import com.onlinemall.dao.model.OnlinemallGoodsDailyNecessities;
 import com.onlinemall.utils.jdbcUtil.SqlUtil;
 import com.onlinemall.utils.properties.EnvironmentUtil;
@@ -13,7 +13,7 @@ import java.util.Map;
 
 public class DailyNecessitiesHandler extends BaseDaoImpl<OnlinemallGoodsDailyNecessities> {
 
-    private static Logger logger = Logger.getLogger(ClothesHandler.class);
+    private static Logger logger = Logger.getLogger(DailyNecessitiesHandler.class);
     private static EnvironmentUtil env = new EnvironmentUtil("sql.properties");
 
     public String dailyNecessitiesingHandlerResponse(Map<String,Object> data){
