@@ -3360,7 +3360,7 @@ fieldset[disabled] .am-checkbox-inline {
    Component: Breadcrumb
  ============================================================================ */
 .am-breadcrumb {
-  padding: .7em .5em;
+  padding:3.7em .5em;;
   margin-bottom: 2rem;
   list-style: none;
   background-color: transparent;

@@ -70,16 +70,6 @@
 
         <tr class="item-list">
             <div class="bundle  bundle-last ">
-                <div class="bundle-hd">
-                    <div class="bd-promos">
-                        <div class="bd-has-promo">已享优惠:<span class="bd-has-promo-content">省￥19.50</span>&nbsp;&nbsp;
-                        </div>
-                        <div class="act-promo">
-                            <a href="#" target="_blank">第二支半价，第三支免费<span class="gt">&gt;&gt;</span></a>
-                        </div>
-                        <span class="list-change theme-login">编辑</span>
-                    </div>
-                </div>
                 <div class="clear"></div>
                 <div class="bundle-main">
                     <ul class="item-content clearfix">
@@ -225,16 +215,6 @@
 
         <tr class="item-list">
             <div class="bundle  bundle-last ">
-                <div class="bundle-hd">
-                    <div class="bd-promos">
-                        <div class="bd-has-promo">已享优惠:<span class="bd-has-promo-content">省￥19.50</span>&nbsp;&nbsp;
-                        </div>
-                        <div class="act-promo">
-                            <a href="#" target="_blank">第二支半价，第三支免费<span class="gt">&gt;&gt;</span></a>
-                        </div>
-                        <span class="list-change theme-login">编辑</span>
-                    </div>
-                </div>
                 <div class="clear"></div>
                 <div class="bundle-main">
                     <ul class="item-content clearfix">
@@ -310,13 +290,6 @@
     <div class="clear"></div>
 
     <div class="float-bar-wrapper">
-        <div id="J_SelectAll2" class="select-all J_SelectAll">
-            <div class="cart-checkbox">
-                <input class="check-all check" id="J_SelectAllCbx2" name="select-all" value="true" type="checkbox">
-                <label for="J_SelectAllCbx2"></label>
-            </div>
-            <span>全选</span>
-        </div>
         <div class="operations">
             <a href="#" hidefocus="true" class="deleteAll">删除</a>
             <a href="#" hidefocus="true" class="J_BatchFav">移入收藏夹</a>
