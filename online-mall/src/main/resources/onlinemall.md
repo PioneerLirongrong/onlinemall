@@ -534,3 +534,21 @@ create table onlinemall_goods_discount(
 )ENGINE=InnoDB DEFAULT charset=utf8;
 
 ```
+
+###购物车表onlinemall_shopcar
+```
+create table onlinemall_shopcar(
+  id varchar(64) comment '记录ID',
+  userid varchar(64) NOT NULL COMMENT '用户id',
+  goodsid  varchar(64) comment '商品id',
+  goodsname varchar(64) comment '商品的名字',
+  originalprice int comment '商品的原价',
+  discouuntprice int comment '商品的促销价',
+  goodtype varchar(2) comment '商品的类别',
+  goodCount varchar(20) comment '商品数量',
+  good varchar(64) comment '品牌',
+  url varchar(128) comment '商品图片url',
+  registertime datetime DEFAULT CURRENT_TIMESTAMP COMMENT '添加时间 默认为now',
+  primary key (id)
+)ENGINE=InnoDB DEFAULT charset=utf8;
+```
