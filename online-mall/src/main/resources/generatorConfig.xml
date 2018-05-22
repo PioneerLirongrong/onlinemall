@@ -89,5 +89,7 @@
         <table tableName="onlinemall_order"></table>
         <!--订单物流表onelinemall_logistics-->
         <table tableName="onelinemall_logistics"></table>
+        <!--购物车表-->
+        <table tableName="onlinemall_shopcar"></table>
     </context>
 </generatorConfiguration>

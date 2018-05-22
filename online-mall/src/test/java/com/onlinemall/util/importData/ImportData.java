@@ -1,7 +1,6 @@
 package com.onlinemall.util.importData;
 
 import com.onlinemall.dao.mapper.OnlinemallGoodsClothesMapper;
-import com.onlinemall.dao.mapper.OnlinemallGoodsKitchenMapper;
 import com.onlinemall.dao.model.OnlinemallGoodsClothes;
 import com.onlinemall.utils.UUID.CommonUtils;
 import org.junit.Test;
