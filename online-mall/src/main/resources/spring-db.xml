@@ -29,6 +29,10 @@
         <property name="dataSource" ref="mysqlDataSource" />
     </bean>
 
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="mysqlDataSource"></property>
+    </bean>
+
     <!--&lt;!&ndash;Mybaaties的配置&ndash;&gt;-->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="mysqlDataSource"></property>
@@ -39,9 +43,6 @@
     <!--自动扫描接口-->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="com.onlinemall.dao.mapper"></property>
-    </bean>
-    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-        <property name="dataSource" ref="mysqlDataSource"></property>
     </bean>
 
     <!-- 哪些类哪些方法使用事务 -->
