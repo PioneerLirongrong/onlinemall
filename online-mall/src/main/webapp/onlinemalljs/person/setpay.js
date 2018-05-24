@@ -64,6 +64,7 @@ onlineMallSetppay.prototype = {
         data['params["userid"]'] = $.cookie("onlinemall_zc_userId");
         data['params["realname"]'] = newpassword;
         data['params["pay_password_2"]'] = confirmpassword;
+        data['params["pay_password_1"]'] = newpassword;
         $.ajax({
             type: "POST",
             url: this.config.updateInfoUrl,

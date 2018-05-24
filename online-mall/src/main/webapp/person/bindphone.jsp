@@ -159,8 +159,6 @@
                 <p><i class="am-icon-balance-scale"></i>我的交易</p>
                 <ul>
                     <li><a href="order.jsp">订单管理</a></li>
-                    <li><a href="change.jsp">退款售后</a></li>
-                    <li><a href="comment.jsp">评价商品</a></li>
                 </ul>
             </li>
             <li class="person">
