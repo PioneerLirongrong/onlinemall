@@ -177,9 +177,9 @@
                             </div>
                         </div>
                         <div class="am-form-group">
-                            <label for="user-email" class="am-form-label">电子邮件</label>
+                            <label for="useremail" class="am-form-label">电子邮件</label>
                             <div class="am-form-content">
-                                <input id="user-email" placeholder="Email" type="email">
+                                <input id="useremail" placeholder="Email" type="text">
                             </div>
                         </div>
                         <div class="info-btn">

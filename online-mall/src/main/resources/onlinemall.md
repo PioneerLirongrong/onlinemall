@@ -184,7 +184,7 @@ create table onlinemall_order(
   goodsoperate varchar(1) comment '(商品操作 0:交易失败 1:交易成功)',
   ordertime datetime comment '交易时间',
   orderaddress varchar(1000) comment '订单的收货地址',
-  orderstatus varchar(1) comment '订单的状态 (0:拍下商品 1:卖家发货 2:确认收货 3:交易完成 4:退款中 5:退款成功)',
+  orderstatus varchar(1) comment '订单的状态 (0:拍下商品 1:卖家发货 2:确认收货 3:退款中 4:退款成功,5待发货,6待收货,7待评价)',
   goodsreturntime datetime comment '退款时间',
   goodsreturnnumber varchar(64) comment '退款编号',
   goodsreturnstatus varchar(2) comment '退款状态 (1:买家退款 2:银行受理 3:退款成功)',

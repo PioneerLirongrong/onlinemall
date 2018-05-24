@@ -58,15 +58,12 @@
                 <div class="wrap-list">
                     <div class="m-user">
                         <!--个人信息 -->
-                        <div  class="m-userinfo">
-                            <a href="news.jsp">
-                                <div class="tipsBox"><i class="am-icon-envelope"></i></div>
-                            </a>
+                        <div class="m-userinfo">
                             <div class="m-baseinfo">
                                 <a class="m-pic" href="information.jsp">
                                     <img src="../images/getAvatar.do.jpg">
                                 </a>
-                                <div id= 'm-userInfo' class="m-info">
+                                <div id='m-userInfo' class="m-info">
 
                                 </div>
                             </div>
@@ -77,32 +74,6 @@
                                 </div>
                             </div>
                         </div>
-
-                        <!--个人资产-->
-                        <div class="m-userproperty">
-                            <div class="s-bar">
-                                <i class="s-icon"></i>个人资产
-                            </div>
-                            <p class="m-coupon">
-                                <a href="coupon.jsp">
-                                    <em class="m-num">2</em>
-                                    <span class="m-title">优惠券</span>
-                                </a>
-                            </p>
-                            <p class="m-wallet">
-                                <a href="wallet.jsp">
-                                    <em class="m-num">0.00</em>
-                                    <span class="m-title">账户余额</span>
-                                </a>
-                            </p>
-                            <p class="m-bill">
-                                <a href="pointnew.jsp">
-                                    <em class="m-num">10</em>
-                                    <span class="m-title">总积分</span>
-                                </a>
-                            </p>
-                        </div>
-
                         <!--我的钱包-->
                         <div class="wallet">
                             <div class="s-bar">
@@ -120,82 +91,11 @@
                                     <span class="m-title">够安全</span>
                                 </a>
                             </p>
-                            <p class="m-big squareL">
-                                <a href="bonus.jsp">
-                                    <i><img src="../images/profit.png"/></i>
-                                    <span class="m-title">很灵活</span>
-                                </a>
-                            </p>
                         </div>
 
                     </div>
                     <div class="box-container-bottom"></div>
 
-                    <!--订单 -->
-                    <div class="m-order">
-                        <div class="s-bar">
-                            <i class="s-icon"></i>我的订单
-                            <a class="i-load-more-item-shadow" href="order.jsp">全部订单</a>
-                        </div>
-                        <ul>
-                            <li><a href="order.jsp"><i><img src="../images/pay.png"/></i><span>待付款</span></a></li>
-                            <li><a href="order.jsp"><i><img src="../images/send.png"/></i><span>待发货<em
-                                    class="m-num">1</em></span></a></li>
-                            <li><a href="order.jsp"><i><img src="../images/receive.png"/></i><span>待收货</span></a></li>
-                            <li><a href="order.jsp"><i><img src="../images/comment.png"/></i><span>待评价<em
-                                    class="m-num">3</em></span></a></li>
-                            <li><a href="change.jsp"><i><img src="../images/refund.png"/></i><span>退换货</span></a></li>
-                        </ul>
-                        <div class="orderContentBox">
-                            <div class="orderContent">
-                                <div class="orderContentpic">
-                                    <div class="imgBox">
-                                        <a href="orderinfo.jsp"><img src="../images/youzi.jpg"></a>
-                                    </div>
-                                </div>
-                                <div class="detailContent">
-                                    <a href="orderinfo.jsp" class="delivery">签收</a>
-                                    <div class="orderID">
-                                        <span class="time">2016-03-09</span>
-                                        <span class="splitBorder">|</span>
-                                        <span class="time">21:52:47</span>
-                                    </div>
-                                    <div class="orderID">
-                                        <span class="num">共1件商品</span>
-                                    </div>
-                                </div>
-                                <div class="state">待评价</div>
-                                <div class="price"><span class="sym">¥</span>23.<span class="sym">80</span></div>
-
-                            </div>
-                            <a href="javascript:void(0);" class="btnPay">再次购买</a>
-                        </div>
-
-                        <div class="orderContentBox">
-                            <div class="orderContent">
-                                <div class="orderContentpic">
-                                    <div class="imgBox">
-                                        <a href="orderinfo.jsp"><img src="../images/heart.jpg"></a>
-                                    </div>
-                                </div>
-                                <div class="detailContent">
-                                    <a href="orderinfo.jsp" class="delivery">派件</a>
-                                    <div class="orderID">
-                                        <span class="time">2016-03-09</span>
-                                        <span class="splitBorder">|</span>
-                                        <span class="time">21:52:47</span>
-                                    </div>
-                                    <div class="orderID">
-                                        <span class="num">共2件商品</span>
-                                    </div>
-                                </div>
-                                <div class="state">已发货</div>
-                                <div class="price"><span class="sym">¥</span>246.<span class="sym">50</span></div>
-
-                            </div>
-                            <a href="javascript:void(0);" class="btnPay">再次购买</a>
-                        </div>
-                    </div>
                     <!--九宫格-->
                     <div class="user-squaredIcon">
                         <div class="s-bar">

@@ -49,7 +49,7 @@ onlineMallInformation.prototype = {
                 $("#data-am-selected2").find("option[value = '" + month + "']").attr("selected", "selected");
             }
             $("#user-phone").val(that.mapData["phonenumber"]);
-            $("#user-email").val(that.mapData["mail"]);
+            $("#useremail").val(that.mapData["mail"]);
         }
     },
     submit: function () {
@@ -68,14 +68,16 @@ onlineMallInformation.prototype = {
                 info.execption("手机号格式不正确!!!请确认后填写")
                 return;
             }
+            data['params["phonenumber"]'] = phone;
         }
-        var mail = $("#user-email").val();
+        var mail = $("#useremail").val();
         if ("" != mail || null != mail) {
             var reg = new RegExp("[a-zA-Z0-9]{1,10}@[a-zA-Z0-9]{1,5}\\.[a-zA-Z0-9]{1,5}");
             if (!(reg.test(mail))) {
                 info.execption("邮箱格式不正确!!!请确认后填写")
                 return;
             }
+            data['params["mail"]'] = mail;
         }
         data['params["userid"]'] = $.cookie("onlinemall_zc_userId");
         data['params["account"]'] = account

@@ -99,7 +99,7 @@ a.i-trigger { cursor: pointer;position: relative; z-index: 2;display: block;colo
 .m-userproperty p em{position: absolute;right:15px;transition: all 0.5s}
 .m-userproperty p:hover em{right:0px;}
 /*我的钱包*/
-.wallet{display: block;position: absolute;left: 260px;right: 5px;bottom: 5px;padding:7px 10px;border: 1px solid #e7e7e7;}
+.wallet{display: block;position: absolute;left: 260px;right: -2px;bottom: 5px;padding:7px 10px;border: 1px solid #e7e7e7;}
 .wallet .s-bar { padding: 0px 5px; margin: 5px 0px;border-left: 3px solid #ed6c44;}
 .wallet p.m-big{display: block;width:33.33%;height: auto;margin-left:0px ;text-align: center;float: left;}
 .wallet p.m-big .m-title{display: block;}
@@ -312,7 +312,7 @@ a.i-trigger { cursor: pointer;position: relative; z-index: 2;display: block;colo
 .m-userproperty .s-bar ,.wallet .s-bar {margin:15px 0px 25px;}
 .m-userproperty p{height:40px ;line-height: 40px;} 	
 .m-userproperty p em{top:9px}
-.wallet {position: absolute;left:450px;top: 5px;}  	
+.wallet {position: absolute;left:241px;top: 5px;}
 .wallet p.m-big{margin-top: 20px;}  
 .wallet p.m-big i img {width:54px;height:54px}
 .wallet p.m-big .m-title{margin-top:10px ;}
