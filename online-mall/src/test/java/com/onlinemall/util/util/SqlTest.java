@@ -13,8 +13,8 @@ public class SqlTest {
     @Test
     public void testSql(){
         params = new RequestParams();
-        params.getParams().put("sex","1");
-        params.getParams().put("mail","750136676@qq.com");
+        params.getParams().put("clothestype","羽绒服");
+        params.getParams().put("goodsname","aaaaa");
         String s = SqlUtil.MakeSql("select * from user", params.getParams());
         System.out.println(s);
     }

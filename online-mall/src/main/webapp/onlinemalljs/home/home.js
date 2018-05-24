@@ -2,7 +2,9 @@ var onlineMallHome = function () {
 
 };
 onlineMallHome.prototype = {
-    mapData:{},
+    mapData:{
+
+    },
     config: {},
     exception: function (message) {
         alert(message)
@@ -16,11 +18,15 @@ onlineMallHome.prototype = {
             console.log("this data is "+home.mapData["userid"])
         });
     },
-    error: function () {
-        this.exception("系统异常")
+    init_goods:function () {
+        var maps={};
+
+
     }
 };
 $(document).ready(function () {
     var home = new onlineMallHome();
     home.init();
+    home.init_goods();
+
 });

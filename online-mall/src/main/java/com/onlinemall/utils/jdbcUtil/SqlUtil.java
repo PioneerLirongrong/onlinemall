@@ -27,11 +27,11 @@ public class SqlUtil {
                 String key = entry.getKey();
                 Object value = entry.getValue();
                 if(key.contains("type")){
-                    sqlList.add(key+" like "+ (String)value);
+                    sqlList.add(key+" like "+ "\'"+(String)value+"\'");
                 }else if (key.contains("goodsname")){
-                    sqlList.add(key+" like "+ (String)value);
+                    sqlList.add(key+" like "+ "\'"+(String)value+"\'");
                 }else {
-                    sqlList.add(key+" like "+ (String)value);
+                    sqlList.add(key+" like "+ "\'"+(String)value+"\'");
                 }
             }
         }

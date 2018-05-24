@@ -77,6 +77,7 @@ public class ServiceTest {
     @Test
     public void listClothes(){
         params = new RequestParams();
+        params.getParams().put("clothestype","羽绒服");
         iShopGoodService.searchAndListClothes(params);
 //        iShopGoodService.searchAndListCookedFoods(params);
 //        iShopGoodService.searchAndListDrinkings(params);

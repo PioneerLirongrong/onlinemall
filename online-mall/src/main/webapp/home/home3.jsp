@@ -138,7 +138,7 @@
 </div>
 <div class="shopMainbg">
     <div class="am-g am-g-fixed flood method3 ">
-        <ul class="am-thumbnails ">
+        <ul class="am-thumbnails " id="home">
             <li>
                 <div class="list ">
                     <a href="# ">

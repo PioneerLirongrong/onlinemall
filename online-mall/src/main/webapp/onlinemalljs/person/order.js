@@ -107,7 +107,7 @@ onlineMallOrder.prototype = {
                         $("#AllOrder").append(
                             "<div class=\"order-status5\">\n" +
                             "<div class=\"order-title\">\n" +
-                            "<div class=\"dd-num\">订单编号：<a href=\"javascript:;\">" + "8307296207293" + Math.random() * 10 + "</a></div>\n" +
+                            "<div class=\"dd-num\">订单编号：<a href=\"javascript:;\">" + "8307296207293" +Math.round(Math.random()*10)+ "</a></div>\n" +
                             "<span>成交时间：" + this.orderchengjiaotime + "</span>\n" +
                             "</div>\n" +
                             "<div class=\"order-content\">\n" +
@@ -192,7 +192,7 @@ onlineMallOrder.prototype = {
                             $("#waitPayOrder").append(
                                 "<div class=\"order-status5\">\n" +
                                 "<div class=\"order-title\">\n" +
-                                "<div class=\"dd-num\">订单编号：<a href=\"javascript:;\">" + "8307296207293" + Math.random() * 10 + "</a></div>\n" +
+                                "<div class=\"dd-num\">订单编号：<a href=\"javascript:;\">" + "8307296207293" + Math.round(Math.random()*10) + "</a></div>\n" +
                                 "<span>成交时间：" + this.orderchengjiaotime + "</span>\n" +
                                 "</div>\n" +
                                 "<div class=\"order-content\">\n" +
@@ -282,7 +282,7 @@ onlineMallOrder.prototype = {
                             $("#WaitOutOrder").append(
                                 "<div class=\"order-status5\">\n" +
                                 "<div class=\"order-title\">\n" +
-                                "<div class=\"dd-num\">订单编号：<a href=\"javascript:;\">" + "8307296207293" + Math.random() * 10 + "</a></div>\n" +
+                                "<div class=\"dd-num\">订单编号：<a href=\"javascript:;\">" + "8307296207293" + Math.round(Math.random()*10) + "</a></div>\n" +
                                 "<span>成交时间：" + this.orderchengjiaotime + "</span>\n" +
                                 "</div>\n" +
                                 "<div class=\"order-content\">\n" +
@@ -371,7 +371,7 @@ onlineMallOrder.prototype = {
                             $("#WaitInOrder").append(
                                 "<div class=\"order-status5\">\n" +
                                 "<div class=\"order-title\">\n" +
-                                "<div class=\"dd-num\">订单编号：<a href=\"javascript:;\">" + "8307296207293" + Math.random() * 10 + "</a></div>\n" +
+                                "<div class=\"dd-num\">订单编号：<a href=\"javascript:;\">" + "8307296207293" + Math.round(Math.random()*10) + "</a></div>\n" +
                                 "<span>成交时间：" + this.orderchengjiaotime + "</span>\n" +
                                 "</div>\n" +
                                 "<div class=\"order-content\">\n" +
@@ -461,7 +461,7 @@ onlineMallOrder.prototype = {
                             $("#WaitEvaluateOrder").append(
                                 "<div class=\"order-status5\">\n" +
                                 "<div class=\"order-title\">\n" +
-                                "<div class=\"dd-num\">订单编号：<a href=\"javascript:;\">" + "8307296207293" + Math.random() * 10 + "</a></div>\n" +
+                                "<div class=\"dd-num\">订单编号：<a href=\"javascript:;\">" + "8307296207293" + Math.round(Math.random()*10) + "</a></div>\n" +
                                 "<span>成交时间：" + this.orderchengjiaotime + "</span>\n" +
                                 "</div>\n" +
                                 "<div class=\"order-content\">\n" +
