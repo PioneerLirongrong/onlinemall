@@ -66,4 +66,7 @@ public class Params {
     public static final String ORDER_STATUS = "orderstatus";
     public static final String ORDER_ID = "id";
 
+    //用户购物车模块
+    public static final String USER_SHOP_CAR_ID  = "";
+
 }

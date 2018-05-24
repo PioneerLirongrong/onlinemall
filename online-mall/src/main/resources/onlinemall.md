@@ -23,7 +23,7 @@ CREATE TABLE `onlinemall_user` (
   `securitypay` varchar(1) DEFAULT NULL COMMENT '(1:启动 0:不启动)',
   `securityphone` varchar(1) DEFAULT NULL COMMENT '(1:启动 0:不启动)',
   `securitymail` varchar(1) DEFAULT NULL COMMENT '(1:启动 0:不启动)',
-  `paypassword` varchar(64) NOT NULL COMMENT '支付密码',
+  `paypassword` varchar(64) DEFAULT NULL COMMENT '支付密码',
   `realname` varchar(64) DEFAULT NULL COMMENT '真实姓名',
   `identitynumber` varchar(64) DEFAULT NULL COMMENT '身份证号码',
   `photourl1` varchar(64) DEFAULT NULL COMMENT '身份证照片正面',
@@ -33,7 +33,7 @@ CREATE TABLE `onlinemall_user` (
   `securityproblem2` varchar(64) DEFAULT NULL COMMENT '安全问题2',
   `securityansower2` varchar(64) DEFAULT NULL COMMENT '安全问题答案2',
   `registertime` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '注册时间 默认为now',
-   PRIMARY KEY (`userid`)
+  PRIMARY KEY (`userid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8
 ```
 
@@ -537,18 +537,18 @@ create table onlinemall_goods_discount(
 
 ###购物车表onlinemall_shopcar
 ```
-create table onlinemall_shopcar(
-  id varchar(64) comment '记录ID',
-  userid varchar(64) NOT NULL COMMENT '用户id',
-  goodsid  varchar(64) comment '商品id',
-  goodsname varchar(64) comment '商品的名字',
-  originalprice int comment '商品的原价',
-  discouuntprice int comment '商品的促销价',
-  goodtype varchar(2) comment '商品的类别',
-  goodCount varchar(20) comment '商品数量',
-  good varchar(64) comment '品牌',
-  url varchar(128) comment '商品图片url',
-  registertime datetime DEFAULT CURRENT_TIMESTAMP COMMENT '添加时间 默认为now',
-  primary key (id)
-)ENGINE=InnoDB DEFAULT charset=utf8;
+CREATE TABLE `onlinemall_shopcar` (
+  `id` varchar(64) NOT NULL COMMENT '记录ID',
+  `userid` varchar(64) NOT NULL COMMENT '用户id',
+  `goodsid` varchar(64) DEFAULT NULL COMMENT '商品id',
+  `goodsname` varchar(64) DEFAULT NULL COMMENT '商品的名字',
+  `originalprice` int(11) DEFAULT NULL COMMENT '商品的原价',
+  `discouuntprice` int(11) DEFAULT NULL COMMENT '商品的促销价',
+  `goodtype` varchar(2) DEFAULT NULL COMMENT '商品的类别',
+  `goodCount` varchar(20) DEFAULT NULL COMMENT '商品数量',
+  `good` varchar(64) DEFAULT NULL COMMENT '品牌',
+  `url` varchar(128) DEFAULT NULL COMMENT '商品图片url',
+  `registertime` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '添加时间 默认为now',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
 ```
