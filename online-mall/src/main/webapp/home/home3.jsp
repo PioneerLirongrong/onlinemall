@@ -99,10 +99,9 @@
     <div class="am-slider am-slider-default scoll" data-am-flexslider id="demo-slider-0">
         <ul class="am-slides">
             <li class="banner1"><a href="introduction.jsp"><img src="../images/ad1.jpg"/></a></li>
-            <li class="banner2"><a><img src="../images/ad2.jpg"/></a></li>
-            <li class="banner3"><a><img src="../images/ad3.jpg"/></a></li>
-            <li class="banner4"><a><img src="../images/ad4.jpg"/></a></li>
-
+            <li class="banner2"><a href="introduction.jsp"><img src="../images/ad2.jpg"/></a></li>
+            <li class="banner3"><a href="introduction.jsp"><img src="../images/ad3.jpg"/></a></li>
+            <li class="banner4"><a href="introduction.jsp"><img src="../images/ad4.jpg"/></a></li>
         </ul>
     </div>
     <div class="clear"></div>
@@ -146,6 +145,7 @@
                         <div class="pro-title ">萨拉米 1+1小鸡腿</div>
                         <span class="e-price ">￥29.90</span>
                     </a>
+                    <p id='p' style="display: none">666666</p>
                 </div>
             </li>
             <li>
@@ -352,7 +352,6 @@
             <div id="quick_links_pop " class="quick_links_pop hide "></div>
 
         </div>
-
     </div>
     <div id="prof-content " class="nav-content ">
         <div class="nav-con-close ">

@@ -27,11 +27,11 @@ public class SqlUtil {
                 String key = entry.getKey();
                 Object value = entry.getValue();
                 if(key.contains("type")){
-                    sqlList.add(key+" like "+ "\'"+(String)value+"\'");
+                    sqlList.add(key+" LIKE "+ "\'"+(String)value+"\'");
                 }else if (key.contains("goodsname")){
-                    sqlList.add(key+" like "+ "\'"+(String)value+"\'");
+                    sqlList.add(key+" LIKE "+ "\'"+(String)value+"\'");
                 }else {
-                    sqlList.add(key+" like "+ "\'"+(String)value+"\'");
+                    sqlList.add(key+" LIKE "+ "\'"+(String)value+"\'");
                 }
             }
         }
@@ -41,7 +41,7 @@ public class SqlUtil {
                 sql = sql+" where "+text;
                 i++;
             }else {
-                sql = sql+" and "+text;
+                sql = sql+" OR "+text;
             }
         }
         logger.info("{拼装的sql为"+sql+"}");
