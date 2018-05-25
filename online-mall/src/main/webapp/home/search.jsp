@@ -405,7 +405,7 @@
                     return;
                 }
             })
-        } else{
+        } else {
             var map = {};
             var userId = $.cookie("onlinemall_zc_userId");
             if (null == userId) {
