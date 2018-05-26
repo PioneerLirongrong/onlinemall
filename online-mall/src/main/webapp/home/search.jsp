@@ -19,6 +19,7 @@
     <script src="../js/jquery.base64.js"></script>
     <script src="../onlinemalljs/commonUtils/CommonUtil.js"></script>
     <script src="../onlinemalljs/commonUtils/CommonUserInfo.js"></script>
+    <script src="../onlinemalljs/home/search.js"></script>
 </head>
 
 <body>
@@ -84,7 +85,7 @@
         <a name="index_none_header_sysc" href="#"></a>
         <form>
             <input id="searchInput" name="index_none_header_sysc" type="text" placeholder="搜索" autocomplete="off">
-            <input id="ai-topsearch" class="submit am-btn" value="搜索" index="1" type="submit">
+            <input id="ai-topsearch" class="submit am-btn" value="搜索" index="1" type="button">
         </form>
     </div>
 </div>

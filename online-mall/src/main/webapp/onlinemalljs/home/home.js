@@ -11,8 +11,6 @@ onlineMallHome.prototype = {
     exception: function (message) {
         alert(message)
     },
-    display: function () {
-    },
     init: function () {
         var home = this;
         COMMONUSERINFOUTIL.getUserInfo(function (data) {
@@ -33,7 +31,7 @@ onlineMallHome.prototype = {
                 if (result.code == '1') {
                     if (result.code == '1') {
                         var innerText = $("p").text();
-                        alert(innerText)
+                        // alert(innerText)
                         //遍历后台传回来的值
                         // var jsonArr = result.dataList;
                         // $(jsonArr).each(function () {
@@ -56,33 +54,12 @@ onlineMallHome.prototype = {
         })
     },
     search:function () {
-        var info = this;
-        var search = $("#searchInput").val();
-        var data={}
-        $.ajax({
-            type: "POST",
-            url: this.config.initDataUrl,
-            data: data,
-            dataType: "JSON",
-            async: false,
-            success: function (result) {
-                if (result.code == '1') {
-                    if (result.code == '1') {
-                        var innerText = $("p").text();
-                        alert(innerText)
-                        // var jsonArr = result.dataList;
-                        // $(jsonArr).each(function () {
-                        //     $("#home").append(
-                        //         alert("aaaaa")
-                        //     )
-                        // })
-                    }
-                }
-            },
-            error: function () {
-                info.execption("系统异常");
-            }
-        });
+        var param = "0";
+        var searchContent = $("#searchInput").val();
+        if(null == searchContent || "" == searchContent || !searchContent){
+            param = Math.round(Math.random()*10);
+        }
+        window.location.href = "../home/search.jsp"+"?"+MD5_UTILS.encryption("search="+param);
     },
 };
 $(document).ready(function () {

@@ -22,6 +22,16 @@
     <script src="../onlinemalljs/commonUtils/CommonUtil.js"></script>
     <script src="../onlinemalljs/commonUtils/CommonUserInfo.js"></script>
     <script src="../onlinemalljs/home/home.js"></script>
+    <%--<script>--%>
+    <%--function goTO() {--%>
+    <%--var searchContent = $("#searchInput").val();--%>
+    <%--if(null == searchContent || "" == searchContent || !searchContent){--%>
+    <%--searchContent = "羽绒";--%>
+    <%--}--%>
+    <%--$("#searchForm").attr('action',"../home/search.jsp"+"?"+MD5_UTILS.encryption("search="+searchContent);--%>
+    <%--// window.location.href = "../home/search.jsp"+"?"+MD5_UTILS.encryption("search="+searchContent);--%>
+    <%--}--%>
+    <%--</script>--%>
 
 </head>
 <body>
@@ -75,18 +85,18 @@
     </div>
 
     <!--悬浮搜索框-->
+    <script>
 
+    </script>
     <div class="nav white">
         <div class="logo"><img src="../images/logo.png"/></div>
         <div class="logoBig">
             <li><img src="../images/logobig.png"/></li>
         </div>
-
         <div class="search-bar pr">
-            <a name="index_none_header_sysc" href="#"></a>
             <form>
                 <input id="searchInput" name="index_none_header_sysc" type="text" placeholder="搜索" autocomplete="off">
-                <input id="ai-topsearch" class="submit am-btn" value="搜索" index="1" type="submit">
+                <input id="ai-topsearch" class="submit am-btn" value="搜索" index="1" type="button">
             </form>
         </div>
     </div>
@@ -98,10 +108,10 @@
     <!--轮播 -->
     <div class="am-slider am-slider-default scoll" data-am-flexslider id="demo-slider-0">
         <ul class="am-slides">
-            <li class="banner1"><a href="introduction.jsp"><img src="../images/ad1.jpg"/></a></li>
-            <li class="banner2"><a href="introduction.jsp"><img src="../images/ad2.jpg"/></a></li>
-            <li class="banner3"><a href="introduction.jsp"><img src="../images/ad3.jpg"/></a></li>
-            <li class="banner4"><a href="introduction.jsp"><img src="../images/ad4.jpg"/></a></li>
+            <li class="banner1"><a href="../home/introduction.jsp"><img src="../images/ad1.jpg"/></a></li>
+            <li class="banner2"><a href="../home/introduction.jsp"><img src="../images/ad2.jpg"/></a></li>
+            <li class="banner3"><a href="../home/introduction.jsp"><img src="../images/ad3.jpg"/></a></li>
+            <li class="banner4"><a href="../home/introduction.jsp"><img src="../images/ad4.jpg"/></a></li>
         </ul>
     </div>
     <div class="clear"></div>

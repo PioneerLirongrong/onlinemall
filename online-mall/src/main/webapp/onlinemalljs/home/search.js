@@ -1,7 +1,7 @@
-var onlineMallHome = function () {
+var onlineMallSearch = function () {
 
 };
-onlineMallHome.prototype = {
+onlineMallSearch.prototype = {
     mapData:{
     },
     config: {
@@ -15,14 +15,30 @@ onlineMallHome.prototype = {
     },
     init: function () {
         var home = this;
+        var param = "";
+        var searchContent ="";
+        var parmValue = MD5_UTILS.getParmValue();
+        console.log(parmValue)
+        if(typeof(parmValue["search"]) == "undefined"){
+            searchContent = $("#searchInput").val();
+            if(null == searchContent || "" == searchContent || !searchContent ){
+                param = Math.round(Math.random()*10);
+            } else {
+                param = searchContent;
+            }
+        }else {
+            param = parmValue["search"];
+        }
         COMMONUSERINFOUTIL.getUserInfo(function (data) {
             home.mapData = data;
             console.log("this data is "+home.mapData["userid"])
         });
+        home.init_goods(param);
     },
-    init_goods:function () {
+    init_goods:function (param) {
         var info = this;
         var data= {}
+        data['params["clothestype"]'] = param;
         $.ajax({
             type: "POST",
             url: this.config.initDataUrl,
@@ -34,13 +50,6 @@ onlineMallHome.prototype = {
                     if (result.code == '1') {
                         var innerText = $("p").text();
                         alert(innerText)
-                        //遍历后台传回来的值
-                        // var jsonArr = result.dataList;
-                        // $(jsonArr).each(function () {
-                        //     $("#home").append(
-                        //         alert("aaaaa")
-                        //     )
-                        // })
                     }
                 }
             },
@@ -57,7 +66,7 @@ onlineMallHome.prototype = {
     },
     search:function () {
         var info = this;
-        var search = $("#searchInput").val();
+        var search = $("ai-topsearch").val();
         var data={}
         $.ajax({
             type: "POST",
@@ -68,14 +77,7 @@ onlineMallHome.prototype = {
             success: function (result) {
                 if (result.code == '1') {
                     if (result.code == '1') {
-                        var innerText = $("p").text();
-                        alert(innerText)
-                        // var jsonArr = result.dataList;
-                        // $(jsonArr).each(function () {
-                        //     $("#home").append(
-                        //         alert("aaaaa")
-                        //     )
-                        // })
+                        alert("aaaa")
                     }
                 }
             },
@@ -86,8 +88,7 @@ onlineMallHome.prototype = {
     },
 };
 $(document).ready(function () {
-    var home = new onlineMallHome();
-    home.init();
-    home.init_goods();
-    home.search_goods();
+    var search = new onlineMallSearch();
+    search.init();
+    search.search_goods();
 });
