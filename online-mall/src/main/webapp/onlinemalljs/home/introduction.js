@@ -1,7 +1,7 @@
-var onlineMallSearch = function () {
+var onlineMallIntroduction = function () {
 
 };
-onlineMallSearch.prototype = {
+onlineMallIntroduction.prototype = {
     mapData: {},
     config: {
         homeFlag: {},
@@ -10,17 +10,16 @@ onlineMallSearch.prototype = {
     exception: function (message) {
         alert(message)
     },
-    display: function () {
-    },
     init: function () {
         var home = this;
         var param = "";
-        var parmValue = MD5_UTILS.getMap();
-        console.log(parmValue["search"])
-        if (typeof(parmValue["search"]) == "undefined") {
-                param = "羽绒服";
+        var parmValue = MD5_UTILS.getParmValue();
+        console.log(parmValue["goodId"])
+        if (typeof(parmValue["goodId"]) == "undefined") {
+            alert("页面加载失败,工程师正在抢救")
+            return;
         } else {
-            param = decodeURI(parmValue["search"]);
+            param = parmValue["goodId"];
         }
         COMMONUSERINFOUTIL.getUserInfo(function (data) {
             home.mapData = data;
@@ -31,12 +30,10 @@ onlineMallSearch.prototype = {
     init_goods: function (param) {
         var info = this;
         var data = {}
-        var queryUrl = GOOD_TYPE_QUERY_URL.Query(param)+".do";
-        console.log(queryUrl+"=====")
-        data['params["goodsname"]'] = param;
+        data['params["id"]'] = param;
         $.ajax({
             type: "POST",
-            url: queryUrl,
+            url: this.config.initDataUrl,
             data: data,
             dataType: "JSON",
             async: false,
@@ -50,7 +47,7 @@ onlineMallSearch.prototype = {
                                 "<li>\n" +
                                 "<div class=\"i-pic limit\">\n" +
                                 "<img src=\""+this.url+"\"/>\n" +
-                                "<p class=\"title fl\">"+this.goodsname+"</p>\n" +
+                                "<p class=\"title fl\">"+this.shoesbrand+" "+this.goodsname+"</p>\n" +
                                 "<p class=\"price fl\">\n" +
                                 "<b>¥</b>\n" +
                                 "<strong>"+this.originalprice+"</strong>\n" +
@@ -79,18 +76,9 @@ onlineMallSearch.prototype = {
     search: function () {
         var info = this;
         var data = {}
-        var param = $("#searchInput").val();
-        if(null == param || "" == param || typeof(param) == "undefined"){
-            alert("未填写查抄信息,默认查找")
-            data['params["goodsname"]'] = "羽绒服";
-        }else {
-            data['params["goodsname"]'] = param;
-        }
-        var queryUrl = GOOD_TYPE_QUERY_URL.Query(param)+".do";
-        console.log(queryUrl+"=====")
         $.ajax({
             type: "POST",
-            url: queryUrl,
+            url: this.config.initDataUrl,
             data: data,
             dataType: "JSON",
             async: false,
@@ -98,13 +86,14 @@ onlineMallSearch.prototype = {
                 if (result.code == '1') {
                     if (result.code == '1') {
                         var jsonArr = result.dataList;
-                        console.log(jsonArr)
+                        console.log(jsonArr);
                         $(jsonArr).each(function () {
+                            $("#searchGoods").empty();
                             $("#searchGoods").append(
                                 "<li>\n" +
                                 "<div class=\"i-pic limit\">\n" +
                                 "<img src=\""+this.url+"\"/>\n" +
-                                "<p class=\"title fl\">"+this.goodsname+"</p>\n" +
+                                "<p class=\"title fl\">"+this.shoesbrand+" "+this.goodsname+"</p>\n" +
                                 "<p class=\"price fl\">\n" +
                                 "<b>¥</b>\n" +
                                 "<strong>"+this.originalprice+"</strong>\n" +
@@ -126,7 +115,7 @@ onlineMallSearch.prototype = {
     },
 };
 $(document).ready(function () {
-    var search = new onlineMallSearch();
-    search.init();
-    search.search_goods();
+    var introduction = new onlineMallIntroduction();
+    introduction.init();
+    introduction.search_goods();
 });

@@ -144,7 +144,7 @@ span.am-icon-th-list{color:orangered;margin-right:1px ;}
 }
 
 @media only screen and (min-width:1025px) {
-.search{margin: 0px 40px 0px 0px;padding-top:10px ;} 
+.search{margin: 0px -248px 0px 0px;padding-top:10px ;}
 .search-list{max-width: 1000px;margin:0px auto ;position: relative;}
 .nav.white{padding-left:0px}
 

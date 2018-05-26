@@ -22,17 +22,7 @@
     <script src="../onlinemalljs/commonUtils/CommonUtil.js"></script>
     <script src="../onlinemalljs/commonUtils/CommonUserInfo.js"></script>
     <script src="../onlinemalljs/home/home.js"></script>
-    <%--<script>--%>
-    <%--function goTO() {--%>
-    <%--var searchContent = $("#searchInput").val();--%>
-    <%--if(null == searchContent || "" == searchContent || !searchContent){--%>
-    <%--searchContent = "羽绒";--%>
-    <%--}--%>
-    <%--$("#searchForm").attr('action',"../home/search.jsp"+"?"+MD5_UTILS.encryption("search="+searchContent);--%>
-    <%--// window.location.href = "../home/search.jsp"+"?"+MD5_UTILS.encryption("search="+searchContent);--%>
-    <%--}--%>
-    <%--</script>--%>
-
+    <script src="../onlinemalljs/commonUtils/ShopGooDConfig.js"></script>
 </head>
 <body>
 <div class="hmtop">
@@ -185,116 +175,115 @@
                     </a>
                 </div>
             </li>
-            <li>
-                <div class="list ">
-                    <a href="../home/introduction.jsp ">
-                        <img src="../images/cp.jpg "/>
-                        <div class="pro-title ">萨拉米 1+1小鸡腿</div>
-                        <span class="e-price ">￥29.90</span>
-                    </a>
-                </div>
-            </li>
-            <li>
-                <div class="list ">
-                    <a href="../home/introduction.jsp ">
-                        <img src="../images/cp2.jpg "/>
-                        <div class="pro-title ">ZEK 原味海苔</div>
-                        <span class="e-price ">￥8.90</span>
-                    </a>
-                </div>
-            </li>
-            <li>
-                <div class="list ">
-                    <a href="../home/introduction.jsp ">
-                        <img src="../images/cp.jpg "/>
-                        <div class="pro-title ">萨拉米 1+1小鸡腿</div>
-                        <span class="e-price ">￥29.90</span>
-                    </a>
-                </div>
-            </li>
-            <li>
-                <div class="list ">
-                    <a href="../home/introduction.jsp ">
-                        <img src="../images/cp2.jpg "/>
-                        <div class="pro-title ">ZEK 原味海苔</div>
-                        <span class="e-price ">￥8.90</span>
-                    </a>
-                </div>
-            </li>
-            <li>
-                <div class="list ">
-                    <a href="../home/introduction.jsp ">
-                        <img src="../images/cp.jpg "/>
-                        <div class="pro-title ">萨拉米 1+1小鸡腿</div>
-                        <span class="e-price ">￥29.90</span>
-                    </a>
-                </div>
-            </li>
-            <li>
-                <div class="list ">
-                    <a href="../home/introduction.jsp ">
-                        <img src="../images/cp2.jpg "/>
-                        <div class="pro-title ">ZEK 原味海苔</div>
-                        <span class="e-price ">￥8.90</span>
-                    </a>
-                </div>
-            </li>
-            <li>
-                <div class="list ">
-                    <a href="../home/introduction.jsp ">
-                        <img src="../images/cp.jpg "/>
-                        <div class="pro-title ">萨拉米 1+1小鸡腿</div>
-                        <span class="e-price ">￥29.90</span>
-                    </a>
-                </div>
-            </li>
-            <li>
-                <div class="list ">
-                    <a href="../home/introduction.jsp ">
-                        <img src="../images/cp2.jpg "/>
-                        <div class="pro-title ">ZEK 原味海苔</div>
-                        <span class="e-price ">￥8.90</span>
-                    </a>
-                </div>
-            </li>
-            <li>
-                <div class="list ">
-                    <a href="../home/introduction.jsp ">
-                        <img src="../images/cp.jpg "/>
-                        <div class="pro-title ">萨拉米 1+1小鸡腿</div>
-                        <span class="e-price ">￥29.90</span>
-                    </a>
-                </div>
-            </li>
-            <li>
-                <div class="list ">
-                    <a href="../home/introduction.jsp ">
-                        <img src="../images/cp2.jpg "/>
-                        <div class="pro-title ">ZEK 原味海苔</div>
-                        <span class="e-price ">￥8.90</span>
-                    </a>
-                </div>
-            </li>
-            <li>
-                <div class="list ">
-                    <a href="../home/introduction.jsp ">
-                        <img src="../images/cp.jpg "/>
-                        <div class="pro-title ">萨拉米 1+1小鸡腿</div>
-                        <span class="e-price ">￥29.90</span>
-                    </a>
-                </div>
-            </li>
-            <li>
-                <div class="list ">
-                    <a href="../home/introduction.jsp ">
-                        <img src="../images/cp2.jpg "/>
-                        <div class="pro-title ">ZEK 原味海苔</div>
-                        <span class="e-price ">￥8.90</span>
-                    </a>
-                </div>
-            </li>
+            <%--<li>--%>
+                <%--<div class="list ">--%>
+                    <%--<a href="../home/introduction.jsp ">--%>
+                        <%--<img src="../images/cp.jpg "/>--%>
+                        <%--<div class="pro-title ">萨拉米 1+1小鸡腿</div>--%>
+                        <%--<span class="e-price ">￥29.90</span>--%>
+                    <%--</a>--%>
+                <%--</div>--%>
+            <%--</li>--%>
+            <%--<li>--%>
+                <%--<div class="list ">--%>
+                    <%--<a href="../home/introduction.jsp ">--%>
+                        <%--<img src="../images/cp2.jpg "/>--%>
+                        <%--<div class="pro-title ">ZEK 原味海苔</div>--%>
+                        <%--<span class="e-price ">￥8.90</span>--%>
+                    <%--</a>--%>
+                <%--</div>--%>
+            <%--</li>--%>
+            <%--<li>--%>
+                <%--<div class="list ">--%>
+                    <%--<a href="../home/introduction.jsp ">--%>
+                        <%--<img src="../images/cp.jpg "/>--%>
+                        <%--<div class="pro-title ">萨拉米 1+1小鸡腿</div>--%>
+                        <%--<span class="e-price ">￥29.90</span>--%>
+                    <%--</a>--%>
+                <%--</div>--%>
+            <%--</li>--%>
+            <%--<li>--%>
+                <%--<div class="list ">--%>
+                    <%--<a href="../home/introduction.jsp ">--%>
+                        <%--<img src="../images/cp2.jpg "/>--%>
+                        <%--<div class="pro-title ">ZEK 原味海苔</div>--%>
+                        <%--<span class="e-price ">￥8.90</span>--%>
+                    <%--</a>--%>
+                <%--</div>--%>
+            <%--</li>--%>
+            <%--<li>--%>
+                <%--<div class="list ">--%>
+                    <%--<a href="../home/introduction.jsp ">--%>
+                        <%--<img src="../images/cp.jpg "/>--%>
+                        <%--<div class="pro-title ">萨拉米 1+1小鸡腿</div>--%>
+                        <%--<span class="e-price ">￥29.90</span>--%>
+                    <%--</a>--%>
+                <%--</div>--%>
+            <%--</li>--%>
+            <%--<li>--%>
+                <%--<div class="list ">--%>
+                    <%--<a href="../home/introduction.jsp ">--%>
+                        <%--<img src="../images/cp2.jpg "/>--%>
+                        <%--<div class="pro-title ">ZEK 原味海苔</div>--%>
+                        <%--<span class="e-price ">￥8.90</span>--%>
+                    <%--</a>--%>
+                <%--</div>--%>
+            <%--</li>--%>
+            <%--<li>--%>
+                <%--<div class="list ">--%>
+                    <%--<a href="../home/introduction.jsp ">--%>
+                        <%--<img src="../images/cp.jpg "/>--%>
+                        <%--<div class="pro-title ">萨拉米 1+1小鸡腿</div>--%>
+                        <%--<span class="e-price ">￥29.90</span>--%>
+                    <%--</a>--%>
+                <%--</div>--%>
+            <%--</li>--%>
+            <%--<li>--%>
+                <%--<div class="list ">--%>
+                    <%--<a href="../home/introduction.jsp ">--%>
+                        <%--<img src="../images/cp2.jpg "/>--%>
+                        <%--<div class="pro-title ">ZEK 原味海苔</div>--%>
+                        <%--<span class="e-price ">￥8.90</span>--%>
+                    <%--</a>--%>
+                <%--</div>--%>
+            <%--</li>--%>
+            <%--<li>--%>
+                <%--<div class="list ">--%>
+                    <%--<a href="../home/introduction.jsp ">--%>
+                        <%--<img src="../images/cp.jpg "/>--%>
+                        <%--<div class="pro-title ">萨拉米 1+1小鸡腿</div>--%>
+                        <%--<span class="e-price ">￥29.90</span>--%>
+                    <%--</a>--%>
+                <%--</div>--%>
+            <%--</li>--%>
+            <%--<li>--%>
+                <%--<div class="list ">--%>
+                    <%--<a href="../home/introduction.jsp ">--%>
+                        <%--<img src="../images/cp2.jpg "/>--%>
+                        <%--<div class="pro-title ">ZEK 原味海苔</div>--%>
+                        <%--<span class="e-price ">￥8.90</span>--%>
+                    <%--</a>--%>
+                <%--</div>--%>
+            <%--</li>--%>
+            <%--<li>--%>
+                <%--<div class="list ">--%>
+                    <%--<a href="../home/introduction.jsp ">--%>
+                        <%--<img src="../images/cp.jpg "/>--%>
+                        <%--<div class="pro-title ">萨拉米 1+1小鸡腿</div>--%>
+                        <%--<span class="e-price ">￥29.90</span>--%>
+                    <%--</a>--%>
+                <%--</div>--%>
+            <%--</li>--%>
+            <%--<li>--%>
+                <%--<div class="list ">--%>
+                    <%--<a href="../home/introduction.jsp ">--%>
+                        <%--<img src="../images/cp2.jpg "/>--%>
+                        <%--<div class="pro-title ">ZEK 原味海苔</div>--%>
+                        <%--<span class="e-price ">￥8.90</span>--%>
+                    <%--</a>--%>
+                <%--</div>--%>
+            <%--</li>--%>
         </ul>
-
     </div>
     <div class="footer ">
         <div class="footer-hd ">

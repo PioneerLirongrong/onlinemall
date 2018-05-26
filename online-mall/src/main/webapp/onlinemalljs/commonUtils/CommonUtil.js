@@ -22,5 +22,15 @@ var MD5_UTILS = {
         }
         map[value[0]]=value[1]
         return map;
+    },
+    getMap: function () {
+        var map={};
+        var params = location.search.substr(1);
+        var arr = params.split('&');
+        if (arr) {
+            var value = arr[0].split("=");
+        }
+        map[value[0]]=value[1]
+        return map;
     }
 }

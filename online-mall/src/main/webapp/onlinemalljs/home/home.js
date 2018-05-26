@@ -30,15 +30,23 @@ onlineMallHome.prototype = {
             success: function (result) {
                 if (result.code == '1') {
                     if (result.code == '1') {
-                        var innerText = $("p").text();
-                        // alert(innerText)
                         //遍历后台传回来的值
-                        // var jsonArr = result.dataList;
-                        // $(jsonArr).each(function () {
-                        //     $("#home").append(
-                        //         alert("aaaaa")
-                        //     )
-                        // })
+                        var jsonArr = result.dataList;
+                        console.log(jsonArr)
+                        $(jsonArr).each(function () {
+                            $("#home").append(
+                                "<li>\n" +
+                                "<div class=\"list \">\n" +
+                                "<a href=\"../home/introduction.jsp \">\n" +
+                                "<img src=\"../images/cp.jpg \"/>\n" +
+                                "<div class=\"pro-title \">"+this.goodsname+"</div>\n" +
+                                "<span class=\"e-price \">￥"+this.originalprice+"</span>\n" +
+                                "</a>\n" +
+                                "<p id='p' style=\"display: none\">"+this.id+"</p>\n" +
+                                "</div>\n" +
+                                "</li>"
+                            )
+                        })
                     }
                 }
             },
@@ -54,12 +62,14 @@ onlineMallHome.prototype = {
         })
     },
     search:function () {
-        var param = "0";
+        var param = "";
         var searchContent = $("#searchInput").val();
         if(null == searchContent || "" == searchContent || !searchContent){
-            param = Math.round(Math.random()*10);
+            param = "羽绒服";
+        }else {
+            param = searchContent;
         }
-        window.location.href = "../home/search.jsp"+"?"+MD5_UTILS.encryption("search="+param);
+        window.location.href = "../home/search.jsp"+"?"+"search="+encodeURI(param);
     },
 };
 $(document).ready(function () {
