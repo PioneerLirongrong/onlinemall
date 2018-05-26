@@ -85,76 +85,81 @@
     <!--放大镜-->
 
     <div class="item-inform" id="inform">
-        <%--<div class="clearfixLeft" id="clearcontent">--%>
+        <div class="clearfixLeft" id="clearcontent">
 
-        <%--<div class="box">--%>
-        <%--<div class="tb-booth tb-pic tb-s310">--%>
-        <%--<a href="../images/01.jpg"><img src="../images/01_mid.jpg" alt="细节展示放大镜特效" rel="../images/01.jpg"--%>
-        <%--class="jqzoom"/></a>--%>
-        <%--</div>--%>
-        <%--</div>--%>
+        <div class="box">
+        <div class="tb-booth tb-pic tb-s310">
+        <a href="../images/01.jpg"><img src="../images/01_mid.jpg" alt="细节展示放大镜特效" rel="../images/01.jpg"
+        class="jqzoom"/></a>
+        </div>
+        </div>
 
-        <%--<div class="clear"></div>--%>
-        <%--</div>--%>
+        <div class="clear"></div>
+        </div>
 
-        <%--<div class="clearfixRight">--%>
-        <%--<div class="tb-detail-hd">--%>
-        <%--<h1>--%>
-        <%--良品铺子 手剥松子218g 坚果炒货 巴西松子--%>
-        <%--</h1>--%>
-        <%--</div>--%>
-        <%--<div class="tb-detail-list">--%>
-        <%--<!--价格-->--%>
-        <%--<div class="tb-detail-price">--%>
-        <%--<li class="price iteminfo_price">--%>
-        <%--<dt>促销价</dt>--%>
-        <%--<dd><em>¥</em><b class="sys_item_price">56.90</b></dd>--%>
-        <%--</li>--%>
-        <%--<li class="price iteminfo_mktprice">--%>
-        <%--<dt>原价</dt>--%>
-        <%--<dd><em>¥</em><b class="sys_item_mktprice">98.00</b></dd>--%>
-        <%--</li>--%>
-        <%--<div class="clear"></div>--%>
-        <%--</div>--%>
-        <%--<!--销量-->--%>
-        <%--<ul class="tm-ind-panel">--%>
-        <%--<li class="tm-ind-item tm-ind-sellCount canClick">--%>
-        <%--<div class="tm-indcon"><span class="tm-label">月销量</span><span class="tm-count">1015</span></div>--%>
-        <%--</li>--%>
-        <%--<li class="tm-ind-item tm-ind-sumCount canClick">--%>
-        <%--<div class="tm-indcon"><span class="tm-label">累计销量</span><span class="tm-count">6015</span>--%>
-        <%--</div>--%>
-        <%--</li>--%>
-        <%--<li class="tm-ind-item tm-ind-reviewCount canClick tm-line3">--%>
-        <%--<div class="tm-indcon"><span class="tm-label">累计评价</span><span class="tm-count">640</span></div>--%>
-        <%--</li>--%>
-        <%--</ul>--%>
-        <%--<div class="clear"></div>--%>
-        <%--<div class="pay">--%>
-        <%--<li>--%>
-        <%--<div class="clearfix tb-btn tb-btn-buy theme-login">--%>
-        <%--<a id="LikBuy" title="点此按钮到下一步确认购买信息" href="../home/pay.jsp">立即购买</a>--%>
-        <%--</div>--%>
-        <%--</li>--%>
-        <%--<li>--%>
-        <%--<div class="clearfix tb-btn tb-btn-basket theme-login">--%>
-        <%--<a id="LikBasket" title="加入购物车" href="#"><i></i>加入购物车</a>--%>
-        <%--</div>--%>
-        <%--</li>--%>
-        <%--</div>--%>
-        <%--</div>--%>
-        <%--<div class="clear"></div>--%>
-        <%--</div>--%>
-        <%--<div class="theme-signin-right">--%>
-        <%--<div class="img-info">--%>
-        <%--<img src="../images/songzi.jpg"/>--%>
-        <%--</div>--%>
-        <%--<div class="text-info">--%>
-        <%--<span class="J_Price price-now">¥39.00</span>--%>
-        <%--<span id="Stock" class="tb-hidden">库存<span class="stock">1000</span>件</span>--%>
-        <%--</div>--%>
-        <%--</div>--%>
-        <%--</form>--%>
+        <div class="clearfixRight">
+        <div class="tb-detail-hd">
+        <h1>
+        良品铺子 手剥松子218g 坚果炒货 巴西松子
+        </h1>
+        </div>
+        <div class="tb-detail-list">
+        <!--价格-->
+        <div class="tb-detail-price">
+        <li class="price iteminfo_price">
+        <dt>促销价</dt>
+        <dd><em>¥</em><b class="sys_item_price">56.90</b></dd>
+        </li>
+        <li class="price iteminfo_mktprice">
+        <dt>原价</dt>
+        <dd><em>¥</em><b class="sys_item_mktprice">98.00</b></dd>
+        </li>
+        <div class="clear"></div>
+        </div>
+        <!--销量-->
+        <ul class="tm-ind-panel">
+        <li class="tm-ind-item tm-ind-sellCount canClick">
+        <div class="tm-indcon"><span class="tm-label">月销量</span><span class="tm-count">1015</span></div>
+        </li>
+        <li class="tm-ind-item tm-ind-sumCount canClick">
+        <div class="tm-indcon"><span class="tm-label">累计销量</span><span class="tm-count">6015</span>
+        </div>
+        </li>
+        <li class="tm-ind-item tm-ind-reviewCount canClick tm-line3">
+        <div class="tm-indcon"><span class="tm-label">累计评价</span><span class="tm-count">640</span></div>
+        </li>
+        </ul>
+        <div class="clear"></div>
+        <div class="pay">
+        <li>
+        <div class="clearfix tb-btn tb-btn-buy theme-login">
+        <a id="LikBuy" title="点此按钮到下一步确认购买信息" href="../home/pay.jsp">立即购买</a>
+        </div>
+        </li>
+        <li>
+        <div class="clearfix tb-btn tb-btn-basket theme-login">
+        <a id="LikBasket" title="加入购物车" href="javascript:void(0)"><i></i>加入购物车</a>
+        </div>
+        </li>
+        <li>
+        <div class="clearfix tb-btn tb-btn-basket theme-login">
+        <a id="addCollect" title="添加收藏" href="javascript:void(0)"><i></i>添加收藏</a>
+        </div>
+        </li>
+        </div>
+        </div>
+        <div class="clear"></div>
+        </div>
+        <div class="theme-signin-right">
+        <div class="img-info">
+        <img src="../images/songzi.jpg"/>
+        </div>
+        <div class="text-info">
+        <span class="J_Price price-now">¥39.00</span>
+        <span id="Stock" class="tb-hidden">库存<span class="stock">1000</span>件</span>
+        </div>
+        </div>
+        </form>
     </div>
 </div>
 
