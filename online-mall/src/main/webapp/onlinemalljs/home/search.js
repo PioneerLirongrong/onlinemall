@@ -99,6 +99,7 @@ onlineMallSearch.prototype = {
                     if (result.code == '1') {
                         var jsonArr = result.dataList;
                         console.log(jsonArr)
+                        $("#searchGoods").empty();
                         $(jsonArr).each(function () {
                             $("#searchGoods").append(
                                 "<li>\n" +
