@@ -46,21 +46,19 @@ onlineMallSearch.prototype = {
                         var jsonArr = result.dataList;
                         console.log(jsonArr)
                         $(jsonArr).each(function () {
-                            $("#searchGoods").append(
-                                "<li>\n" +
-                                "<div class=\"i-pic limit\">\n" +
-                                "<img src=\""+this.url+"\"/>\n" +
-                                "<p class=\"title fl\">"+this.goodsname+"</p>\n" +
-                                "<p class=\"price fl\">\n" +
-                                "<b>¥</b>\n" +
-                                "<strong>"+this.originalprice+"</strong>\n" +
-                                "</p>\n" +
-                                "<p class=\"number fl\">\n" +
-                                "销量<span>"+this.salescount+"</span>\n" +
-                                "</p>\n" +
-                                "</div>\n" +
-                                "</li>"
-                            )
+                            $(jsonArr).each(function () {
+                                $("#searchGoods").append(
+                                    "<li>\n" +
+                                    "<div class=\"list \">\n" +
+                                    "<a href=\"../home/introduction.jsp?id="+this.id+"&queryUrl="+queryUrl+"\">\n" +
+                                    "<img src=\"../images/cp.jpg \"/>\n" +
+                                    "<div class=\"pro-title \">"+this.goodsname+"</div>\n" +
+                                    "<span class=\"e-price \">￥"+this.originalprice+"</span>\n" +
+                                    "</a>\n" +
+                                    "</div>\n" +
+                                    "</li>"
+                                )
+                            })
                         })
                     }
                 }
@@ -103,16 +101,12 @@ onlineMallSearch.prototype = {
                         $(jsonArr).each(function () {
                             $("#searchGoods").append(
                                 "<li>\n" +
-                                "<div class=\"i-pic limit\">\n" +
-                                "<img src=\""+this.url+"\"/>\n" +
-                                "<p class=\"title fl\">"+this.goodsname+"</p>\n" +
-                                "<p class=\"price fl\">\n" +
-                                "<b>¥</b>\n" +
-                                "<strong>"+this.originalprice+"</strong>\n" +
-                                "</p>\n" +
-                                "<p class=\"number fl\">\n" +
-                                "销量<span>"+this.salescount+"</span>\n" +
-                                "</p>\n" +
+                                "<div class=\"list \">\n" +
+                                "<a href=\"../home/introduction.jsp?id="+this.id+"&queryUrl="+queryUrl+"\">\n" +
+                                "<img src=\"../images/cp.jpg \"/>\n" +
+                                "<div class=\"pro-title \">"+this.goodsname+"</div>\n" +
+                                "<span class=\"e-price \">￥"+this.originalprice+"</span>\n" +
+                                "</a>\n" +
                                 "</div>\n" +
                                 "</li>"
                             )

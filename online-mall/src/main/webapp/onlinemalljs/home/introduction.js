@@ -5,7 +5,10 @@ onlineMallIntroduction.prototype = {
     mapData: {},
     config: {
         homeFlag: {},
-        initDataUrl: "/shop/listCollect.do"
+        initDataUrl: "/order/addOrder.do",
+        addcollectUrl:"",
+        addshopCarUrl:"",
+        addFootUrl:""
     },
     exception: function (message) {
         alert(message)

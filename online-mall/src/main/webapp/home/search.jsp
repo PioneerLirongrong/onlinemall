@@ -111,6 +111,101 @@
                     <div class="clear"></div>
                     <ul class="am-avg-sm-2 am-avg-md-3 am-avg-lg-4 boxes" id="searchGoods">
                         <%--<li>--%>
+                            <%--<div class="list ">--%>
+                                <%--<a href="../home/introduction.jsp ">--%>
+                                    <%--<img src="../images/cp.jpg "/>--%>
+                                    <%--<div class="pro-title ">萨拉米 1+1小鸡腿</div>--%>
+                                    <%--<span class="e-price ">￥29.90</span>--%>
+                                <%--</a>--%>
+                            <%--</div>--%>
+                        <%--</li>--%>
+                        <%--<li>--%>
+                            <%--<div class="list ">--%>
+                                <%--<a href="../home/introduction.jsp ">--%>
+                                    <%--<img src="../images/cp2.jpg "/>--%>
+                                    <%--<div class="pro-title ">ZEK 原味海苔</div>--%>
+                                    <%--<span class="e-price ">￥8.90</span>--%>
+                                <%--</a>--%>
+                                <%--<p name="p" style="display: none">666666</p>--%>
+                            <%--</div>--%>
+                        <%--</li>--%>
+                        <%--<li>--%>
+                            <%--<div class="list ">--%>
+                                <%--<a href="../home/introduction.jsp ">--%>
+                                    <%--<img src="../images/cp.jpg "/>--%>
+                                    <%--<div class="pro-title ">萨拉米 1+1小鸡腿</div>--%>
+                                    <%--<span class="e-price ">￥29.90</span>--%>
+                                <%--</a>--%>
+                            <%--</div>--%>
+                        <%--</li>--%>
+                        <%--<li>--%>
+                            <%--<div class="list ">--%>
+                                <%--<a href="../home/introduction.jsp ">--%>
+                                    <%--<img src="../images/cp2.jpg "/>--%>
+                                    <%--<div class="pro-title ">ZEK 原味海苔</div>--%>
+                                    <%--<span class="e-price ">￥8.90</span>--%>
+                                <%--</a>--%>
+                                <%--<p name="p" style="display: none">666666</p>--%>
+                            <%--</div>--%>
+                        <%--</li>--%>
+                        <%--<li>--%>
+                            <%--<div class="list ">--%>
+                                <%--<a href="../home/introduction.jsp ">--%>
+                                    <%--<img src="../images/cp.jpg "/>--%>
+                                    <%--<div class="pro-title ">萨拉米 1+1小鸡腿</div>--%>
+                                    <%--<span class="e-price ">￥29.90</span>--%>
+                                <%--</a>--%>
+                            <%--</div>--%>
+                        <%--</li>--%>
+                        <%--<li>--%>
+                            <%--<div class="list ">--%>
+                                <%--<a href="../home/introduction.jsp ">--%>
+                                    <%--<img src="../images/cp2.jpg "/>--%>
+                                    <%--<div class="pro-title ">ZEK 原味海苔</div>--%>
+                                    <%--<span class="e-price ">￥8.90</span>--%>
+                                <%--</a>--%>
+                                <%--<p name="p" style="display: none">666666</p>--%>
+                            <%--</div>--%>
+                        <%--</li>--%>
+                        <%--<li>--%>
+                            <%--<div class="list ">--%>
+                                <%--<a href="../home/introduction.jsp ">--%>
+                                    <%--<img src="../images/cp.jpg "/>--%>
+                                    <%--<div class="pro-title ">萨拉米 1+1小鸡腿</div>--%>
+                                    <%--<span class="e-price ">￥29.90</span>--%>
+                                <%--</a>--%>
+                            <%--</div>--%>
+                        <%--</li>--%>
+                        <%--<li>--%>
+                            <%--<div class="list ">--%>
+                                <%--<a href="../home/introduction.jsp ">--%>
+                                    <%--<img src="../images/cp2.jpg "/>--%>
+                                    <%--<div class="pro-title ">ZEK 原味海苔</div>--%>
+                                    <%--<span class="e-price ">￥8.90</span>--%>
+                                <%--</a>--%>
+                                <%--<p name="p" style="display: none">666666</p>--%>
+                            <%--</div>--%>
+                        <%--</li>--%>
+                        <%--<li>--%>
+                            <%--<div class="list ">--%>
+                                <%--<a href="../home/introduction.jsp ">--%>
+                                    <%--<img src="../images/cp.jpg "/>--%>
+                                    <%--<div class="pro-title ">萨拉米 1+1小鸡腿</div>--%>
+                                    <%--<span class="e-price ">￥29.90</span>--%>
+                                <%--</a>--%>
+                            <%--</div>--%>
+                        <%--</li>--%>
+                        <%--<li>--%>
+                            <%--<div class="list ">--%>
+                                <%--<a href="../home/introduction.jsp ">--%>
+                                    <%--<img src="../images/cp2.jpg "/>--%>
+                                    <%--<div class="pro-title ">ZEK 原味海苔</div>--%>
+                                    <%--<span class="e-price ">￥8.90</span>--%>
+                                <%--</a>--%>
+                                <%--<p name="p" style="display: none">666666</p>--%>
+                            <%--</div>--%>
+                        <%--</li>--%>
+                        <%--<li>--%>
                             <%--<div class="i-pic limit">--%>
                                 <%--<img src="../images/imgsearch1.jpg"/>--%>
                                 <%--<p class="title fl">【良品铺子旗舰店】手剥松子218g 坚果炒货零食新货巴西松子包邮</p>--%>

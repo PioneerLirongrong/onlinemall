@@ -21,7 +21,11 @@
     <script type="text/javascript" src="../js/jquery.imagezoom.min.js"></script>
     <script type="text/javascript" src="../js/jquery.flexslider.js"></script>
     <script type="text/javascript" src="../js/list.js"></script>
-
+    <script src="../onlinemalljs/commonUtils/CommonUtil.js"></script>
+    <script src="../onlinemalljs/commonUtils/CommonUserInfo.js"></script>
+    <script src="../onlinemalljs/home/home.js"></script>
+    <script src="../onlinemalljs/commonUtils/ShopGooDConfig.js"></script>
+    <script src="../onlinemalljs/home/introduction.js"></script>
 </head>
 
 <body>

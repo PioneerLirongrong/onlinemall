@@ -37,12 +37,10 @@ onlineMallHome.prototype = {
                             $("#home").append(
                                 "<li>\n" +
                                 "<div class=\"list \">\n" +
-                                "<a href=\"../home/introduction.jsp \">\n" +
-                                "<img src=\"../images/cp.jpg \"/>\n" +
+                                "<a href=\"../home/introduction.jsp?id="+this.id+"&queryUrl="+info.config.initDataUrl+"\">\n" +                                "<img src=\"../images/cp.jpg \"/>\n" +
                                 "<div class=\"pro-title \">"+this.goodsname+"</div>\n" +
                                 "<span class=\"e-price \">￥"+this.originalprice+"</span>\n" +
                                 "</a>\n" +
-                                "<p id='p' style=\"display: none\">"+this.id+"</p>\n" +
                                 "</div>\n" +
                                 "</li>"
                             )
