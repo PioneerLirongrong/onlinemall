@@ -85,6 +85,9 @@ onlineMallSearch.prototype = {
             data['params["goodsname"]'] = param;
         }
         var queryUrl = GOOD_TYPE_QUERY_URL.Query(param)+".do";
+        if(queryUrl == "/shop/listCollect"){
+            alert("未匹配到改了类型的数据，查询默认数据")
+        }
         console.log(queryUrl+"=====")
         $.ajax({
             type: "POST",

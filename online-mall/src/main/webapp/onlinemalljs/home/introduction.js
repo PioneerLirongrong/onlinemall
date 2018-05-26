@@ -212,6 +212,7 @@ onlineMallIntroduction.prototype = {
         var data = {};
         data['params["userid"]'] = $.cookie("onlinemall_zc_userId");
         data['params["goodsid"]'] = info.pageMap["id"];
+        data['params["queryUrl"]'] = info.pageMap["queryUrl"];
         console.log(data['params["goodsid"]'])
         $.ajax({
             type: "POST",

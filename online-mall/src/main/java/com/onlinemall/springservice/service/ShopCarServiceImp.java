@@ -1,8 +1,7 @@
 package com.onlinemall.springservice.service;
 
-import com.onlinemall.dao.mapper.OnlinemallShopcarMapper;
-import com.onlinemall.dao.model.OnlinemallShopcar;
-import com.onlinemall.dao.model.OnlinemallShopcarExample;
+import com.onlinemall.dao.mapper.*;
+import com.onlinemall.dao.model.*;
 import com.onlinemall.param.request.RequestParams;
 import com.onlinemall.param.response.BaseResult;
 import com.onlinemall.springservice.interfaces.IShopCarService;
@@ -29,21 +28,101 @@ public class ShopCarServiceImp implements IShopCarService {
     @Autowired
     private OnlinemallShopcarMapper onlinemallShopcarMapper;
 
+    @Autowired
+    private OnlinemallGoodsClothesMapper onlinemallGoodsClothesMapper;
+
+    @Autowired
+    private OnlinemallGoodsDrinkingMapper onlinemallGoodsDrinkingMapper;
+
+    @Autowired
+    private OnlinemallGoodsDailyNecessitiesMapper onlinemallGoodsDailyNecessitiesMapper;
+
+    @Autowired
+    protected OnlinemallGoodsCookedFoodMapper onlinemallGoodsCookedFoodMapper;
+
+    @Autowired
+    private OnlinemallGoodsFreshsMapper onlinemallGoodsFreshsMapper;
+
+    @Autowired
+    private OnlinemallGoodsStationeryMapper onlinemallGoodsStationeryMapper;
+
     public BaseResult<OnlinemallShopcar> addShopCarItem(RequestParams<OnlinemallShopcar> params) {
         logger.info("{调用增加用户的服务,由springservice的addShopCarItem方法提供服务}");
         BaseResult<OnlinemallShopcar> baseResult = new BaseResult<OnlinemallShopcar>();
         baseResult.setCode(BaseResult.FAIL);
-        OnlinemallShopcar onlinemallShopcar = new RequestParamConvertBeanUtil<OnlinemallShopcar>().convertBean(params, new OnlinemallShopcar());
-        onlinemallShopcar.setId(CommonUtils.createUuid());
-        onlinemallShopcar.setRegistertime(new Date());
-        int insert = onlinemallShopcarMapper.insert(onlinemallShopcar);
-        if(0 == insert){
+        //查询对应的商品
+        if (StringUtils.isNotBlank((String) params.getParams().get("queryUrl")) && StringUtils.isNotBlank((String) params.getParams().get("goodsid"))) {
+            String goodsid = (String) params.getParams().get("goodsid");
+            OnlinemallShopcar shopcar = onlinemallShopcarMapper.selectByPrimaryKey(goodsid);
+            if (null != shopcar) {
+                int count = Integer.valueOf(shopcar.getGoodcount()) + 1;
+                shopcar.setGoodcount(count + "");
+                int i = onlinemallShopcarMapper.updateByPrimaryKey(shopcar);
+                if (0 != i) {
+                    baseResult.setCode(BaseResult.SUCCESS);
+                    baseResult.setDataObj(shopcar);
+                    return baseResult;
+                } else {
+                    return baseResult;
+                }
+            } else {
+                OnlinemallShopcar onlinemallShopcar = new RequestParamConvertBeanUtil<OnlinemallShopcar>().convertBean(params, new OnlinemallShopcar());
+                onlinemallShopcar.setId(CommonUtils.createUuid());
+                onlinemallShopcar.setRegistertime(new Date());
+                createOnlineMallShopCar(params, onlinemallShopcar);
+                int insert = onlinemallShopcarMapper.insert(onlinemallShopcar);
+                if (0 == insert) {
+                    baseResult.setErrors(Errors.REQUEST_PARAM_ERROR);
+                    return baseResult;
+                }
+                baseResult.setCode(BaseResult.SUCCESS);
+                baseResult.setDataObj(onlinemallShopcar);
+                return baseResult;
+            }
+        } else {
             baseResult.setErrors(Errors.REQUEST_PARAM_ERROR);
             return baseResult;
         }
-        baseResult.setCode(BaseResult.SUCCESS);
-        baseResult.setDataObj(onlinemallShopcar);
-        return baseResult;
+    }
+    private void createOnlineMallShopCar(RequestParams params, OnlinemallShopcar onlinemallShopcar) {
+        String url = (String) params.getParams().get("queryUrl");
+        String goodsid = (String) params.getParams().get("goodsid");
+        if (url.contains("listCollect")) {
+            OnlinemallGoodsClothes onlinemallGoodsClothes = onlinemallGoodsClothesMapper.selectByPrimaryKey(goodsid);
+            onlinemallShopcar.setGoodsname(onlinemallGoodsClothes.getGoodsname());
+            onlinemallShopcar.setOriginalprice(onlinemallGoodsClothes.getOriginalprice());
+            onlinemallShopcar.setDiscouuntprice(onlinemallGoodsClothes.getDiscouuntprice());
+            onlinemallShopcar.setGoodtype(onlinemallGoodsClothes.getClothestype());
+            onlinemallShopcar.setGood(onlinemallGoodsClothes.getGoodsname());
+        } else if (url.contains("listDrinking")) {
+            OnlinemallGoodsDrinking onlinemallGoodsDrinking = onlinemallGoodsDrinkingMapper.selectByPrimaryKey(goodsid);
+            onlinemallShopcar.setGoodsname(onlinemallGoodsDrinking.getGoodsname());
+            onlinemallShopcar.setOriginalprice(onlinemallGoodsDrinking.getOriginalprice());
+            onlinemallShopcar.setDiscouuntprice(onlinemallGoodsDrinking.getDiscouuntprice());
+            onlinemallShopcar.setGoodtype(onlinemallGoodsDrinking.getDrinkingtype());
+            onlinemallShopcar.setGood(onlinemallGoodsDrinking.getGoodsname());
+        } else if (url.contains("listNecessities")) {
+            OnlinemallGoodsDailyNecessities onlinemallGoodsDailyNecessities = onlinemallGoodsDailyNecessitiesMapper.selectByPrimaryKey(goodsid);
+            onlinemallShopcar.setGoodsname(onlinemallGoodsDailyNecessities.getGoodsname());
+            onlinemallShopcar.setOriginalprice(onlinemallGoodsDailyNecessities.getOriginalprice());
+            onlinemallShopcar.setDiscouuntprice(onlinemallGoodsDailyNecessities.getDiscouuntprice());
+            onlinemallShopcar.setGoodtype(onlinemallGoodsDailyNecessities.getDailynecessitiestype());
+            onlinemallShopcar.setGood(onlinemallGoodsDailyNecessities.getGoodsname());
+        } else if (url.contains("listGoodsFreshs")) {
+            OnlinemallGoodsFreshs onlinemallGoodsFreshs = onlinemallGoodsFreshsMapper.selectByPrimaryKey(goodsid);
+            onlinemallShopcar.setGoodsname(onlinemallGoodsFreshs.getGoodsname());
+            onlinemallShopcar.setOriginalprice(onlinemallGoodsFreshs.getOriginalprice());
+            onlinemallShopcar.setDiscouuntprice(onlinemallGoodsFreshs.getDiscouuntprice());
+            onlinemallShopcar.setGoodtype(onlinemallGoodsFreshs.getFreshstype());
+            onlinemallShopcar.setGood(onlinemallGoodsFreshs.getGoodsname());
+        } else {
+            OnlinemallGoodsStationery onlinemallGoodsStationery = onlinemallGoodsStationeryMapper.selectByPrimaryKey(goodsid);
+            onlinemallShopcar.setGoodsname(onlinemallGoodsStationery.getGoodsname());
+            onlinemallShopcar.setOriginalprice(onlinemallGoodsStationery.getOriginalprice());
+            onlinemallShopcar.setDiscouuntprice(onlinemallGoodsStationery.getDiscouuntprice());
+            onlinemallShopcar.setGoodtype(onlinemallGoodsStationery.getStationerytype());
+            onlinemallShopcar.setGood(onlinemallGoodsStationery.getGoodsname());
+        }
     }
 
     public BaseResult<OnlinemallShopcar> listShopCarItems(RequestParams<OnlinemallShopcar> params) {
@@ -52,9 +131,9 @@ public class ShopCarServiceImp implements IShopCarService {
         baseResult.setCode(BaseResult.FAIL);
         OnlinemallShopcarExample onlinemallShopcarExample = new OnlinemallShopcarExample();
         OnlinemallShopcarExample.Criteria criteria = onlinemallShopcarExample.createCriteria();
-        if(StringUtils.isNotBlank((String)params.getParams().get(USERID))){
-            criteria.andUseridEqualTo((String)params.getParams().get(USERID));
-        }else {
+        if (StringUtils.isNotBlank((String) params.getParams().get(USERID))) {
+            criteria.andUseridEqualTo((String) params.getParams().get(USERID));
+        } else {
             baseResult.setErrors(Errors.REQUEST_PARAM_ERROR);
             return baseResult;
         }
@@ -70,14 +149,14 @@ public class ShopCarServiceImp implements IShopCarService {
         baseResult.setCode(BaseResult.FAIL);
         OnlinemallShopcarExample onlinemallShopcarExample = new OnlinemallShopcarExample();
         OnlinemallShopcarExample.Criteria criteria = onlinemallShopcarExample.createCriteria();
-        if(StringUtils.isNotBlank((String)params.getParams().get(USER_SHOP_CAR_ID))){
-            criteria.andIdEqualTo((String)params.getParams().get(USER_SHOP_CAR_ID));
-        }else {
+        if (StringUtils.isNotBlank((String) params.getParams().get(USER_SHOP_CAR_ID))) {
+            criteria.andIdEqualTo((String) params.getParams().get(USER_SHOP_CAR_ID));
+        } else {
             baseResult.setErrors(Errors.REQUEST_PARAM_ERROR);
             return baseResult;
         }
         int delete = onlinemallShopcarMapper.deleteByExample(onlinemallShopcarExample);
-        if(0 == delete){
+        if (0 == delete) {
             baseResult.setErrors(Errors.SERVICE_DELETE_ERROR);
             return baseResult;
         }
