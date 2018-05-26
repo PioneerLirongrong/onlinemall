@@ -32,5 +32,26 @@ var MD5_UTILS = {
         }
         map[value[0]]=value[1]
         return map;
-    }
+    },
+    getQueryAndId:function () {
+        var map={};
+        var params = location.search.substr(1);
+        var arr = params.split('&');
+        if (arr) {
+            var value1 = arr[0].split("=");
+            var value2 = arr[1].split("=");
+
+        }
+        map[value1[0]]=value1[1];
+        map[value2[0]]=value2[1];
+        return map;
+
+    },
+    timestampToTime:function (timestamp) {
+    var date = new Date(timestamp);
+    Y = date.getFullYear() + '-';
+    M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
+    D = date.getDate() + ' ';
+    return Y+M+D;
+}
 }

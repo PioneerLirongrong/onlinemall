@@ -27,7 +27,7 @@ public class FootController {
 
     @RequestMapping(value = "/addRecord",method = RequestMethod.POST)
     public BaseResult<OnlinemallUserRecord> addRecord(@ModelAttribute RequestParams<OnlinemallUserRecord> params){
-        logger.info("{请求后台接口\'/consult/addRecord\'}");
+        logger.info("{请求后台接口\'/foot/addRecord\'}");
         logger.info("{前台的请求参数" + params.toString() + "}");
         BaseResult<OnlinemallUserRecord> baseResult = iUserFootService.addRecord(params);
         logger.info("{后台返给前台的结果" + baseResult.toString() + "}");
@@ -36,7 +36,7 @@ public class FootController {
 
     @RequestMapping(value = "/listRecord",method = RequestMethod.POST)
     public BaseResult<OnlinemallUserRecord> listRecord(@ModelAttribute RequestParams<OnlinemallUserRecord> params){
-        logger.info("{请求后台接口\'/consult/listRecord\'}");
+        logger.info("{请求后台接口\'/foot/listRecord\'}");
         logger.info("{前台的请求参数" + params.toString() + "}");
         BaseResult<OnlinemallUserRecord> baseResult = iUserFootService.listRecord(params);
         logger.info("{后台返给前台的结果" + baseResult.toString() + "}");
