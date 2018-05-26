@@ -26,7 +26,7 @@ public class CollectController {
 
     @RequestMapping(value = "/addCollect",method = RequestMethod.POST)
     public BaseResult<OnlinemallUserCollect> addCollect(@ModelAttribute RequestParams<OnlinemallUserCollect> params){
-        logger.info("{请求后台接口\'/consult/addCollect\'}");
+        logger.info("{请求后台接口\'/collect/addCollect\'}");
         logger.info("{前台的请求参数" + params.toString() + "}");
         BaseResult<OnlinemallUserCollect> baseResult = iCollectionService.addCollect(params);
         logger.info("{后台返给前台的结果" + baseResult.toString() + "}");
@@ -35,7 +35,7 @@ public class CollectController {
 
     @RequestMapping(value = "/listCollect",method = RequestMethod.POST)
     public BaseResult<OnlinemallUserCollect> listCollect(@ModelAttribute RequestParams<OnlinemallUserCollect> params){
-        logger.info("{请求后台接口\'/consult/listCollect\'}");
+        logger.info("{请求后台接口\'/collect/listCollect\'}");
         logger.info("{前台的请求参数" + params.toString() + "}");
         BaseResult<OnlinemallUserCollect> baseResult = iCollectionService.listCollect(params);
         logger.info("{后台返给前台的结果" + baseResult.toString() + "}");
@@ -45,7 +45,7 @@ public class CollectController {
 
     @RequestMapping(value = "/deleteCollect",method = RequestMethod.POST)
     public BaseResult<OnlinemallUserCollect> deleteCollect(@ModelAttribute RequestParams<OnlinemallUserCollect> params){
-        logger.info("{请求后台接口\'/consult/deleteCollect\'}");
+        logger.info("{请求后台接口\'/collect/deleteCollect\'}");
         logger.info("{前台的请求参数" + params.toString() + "}");
         BaseResult<OnlinemallUserCollect> baseResult = iCollectionService.deleteCollect(params);
         logger.info("{后台返给前台的结果" + baseResult.toString() + "}");

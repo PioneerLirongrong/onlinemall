@@ -8,11 +8,11 @@ onlineMallIntroduction.prototype = {
         homeFlag: {},
         initDataUrl: "/order/addOrder.do",
         //添加收藏的接口
-        addcollectUrl: "/consult/addCollect.do",
+        addcollectUrl: "/collect/addCollect.do",
         //添加购物车的接口
         addshopCarUrl: "/onlinemallShopCar/addShopCarItem.do",
         //添加足记的接口
-        addFootUrl: "/foot/addRecord"
+        addFootUrl: "/foot/addRecord.do"
     },
     exception: function (message) {
         alert(message)
@@ -38,7 +38,7 @@ onlineMallIntroduction.prototype = {
             console.log("this data is " + home.mapData["userid"])
         });
         home.init_goods(queryUrl, id);
-        // home.save_foot(id)
+        home.save_foot(id)
     },
     init_goods: function (queryUrl, id) {
         var info = this;
@@ -57,88 +57,94 @@ onlineMallIntroduction.prototype = {
                         $("#item-inform").empty();
                         $("#J_AttrUL").empty();
                         console.log(jsonArr)
-                        // $(jsonArr).each(function () {
-                        //     $("#inform").empty();
-                        //     $("#inform").append(
-                        //         "<div class=\"clearfixLeft\" id=\"clearcontent\">\n" +
-                        //         "\n" +
-                        //         "<div class=\"box\">\n" +
-                        //         "<div class=\"tb-booth tb-pic tb-s310\">\n" +
-                        //         "<a href=\""+this.url+"\"><img src=\""+this.url+"\" alt=\"细节展示放大镜特效\" rel=\"../images/01.jpg\"\n" +
-                        //         "class=\"jqzoom\"/></a>\n" +
-                        //         "</div>\n" +
-                        //         "</div>\n" +
-                        //         "\n" +
-                        //         "<div class=\"clear\"></div>\n" +
-                        //         "</div>\n" +
-                        //         "\n" +
-                        //         "<div class=\"clearfixRight\">\n" +
-                        //         "<div class=\"tb-detail-hd\">\n" +
-                        //         "<h1>\n" +this.goodsname+ "</h1>\n" +
-                        //         "</div>\n" +
-                        //         "<div class=\"tb-detail-list\">\n" +
-                        //         "<!--价格-->\n" +
-                        //         "<div class=\"tb-detail-price\">\n" +
-                        //         "<li class=\"price iteminfo_price\">\n" +
-                        //         "<dt>促销价</dt>\n" +
-                        //         "<dd><em>¥</em><b class=\"sys_item_price\">"+this.discouuntprice+"</b></dd>\n" +
-                        //         "</li>\n" +
-                        //         "<li class=\"price iteminfo_mktprice\">\n" +
-                        //         "<dt>原价</dt>\n" +
-                        //         "<dd><em>¥</em><b class=\"sys_item_mktprice\">"+this.originalprice+"</b></dd>\n" +
-                        //         "</li>\n" +
-                        //         "<div class=\"clear\"></div>\n" +
-                        //         "</div>\n" +
-                        //         "<!--销量-->\n" +
-                        //         "<ul class=\"tm-ind-panel\">\n" +
-                        //         "<li class=\"tm-ind-item tm-ind-sellCount canClick\">\n" +
-                        //         "<div class=\"tm-indcon\"><span class=\"tm-label\">月销量</span><span class=\"tm-count\">"+this.salesmonth+"</span></div>\n" +
-                        //         "</li>\n" +
-                        //         "<li class=\"tm-ind-item tm-ind-sumCount canClick\">\n" +
-                        //         "<div class=\"tm-indcon\"><span class=\"tm-label\">累计销量</span><span class=\"tm-count\">"+this.salescount+"</span>\n" +
-                        //         "</div>\n" +
-                        //         "</li>\n" +
-                        //         "<li class=\"tm-ind-item tm-ind-reviewCount canClick tm-line3\">\n" +
-                        //         "<div class=\"tm-indcon\"><span class=\"tm-label\">累计评价</span><span class=\"tm-count\">"+this.evaluatecount+"</span></div>\n" +
-                        //         "</li>\n" +
-                        //         "</ul>\n" +
-                        //         "<div class=\"clear\"></div>\n" +
-                        //         "<div class=\"pay\">\n" +
-                        //         "<li>\n" +
-                        //         "<div class=\"clearfix tb-btn tb-btn-buy theme-login\">\n" +
-                        //         "<a id=\"LikBuy\" title=\"点此按钮到下一步确认购买信息\" href=\"../home/pay.jsp?id="+this.id+"\">立即购买</a>\n" +
-                        //         "</div>\n" +
-                        //         "</li>\n" +
-                        //         "<li>\n" +
-                        //         "<div class=\"clearfix tb-btn tb-btn-basket theme-login\">\n" +
-                        //         "<a id=\"LikBasket\" title=\"加入购物车\" href=\"\"><i></i>加入购物车</a>\n" +
-                        //         "</div>\n" +
-                        //         "</li>\n" +
-                        //         "</div>\n" +
-                        //         "</div>\n" +
-                        //         "<div class=\"clear\"></div>\n" +
-                        //         "</div>\n" +
-                        //         "<div class=\"theme-signin-right\">\n" +
-                        //         "<div class=\"img-info\">\n" +
-                        //         "<img src=\"../images/songzi.jpg\"/>\n" +
-                        //         "</div>\n" +
-                        //         "<div class=\"text-info\">\n" +
-                        //         "<span class=\"J_Price price-now\">¥"+this.discouuntprice+"</span>\n" +
-                        //         "<span id=\"Stock\" class=\"tb-hidden\">库存<span class=\"stock\">"+Math.round(Math.random()*10000)+"</span>件</span>\n" +
-                        //         "</div>\n" +
-                        //         "</div>\n" +
-                        //         "</form>"
-                        //     );
-                        //     $("#J_AttrUL").append(
-                        //         "<li title=\"\">生产日期:&nbsp;"+MD5_UTILS.timestampToTime(this.producttime)+"</li>\n" +
-                        //         "<li title=\"\">所属公司:&nbsp;"+this.productcompany+"</li>\n" +
-                        //         "<li title=\"\">产品标号:&nbsp;"+this.productid+"</li>\n" +
-                        //         "<li title=\"\">原料产地:&nbsp;"+this.productplace+"</li>\n" +
-                        //         "<li title=\"\">产品许可证:&nbsp;"+this.productallow+"</li>\n" +
-                        //         "<li title=\"\">产地:&nbsp;"+this.place+"</li>\n" +
-                        //         "<li title=\"\">产品标准号:&nbsp;GB/T 22165</li>\n"
-                        //     )
-                        // })
+                        $(jsonArr).each(function () {
+                            $("#inform").empty();
+                            $("#inform").append(
+                                "<div class=\"clearfixLeft\" id=\"clearcontent\">\n" +
+                                "\n" +
+                                "<div class=\"box\">\n" +
+                                "<div class=\"tb-booth tb-pic tb-s310\">\n" +
+                                "<a href=\""+this.url+"\"><img src=\""+this.url+"\" alt=\"细节展示放大镜特效\" rel=\"../images/01.jpg\"\n" +
+                                "class=\"jqzoom\"/></a>\n" +
+                                "</div>\n" +
+                                "</div>\n" +
+                                "\n" +
+                                "<div class=\"clear\"></div>\n" +
+                                "</div>\n" +
+                                "\n" +
+                                "<div class=\"clearfixRight\">\n" +
+                                "<div class=\"tb-detail-hd\">\n" +
+                                "<h1>\n" +this.goodsname+ "</h1>\n" +
+                                "</div>\n" +
+                                "<div class=\"tb-detail-list\">\n" +
+                                "<!--价格-->\n" +
+                                "<div class=\"tb-detail-price\">\n" +
+                                "<li class=\"price iteminfo_price\">\n" +
+                                "<dt>促销价</dt>\n" +
+                                "<dd><em>¥</em><b class=\"sys_item_price\">"+this.discouuntprice+"</b></dd>\n" +
+                                "</li>\n" +
+                                "<li class=\"price iteminfo_mktprice\">\n" +
+                                "<dt>原价</dt>\n" +
+                                "<dd><em>¥</em><b class=\"sys_item_mktprice\">"+this.originalprice+"</b></dd>\n" +
+                                "</li>\n" +
+                                "<div class=\"clear\"></div>\n" +
+                                "</div>\n" +
+                                "<!--销量-->\n" +
+                                "<ul class=\"tm-ind-panel\">\n" +
+                                "<li class=\"tm-ind-item tm-ind-sellCount canClick\">\n" +
+                                "<div class=\"tm-indcon\"><span class=\"tm-label\">月销量</span><span class=\"tm-count\">"+this.salesmonth+"</span></div>\n" +
+                                "</li>\n" +
+                                "<li class=\"tm-ind-item tm-ind-sumCount canClick\">\n" +
+                                "<div class=\"tm-indcon\"><span class=\"tm-label\">累计销量</span><span class=\"tm-count\">"+this.salescount+"</span>\n" +
+                                "</div>\n" +
+                                "</li>\n" +
+                                "<li class=\"tm-ind-item tm-ind-reviewCount canClick tm-line3\">\n" +
+                                "<div class=\"tm-indcon\"><span class=\"tm-label\">累计评价</span><span class=\"tm-count\">"+this.evaluatecount+"</span></div>\n" +
+                                "</li>\n" +
+                                "</ul>\n" +
+                                "<div class=\"clear\"></div>\n" +
+                                "<div class=\"pay\">\n" +
+                                "<li>\n" +
+                                "<div class=\"clearfix tb-btn tb-btn-buy theme-login\">\n" +
+                                "<a id=\"LikBuy\" title=\"点此按钮到下一步确认购买信息\" href=\"../home/pay.jsp?id="+this.id+"\">立即购买</a>\n" +
+                                "</div>\n" +
+                                "</li>\n" +
+                                "<li>\n" +
+                                "<div class=\"clearfix tb-btn tb-btn-basket theme-login\">\n" +
+                                "<a id=\"LikBasket\" title=\"加入购物车\" href=\"javascript:void(0)\"><i></i>加入购物车</a>\n" +
+                                "</div>\n" +
+                                "</li>\n" +
+                                "</li>\n" +
+                                "<li>\n" +
+                                "<div class=\"clearfix tb-btn tb-btn-basket theme-login\">\n" +
+                                "<a id=\"addCollect\" title=\"添加收藏\" href=\"javascript:void(0)\"><i></i>添加收藏</a>\n" +
+                                "</div>\n" +
+                                "</li>"+
+                                "</div>\n" +
+                                "</div>\n" +
+                                "<div class=\"clear\"></div>\n" +
+                                "</div>\n" +
+                                "<div class=\"theme-signin-right\">\n" +
+                                "<div class=\"img-info\">\n" +
+                                "<img src=\"../images/songzi.jpg\"/>\n" +
+                                "</div>\n" +
+                                "<div class=\"text-info\">\n" +
+                                "<span class=\"J_Price price-now\">¥"+this.discouuntprice+"</span>\n" +
+                                "<span id=\"Stock\" class=\"tb-hidden\">库存<span class=\"stock\">"+Math.round(Math.random()*10000)+"</span>件</span>\n" +
+                                "</div>\n" +
+                                "</div>\n" +
+                                "</form>"
+                            );
+                            $("#J_AttrUL").append(
+                                "<li title=\"\">生产日期:&nbsp;"+MD5_UTILS.timestampToTime(this.producttime)+"</li>\n" +
+                                "<li title=\"\">所属公司:&nbsp;"+this.productcompany+"</li>\n" +
+                                "<li title=\"\">产品标号:&nbsp;"+this.productid+"</li>\n" +
+                                "<li title=\"\">原料产地:&nbsp;"+this.productplace+"</li>\n" +
+                                "<li title=\"\">产品许可证:&nbsp;"+this.productallow+"</li>\n" +
+                                "<li title=\"\">产地:&nbsp;"+this.place+"</li>\n" +
+                                "<li title=\"\">产品标准号:&nbsp;GB/T 22165</li>\n"
+                            )
+                        })
                     }
                 }
             },
@@ -179,9 +185,10 @@ onlineMallIntroduction.prototype = {
     },
     addCollect: function () {
         var info = this;
-        var data = {}
+        var data = {};
+        data['params["userid"]'] = $.cookie("onlinemall_zc_userId");
         data['params["goodsid"]'] = info.pageMap["id"];
-        alert(data['params["goodsid"]'])
+        console.log(data['params["goodsid"]'])
         $.ajax({
             type: "POST",
             url: this.config.addcollectUrl,
@@ -191,9 +198,7 @@ onlineMallIntroduction.prototype = {
             success: function (result) {
                 if (result.code == '1') {
                     if (result.code == '1') {
-                        var jsonArr = result.dataList;
-                        console.log(jsonArr);
-
+                        alert("收藏成功!!")
                     }
                 }
             },
@@ -204,9 +209,10 @@ onlineMallIntroduction.prototype = {
     },
     addShopCar:function () {
         var info = this;
-        var data = {}
+        var data = {};
+        data['params["userid"]'] = $.cookie("onlinemall_zc_userId");
         data['params["goodsid"]'] = info.pageMap["id"];
-        alert(data['params["goodsid"]'])
+        console.log(data['params["goodsid"]'])
         $.ajax({
             type: "POST",
             url: this.config.addshopCarUrl,
@@ -216,7 +222,7 @@ onlineMallIntroduction.prototype = {
             success: function (result) {
                 if (result.code == '1') {
                     if (result.code == '1') {
-                        alert("aaaaa")
+                        alert("添加成功!!!")
                     }
                 }
             },
