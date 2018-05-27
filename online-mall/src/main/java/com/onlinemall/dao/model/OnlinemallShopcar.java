@@ -24,6 +24,8 @@ public class OnlinemallShopcar implements Serializable {
 
     private String url;
 
+    private String queryurl;
+
     private Date registertime;
 
     private static final long serialVersionUID = 1L;
@@ -108,6 +110,14 @@ public class OnlinemallShopcar implements Serializable {
         this.url = url;
     }
 
+    public String getQueryurl() {
+        return queryurl;
+    }
+
+    public void setQueryurl(String queryurl) {
+        this.queryurl = queryurl;
+    }
+
     public Date getRegistertime() {
         return registertime;
     }
@@ -138,6 +148,7 @@ public class OnlinemallShopcar implements Serializable {
             && (this.getGoodcount() == null ? other.getGoodcount() == null : this.getGoodcount().equals(other.getGoodcount()))
             && (this.getGood() == null ? other.getGood() == null : this.getGood().equals(other.getGood()))
             && (this.getUrl() == null ? other.getUrl() == null : this.getUrl().equals(other.getUrl()))
+            && (this.getQueryurl() == null ? other.getQueryurl() == null : this.getQueryurl().equals(other.getQueryurl()))
             && (this.getRegistertime() == null ? other.getRegistertime() == null : this.getRegistertime().equals(other.getRegistertime()));
     }
 
@@ -155,6 +166,7 @@ public class OnlinemallShopcar implements Serializable {
         result = prime * result + ((getGoodcount() == null) ? 0 : getGoodcount().hashCode());
         result = prime * result + ((getGood() == null) ? 0 : getGood().hashCode());
         result = prime * result + ((getUrl() == null) ? 0 : getUrl().hashCode());
+        result = prime * result + ((getQueryurl() == null) ? 0 : getQueryurl().hashCode());
         result = prime * result + ((getRegistertime() == null) ? 0 : getRegistertime().hashCode());
         return result;
     }
@@ -175,6 +187,7 @@ public class OnlinemallShopcar implements Serializable {
         sb.append(", goodcount=").append(goodcount);
         sb.append(", good=").append(good);
         sb.append(", url=").append(url);
+        sb.append(", queryurl=").append(queryurl);
         sb.append(", registertime=").append(registertime);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");

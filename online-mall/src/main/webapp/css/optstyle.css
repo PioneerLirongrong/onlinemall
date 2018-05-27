@@ -8,7 +8,7 @@ a{text-decoration:none;cursor:pointer}
 input{font-size:12px;font-size:100%;outline:none;line-height:normal;color:#444;}
 .ipt{border:solid 1px #d2d2d2;border-left-color:#ccc;border-top-color:#ccc;border-radius:2px;box-shadow:inset 0 1px 0 #f8f8f8;background-color:#fff;padding:4px 6px;height:21px;line-height:21px;color:#555;width:180px;vertical-align:baseline;}
 .ipt:focus{border-color:#95C8F1;box-shadow:0 0 4px #95C8F1;}
-.theme-login,.item-props-can{cursor: pointer;}
+.theme-login,.item-props-can{}
 
 .theme-popover-mask{z-index:10000000;position:fixed;left:0;top:0;width:100%;height:100%;background:#000;opacity:0.5;filter:alpha(opacity=50);-moz-opacity:0.5;display:none;}
 .theme-popover{z-index:10000009;position:fixed;bottom:0;left:0;width:100%;display:none;}

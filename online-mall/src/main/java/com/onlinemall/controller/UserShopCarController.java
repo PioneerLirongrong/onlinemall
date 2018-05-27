@@ -2,7 +2,6 @@ package com.onlinemall.controller;
 
 
 import com.onlinemall.dao.model.OnlinemallShopcar;
-import com.onlinemall.dao.model.OnlinemallUser;
 import com.onlinemall.param.request.RequestParams;
 import com.onlinemall.param.response.BaseResult;
 import com.onlinemall.springservice.interfaces.IShopCarService;

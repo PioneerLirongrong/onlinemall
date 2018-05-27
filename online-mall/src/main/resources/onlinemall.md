@@ -548,6 +548,7 @@ CREATE TABLE `onlinemall_shopcar` (
   `goodCount` varchar(20) DEFAULT NULL COMMENT '商品数量',
   `good` varchar(64) DEFAULT NULL COMMENT '品牌',
   `url` varchar(128) DEFAULT NULL COMMENT '商品图片url',
+  `queryUrl` varchar(20) DEFAULT NULL COMMENT '接口的URL',
   `registertime` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '添加时间 默认为now',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8

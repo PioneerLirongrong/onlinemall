@@ -12,6 +12,7 @@
     <result column="goodCount" property="goodcount" jdbcType="VARCHAR" />
     <result column="good" property="good" jdbcType="VARCHAR" />
     <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="queryUrl" property="queryurl" jdbcType="VARCHAR" />
     <result column="registertime" property="registertime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -74,7 +75,7 @@
   </sql>
   <sql id="Base_Column_List" >
     id, userid, goodsid, goodsname, originalprice, discouuntprice, goodtype, goodCount, 
-    good, url, registertime
+    good, url, queryUrl, registertime
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.onlinemall.dao.model.OnlinemallShopcarExample" >
     select
@@ -110,11 +111,13 @@
     insert into onlinemall_shopcar (id, userid, goodsid, 
       goodsname, originalprice, discouuntprice, 
       goodtype, goodCount, good, 
-      url, registertime)
+      url, queryUrl, registertime
+      )
     values (#{id,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, #{goodsid,jdbcType=VARCHAR}, 
       #{goodsname,jdbcType=VARCHAR}, #{originalprice,jdbcType=INTEGER}, #{discouuntprice,jdbcType=INTEGER}, 
       #{goodtype,jdbcType=VARCHAR}, #{goodcount,jdbcType=VARCHAR}, #{good,jdbcType=VARCHAR}, 
-      #{url,jdbcType=VARCHAR}, #{registertime,jdbcType=TIMESTAMP})
+      #{url,jdbcType=VARCHAR}, #{queryurl,jdbcType=VARCHAR}, #{registertime,jdbcType=TIMESTAMP}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.onlinemall.dao.model.OnlinemallShopcar" >
     insert into onlinemall_shopcar
@@ -148,6 +151,9 @@
       </if>
       <if test="url != null" >
         url,
+      </if>
+      <if test="queryurl != null" >
+        queryUrl,
       </if>
       <if test="registertime != null" >
         registertime,
@@ -183,6 +189,9 @@
       </if>
       <if test="url != null" >
         #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="queryurl != null" >
+        #{queryurl,jdbcType=VARCHAR},
       </if>
       <if test="registertime != null" >
         #{registertime,jdbcType=TIMESTAMP},
@@ -228,6 +237,9 @@
       <if test="record.url != null" >
         url = #{record.url,jdbcType=VARCHAR},
       </if>
+      <if test="record.queryurl != null" >
+        queryUrl = #{record.queryurl,jdbcType=VARCHAR},
+      </if>
       <if test="record.registertime != null" >
         registertime = #{record.registertime,jdbcType=TIMESTAMP},
       </if>
@@ -248,6 +260,7 @@
       goodCount = #{record.goodcount,jdbcType=VARCHAR},
       good = #{record.good,jdbcType=VARCHAR},
       url = #{record.url,jdbcType=VARCHAR},
+      queryUrl = #{record.queryurl,jdbcType=VARCHAR},
       registertime = #{record.registertime,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -283,6 +296,9 @@
       <if test="url != null" >
         url = #{url,jdbcType=VARCHAR},
       </if>
+      <if test="queryurl != null" >
+        queryUrl = #{queryurl,jdbcType=VARCHAR},
+      </if>
       <if test="registertime != null" >
         registertime = #{registertime,jdbcType=TIMESTAMP},
       </if>
@@ -300,6 +316,7 @@
       goodCount = #{goodcount,jdbcType=VARCHAR},
       good = #{good,jdbcType=VARCHAR},
       url = #{url,jdbcType=VARCHAR},
+      queryUrl = #{queryurl,jdbcType=VARCHAR},
       registertime = #{registertime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=VARCHAR}
   </update>
