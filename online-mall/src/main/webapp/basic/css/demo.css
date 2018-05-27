@@ -64,7 +64,8 @@ a:link,a:visited,a:hover{text-decoration:none; outline:none;}
 .clear{ clear:both} 
 
 img, input {
-    vertical-align: middle;}
+    vertical-align: middle;
+	width: 66px;}
 a {
   color: #000;
   text-decoration: none;

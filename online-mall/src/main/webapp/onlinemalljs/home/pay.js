@@ -7,7 +7,8 @@ onlineMallPay.prototype = {
     config: {
         homeFlag: {},
         initDataUrl: "/shop/listCollect.do",
-        initAddressUrl: "/userAddress/listAddress.do"
+        initAddressUrl: "/userAddress/listAddress.do",
+        initOrderUrl:"/order/addOrder.do"
     },
     exception: function (message) {
         alert(message)
@@ -17,19 +18,21 @@ onlineMallPay.prototype = {
     init: function () {
         var home = this;
         var param = "";
-        var parmValue = MD5_UTILS.getMap();
-        console.log(parmValue["search"])
-        if (typeof(parmValue["search"]) == "undefined") {
-            param = "羽绒服";
+        var parmValue = MD5_UTILS.getQueryAndId();
+        console.log(parmValue["id"])
+        if (typeof(parmValue["id"]) == "undefined") {
+            alert("页面加载失败，正在抢救")
         } else {
-            param = decodeURI(parmValue["search"]);
+            param = parmValue["id"];
+            home.pageMap["id"]=param;
+            home.pageMap["queryUrl"]=parmValue["queryUrl"]
         }
         COMMONUSERINFOUTIL.getUserInfo(function (data) {
             home.mapData = data;
             console.log("this data is " + home.mapData["userid"])
         });
         home.init_address();
-        // home.init_goods(param);
+        home.init_goods(param);
     },
     init_address: function () {
         var info = this;
@@ -54,8 +57,8 @@ onlineMallPay.prototype = {
                                 "<div class=\"address-left\">\n" +
                                 "<div class=\"user DefaultAddr\">\n" +
                                 "<span class=\"buy-address-detail\">\n" +
-                                "<span class=\"buy-user\">" + this.username +"</span>\n" +
-                                "<span class=\"buy-phone\">" + this.phonenumber+"</span>\n" +
+                                "<span class=\"buy-user\">" + this.username + "</span>\n" +
+                                "<span class=\"buy-phone\">" + this.phonenumber + "</span>\n" +
                                 "</span>\n" +
                                 "</div>\n" +
                                 "<div class=\"default-address DefaultAddr\">\n" +
@@ -64,7 +67,7 @@ onlineMallPay.prototype = {
                                 "<span class=\"province\">" + this.province + "</span>省\n" +
                                 "<span class=\"city\">" + this.city + "</span>市\n" +
                                 "<span class=\"dist\">" + this.county + "</span>区\n" +
-                                "<span id=\"address"+i+"\" class=\"street\">" + this.useraddress + "</span>\n" +
+                                "<span id=\"address" + i + "\" class=\"street\">" + this.useraddress + "</span>\n" +
                                 "</span>\n" +
                                 "</span>\n" +
                                 "</div>\n" +
@@ -85,9 +88,9 @@ onlineMallPay.prototype = {
     init_goods: function (param) {
         var info = this;
         var data = {}
-        var queryUrl = GOOD_TYPE_QUERY_URL.Query(param) + ".do";
+        var queryUrl = info.config.initDataUrl;
         console.log(queryUrl + "=====")
-        data['params["goodsname"]'] = param;
+        data['params["id"]'] = param;
         $.ajax({
             type: "POST",
             url: queryUrl,
@@ -99,21 +102,43 @@ onlineMallPay.prototype = {
                     if (result.code == '1') {
                         var jsonArr = result.dataList;
                         console.log(jsonArr)
+                        $("#payUL").empty();
                         $(jsonArr).each(function () {
-                            $(jsonArr).each(function () {
-                                $("#searchGoods").append(
-                                    "<li>\n" +
-                                    "<div class=\"list \">\n" +
-                                    "<a href=\"../home/introduction.jsp?id=" + this.id + "&queryUrl=" + queryUrl + "\">\n" +
-                                    "<img src=\"../images/cp.jpg \"/>\n" +
-                                    "<div class=\"pro-title \">" + this.goodsname + "</div>\n" +
-                                    "<span class=\"e-price \">￥" + this.originalprice + "</span>\n" +
-                                    "</a>\n" +
-                                    "</div>\n" +
-                                    "</li>"
-                                )
-                            })
+                            $("#payUL").append(
+                                "<li class=\"td td-item\">\n" +
+                                "<div class=\"item-pic\">\n" +
+                                "<a href=\"javascript:void(0)\" class=\"J_MakePoint\">\n" +
+                                "<img src=\""+this.url+"\"\n" +
+                                "class=\"itempic J_ItemImg\"></a>\n" +
+                                "</div>\n" +
+                                "<div class=\"item-info\">\n" +
+                                "<div class=\"item-basic-info\">\n" +
+                                "<a href=\"javascript:void(0)\" class=\"item-title J_MakePoint\"\n" +
+                                "data-point=\"tbcart.8.11\">"+this.goodsname+"</a>\n" +
+                                "</div>\n" +
+                                "</div>\n" +
+                                "</li>\n" +
+                                "\n" +
+                                "<li class=\"td td-price\">\n" +
+                                "<div class=\"item-price price-promo-promo\">\n" +
+                                "<div class=\"price-content\">\n" +
+                                "<input id=\"price\" class=\"J_Price price-now\" disabled=\"disabled\" value=\""+this.originalprice+"\">\n" +
+                                "</div>\n" +
+                                "</div>\n" +
+                                "</li>\n"
+                            )
+
                         })
+                        if(result.dataList.length == 0){
+                            return;
+                        }
+                        var wuliuway = 10;
+                        var orig = $("#count").val().toString();
+                        var price = $("#price").val().toString();
+                        var addTotal = new BigDecimal(price).multiply(new BigDecimal(orig));
+                        $("#emtotal1").attr("value",addTotal.toString())
+                        var addTotal2 = new BigDecimal(addTotal.toString()).add(new BigDecimal(wuliuway.toString()));
+                        $("#emtotal2").attr("value",addTotal2.toString())
                     }
                 }
             },
@@ -166,6 +191,10 @@ onlineMallPay.prototype = {
         $("#taobao").click(function () {
             obj.getPayWay("taobao");
         })
+        //提交订单
+        $("#J_Go").click(function () {
+            obj.createOrder();
+        })
     },
     getAddress: function (address) {
         var home = this;
@@ -176,31 +205,67 @@ onlineMallPay.prototype = {
     },
     getPayWay: function (arg) {
         var home = this;
-        if("card" == arg){
-            home.pageMap["payWay"]="银联";
-        }else if("qq" == arg){
-            home.pageMap["payWay"]="微信";
-        }else {
-            home.pageMap["payWay"]="支付宝";
+        if ("card" == arg) {
+            home.pageMap["payWay"] = "银联";
+        } else if ("qq" == arg) {
+            home.pageMap["payWay"] = "微信";
+        } else {
+            home.pageMap["payWay"] = "支付宝";
         }
         console.log(home.pageMap["payWay"])
         alert(home.pageMap["payWay"])
     },
-    getWuliuWay:function (arg) {
+    getWuliuWay: function (arg) {
         var home = this;
-        if("1" == arg){
-            home.pageMap["logistics"]="圆通";
-        }else if("2" == arg){
-            home.pageMap["logistics"]="申通";
-        }else if("3" == arg){
-            home.pageMap["logistics"]="韵达";
-        }else if("4" == arg){
-            home.pageMap["logistics"]="中通";
-        }else{
-            home.pageMap["logistics"]="顺丰"
+        if ("1" == arg) {
+            home.pageMap["logistics"] = "圆通";
+        } else if ("2" == arg) {
+            home.pageMap["logistics"] = "申通";
+        } else if ("3" == arg) {
+            home.pageMap["logistics"] = "韵达";
+        } else if ("4" == arg) {
+            home.pageMap["logistics"] = "中通";
+        } else {
+            home.pageMap["logistics"] = "顺丰"
         }
         console.log(home.pageMap["logistics"])
         alert(home.pageMap["logistics"])
+    },
+    createOrder:function () {
+        var info = this;
+        var data = {}
+        var queryUrl = info.config.initDataUrl;
+        console.log(queryUrl + "=====")
+        if(typeof(info.pageMap["address"]) == "undefined" || typeof(info.pageMap["logistics"]) == "undefined" ||
+        typeof(info.pageMap["payWay"]) == "undefined"){
+            alert("请完善订单的物流，支付方式，地址等信息")
+            return;
+        }
+        var count = $("#count").val().toString();
+        data['params["userid"]'] = $.cookie("onlinemall_zc_userId");
+        data['params["goodsid"]'] = info.pageMap["id"];
+        data['params["goodscount"]'] = count;
+        data['params["ordertotalamount"]'] = count;
+        var total = $("#emtotal2").val();
+        data['params["ordertotalamount"]'] = total;
+        data['params["orderwuliutotalamount"]'] = 10;
+        data['params["orderaddress"]'] = encodeURI(info.pageMap["address"]);
+        data['params["url"]'] = info.pageMap["queryUrl"];
+        $.ajax({
+            type: "POST",
+            url:info.config.initOrderUrl,
+            data: data,
+            dataType: "JSON",
+            async: false,
+            success: function (result) {
+                if (result.code == '1') {
+                    alert("success")
+                }
+            },
+            error: function () {
+                info.execption("系统异常");
+            }
+        });
     }
 };
 $(document).ready(function () {

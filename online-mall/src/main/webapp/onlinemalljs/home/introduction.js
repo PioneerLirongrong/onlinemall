@@ -203,7 +203,7 @@ onlineMallIntroduction.prototype = {
         $("#ShopBuy").click(function () {
             COMMONUSERINFOUTIL.getUserLoginOut(function (data) {
                 if (data['status'] == "login") {
-                    $('#ShopBuy').attr('href',"../home/pay.jsp?id="+obj.pageMap["id"]);
+                    $('#ShopBuy').attr('href',"../home/pay.jsp?id="+obj.pageMap["id"]+"&queryUrl="+obj.pageMap["queryUrl"]);
                 } else {
                     alert("请登录后操作")
                     return;
