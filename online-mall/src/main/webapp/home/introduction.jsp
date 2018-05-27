@@ -130,7 +130,7 @@
         <%--<div class="pay">--%>
         <%--<li>--%>
         <%--<div class="clearfix tb-btn tb-btn-buy theme-login">--%>
-        <%--<a id="LikBuy" title="点此按钮到下一步确认购买信息" href="../home/pay.jsp">立即购买</a>--%>
+        <%--<a id="LikBuy" title="点此按钮到下一步确认购买信息" href="javascript:void(0)">立即购买</a>--%>
         <%--</div>--%>
         <%--</li>--%>
         <%--<li>--%>

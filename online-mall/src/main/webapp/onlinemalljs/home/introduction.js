@@ -106,12 +106,12 @@ onlineMallIntroduction.prototype = {
                                 "<div class=\"pay\">\n" +
                                 "<li>\n" +
                                 "<div class=\"clearfix tb-btn tb-btn-buy theme-login\">\n" +
-                                "<a id=\"LikBuy\" title=\"点此按钮到下一步确认购买信息\" href=\"../home/pay.jsp?id="+this.id+"\">立即购买</a>\n" +
+                                "<a id=\"ShopBuy\" title=\"点此按钮到下一步确认购买信息\" href=\"javascript:void(0)\">立即购买</a>"+
                                 "</div>\n" +
                                 "</li>\n" +
                                 "<li>\n" +
                                 "<div class=\"clearfix tb-btn tb-btn-basket theme-login\">\n" +
-                                "<a id=\"LikBasket\" title=\"加入购物车\" href=\"javascript:void(0)\"><i></i>加入购物车</a>\n" +
+                                "<a id=\"addShopCar\" title=\"加入购物车\" href=\"javascript:void(0)\"><i></i>加入购物车</a>\n" +
                                 "</div>\n" +
                                 "</li>\n" +
                                 "</li>\n" +
@@ -177,10 +177,34 @@ onlineMallIntroduction.prototype = {
     operate_goods: function () {
         var obj = this;
         $("#addCollect").click(function () {
-            obj.addCollect();
+            COMMONUSERINFOUTIL.getUserLoginOut(function (data) {
+                if (data['status'] == "login") {
+                    obj.addCollect();
+                } else {
+                    alert("请登录后操作")
+                    return;
+                }
+            })
         })
-        $("#LikBasket").click(function () {
-            obj.addShopCar();
+        $("#addShopCar").click(function () {
+            COMMONUSERINFOUTIL.getUserLoginOut(function (data) {
+                if (data['status'] == "login") {
+                    obj.addShopCar();
+                } else {
+                    alert("请登录后操作")
+                    return;
+                }
+            })
+        })
+        $("#ShopBuy").click(function () {
+            COMMONUSERINFOUTIL.getUserLoginOut(function (data) {
+                if (data['status'] == "login") {
+                    $('#ShopBuy').attr('href',"../home/pay.jsp?id="+obj.pageMap["id"]);
+                } else {
+                    alert("请登录后操作")
+                    return;
+                }
+            })
         })
     },
     addCollect: function () {

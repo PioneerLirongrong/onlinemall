@@ -139,7 +139,7 @@
             <li>
                 <div class="list ">
                     <a href="../home/introduction.jsp ">
-                        <img src="../images/cp.jpg "/>
+                        <img src="../images/01.jpg "/>
                         <div class="pro-title ">萨拉米 1+1小鸡腿</div>
                         <span class="e-price ">￥29.90</span>
                     </a>
