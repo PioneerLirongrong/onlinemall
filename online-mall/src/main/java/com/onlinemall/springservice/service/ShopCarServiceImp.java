@@ -53,11 +53,16 @@ public class ShopCarServiceImp implements IShopCarService {
         //查询对应的商品
         if (StringUtils.isNotBlank((String) params.getParams().get("queryUrl")) && StringUtils.isNotBlank((String) params.getParams().get("goodsid"))) {
             String goodsid = (String) params.getParams().get("goodsid");
-            OnlinemallShopcar shopcar = onlinemallShopcarMapper.selectByPrimaryKey(goodsid);
-            if (null != shopcar) {
+            OnlinemallShopcarExample onlinemallShopcarExample = new OnlinemallShopcarExample();
+            OnlinemallShopcarExample.Criteria criteria = onlinemallShopcarExample.createCriteria();
+            criteria.andGoodsidEqualTo(goodsid);
+            List<OnlinemallShopcar> shopcars = onlinemallShopcarMapper.selectByExample(onlinemallShopcarExample);
+            if (shopcars.size() != 0) {
+                OnlinemallShopcar shopcar = shopcars.get(0);
                 int count = Integer.valueOf(shopcar.getGoodcount()) + 1;
                 shopcar.setGoodcount(count + "");
-                int i = onlinemallShopcarMapper.updateByPrimaryKey(shopcar);
+                int i = onlinemallShopcarMapper.updateByExample(shopcar,onlinemallShopcarExample);
+                logger.info("{跟新后台的购物车该项为 "+shopcar.toString()+"}");
                 if (0 != i) {
                     baseResult.setCode(BaseResult.SUCCESS);
                     baseResult.setDataObj(shopcar);
@@ -69,7 +74,9 @@ public class ShopCarServiceImp implements IShopCarService {
                 OnlinemallShopcar onlinemallShopcar = new RequestParamConvertBeanUtil<OnlinemallShopcar>().convertBean(params, new OnlinemallShopcar());
                 onlinemallShopcar.setId(CommonUtils.createUuid());
                 onlinemallShopcar.setRegistertime(new Date());
+                onlinemallShopcar.setGoodcount("1");
                 createOnlineMallShopCar(params, onlinemallShopcar);
+                logger.info("{添加到购物车的项为 "+onlinemallShopcar.toString()+"}");
                 int insert = onlinemallShopcarMapper.insert(onlinemallShopcar);
                 if (0 == insert) {
                     baseResult.setErrors(Errors.REQUEST_PARAM_ERROR);
@@ -94,6 +101,7 @@ public class ShopCarServiceImp implements IShopCarService {
             onlinemallShopcar.setDiscouuntprice(onlinemallGoodsClothes.getDiscouuntprice());
             onlinemallShopcar.setGoodtype(onlinemallGoodsClothes.getClothestype());
             onlinemallShopcar.setGood(onlinemallGoodsClothes.getGoodsname());
+            onlinemallShopcar.setUrl(onlinemallGoodsClothes.getUrl());
         } else if (url.contains("listDrinking")) {
             OnlinemallGoodsDrinking onlinemallGoodsDrinking = onlinemallGoodsDrinkingMapper.selectByPrimaryKey(goodsid);
             onlinemallShopcar.setGoodsname(onlinemallGoodsDrinking.getGoodsname());
@@ -108,6 +116,7 @@ public class ShopCarServiceImp implements IShopCarService {
             onlinemallShopcar.setDiscouuntprice(onlinemallGoodsDailyNecessities.getDiscouuntprice());
             onlinemallShopcar.setGoodtype(onlinemallGoodsDailyNecessities.getDailynecessitiestype());
             onlinemallShopcar.setGood(onlinemallGoodsDailyNecessities.getGoodsname());
+            onlinemallShopcar.setUrl(onlinemallGoodsDailyNecessities.getUrl());
         } else if (url.contains("listGoodsFreshs")) {
             OnlinemallGoodsFreshs onlinemallGoodsFreshs = onlinemallGoodsFreshsMapper.selectByPrimaryKey(goodsid);
             onlinemallShopcar.setGoodsname(onlinemallGoodsFreshs.getGoodsname());
@@ -115,6 +124,7 @@ public class ShopCarServiceImp implements IShopCarService {
             onlinemallShopcar.setDiscouuntprice(onlinemallGoodsFreshs.getDiscouuntprice());
             onlinemallShopcar.setGoodtype(onlinemallGoodsFreshs.getFreshstype());
             onlinemallShopcar.setGood(onlinemallGoodsFreshs.getGoodsname());
+            onlinemallShopcar.setUrl(onlinemallGoodsFreshs.getUrl());
         } else {
             OnlinemallGoodsStationery onlinemallGoodsStationery = onlinemallGoodsStationeryMapper.selectByPrimaryKey(goodsid);
             onlinemallShopcar.setGoodsname(onlinemallGoodsStationery.getGoodsname());
@@ -122,6 +132,7 @@ public class ShopCarServiceImp implements IShopCarService {
             onlinemallShopcar.setDiscouuntprice(onlinemallGoodsStationery.getDiscouuntprice());
             onlinemallShopcar.setGoodtype(onlinemallGoodsStationery.getStationerytype());
             onlinemallShopcar.setGood(onlinemallGoodsStationery.getGoodsname());
+            onlinemallShopcar.setUrl(onlinemallGoodsStationery.getUrl());
         }
     }
 

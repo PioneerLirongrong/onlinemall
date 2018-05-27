@@ -142,7 +142,7 @@
         <%--<div class="clearfix tb-btn tb-btn-basket theme-login">--%>
         <%--<a id="addCollect" title="添加收藏" href="javascript:void(0)"><i></i>添加收藏</a>--%>
         <%--</div>--%>
-        <%--</li>--%>
+        <%--</li>--%
         <%--</div>--%>
         <%--</div>--%>
         <%--<div class="clear"></div>--%>
