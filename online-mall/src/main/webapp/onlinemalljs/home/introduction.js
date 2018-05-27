@@ -38,7 +38,11 @@ onlineMallIntroduction.prototype = {
             console.log("this data is " + home.mapData["userid"])
         });
         home.init_goods(queryUrl, id);
-        home.save_foot(id)
+        COMMONUSERINFOUTIL.getUserLoginOut(function (data) {
+            if (data['status'] == "login") {
+                home.save_foot(id)
+            }
+        })
     },
     init_goods: function (queryUrl, id) {
         var info = this;

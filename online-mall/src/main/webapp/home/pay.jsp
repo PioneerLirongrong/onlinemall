@@ -16,9 +16,7 @@
     <script src="../js/jquery.base64.js"></script>
     <script src="../onlinemalljs/commonUtils/CommonUtil.js"></script>
     <script src="../onlinemalljs/commonUtils/CommonUserInfo.js"></script>
-    <script src="../onlinemalljs/home/home.js"></script>
     <script src="../onlinemalljs/commonUtils/ShopGooDConfig.js"></script>
-    <script src="../onlinemalljs/home/pay.js"></script>
 </head>
 <body>
 <!--顶部导航条 -->
@@ -50,49 +48,48 @@
             <h3>确认收货地址 </h3>
             <div class="clear"></div>
             <ul id="addressUL">
-                <div class="per-border"></div>
-                <li id="l1"class="user-addresslist" >
-                        <div class="address-left">
-                        <div class="user DefaultAddr">
-                            <span class="buy-address-detail">
-                            <span class="buy-user">艾迪 </span>
-                            <span class="buy-phone">15888888888</span>
-						</span>
-                        </div>
-                        <div class="default-address DefaultAddr">
-                            <span class="buy-line-title buy-line-title-type">收货地址：</span>
-                            <span class="buy--address-detail">
-						<span class="province">湖北</span>省
-							<span class="city">武汉</span>市
-							<span class="dist">洪山</span>区
-							<span class="street">雄楚大道666号(中南财经政法大学)</span>
-						</span>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="clear"></div>
-                </li>
-                <li class="user-addresslist">
-                    <div class="address-left">
-                        <div class="user DefaultAddr">
-							<span class="buy-address-detail">
-                            <span class="buy-user">艾迪 </span>
-							<span class="buy-phone">15877777777</span>
-							</span>
-                        </div>
-                        <div class="default-address DefaultAddr">
-                            <span class="buy-line-title buy-line-title-type">收货地址：</span>
-                            <span class="buy--address-detail">
-							<span class="province">湖北</span>省
-							<span class="city">武汉</span>市
-							<span class="dist">武昌</span>区
-							<span class="street">东湖路75号众环大厦9栋9层999</span>
-							</span>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="clear"></div>
-                </li>
+                <%--<li id="l1" class="user-addresslist" onclick="getAddress()">--%>
+                        <%--<div class="address-left">--%>
+                        <%--<div class="user DefaultAddr">--%>
+                            <%--<span class="buy-address-detail">--%>
+                            <%--<span class="buy-user">艾迪 </span>--%>
+                            <%--<span class="buy-phone">15888888888</span>--%>
+						<%--</span>--%>
+                        <%--</div>--%>
+                        <%--<div class="default-address DefaultAddr">--%>
+                            <%--<span class="buy-line-title buy-line-title-type">收货地址：</span>--%>
+                            <%--<span class="buy--address-detail">--%>
+                            <%--<span class="province">湖北</span>省--%>
+                            <%--<span class="city">武汉</span>市--%>
+                            <%--<span class="dist">洪山</span>区--%>
+                            <%--<span id="address1" class="street">雄楚大道666号(中南财经政法大学)</span>--%>
+						<%--</span>--%>
+                            <%--</span>--%>
+                        <%--</div>--%>
+                    <%--</div>--%>
+                    <%--<div class="clear"></div>--%>
+                <%--</li>--%>
+                <%--<li id="l2" class="user-addresslist" onclick="getAddress()">--%>
+                    <%--<div class="address-left">--%>
+                        <%--<div class="user DefaultAddr">--%>
+							<%--<span class="buy-address-detail">--%>
+                            <%--<span class="buy-user">艾迪 </span>--%>
+							<%--<span class="buy-phone">15877777777</span>--%>
+							<%--</span>--%>
+                        <%--</div>--%>
+                        <%--<div class="default-address DefaultAddr">--%>
+                            <%--<span class="buy-line-title buy-line-title-type">收货地址：</span>--%>
+                            <%--<span class="buy--address-detail">--%>
+							<%--<span class="province">湖北</span>省--%>
+							<%--<span class="city">武汉</span>市--%>
+							<%--<span class="dist">武昌</span>区--%>
+							<%--<span id="address2" class="street">东湖路75号众环大厦9栋9层999</span>--%>
+							<%--</span>--%>
+                            <%--</span>--%>
+                        <%--</div>--%>
+                    <%--</div>--%>
+                    <%--<div class="clear"></div>--%>
+                <%--</li>--%>
             </ul>
             <div class="clear"></div>
         </div>
@@ -100,20 +97,30 @@
         <div class="logistics">
             <h3>选择物流方式</h3>
             <ul class="op_express_delivery_hot">
-                <li data-value="yuantong" class="OP_LOG_BTN  "><i class="c-gap-right"
-                                                                  style="background-position:0px -468px"></i>圆通<span></span>
+                <li id="way1" data-value="yuantong" class="OP_LOG_BTN " onclick="getWuliuWay()">
+                    <i class="c-gap-right" style="background-position:0px -468px"></i>
+                    圆通
+                    <span></span>
                 </li>
-                <li data-value="shentong" class="OP_LOG_BTN  "><i class="c-gap-right"
-                                                                  style="background-position:0px -1008px"></i>申通<span></span>
+                <li id="way2" data-value="shentong" class="OP_LOG_BTN " onclick="getWuliuWay()">
+                    <i class="c-gap-right" style="background-position:0px -1008px"></i>
+                    申通
+                    <span></span>
                 </li>
-                <li data-value="yunda" class="OP_LOG_BTN  "><i class="c-gap-right"
-                                                               style="background-position:0px -576px"></i>韵达<span></span>
+                <li id="way3" data-value="yunda" class="OP_LOG_BTN  " onclick="getWuliuWay()">
+                    <i class="c-gap-right" style="background-position:0px -576px"></i>
+                    韵达
+                    <span></span>
                 </li>
-                <li data-value="zhongtong" class="OP_LOG_BTN op_express_delivery_hot_last "><i class="c-gap-right"
-                                                                                               style="background-position:0px -324px"></i>中通<span></span>
+                <li id="way4" data-value="zhongtong" class="OP_LOG_BTN op_express_delivery_hot_last " onclick="getWuliuWay()">
+                    <i class="c-gap-right" style="background-position:0px -324px"></i>
+                    中通
+                    <span></span>
                 </li>
-                <li data-value="shunfeng" class="OP_LOG_BTN  op_express_delivery_hot_bottom"><i class="c-gap-right"
-                                                                                                style="background-position:0px -180px"></i>顺丰<span></span>
+                <li id="way5" data-value="shunfeng" class="OP_LOG_BTN  op_express_delivery_hot_bottom" onclick="getWuliuWay()">
+                    <i class="c-gap-right" style="background-position:0px -180px"></i>
+                    顺丰
+                    <span></span>
                 </li>
             </ul>
         </div>
@@ -123,9 +130,9 @@
         <div class="logistics">
             <h3>选择支付方式</h3>
             <ul class="pay-list">
-                <li class="pay card"><img src="../images/wangyin.jpg"/>银联<span></span></li>
-                <li class="pay qq"><img src="../images/weizhifu.jpg"/>微信<span></span></li>
-                <li class="pay taobao"><img src="../images/zhifubao.jpg"/>支付宝<span></span></li>
+                <li id="card" onclick="getPayWay()" class="pay card"><img src="../images/wangyin.jpg"/>银联<span></span></li>
+                <li id="qq" onclick="getPayWay()" class="pay qq"><img src="../images/weizhifu.jpg"/>微信<span></span></li>
+                <li id="taobao" onclick="getPayWay()" class="pay taobao"><img src="../images/zhifubao.jpg"/>支付宝<span></span></li>
             </ul>
         </div>
         <div class="clear"></div>
@@ -276,5 +283,5 @@
 <div class="theme-popover-mask"></div>
 <div class="clear"></div>
 </body>
-
+<script src="../onlinemalljs/home/pay.js"></script>
 </html>

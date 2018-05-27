@@ -355,7 +355,7 @@
     <div id="sidebar">
         <div id="wrap">
             <div id="shopCart" class="item">
-                <a href="../home/shopcart.jsp">
+                <a id='mc-menu-hd_4' href="javascript:void(0)" onclick="getUserLoginOutStatus('4')">
                     <span class="message"></span>
                 </a>
                 <p>
@@ -364,7 +364,7 @@
                 <p class="cart_num">0</p>
             </div>
             <div id="brand" class="item">
-                <a href="../person/collection.jsp">
+                <a  id='mc-menu-hd_5' href="javascript:void(0)" onclick="getUserLoginOutStatus('5')">
                     <span class="wdsc"><img src="../images/wdsc.png"/></span>
                 </a>
                 <div class="mp_tooltip">
@@ -388,4 +388,85 @@
     </div>
 </div>
 </body>
+<script>
+    function getUserLoginOutStatus(data) {
+        if ('1' == data) {
+            COMMONUSERINFOUTIL.getUserLoginOut(function (data) {
+                if (data['status'] == "login") {
+                    $('#mc-menu-hd_1').attr('href', '../person/index.jsp');
+                } else {
+                    alert("请登录后操作")
+                    return;
+                }
+            })
+            //href="../person/index.jsp"
+        } else if ('2' == data) {
+            COMMONUSERINFOUTIL.getUserLoginOut(function (data) {
+                if (data['status'] == "login") {
+                    $('#mc-menu-hd_2').attr('href', '../home/shopcart.jsp');
+                } else {
+                    alert("请登录后操作")
+                    return;
+                }
+            })
+            //href="../home/shopcart.jsp"
+        } else if ('3' == data) {
+            COMMONUSERINFOUTIL.getUserLoginOut(function (data) {
+                if (data['status'] == "login") {
+                    $('#mc-menu-hd_3').attr('href', '../person/collection.jsp');
+                } else {
+                    alert("请登录后操作")
+                    return;
+                }
+            })
+            //href="../person/collection.jsp"
+        } else if ('4' == data) {
+            COMMONUSERINFOUTIL.getUserLoginOut(function (data) {
+                if (data['status'] == "login") {
+                    $('#mc-menu-hd_4').attr('href', '../home/shopcart.jsp');
+                } else {
+                    alert("请登录后操作")
+                    return;
+                }
+            })
+        } else if ('5' == data) {
+            COMMONUSERINFOUTIL.getUserLoginOut(function (data) {
+                if (data['status'] == "login") {
+                    $('#mc-menu-hd_5').attr('href', '../person/collection.jsp');
+                } else {
+                    alert("请登录后操作")
+                    return;
+                }
+            })
+        } else {
+            var map = {};
+            var userId = $.cookie("onlinemall_zc_userId");
+            if (null == userId) {
+                map['params["userid"]'] = "1bb4df95203e48ea823f18fa53c0895e";
+            } else {
+                map['params["userid"]'] = $.cookie("onlinemall_zc_userId");
+            }
+            $.ajax({
+                type: "POST",
+                url: "/onlinemall/loginOut.do",
+                data: map,
+                dataType: "JSON",
+                success: function (result) {
+                    if (result.code == '1') {
+                        window.location.href = "../home/home3.jsp";
+                    }
+                },
+                error: function () {
+                    alert("网络异常，退出登录失败")
+                }
+
+            })
+        }
+    }
+
+    function goToIntroduction() {
+        var innerText = $("p").innerText;
+        alert(innerText)
+    }
+</script>
 </html>
