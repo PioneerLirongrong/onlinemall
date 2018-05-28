@@ -29,7 +29,6 @@ onlineMallHome.prototype = {
             async: false,
             success: function (result) {
                 if (result.code == '1') {
-                    if (result.code == '1') {
                         //遍历后台传回来的值
                         var jsonArr = result.dataList;
                         console.log(jsonArr)
@@ -45,7 +44,6 @@ onlineMallHome.prototype = {
                                 "</li>"
                             )
                         })
-                    }
                 }
             },
             error: function () {

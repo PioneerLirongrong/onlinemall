@@ -1,5 +1,6 @@
 package com.onlinemall.springservice.interfaces;
 
+import com.onlinemall.beans.PageCollectFootBean;
 import com.onlinemall.dao.model.OnlinemallUserCollect;
 import com.onlinemall.param.request.RequestParams;
 import com.onlinemall.param.response.BaseResult;
@@ -18,7 +19,7 @@ public interface ICollectionService {
     /**
      * 查询所有的收藏
      */
-    BaseResult<OnlinemallUserCollect> listCollect(RequestParams<OnlinemallUserCollect> params);
+    BaseResult<PageCollectFootBean> listCollect(RequestParams<OnlinemallUserCollect> params);
 
     /**
      * 删除所有的收藏

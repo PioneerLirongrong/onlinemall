@@ -1,6 +1,7 @@
 package com.onlinemall.controller;
 
 
+import com.onlinemall.beans.PageCollectFootBean;
 import com.onlinemall.dao.model.OnlinemallUserCollect;
 import com.onlinemall.param.request.RequestParams;
 import com.onlinemall.param.response.BaseResult;
@@ -34,10 +35,10 @@ public class CollectController {
     }
 
     @RequestMapping(value = "/listCollect",method = RequestMethod.POST)
-    public BaseResult<OnlinemallUserCollect> listCollect(@ModelAttribute RequestParams<OnlinemallUserCollect> params){
+    public BaseResult<PageCollectFootBean> listCollect(@ModelAttribute RequestParams<OnlinemallUserCollect> params){
         logger.info("{请求后台接口\'/collect/listCollect\'}");
         logger.info("{前台的请求参数" + params.toString() + "}");
-        BaseResult<OnlinemallUserCollect> baseResult = iCollectionService.listCollect(params);
+        BaseResult<PageCollectFootBean> baseResult = iCollectionService.listCollect(params);
         logger.info("{后台返给前台的结果" + baseResult.toString() + "}");
         return baseResult;
     }

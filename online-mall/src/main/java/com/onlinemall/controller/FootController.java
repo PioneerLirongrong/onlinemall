@@ -1,6 +1,7 @@
 package com.onlinemall.controller;
 
 
+import com.onlinemall.beans.PageCollectFootBean;
 import com.onlinemall.dao.model.OnlinemallUserRecord;
 import com.onlinemall.param.request.RequestParams;
 import com.onlinemall.param.response.BaseResult;
@@ -35,10 +36,10 @@ public class FootController {
     }
 
     @RequestMapping(value = "/listRecord",method = RequestMethod.POST)
-    public BaseResult<OnlinemallUserRecord> listRecord(@ModelAttribute RequestParams<OnlinemallUserRecord> params){
+    public BaseResult<PageCollectFootBean> listRecord(@ModelAttribute RequestParams<OnlinemallUserRecord> params){
         logger.info("{请求后台接口\'/foot/listRecord\'}");
         logger.info("{前台的请求参数" + params.toString() + "}");
-        BaseResult<OnlinemallUserRecord> baseResult = iUserFootService.listRecord(params);
+        BaseResult<PageCollectFootBean> baseResult = iUserFootService.listRecord(params);
         logger.info("{后台返给前台的结果" + baseResult.toString() + "}");
         return baseResult;
     }

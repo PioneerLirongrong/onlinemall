@@ -1,5 +1,6 @@
 package com.onlinemall.springservice.interfaces;
 
+import com.onlinemall.beans.PageCollectFootBean;
 import com.onlinemall.dao.model.OnlinemallUserRecord;
 import com.onlinemall.param.request.RequestParams;
 import com.onlinemall.param.response.BaseResult;
@@ -18,7 +19,7 @@ public interface IUserFootService {
     /**
      *  查询所有足记
      */
-    BaseResult<OnlinemallUserRecord> listRecord(RequestParams<OnlinemallUserRecord> params);
+    BaseResult<PageCollectFootBean> listRecord(RequestParams<OnlinemallUserRecord> params);
 
     /**
      *　删除足记
