@@ -45,7 +45,7 @@ onlineMallFoot.prototype = {
                             "\n" +
                             "<div class=\"goods-attr\">\n" +
                             "<div class=\"good-title\">\n" +
-                            "<a class=\"title\" style=\"cursor: pointer\" target=\"_blank\">"+this.goodname+"</a>\n" +
+                            "<a class=\"title\" style=\"cursor: pointer\" target=\"_blank\">"+this.goodName+"</a>\n" +
                             "</div>\n" +
                             "<div class=\"goods-price\">\n" +
                             "<span class=\"g_price\">\n" +

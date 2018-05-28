@@ -11,6 +11,8 @@
     <link href="../css/cartstyle.css" rel="stylesheet" type="text/css"/>
     <link href="../css/optstyle.css" rel="stylesheet" type="text/css"/>
     <script type="text/javascript" src="../js/jquery.js"></script>
+    <script src="../js/mathcontext.js"></script>
+    <script src="../js/bigdecimal.js"></script>
     <script src="../js/jquerycookie.js"></script>
     <script src="../js/jquery.md5.js"></script>
     <script src="../js/jquery.base64.js"></script>
@@ -18,12 +20,9 @@
     <script src="../onlinemalljs/commonUtils/CommonUserInfo.js"></script>
     <script src="../onlinemalljs/home/home.js"></script>
     <script src="../onlinemalljs/commonUtils/ShopGooDConfig.js"></script>
-    <%--<script src="../onlinemalljs/home/shopcart.js"></script>--%>
-
+    <script src="../onlinemalljs/home/shopcart.js"></script>
 </head>
-
 <body>
-
 <!--顶部导航条 -->
 <div class="am-container header">
     <ul class="message-r">
@@ -105,9 +104,9 @@
                             <div class="amount-wrapper ">
                                 <div class="item-amount ">
                                     <div class="sl">
-                                        <input class=" am-btn" name="" type="button" value="-" onclick="reduce(1)"/>
+                                        <input class=" am-btn" name="" type="button" value="-" onclick="reduce(this.goodsid,this.queryurl)"/>
                                         <input id="count" class="text_box" name="" type="text" value="3" style="width:30px;"/>
-                                        <input class=" am-btn" name="" type="button" value="+" onclick="addCount(1)"/>
+                                        <input class=" am-btn" name="" type="button" value="+" onclick="addCount(this.goodsid,this.queryurl)"/>
                                     </div>
                                 </div>
                             </div>
@@ -119,9 +118,7 @@
                         </li>
                         <li class="td td-op">
                             <div class="td-inner">
-                                <a onclick="moveCollect()" title="移入收藏夹" class="btn-fav" href="javascript:void(0);">
-                                    移入收藏夹</a>
-                                <a onclick="deleteShopCar()" href="javascript:void(0);" class="delete">
+                                <a onclick="deleteShopCar(this.id)" href="javascript:void(0);" class="delete">
                                     删除</a>
                             </div>
                         </li>
@@ -163,21 +160,41 @@
 </div>
 </body>
 <script>
-    function addCount(arg) {
-        var wuliuway = 10;
-        var st = wuliuway.toString();
+    function addCount(goodsid,queryUrl) {
+        console.log(goodsid+"\t"+queryUrl)
+        var arg = 1;
         var orig = $("#count").val();
         var addnew = (parseInt(orig)+arg).toString();
         $("#count").attr("value",addnew);
         var price = $("#price").val();
         var addTotal = new BigDecimal(price).multiply(new BigDecimal(addnew));
         $("#emtotal1").attr("value",addTotal.toString())
-        var addTotal2 = new BigDecimal(addTotal.toString()).add(new BigDecimal(st));
-        $("#emtotal2").attr("value",addTotal2.toString())
+        var data = {};
+        data['params["userid"]'] = $.cookie("onlinemall_zc_userId");
+        data['params["goodsid"]'] = goodsid;
+        data['params["queryurl"]'] = queryUrl;
+        $.ajax({
+            type: "POST",
+            url: "/onlinemallShopCar/addShopCarItem.do",
+            data: data,
+            dataType: "JSON",
+            async: false,
+            success: function (result) {
+                if (result.code == '1') {
+                    alert("操作成功")
+                }else {
+                    info.execption("操作失败")
+                }
+            },
+            error: function () {
+                info.execption("系统异常");
+            }
+        });
     }
-    function reduce(arg) {
-        var wuliuway = 10;
-        var st = wuliuway.toString();
+    function reduce(goodsid,queryUrl){
+        console.log(goodsid+"\t"+queryUrl)
+        var info = this;
+        var arg = 1;
         var orig = $("#count").val();
         var news = parseInt(orig) -arg;
         if(news <= 0){
@@ -187,7 +204,54 @@
         var price = $("#price").val();
         var addTotal = new BigDecimal(price).multiply(new BigDecimal(news.toString()));
         $("#emtotal1").attr("value",addTotal.toString())
+        var data = {};
+        data['params["userid"]'] = $.cookie("onlinemall_zc_userId");
+        data['params["goodsid"]'] = goodsid;
+        data['params["queryurl"]'] = queryUrl;
+        console.log(data)
+        $.ajax({
+            type: "POST",
+            url: "/onlinemallShopCar/addShopCarItem.do",
+            data: data,
+            dataType: "JSON",
+            async: false,
+            success: function (result) {
+                if (result.code == '1') {
+                    alert("操作成功")
+                }else {
+                    info.execption("操作失败")
+                }
+            },
+            error: function () {
+                info.execption("系统异常");
+            }
+        });
+    }
 
+    function deleteShopCar(id){
+        console.log(id)
+        var info = this;
+        var data = {};
+        data['params["userid"]'] = $.cookie("onlinemall_zc_userId");
+        data['params["id"]'] = id;
+        console.log(data)
+        $.ajax({
+            type: "POST",
+            url: "/onlinemallShopCar/deleteShopCarItem.do",
+            data: data,
+            dataType: "JSON",
+            async: false,
+            success: function (result) {
+                if (result.code == '1') {
+                    window.location.href = "../home/shopcart.jsp"
+                }else {
+                    info.execption("操作失败")
+                }
+            },
+            error: function () {
+                info.execption("系统异常");
+            }
+        });
     }
 </script>
 </html>
