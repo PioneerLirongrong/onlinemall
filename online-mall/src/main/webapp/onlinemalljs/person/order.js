@@ -108,7 +108,7 @@ onlineMallOrder.prototype = {
                             "<div class=\"order-status5\">\n" +
                             "<div class=\"order-title\">\n" +
                             "<div class=\"dd-num\">订单编号：<a href=\"javascript:;\">" + "8307296207293" +Math.round(Math.random()*10)+ "</a></div>\n" +
-                            "<span>成交时间：" + this.orderchengjiaotime + "</span>\n" +
+                            "<span>成交时间：" + MD5_UTILS.timestampToTime(this.orderchengjiaotime) + "</span>\n" +
                             "</div>\n" +
                             "<div class=\"order-content\">\n" +
                             "<div class=\"order-left\">\n" +
@@ -193,7 +193,7 @@ onlineMallOrder.prototype = {
                                 "<div class=\"order-status5\">\n" +
                                 "<div class=\"order-title\">\n" +
                                 "<div class=\"dd-num\">订单编号：<a href=\"javascript:;\">" + "8307296207293" + Math.round(Math.random()*10) + "</a></div>\n" +
-                                "<span>成交时间：" + this.orderchengjiaotime + "</span>\n" +
+                                "<span>成交时间：" + MD5_UTILS.timestampToTime(this.orderchengjiaotime) + "</span>\n" +
                                 "</div>\n" +
                                 "<div class=\"order-content\">\n" +
                                 "<div class=\"order-left\">\n" +
@@ -283,7 +283,7 @@ onlineMallOrder.prototype = {
                                 "<div class=\"order-status5\">\n" +
                                 "<div class=\"order-title\">\n" +
                                 "<div class=\"dd-num\">订单编号：<a href=\"javascript:;\">" + "8307296207293" + Math.round(Math.random()*10) + "</a></div>\n" +
-                                "<span>成交时间：" + this.orderchengjiaotime + "</span>\n" +
+                                "<span>成交时间：" + MD5_UTILS.timestampToTime(this.orderchengjiaotime) + "</span>\n" +
                                 "</div>\n" +
                                 "<div class=\"order-content\">\n" +
                                 "<div class=\"order-left\">\n" +
@@ -367,12 +367,13 @@ onlineMallOrder.prototype = {
                 if (result.code == '1') {
                     if (result.code == '1') {
                         var jsonArr = result.dataList;
+                        var i=0;
                         $(jsonArr).each(function () {
                             $("#WaitInOrder").append(
                                 "<div class=\"order-status5\">\n" +
                                 "<div class=\"order-title\">\n" +
                                 "<div class=\"dd-num\">订单编号：<a href=\"javascript:;\">" + "8307296207293" + Math.round(Math.random()*10) + "</a></div>\n" +
-                                "<span>成交时间：" + this.orderchengjiaotime + "</span>\n" +
+                                "<span>成交时间：" + MD5_UTILS.timestampToTime(this.orderchengjiaotime) + "</span>\n" +
                                 "</div>\n" +
                                 "<div class=\"order-content\">\n" +
                                 "<div class=\"order-left\">\n" +
@@ -424,7 +425,7 @@ onlineMallOrder.prototype = {
                                 "</div>\n" +
                                 "</li>\n" +
                                 "<li class=\"td td-change\">\n" +
-                                "<div class=\"am-btn am-btn-danger anniu\">\n" +
+                                "<div id=\'divs"+i+"\' onclick='receive($(this).attr(\"id\"))' class=\"am-btn am-btn-danger anniu\">\n" +
                                 "确认收货\n" +
                                 "</div>\n" +
                                 "</li>\n" +
@@ -462,7 +463,7 @@ onlineMallOrder.prototype = {
                                 "<div class=\"order-status5\">\n" +
                                 "<div class=\"order-title\">\n" +
                                 "<div class=\"dd-num\">订单编号：<a href=\"javascript:;\">" + "8307296207293" + Math.round(Math.random()*10) + "</a></div>\n" +
-                                "<span>成交时间：" + this.orderchengjiaotime + "</span>\n" +
+                                "<span>成交时间：" + MD5_UTILS.timestampToTime(this.orderchengjiaotime) + "</span>\n" +
                                 "</div>\n" +
                                 "<div class=\"order-content\">\n" +
                                 "<div class=\"order-left\">\n" +

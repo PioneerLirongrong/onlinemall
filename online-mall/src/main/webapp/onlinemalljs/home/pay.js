@@ -8,7 +8,8 @@ onlineMallPay.prototype = {
         homeFlag: {},
         initDataUrl: "/shop/listCollect.do",
         initAddressUrl: "/userAddress/listAddress.do",
-        initOrderUrl:"/order/addOrder.do"
+        initOrderUrl:"/order/addOrder.do",
+        returnUrl:"../home/success.jsp"
     },
     exception: function (message) {
         alert(message)
@@ -259,7 +260,7 @@ onlineMallPay.prototype = {
             async: false,
             success: function (result) {
                 if (result.code == '1') {
-                    alert("success")
+                    window.location.href=info.config.returnUrl;
                 }
             },
             error: function () {

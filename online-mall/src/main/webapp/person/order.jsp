@@ -635,5 +635,11 @@
 </div>
 
 </body>
+<script>
+    function receive(id) {
+        $("#"+id).text("已收货");
+        alert("收货成功")
+    }
+</script>
 
 </html>

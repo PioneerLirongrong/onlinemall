@@ -84,7 +84,7 @@ public class OrderServiceImp implements IOrderService {
         onlinemallOrder.setGoodsoperate("1");
         onlinemallOrder.setOrdercreatetime(new Date());
         logger.info("{未完善其他信息之前的订单"+onlinemallOrder.toString()+"}");
-        createOnlineMallShopCar(params,onlinemallOrder);
+        createOnlineMallShopCar(url,goodsid,onlinemallOrder);
         logger.info("{完善其他信息之后的订单"+onlinemallOrder.toString()+"}");
         int insert = onlinemallOrderMapper.insert(onlinemallOrder);
         if(0 == insert){
@@ -97,9 +97,10 @@ public class OrderServiceImp implements IOrderService {
         return baseResult;
     }
 
-    private void createOnlineMallShopCar(RequestParams params,OnlinemallOrder onlinemallOrder) {
-        String url = (String) params.getParams().get("queryUrl");
-        String goodsid = (String) params.getParams().get("id");
+    private void createOnlineMallShopCar(String url,String goodsid,OnlinemallOrder onlinemallOrder) {
+        if(StringUtils.isBlank(url) || StringUtils.isBlank(goodsid)){
+            return;
+        }
         if (url.contains("listCollect")) {
             OnlinemallGoodsClothes onlinemallGoodsClothes = onlinemallGoodsClothesMapper.selectByPrimaryKey(goodsid);
             onlinemallOrder.setShopid(onlinemallGoodsClothes.getShop());
