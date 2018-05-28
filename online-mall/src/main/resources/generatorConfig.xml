@@ -41,7 +41,7 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
         <!--数据库中要生成对象的表名称-->
-        <!--用户表-->
+        用户表
         <table tableName="onlinemall_user"></table>
         <!--用户地址表-->
         <table tableName="onlinemall_user_address"></table>
@@ -55,7 +55,7 @@
         <table tableName="onlinemall_user_red_envelopes"></table>
         <!--用户账户余额onlinemall_user_balance-->
         <table tableName="onlinemall_user_balance"></table>
-        <!--用户的收藏onlinemall_user_collect-->
+        用户的收藏onlinemall_user_collect
         <table tableName="onlinemall_user_collect"></table>
         <!--用户的足迹onlinemall_user_record-->
         <table tableName="onlinemall_user_record"></table>

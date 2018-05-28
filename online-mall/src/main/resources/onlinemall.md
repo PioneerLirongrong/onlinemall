@@ -118,24 +118,26 @@ create table onlinemall_user_balance(
 ```
 ###***用户收藏onlinemall_user_collect***
 ```
-create table onlinemall_user_collect(
-  id varchar(64) comment '记录ID',
-  userid varchar(64) comment '用户ID',
-  goodsid varchar(64) comment '商品ID',
-  collectime datetime default now() comment '收藏时间',
-  primary key (id)
-)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `onlinemall_user_collect` (
+  `id` varchar(64) NOT NULL COMMENT '记录ID',
+  `userid` varchar(64) DEFAULT NULL COMMENT '用户ID',
+  `goodsid` varchar(64) DEFAULT NULL COMMENT '商品ID',
+  `queryUrl` varchar(20) DEFAULT NULL COMMENT '查询的接口URL',
+  `collectime` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '收藏时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
 
 ```
 ###***用户的足迹onlinemall_user_record***
 ```
-create table onlinemall_user_record(
-  id varchar(64) comment '记录ID',
-  userid varchar(64) comment '用户ID',
-  goodsid varchar(64) comment '商品ID',
-  recordtime datetime default now() comment '记录时间',
-  primary key (id)
-)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `onlinemall_user_record` (
+  `id` varchar(64) NOT NULL COMMENT '记录ID',
+  `userid` varchar(64) DEFAULT NULL COMMENT '用户ID',
+  `goodsid` varchar(64) DEFAULT NULL COMMENT '商品ID',
+  `queryUrl` varchar(20) DEFAULT NULL COMMENT '接口的URL',
+  `recordtime` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '记录时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
 
 ```
 

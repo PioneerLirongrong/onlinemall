@@ -5,15 +5,20 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
     <title>购物车页面</title>
-
     <link href="../AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css"/>
     <link href="../basic/css/demo.css" rel="stylesheet" type="text/css"/>
     <link href="../css/cartstyle.css" rel="stylesheet" type="text/css"/>
     <link href="../css/optstyle.css" rel="stylesheet" type="text/css"/>
-
     <script type="text/javascript" src="../js/jquery.js"></script>
+    <script src="../js/jquerycookie.js"></script>
+    <script src="../js/jquery.md5.js"></script>
+    <script src="../js/jquery.base64.js"></script>
+    <script src="../onlinemalljs/commonUtils/CommonUtil.js"></script>
+    <script src="../onlinemalljs/commonUtils/CommonUserInfo.js"></script>
+    <script src="../onlinemalljs/home/home.js"></script>
+    <script src="../onlinemalljs/commonUtils/ShopGooDConfig.js"></script>
+    <%--<script src="../onlinemalljs/home/shopcart.js"></script>--%>
 
 </head>
 
@@ -68,7 +73,7 @@
         <tr class="item-list">
             <div class="bundle  bundle-last ">
                 <div class="clear"></div>
-                <div class="bundle-main">
+                <div class="bundle-main" id="shopCarDiv">
                     <ul class="item-content clearfix">
                         <li class="td td-item">
                             <div class="item-pic">
@@ -91,10 +96,7 @@
                             <div class="item-price price-promo-promo">
                                 <div class="price-content">
                                     <div class="price-line">
-                                        <em class="price-original">78.00</em>
-                                    </div>
-                                    <div class="price-line">
-                                        <em class="J_Price price-now" tabindex="0">39.00</em>
+                                        <input id="price" type="text" disabled="disabled" class="J_Price price-now" tabindex="0" value="39.00">
                                     </div>
                                 </div>
                             </div>
@@ -103,23 +105,23 @@
                             <div class="amount-wrapper ">
                                 <div class="item-amount ">
                                     <div class="sl">
-                                        <input class="min am-btn" name="" type="button" value="-"/>
-                                        <input class="text_box" name="" type="text" value="3" style="width:30px;"/>
-                                        <input class="add am-btn" name="" type="button" value="+"/>
+                                        <input class=" am-btn" name="" type="button" value="-" onclick="reduce(1)"/>
+                                        <input id="count" class="text_box" name="" type="text" value="3" style="width:30px;"/>
+                                        <input class=" am-btn" name="" type="button" value="+" onclick="addCount(1)"/>
                                     </div>
                                 </div>
                             </div>
                         </li>
                         <li class="td td-sum">
                             <div class="td-inner">
-                                <em tabindex="0" class="J_ItemSum number">117.00</em>
+                                <input id="emtotal1" type="text" tabindex="0" disabled="disabled" class="J_ItemSum number" value="117.00">
                             </div>
                         </li>
                         <li class="td td-op">
                             <div class="td-inner">
-                                <a title="移入收藏夹" class="btn-fav" href="#">
+                                <a onclick="moveCollect()" title="移入收藏夹" class="btn-fav" href="javascript:void(0);">
                                     移入收藏夹</a>
-                                <a href="javascript:;" data-point-url="#" class="delete">
+                                <a onclick="deleteShopCar()" href="javascript:void(0);" class="delete">
                                     删除</a>
                             </div>
                         </li>
@@ -160,5 +162,32 @@
     <li><a href="../person/index.jsp"><i class="am-icon-user"></i>我的</a></li>
 </div>
 </body>
+<script>
+    function addCount(arg) {
+        var wuliuway = 10;
+        var st = wuliuway.toString();
+        var orig = $("#count").val();
+        var addnew = (parseInt(orig)+arg).toString();
+        $("#count").attr("value",addnew);
+        var price = $("#price").val();
+        var addTotal = new BigDecimal(price).multiply(new BigDecimal(addnew));
+        $("#emtotal1").attr("value",addTotal.toString())
+        var addTotal2 = new BigDecimal(addTotal.toString()).add(new BigDecimal(st));
+        $("#emtotal2").attr("value",addTotal2.toString())
+    }
+    function reduce(arg) {
+        var wuliuway = 10;
+        var st = wuliuway.toString();
+        var orig = $("#count").val();
+        var news = parseInt(orig) -arg;
+        if(news <= 0){
+            news = 1;
+        }
+        $("#count").attr("value",news)
+        var price = $("#price").val();
+        var addTotal = new BigDecimal(price).multiply(new BigDecimal(news.toString()));
+        $("#emtotal1").attr("value",addTotal.toString())
 
+    }
+</script>
 </html>

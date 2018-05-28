@@ -51,7 +51,7 @@ public class ShopCarServiceImp implements IShopCarService {
         BaseResult<OnlinemallShopcar> baseResult = new BaseResult<OnlinemallShopcar>();
         baseResult.setCode(BaseResult.FAIL);
         //查询对应的商品
-        if (StringUtils.isNotBlank((String) params.getParams().get("queryUrl")) && StringUtils.isNotBlank((String) params.getParams().get("goodsid"))) {
+        if (StringUtils.isNotBlank((String) params.getParams().get("queryurl")) && StringUtils.isNotBlank((String) params.getParams().get("goodsid"))) {
             String goodsid = (String) params.getParams().get("goodsid");
             OnlinemallShopcarExample onlinemallShopcarExample = new OnlinemallShopcarExample();
             OnlinemallShopcarExample.Criteria criteria = onlinemallShopcarExample.createCriteria();
@@ -92,7 +92,7 @@ public class ShopCarServiceImp implements IShopCarService {
         }
     }
     private void createOnlineMallShopCar(RequestParams params, OnlinemallShopcar onlinemallShopcar) {
-        String url = (String) params.getParams().get("queryUrl");
+        String url = (String) params.getParams().get("queryurl");
         String goodsid = (String) params.getParams().get("goodsid");
         if (url.contains("listCollect")) {
             OnlinemallGoodsClothes onlinemallGoodsClothes = onlinemallGoodsClothesMapper.selectByPrimaryKey(goodsid);

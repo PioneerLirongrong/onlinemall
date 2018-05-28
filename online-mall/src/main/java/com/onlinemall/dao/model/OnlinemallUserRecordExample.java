@@ -318,6 +318,76 @@ public class OnlinemallUserRecordExample implements Serializable {
             return (Criteria) this;
         }
 
+        public Criteria andQueryurlIsNull() {
+            addCriterion("queryUrl is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andQueryurlIsNotNull() {
+            addCriterion("queryUrl is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andQueryurlEqualTo(String value) {
+            addCriterion("queryUrl =", value, "queryurl");
+            return (Criteria) this;
+        }
+
+        public Criteria andQueryurlNotEqualTo(String value) {
+            addCriterion("queryUrl <>", value, "queryurl");
+            return (Criteria) this;
+        }
+
+        public Criteria andQueryurlGreaterThan(String value) {
+            addCriterion("queryUrl >", value, "queryurl");
+            return (Criteria) this;
+        }
+
+        public Criteria andQueryurlGreaterThanOrEqualTo(String value) {
+            addCriterion("queryUrl >=", value, "queryurl");
+            return (Criteria) this;
+        }
+
+        public Criteria andQueryurlLessThan(String value) {
+            addCriterion("queryUrl <", value, "queryurl");
+            return (Criteria) this;
+        }
+
+        public Criteria andQueryurlLessThanOrEqualTo(String value) {
+            addCriterion("queryUrl <=", value, "queryurl");
+            return (Criteria) this;
+        }
+
+        public Criteria andQueryurlLike(String value) {
+            addCriterion("queryUrl like", value, "queryurl");
+            return (Criteria) this;
+        }
+
+        public Criteria andQueryurlNotLike(String value) {
+            addCriterion("queryUrl not like", value, "queryurl");
+            return (Criteria) this;
+        }
+
+        public Criteria andQueryurlIn(List<String> values) {
+            addCriterion("queryUrl in", values, "queryurl");
+            return (Criteria) this;
+        }
+
+        public Criteria andQueryurlNotIn(List<String> values) {
+            addCriterion("queryUrl not in", values, "queryurl");
+            return (Criteria) this;
+        }
+
+        public Criteria andQueryurlBetween(String value1, String value2) {
+            addCriterion("queryUrl between", value1, value2, "queryurl");
+            return (Criteria) this;
+        }
+
+        public Criteria andQueryurlNotBetween(String value1, String value2) {
+            addCriterion("queryUrl not between", value1, value2, "queryurl");
+            return (Criteria) this;
+        }
+
         public Criteria andRecordtimeIsNull() {
             addCriterion("recordtime is null");
             return (Criteria) this;

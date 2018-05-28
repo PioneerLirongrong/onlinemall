@@ -10,6 +10,8 @@ public class OnlinemallUserCollect implements Serializable {
 
     private String goodsid;
 
+    private String queryurl;
+
     private Date collectime;
 
     private static final long serialVersionUID = 1L;
@@ -38,6 +40,14 @@ public class OnlinemallUserCollect implements Serializable {
         this.goodsid = goodsid;
     }
 
+    public String getQueryurl() {
+        return queryurl;
+    }
+
+    public void setQueryurl(String queryurl) {
+        this.queryurl = queryurl;
+    }
+
     public Date getCollectime() {
         return collectime;
     }
@@ -61,6 +71,7 @@ public class OnlinemallUserCollect implements Serializable {
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
             && (this.getUserid() == null ? other.getUserid() == null : this.getUserid().equals(other.getUserid()))
             && (this.getGoodsid() == null ? other.getGoodsid() == null : this.getGoodsid().equals(other.getGoodsid()))
+            && (this.getQueryurl() == null ? other.getQueryurl() == null : this.getQueryurl().equals(other.getQueryurl()))
             && (this.getCollectime() == null ? other.getCollectime() == null : this.getCollectime().equals(other.getCollectime()));
     }
 
@@ -71,6 +82,7 @@ public class OnlinemallUserCollect implements Serializable {
         result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
         result = prime * result + ((getUserid() == null) ? 0 : getUserid().hashCode());
         result = prime * result + ((getGoodsid() == null) ? 0 : getGoodsid().hashCode());
+        result = prime * result + ((getQueryurl() == null) ? 0 : getQueryurl().hashCode());
         result = prime * result + ((getCollectime() == null) ? 0 : getCollectime().hashCode());
         return result;
     }
@@ -84,6 +96,7 @@ public class OnlinemallUserCollect implements Serializable {
         sb.append(", id=").append(id);
         sb.append(", userid=").append(userid);
         sb.append(", goodsid=").append(goodsid);
+        sb.append(", queryurl=").append(queryurl);
         sb.append(", collectime=").append(collectime);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");

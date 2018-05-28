@@ -2,7 +2,6 @@ package com.onlinemall.controller;
 
 
 import com.onlinemall.dao.model.OnlinemallOrder;
-import com.onlinemall.dao.model.OnlinemallUserRecord;
 import com.onlinemall.param.request.RequestParams;
 import com.onlinemall.param.response.BaseResult;
 import com.onlinemall.springservice.interfaces.IOrderService;

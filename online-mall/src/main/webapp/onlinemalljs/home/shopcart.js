@@ -36,16 +36,59 @@ onlineMallShopCar.prototype = {
                         //遍历后台传回来的值
                         var jsonArr = result.dataList;
                         console.log(jsonArr)
+                        $("#shopCarDiv").empty()
                         $(jsonArr).each(function () {
-                            $("#home").append(
-                                "<li>\n" +
-                                "<div class=\"list \">\n" +
-                                "<a href=\"../home/introduction.jsp?id="+this.id+"&queryUrl="+info.config.initDataUrl+"\">\n" +                                "<img src=\"../images/cp.jpg \"/>\n" +
-                                "<div class=\"pro-title \">"+this.goodsname+"</div>\n" +
-                                "<span class=\"e-price \">￥"+this.originalprice+"</span>\n" +
-                                "</a>\n" +
+                            $("#shopCarDiv").append(
+                                "<ul class=\"item-content clearfix\">\n" +
+                                "<li class=\"td td-item\">\n" +
+                                "<div class=\"item-pic\">\n" +
+                                "<a href=\" ../home/introduction.js?id="+this.goodsid+"&&queryUrl="+this.queryurl+"\" target=\"_blank\" data-title=\"\"\n" +
+                                "class=\"J_MakePoint\" data-point=\"tbcart.8.12\">\n" +
+                                "<img src=\""+this.url+"\" class=\"itempic J_ItemImg\"></a>\n" +
                                 "</div>\n" +
-                                "</li>"
+                                "</div>\n" +
+                                "</li>\n" +
+                                "<li class=\"td td-info\">\n" +
+                                "<div class=\"item-props item-props-can\">\n" +
+                                "</div>\n" +
+                                "</li>\n" +
+                                "<li class=\"td td-price\">\n" +
+                                "<div class=\"item-price price-promo-promo\">\n" +
+                                "<div class=\"price-content\">\n" +
+                                "<div class=\"price-line\">\n" +
+                                "<em class=\"price-original\">"+this.originalprice+"</em>\n" +
+                                "</div>\n" +
+                                "<div class=\"price-line\">\n" +
+                                "<em class=\"J_Price price-now\" tabindex=\"0\">"+this.discouuntprice+"</em>\n" +
+                                "</div>\n" +
+                                "</div>\n" +
+                                "</div>\n" +
+                                "</li>\n" +
+                                "<li class=\"td td-amount\">\n" +
+                                "<div class=\"amount-wrapper \">\n" +
+                                "<div class=\"item-amount \">\n" +
+                                "<div class=\"sl\">\n" +
+                                "<input class=\" am-btn\" name=\"\" type=\"button\" value=\"-\" onclick=\"reduce(1)\"/>\n" +
+                                "<input id=\"count\" class=\"text_box\" name=\"\" type=\"text\" value=\"1\" style=\"width:30px;\"/>\n" +
+                                "<input class=\" am-btn\" name=\"\" type=\"button\" value=\"+\" onclick=\"addCount(1)\"/>\n" +
+                                "</div>\n" +
+                                "</div>\n" +
+                                "</div>\n" +
+                                "</li>\n" +
+                                "<li class=\"td td-sum\">\n" +
+                                "<div class=\"td-inner\">\n" +
+                                "<input tabindex=\"0\" class=\"J_ItemSum number\" value='117.00'>" +
+                                "</div>\n" +
+                                "</li>\n" +
+                                "<li class=\"td td-op\">\n" +
+                                "<div class=\"td-inner\">\n" +
+                                "<a onclick=\"moveCollect()\" title=\"移入收藏夹\" class=\"btn-fav\" href=\"javascript:void(0);\">\n" +
+                                "移入收藏夹</a>\n" +
+                                "<a onclick=\"deleteShopCar()\" href=\"javascript:void(0);\" class=\"delete\">\n" +
+                                "删除</a>\n" +
+                                "</div>\n" +
+                                "</li>\n" +
+                                "</ul>"
                             )
                         })
                     }
@@ -72,10 +115,15 @@ onlineMallShopCar.prototype = {
         }
         window.location.href = "../home/search.jsp"+"?"+"search="+encodeURI(param);
     },
+    moveCollect:function () {
+        alert("moveCollect")
+    },
+    deleteShopCar:function () {
+        alert("deleteShopCar")
+    }
 };
 $(document).ready(function () {
     var shopCar = new onlineMallShopCar();
     shopCar.init();
-    shopCar.init_goods();
-    shopCar.search_goods();
+    shopCar.operate_goods();
 });

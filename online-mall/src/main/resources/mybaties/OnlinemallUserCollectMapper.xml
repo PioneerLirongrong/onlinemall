@@ -5,6 +5,7 @@
     <id column="id" property="id" jdbcType="VARCHAR" />
     <result column="userid" property="userid" jdbcType="VARCHAR" />
     <result column="goodsid" property="goodsid" jdbcType="VARCHAR" />
+    <result column="queryUrl" property="queryurl" jdbcType="VARCHAR" />
     <result column="collectime" property="collectime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -66,7 +67,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, userid, goodsid, collectime
+    id, userid, goodsid, queryUrl, collectime
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.onlinemall.dao.model.OnlinemallUserCollectExample" >
     select
@@ -100,9 +101,9 @@
   </delete>
   <insert id="insert" parameterType="com.onlinemall.dao.model.OnlinemallUserCollect" >
     insert into onlinemall_user_collect (id, userid, goodsid, 
-      collectime)
+      queryUrl, collectime)
     values (#{id,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, #{goodsid,jdbcType=VARCHAR}, 
-      #{collectime,jdbcType=TIMESTAMP})
+      #{queryurl,jdbcType=VARCHAR}, #{collectime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.onlinemall.dao.model.OnlinemallUserCollect" >
     insert into onlinemall_user_collect
@@ -115,6 +116,9 @@
       </if>
       <if test="goodsid != null" >
         goodsid,
+      </if>
+      <if test="queryurl != null" >
+        queryUrl,
       </if>
       <if test="collectime != null" >
         collectime,
@@ -129,6 +133,9 @@
       </if>
       <if test="goodsid != null" >
         #{goodsid,jdbcType=VARCHAR},
+      </if>
+      <if test="queryurl != null" >
+        #{queryurl,jdbcType=VARCHAR},
       </if>
       <if test="collectime != null" >
         #{collectime,jdbcType=TIMESTAMP},
@@ -153,6 +160,9 @@
       <if test="record.goodsid != null" >
         goodsid = #{record.goodsid,jdbcType=VARCHAR},
       </if>
+      <if test="record.queryurl != null" >
+        queryUrl = #{record.queryurl,jdbcType=VARCHAR},
+      </if>
       <if test="record.collectime != null" >
         collectime = #{record.collectime,jdbcType=TIMESTAMP},
       </if>
@@ -166,6 +176,7 @@
     set id = #{record.id,jdbcType=VARCHAR},
       userid = #{record.userid,jdbcType=VARCHAR},
       goodsid = #{record.goodsid,jdbcType=VARCHAR},
+      queryUrl = #{record.queryurl,jdbcType=VARCHAR},
       collectime = #{record.collectime,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -180,6 +191,9 @@
       <if test="goodsid != null" >
         goodsid = #{goodsid,jdbcType=VARCHAR},
       </if>
+      <if test="queryurl != null" >
+        queryUrl = #{queryurl,jdbcType=VARCHAR},
+      </if>
       <if test="collectime != null" >
         collectime = #{collectime,jdbcType=TIMESTAMP},
       </if>
@@ -190,6 +204,7 @@
     update onlinemall_user_collect
     set userid = #{userid,jdbcType=VARCHAR},
       goodsid = #{goodsid,jdbcType=VARCHAR},
+      queryUrl = #{queryurl,jdbcType=VARCHAR},
       collectime = #{collectime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=VARCHAR}
   </update>

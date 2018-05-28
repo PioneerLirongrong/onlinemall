@@ -28,10 +28,7 @@
     <script src="../onlinemalljs/commonUtils/ShopGooDConfig.js"></script>
     <script src="../onlinemalljs/home/introduction.js"></script>
 </head>
-
 <body>
-
-
 <!--顶部导航条 -->
 <div class="am-container header">
     <ul class="message-r">
