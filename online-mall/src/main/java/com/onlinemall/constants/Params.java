@@ -61,9 +61,12 @@ public class Params {
     public static final String USER_POINT_INCR = "2";
     public static final String USER_POINT_UN_INCR = "1";
 
-    //用户订单模块  订单的状态 (0:拍下商品 1:卖家发货 2:确认收货 3:退款中 4:退款成功,5待发货,6待收货,7待评价)
+    //用户订单模块  订单的状态 1:待付款 2:代发货 3:待收货 4:待评价 5:退款
     public static final String ORDER_START_STATUS = "0";
-    public static final String ORDER_WAIT_FAHUO = "6";
+    public static final String ORDER_WAIT_FAHUO = "2";
+    public static final String ORDER_WAIT_RECEIVE = "3";
+    public static final String ORDER_WAIT_EVALUATE = "4";
+    public static final String ORDER_WAIT_WITTHDROW = "5";
     public static final String ORDER_STATUS = "orderstatus";
     public static final String ORDER_ID = "id";
 

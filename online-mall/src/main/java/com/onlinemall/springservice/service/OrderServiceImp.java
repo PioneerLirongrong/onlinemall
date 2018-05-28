@@ -22,9 +22,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import static com.onlinemall.constants.Params.ORDER_ID;
-import static com.onlinemall.constants.Params.ORDER_STATUS;
-import static com.onlinemall.constants.Params.USERID;
+import static com.onlinemall.constants.Params.*;
 
 @Service
 public class OrderServiceImp implements IOrderService {
@@ -77,10 +75,11 @@ public class OrderServiceImp implements IOrderService {
         }
         OnlinemallOrder onlinemallOrder = new RequestParamConvertBeanUtil<OnlinemallOrder>().convertBean(params, new OnlinemallOrder());
         onlinemallOrder.setId(CommonUtils.createUuid());
-        onlinemallOrder.setOrdertype("2");
+        onlinemallOrder.setOrderid(CommonUtils.createUuid());
+        onlinemallOrder.setOrdertype(ORDER_WAIT_FAHUO);
         onlinemallOrder.setOrdertime(new Date());
         onlinemallOrder.setOrderchengjiaotime(new Date());
-        onlinemallOrder.setOrderstatus(Params.ORDER_WAIT_FAHUO);
+        onlinemallOrder.setOrderstatus(ORDER_WAIT_FAHUO);
         onlinemallOrder.setGoodsoperate("1");
         onlinemallOrder.setOrdercreatetime(new Date());
         logger.info("{未完善其他信息之前的订单"+onlinemallOrder.toString()+"}");

@@ -10,6 +10,7 @@ onlineMallOrder.prototype = {
         alert(message)
     },
     initInfo: function () {
+        //1:待付款 2:代发货 3:待收货 4:待评价 5:退款
         var info = this;
         //所有订单
         info.initAllOrderInfo();
@@ -69,10 +70,10 @@ onlineMallOrder.prototype = {
         });
 
     },
+    //所有订单 0
     initAllOrderInfo: function () {
         var info = this;
         var data = {};
-//(0:拍下商品 1:卖家发货 2:确认收货 3:退款中 4:退款成功,5待发货,6待收货,7待评价)
         data['params["userid"]'] = $.cookie("onlinemall_zc_userId");
         data['params["orderstatus"]'] = "";
         $.ajax({
@@ -85,29 +86,26 @@ onlineMallOrder.prototype = {
                 if (result.code == '1') {
                     var jsonArr = result.dataList;
                     $(jsonArr).each(function () {
+                        //1:待付款 2:代发货 3:待收货 4:待评价 5:退款
                         var status = "";
                         var order_status = this.orderstatus;
                         if (0 == order_status) {
                             status = "拍下商品";
                         } else if (1 == order_status) {
                             status = "卖家发货";
+                        } else if (2 == order_status) {
+                            status = "代发货";
                         } else if (3 == order_status) {
-                            status = "退款中";
-                        } else if (4 == order_status) {
-                            status = "退款成功";
-                        } else if (5 == order_status) {
-                            status = "待发货";
-                        } else if (6 == order_status) {
                             status = "待收货";
-                        } else if (7 == order_status) {
+                        } else if (4 == order_status) {
                             status = "待评价";
                         } else {
-                            status = "确认收货";
+                            status = "退款";
                         }
                         $("#AllOrder").append(
                             "<div class=\"order-status5\">\n" +
                             "<div class=\"order-title\">\n" +
-                            "<div class=\"dd-num\">订单编号：<a href=\"javascript:;\">" + "8307296207293" +Math.round(Math.random()*10)+ "</a></div>\n" +
+                            "<div class=\"dd-num\">订单编号：<a href=\"javascript:;\">" + "8307296207293" + Math.round(Math.random() * 10) + "</a></div>\n" +
                             "<span>成交时间：" + MD5_UTILS.timestampToTime(this.orderchengjiaotime) + "</span>\n" +
                             "</div>\n" +
                             "<div class=\"order-content\">\n" +
@@ -171,11 +169,10 @@ onlineMallOrder.prototype = {
             }
         });
     },
-    //待支付的订单
+    //待支付的订单 1
     initWatiPayOrder: function () {
         var info = this;
         var data = {};
-//(0:拍下商品 1:代付款 2:确认收货 3:退款中 4:退款成功,5待发货,6待收货,7待评价)
         data['params["userid"]'] = $.cookie("onlinemall_zc_userId");
         data['params["orderstatus"]'] = "1";
         $.ajax({
@@ -185,75 +182,74 @@ onlineMallOrder.prototype = {
             dataType: "JSON",
             async: false,
             success: function (result) {
+                //1:待付款 2:代发货 3:待收货 4:待评价 5:退款
                 if (result.code == '1') {
-                    if (result.code == '1') {
-                        var jsonArr = result.dataList;
-                        $(jsonArr).each(function () {
-                            $("#waitPayOrder").append(
-                                "<div class=\"order-status5\">\n" +
-                                "<div class=\"order-title\">\n" +
-                                "<div class=\"dd-num\">订单编号：<a href=\"javascript:;\">" + "8307296207293" + Math.round(Math.random()*10) + "</a></div>\n" +
-                                "<span>成交时间：" + MD5_UTILS.timestampToTime(this.orderchengjiaotime) + "</span>\n" +
-                                "</div>\n" +
-                                "<div class=\"order-content\">\n" +
-                                "<div class=\"order-left\">\n" +
-                                "<ul class=\"item-list\">\n" +
-                                "<li class=\"td td-item\">\n" +
-                                "<div class=\"item-pic\">\n" +
-                                "<a href=\"#\" class=\"J_MakePoint\">\n" +
-                                "<img src=" + this.goodsurl + "\n" +
-                                "class=\"itempic J_ItemImg\">\n" +
-                                "</a>\n" +
-                                "</div>\n" +
-                                "<div class=\"item-info\">\n" +
-                                "<div class=\"item-basic-info\">\n" +
-                                "<a href=\"#\">\n" +
-                                "<p>" + this.goodsname + "</p>\n" +
-                                "</a>\n" +
-                                "</div>\n" +
-                                "</div>\n" +
-                                "</li>\n" +
-                                "<li class=\"td td-price\">\n" +
-                                "<div class=\"item-price\">\n" +
-                                this.goodsprice +
-                                "</div>\n" +
-                                "</li>\n" +
-                                "<li class=\"td td-number\">\n" +
-                                "<div class=\"item-number\">\n" +
-                                "<span>×</span>2\n" +
-                                "</div>\n" +
-                                "</li>\n" +
-                                "<li class=\"td td-operation\">\n" +
-                                "<div class=\"item-operation\">\n" +
-                                "\n" +
-                                "</div>\n" +
-                                "</li>\n" +
-                                "</ul>\n" +
-                                "</div>\n" +
-                                "<div class=\"order-right\">\n" +
-                                "<li class=\"td td-amount\">\n" +
-                                "<div class=\"item-amount\">\n" +
-                                "合计：" + this.ordertotalamount + "\n" +
-                                "<p>含运费：<span>" + this.orderwuliutotalamount + "</span></p>\n" +
-                                "</div>\n" +
-                                "</li>\n" +
-                                "<div class=\"move-right\">\n" +
-                                "<li class=\"td td-status\">\n" +
-                                "<div class=\"item-status\">\n" +
-                                "<p class=\"Mystatus\">等待买家付款</p>\n" +
-                                "</div>\n" +
-                                "</li>\n" +
-                                "<li class=\"td td-change\">\n" +
-                                "<a href=\"../home/pay.jsp\">\n" +
-                                "<div class=\"am-btn am-btn-danger anniu\">\n" +
-                                "一键支付\n" +
-                                "</div>\n" +
-                                "</a>\n" +
-                                "</li>\n" +
-                                "</div>"
-                            )
-                        })
-                    }
+                    var jsonArr = result.dataList;
+                    $(jsonArr).each(function () {
+                        $("#waitPayOrder").append(
+                            "<div class=\"order-status5\">\n" +
+                            "<div class=\"order-title\">\n" +
+                            "<div class=\"dd-num\">订单编号：<a href=\"javascript:;\">" + "8307296207293" + Math.round(Math.random() * 10) + "</a></div>\n" +
+                            "<span>成交时间：" + MD5_UTILS.timestampToTime(this.orderchengjiaotime) + "</span>\n" +
+                            "</div>\n" +
+                            "<div class=\"order-content\">\n" +
+                            "<div class=\"order-left\">\n" +
+                            "<ul class=\"item-list\">\n" +
+                            "<li class=\"td td-item\">\n" +
+                            "<div class=\"item-pic\">\n" +
+                            "<a href=\"#\" class=\"J_MakePoint\">\n" +
+                            "<img src=" + this.goodsurl + "\n" +
+                            "class=\"itempic J_ItemImg\">\n" +
+                            "</a>\n" +
+                            "</div>\n" +
+                            "<div class=\"item-info\">\n" +
+                            "<div class=\"item-basic-info\">\n" +
+                            "<a href=\"#\">\n" +
+                            "<p>" + this.goodsname + "</p>\n" +
+                            "</a>\n" +
+                            "</div>\n" +
+                            "</div>\n" +
+                            "</li>\n" +
+                            "<li class=\"td td-price\">\n" +
+                            "<div class=\"item-price\">\n" +
+                            this.goodsprice +
+                            "</div>\n" +
+                            "</li>\n" +
+                            "<li class=\"td td-number\">\n" +
+                            "<div class=\"item-number\">\n" +
+                            "<span>×</span>2\n" +
+                            "</div>\n" +
+                            "</li>\n" +
+                            "<li class=\"td td-operation\">\n" +
+                            "<div class=\"item-operation\">\n" +
+                            "\n" +
+                            "</div>\n" +
+                            "</li>\n" +
+                            "</ul>\n" +
+                            "</div>\n" +
+                            "<div class=\"order-right\">\n" +
+                            "<li class=\"td td-amount\">\n" +
+                            "<div class=\"item-amount\">\n" +
+                            "合计：" + this.ordertotalamount + "\n" +
+                            "<p>含运费：<span>" + this.orderwuliutotalamount + "</span></p>\n" +
+                            "</div>\n" +
+                            "</li>\n" +
+                            "<div class=\"move-right\">\n" +
+                            "<li class=\"td td-status\">\n" +
+                            "<div class=\"item-status\">\n" +
+                            "<p class=\"Mystatus\">等待买家付款</p>\n" +
+                            "</div>\n" +
+                            "</li>\n" +
+                            "<li class=\"td td-change\">\n" +
+                            "<a href=\"../home/pay.jsp\">\n" +
+                            "<div class=\"am-btn am-btn-danger anniu\">\n" +
+                            "一键支付\n" +
+                            "</div>\n" +
+                            "</a>\n" +
+                            "</li>\n" +
+                            "</div>"
+                        )
+                    })
                 }
             },
             error: function () {
@@ -261,13 +257,12 @@ onlineMallOrder.prototype = {
             }
         });
     },
-    //待发货
+    //待发货 2
     initWaitOutOrder: function () {
         var info = this;
         var data = {};
-//(0:拍下商品 1:代付款 2:确认收货 3:退款中 4:退款成功,5待发货,6待收货,7待评价)
         data['params["userid"]'] = $.cookie("onlinemall_zc_userId");
-        data['params["orderstatus"]'] = "5";
+        data['params["orderstatus"]'] = "2";
         $.ajax({
             type: "POST",
             url: this.config.updateInfoUrl,
@@ -275,6 +270,7 @@ onlineMallOrder.prototype = {
             dataType: "JSON",
             async: false,
             success: function (result) {
+                //1:待付款 2:代发货 3:待收货 4:待评价 5:退款
                 if (result.code == '1') {
                     if (result.code == '1') {
                         var jsonArr = result.dataList;
@@ -282,7 +278,7 @@ onlineMallOrder.prototype = {
                             $("#WaitOutOrder").append(
                                 "<div class=\"order-status5\">\n" +
                                 "<div class=\"order-title\">\n" +
-                                "<div class=\"dd-num\">订单编号：<a href=\"javascript:;\">" + "8307296207293" + Math.round(Math.random()*10) + "</a></div>\n" +
+                                "<div class=\"dd-num\">订单编号：<a href=\"javascript:;\">" + "8307296207293" + Math.round(Math.random() * 10) + "</a></div>\n" +
                                 "<span>成交时间：" + MD5_UTILS.timestampToTime(this.orderchengjiaotime) + "</span>\n" +
                                 "</div>\n" +
                                 "<div class=\"order-content\">\n" +
@@ -350,13 +346,12 @@ onlineMallOrder.prototype = {
         });
 
     },
-    //待收货
+    //待收货 3
     initWaitInOrder: function () {
         var info = this;
         var data = {};
-//(0:拍下商品 1:代付款 2:确认收货 3:退款中 4:退款成功,5待发货,6待收货,7待评价)
         data['params["userid"]'] = $.cookie("onlinemall_zc_userId");
-        data['params["orderstatus"]'] = "6";
+        data['params["orderstatus"]'] = "3";
         $.ajax({
             type: "POST",
             url: this.config.updateInfoUrl,
@@ -364,15 +359,16 @@ onlineMallOrder.prototype = {
             dataType: "JSON",
             async: false,
             success: function (result) {
+                //1:待付款 2:代发货 3:待收货 4:待评价 5:退款
                 if (result.code == '1') {
                     if (result.code == '1') {
                         var jsonArr = result.dataList;
-                        var i=0;
+                        var i = 0;
                         $(jsonArr).each(function () {
                             $("#WaitInOrder").append(
                                 "<div class=\"order-status5\">\n" +
                                 "<div class=\"order-title\">\n" +
-                                "<div class=\"dd-num\">订单编号：<a href=\"javascript:;\">" + "8307296207293" + Math.round(Math.random()*10) + "</a></div>\n" +
+                                "<div class=\"dd-num\">订单编号：<a href=\"javascript:;\">" + "8307296207293" + Math.round(Math.random() * 10) + "</a></div>\n" +
                                 "<span>成交时间：" + MD5_UTILS.timestampToTime(this.orderchengjiaotime) + "</span>\n" +
                                 "</div>\n" +
                                 "<div class=\"order-content\">\n" +
@@ -425,7 +421,7 @@ onlineMallOrder.prototype = {
                                 "</div>\n" +
                                 "</li>\n" +
                                 "<li class=\"td td-change\">\n" +
-                                "<div id=\'divs"+i+"\' onclick='receive($(this).attr(\"id\"))' class=\"am-btn am-btn-danger anniu\">\n" +
+                                "<div id=\'divs" + i + "\' onclick='receive($(this).attr(\"id\"))' class=\"am-btn am-btn-danger anniu\">\n" +
                                 "确认收货\n" +
                                 "</div>\n" +
                                 "</li>\n" +
@@ -441,13 +437,12 @@ onlineMallOrder.prototype = {
         });
 
     },
-    //待评价
+    //待评价 4
     initWaitEvaluateOrder: function () {
         var info = this;
         var data = {};
-//(0:拍下商品 1:代付款 2:确认收货 3:退款中 4:退款成功,5待发货,6待收货,7待评价)
         data['params["userid"]'] = $.cookie("onlinemall_zc_userId");
-        data['params["orderstatus"]'] = "7";
+        data['params["orderstatus"]'] = "4";
         $.ajax({
             type: "POST",
             url: this.config.updateInfoUrl,
@@ -455,6 +450,7 @@ onlineMallOrder.prototype = {
             dataType: "JSON",
             async: false,
             success: function (result) {
+                //1:待付款 2:代发货 3:待收货 4:待评价 5:退款
                 if (result.code == '1') {
                     if (result.code == '1') {
                         var jsonArr = result.dataList;
@@ -462,7 +458,7 @@ onlineMallOrder.prototype = {
                             $("#WaitEvaluateOrder").append(
                                 "<div class=\"order-status5\">\n" +
                                 "<div class=\"order-title\">\n" +
-                                "<div class=\"dd-num\">订单编号：<a href=\"javascript:;\">" + "8307296207293" + Math.round(Math.random()*10) + "</a></div>\n" +
+                                "<div class=\"dd-num\">订单编号：<a href=\"javascript:;\">" + "8307296207293" + Math.round(Math.random() * 10) + "</a></div>\n" +
                                 "<span>成交时间：" + MD5_UTILS.timestampToTime(this.orderchengjiaotime) + "</span>\n" +
                                 "</div>\n" +
                                 "<div class=\"order-content\">\n" +
