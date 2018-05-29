@@ -81,7 +81,7 @@ public class OrderServiceImp implements IOrderService {
         onlinemallOrder.setOrderchengjiaotime(new Date());
         onlinemallOrder.setOrderstatus(ORDER_WAIT_FAHUO);
         onlinemallOrder.setGoodsoperate("1");
-        onlinemallOrder.setGoodscount(1);
+        onlinemallOrder.setGoodscount(Integer.valueOf((String) params.getParams().get("goodscount")));
         onlinemallOrder.setOrdercreatetime(new Date());
         logger.info("{未完善其他信息之前的订单"+onlinemallOrder.toString()+"}");
         createOnlineMallShopCar(url,goodsid,onlinemallOrder);
@@ -101,7 +101,7 @@ public class OrderServiceImp implements IOrderService {
         if(StringUtils.isBlank(url) || StringUtils.isBlank(goodsid)){
             return;
         }
-        if (url.contains("listCollect")) {
+        if (url.contains("listClothes")) {
             OnlinemallGoodsClothes onlinemallGoodsClothes = onlinemallGoodsClothesMapper.selectByPrimaryKey(goodsid);
             onlinemallOrder.setShopid(onlinemallGoodsClothes.getShop());
             onlinemallOrder.setGoodsurl(onlinemallGoodsClothes.getUrl());

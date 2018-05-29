@@ -94,7 +94,7 @@ public class ShopCarServiceImp implements IShopCarService {
     private void createOnlineMallShopCar(RequestParams params, OnlinemallShopcar onlinemallShopcar) {
         String url = (String) params.getParams().get("queryurl");
         String goodsid = (String) params.getParams().get("goodsid");
-        if (url.contains("listCollect")) {
+        if (url.contains("listClothes")) {
             OnlinemallGoodsClothes onlinemallGoodsClothes = onlinemallGoodsClothesMapper.selectByPrimaryKey(goodsid);
             onlinemallShopcar.setGoodsname(onlinemallGoodsClothes.getGoodsname());
             onlinemallShopcar.setOriginalprice(onlinemallGoodsClothes.getOriginalprice());

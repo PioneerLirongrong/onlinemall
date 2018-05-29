@@ -136,25 +136,25 @@
 <div class="shopMainbg">
     <div class="am-g am-g-fixed flood method3 ">
         <ul class="am-thumbnails " id="home">
-            <li>
-                <div class="list ">
-                    <a href="../home/introduction.jsp ">
-                        <img src="../images/01.jpg "/>
-                        <div class="pro-title ">萨拉米 1+1小鸡腿</div>
-                        <span class="e-price ">￥29.90</span>
-                    </a>
-                </div>
-            </li>
-            <li>
-                <div class="list ">
-                    <a href="../home/introduction.jsp ">
-                        <img src="../images/cp2.jpg "/>
-                        <div class="pro-title ">ZEK 原味海苔</div>
-                        <span class="e-price ">￥8.90</span>
-                    </a>
-                    <p name="p" style="display: none">666666</p>
-                </div>
-            </li>
+            <%--<li>--%>
+                <%--<div class="list ">--%>
+                    <%--<a href="../home/introduction.jsp ">--%>
+                        <%--<img src="../images/01.jpg "/>--%>
+                        <%--<div class="pro-title ">萨拉米 1+1小鸡腿</div>--%>
+                        <%--<span class="e-price ">￥29.90</span>--%>
+                    <%--</a>--%>
+                <%--</div>--%>
+            <%--</li>--%>
+            <%--<li>--%>
+                <%--<div class="list ">--%>
+                    <%--<a href="../home/introduction.jsp ">--%>
+                        <%--<img src="../images/cp2.jpg "/>--%>
+                        <%--<div class="pro-title ">ZEK 原味海苔</div>--%>
+                        <%--<span class="e-price ">￥8.90</span>--%>
+                    <%--</a>--%>
+                    <%--<p name="p" style="display: none">666666</p>--%>
+                <%--</div>--%>
+            <%--</li>--%>
         </ul>
     </div>
     <div class="footer ">

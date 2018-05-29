@@ -89,7 +89,7 @@ onlineMallPay.prototype = {
     init_goods: function (param) {
         var info = this;
         var data = {}
-        var queryUrl = info.config.initDataUrl;
+        var queryUrl = info.pageMap["queryUrl"];
         console.log(queryUrl + "=====")
         data['params["id"]'] = param;
         $.ajax({

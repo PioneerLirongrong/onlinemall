@@ -98,7 +98,7 @@ public class UserFootSeriviceImp implements IUserFootService {
 
 
     private void createOnlineMallShopCar(String url,String goodId, PageCollectFootBean collect) {
-        if (url.contains("listCollect")) {
+        if (url.contains("listClothes")) {
             OnlinemallGoodsClothes onlinemallGoodsClothes = onlinemallGoodsClothesMapper.selectByPrimaryKey(goodId);
             collect.setOriginalPrice(onlinemallGoodsClothes.getOriginalprice()+"");
             collect.setDiscountPrice(onlinemallGoodsClothes.getDiscouuntprice()+"");

@@ -19,6 +19,7 @@
     <script src="../onlinemalljs/commonUtils/CommonUtil.js"></script>
     <script src="../onlinemalljs/commonUtils/CommonUserInfo.js"></script>
     <script src="../onlinemalljs/commonUtils/ShopGooDConfig.js"></script>
+    <script src="../onlinemalljs/person/address.js"></script>
     <script src="../onlinemalljs/home/pay.js"></script>
 </head>
 <body>

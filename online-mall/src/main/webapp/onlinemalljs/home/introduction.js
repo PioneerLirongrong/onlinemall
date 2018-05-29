@@ -165,7 +165,7 @@ onlineMallIntroduction.prototype = {
         data['params["queryurl"]'] = queryUrl;
         $.ajax({
             type: "POST",
-            url: this.config.addFootUrl,
+            url: info.config.addFootUrl,
             data: data,
             dataType: "JSON",
             async: false,
@@ -221,7 +221,7 @@ onlineMallIntroduction.prototype = {
         console.log(data['params["goodsid"]'])
         $.ajax({
             type: "POST",
-            url: this.config.addcollectUrl,
+            url: this.pageMap["queryUrl"],
             data: data,
             dataType: "JSON",
             async: false,
@@ -248,7 +248,7 @@ onlineMallIntroduction.prototype = {
         console.log(data['params["goodsid"]'])
         $.ajax({
             type: "POST",
-            url: this.config.addshopCarUrl,
+            url: this.pageMap["queryUrl"],
             data: data,
             dataType: "JSON",
             async: false,

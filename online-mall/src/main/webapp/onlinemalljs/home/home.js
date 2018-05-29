@@ -6,7 +6,7 @@ onlineMallHome.prototype = {
     },
     config: {
         homeFlag:{},
-        initDataUrl:"/shop/listCollect.do"
+        initDataUrl:"/shop/listClothes.do"
     },
     exception: function (message) {
         alert(message)

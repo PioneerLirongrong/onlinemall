@@ -18,7 +18,7 @@ onlineMallSearch.prototype = {
         var parmValue = MD5_UTILS.getMap();
         console.log(parmValue["search"])
         if (typeof(parmValue["search"]) == "undefined") {
-                param = "羽绒服";
+            param = "羽绒服";
         } else {
             param = decodeURI(parmValue["search"]);
         }
@@ -31,8 +31,8 @@ onlineMallSearch.prototype = {
     init_goods: function (param) {
         var info = this;
         var data = {}
-        var queryUrl = GOOD_TYPE_QUERY_URL.Query(param)+".do";
-        console.log(queryUrl+"=====")
+        var queryUrl = GOOD_TYPE_QUERY_URL.Query(param) + ".do";
+        console.log(queryUrl + "=====")
         data['params["goodsname"]'] = param;
         $.ajax({
             type: "POST",
@@ -42,25 +42,22 @@ onlineMallSearch.prototype = {
             async: false,
             success: function (result) {
                 if (result.code == '1') {
-                    if (result.code == '1') {
-                        var jsonArr = result.dataList;
-                        console.log(jsonArr)
-                        $(jsonArr).each(function () {
-                            $(jsonArr).each(function () {
-                                $("#searchGoods").append(
-                                    "<li>\n" +
-                                    "<div class=\"list \">\n" +
-                                    "<a href=\"../home/introduction.jsp?id="+this.id+"&queryUrl="+queryUrl+"\">\n" +
-                                    "<img src=\"../images/cp.jpg \"/>\n" +
-                                    "<div class=\"pro-title \">"+this.goodsname+"</div>\n" +
-                                    "<span class=\"e-price \">￥"+this.originalprice+"</span>\n" +
-                                    "</a>\n" +
-                                    "</div>\n" +
-                                    "</li>"
-                                )
-                            })
-                        })
-                    }
+                    var jsonArr = result.dataList;
+                    console.log(jsonArr)
+                    $("#searchGoods").empty()
+                    $(jsonArr).each(function () {
+                        $("#searchGoods").append(
+                            "<li>\n" +
+                            "<div class=\"list \">\n" +
+                            "<a href=\"../home/introduction.jsp?id=" + this.id + "&queryUrl=" + queryUrl + "\">\n" +
+                            "<img src=\" http://127.0.0.1:8082/" + this.url + " \"/>\n" +
+                            "<div class=\"pro-title \">" + this.goodsname + "</div>\n" +
+                            "<span class=\"e-price \">￥" + this.originalprice + "</span>\n" +
+                            "</a>\n" +
+                            "</div>\n" +
+                            "</li>"
+                        )
+                    })
                 }
             },
             error: function () {
@@ -78,17 +75,17 @@ onlineMallSearch.prototype = {
         var info = this;
         var data = {}
         var param = $("#searchInput").val();
-        if(null == param || "" == param || typeof(param) == "undefined"){
+        if (null == param || "" == param || typeof(param) == "undefined") {
             alert("未填写查抄信息,默认查找")
             data['params["goodsname"]'] = "羽绒服";
-        }else {
+        } else {
             data['params["goodsname"]'] = param;
         }
-        var queryUrl = GOOD_TYPE_QUERY_URL.Query(param)+".do";
-        if(queryUrl == "/shop/listCollect"){
+        var queryUrl = GOOD_TYPE_QUERY_URL.Query(param) + ".do";
+        if (queryUrl == "/shop/listCollect") {
             alert("未匹配到改了类型的数据，查询默认数据")
         }
-        console.log(queryUrl+"=====")
+        console.log(queryUrl + "=====")
         $.ajax({
             type: "POST",
             url: queryUrl,
@@ -97,24 +94,22 @@ onlineMallSearch.prototype = {
             async: false,
             success: function (result) {
                 if (result.code == '1') {
-                    if (result.code == '1') {
-                        var jsonArr = result.dataList;
-                        console.log(jsonArr)
-                        $("#searchGoods").empty();
-                        $(jsonArr).each(function () {
-                            $("#searchGoods").append(
-                                "<li>\n" +
-                                "<div class=\"list \">\n" +
-                                "<a href=\"../home/introduction.jsp?id="+this.id+"&queryUrl="+queryUrl+"\">\n" +
-                                "<img src=\"../images/cp.jpg \"/>\n" +
-                                "<div class=\"pro-title \">"+this.goodsname+"</div>\n" +
-                                "<span class=\"e-price \">￥"+this.originalprice+"</span>\n" +
-                                "</a>\n" +
-                                "</div>\n" +
-                                "</li>"
-                            )
-                        })
-                    }
+                    var jsonArr = result.dataList;
+                    console.log(jsonArr)
+                    $("#searchGoods").empty();
+                    $(jsonArr).each(function () {
+                        $("#searchGoods").append(
+                            "<li>\n" +
+                            "<div class=\"list \">\n" +
+                            "<a href=\"../home/introduction.jsp?id=" + this.id + "&queryUrl=" + queryUrl + "\">\n" +
+                            "<img src=\" http://127.0.0.1:8082/" + this.url + " \"/>\n" +
+                            "<div class=\"pro-title \">" + this.goodsname + "</div>\n" +
+                            "<span class=\"e-price \">￥" + this.originalprice + "</span>\n" +
+                            "</a>\n" +
+                            "</div>\n" +
+                            "</li>"
+                        )
+                    })
                 }
             },
             error: function () {
