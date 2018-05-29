@@ -43,8 +43,6 @@ public class CollectServiceImp implements ICollectionService {
     @Autowired
     private OnlinemallGoodsDailyNecessitiesMapper onlinemallGoodsDailyNecessitiesMapper;
 
-    @Autowired
-    protected OnlinemallGoodsCookedFoodMapper onlinemallGoodsCookedFoodMapper;
 
     @Autowired
     private OnlinemallGoodsFreshsMapper onlinemallGoodsFreshsMapper;

@@ -42,8 +42,6 @@ public class UserFootSeriviceImp implements IUserFootService {
     @Autowired
     private OnlinemallGoodsDailyNecessitiesMapper onlinemallGoodsDailyNecessitiesMapper;
 
-    @Autowired
-    protected OnlinemallGoodsCookedFoodMapper onlinemallGoodsCookedFoodMapper;
 
     @Autowired
     private OnlinemallGoodsFreshsMapper onlinemallGoodsFreshsMapper;
