@@ -182,6 +182,7 @@
             success: function (result) {
                 if (result.code == '1') {
                     alert("操作成功")
+                    window.location.href="../home/shopcart.jsp";
                 }else {
                     info.execption("操作失败")
                 }
@@ -218,6 +219,7 @@
             success: function (result) {
                 if (result.code == '1') {
                     alert("操作成功")
+                    window.location.href="../home/shopcart.jsp";
                 }else {
                     info.execption("操作失败")
                 }
