@@ -44,7 +44,7 @@ onlineMallShopCar.prototype = {
                                 "<div class=\"item-pic\">\n" +
                                 "<a href=\"introduction.jsp?id="+this.goodsid+"&queryUrl="+this.queryurl+"\" target=\"_blank\" data-title=\"\"\n" +
                                 "class=\"J_MakePoint\" data-point=\"tbcart.8.12\">\n" +
-                                "<img src=\""+this.url+"\" class=\"itempic J_ItemImg\"></a>\n" +
+                                "<img src=\"http://127.0.0.1:8082/"+this.url+"\" class=\"itempic J_ItemImg\"></a>\n" +
                                 "</div>\n" +
                                 "</div>\n" +
                                 "</li>\n" +

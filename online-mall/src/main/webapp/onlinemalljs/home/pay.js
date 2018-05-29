@@ -109,7 +109,7 @@ onlineMallPay.prototype = {
                                 "<li class=\"td td-item\">\n" +
                                 "<div class=\"item-pic\">\n" +
                                 "<a href=\"javascript:void(0)\" class=\"J_MakePoint\">\n" +
-                                "<img src=\""+this.url+"\"\n" +
+                                "<img src=\"http://127.0.0.1:8082/"+this.url+"\"\n" +
                                 "class=\"itempic J_ItemImg\"></a>\n" +
                                 "</div>\n" +
                                 "<div class=\"item-info\">\n" +

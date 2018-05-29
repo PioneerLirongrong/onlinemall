@@ -39,7 +39,7 @@ onlineMallFoot.prototype = {
                             "<div class=\"goods-pic\">\n" +
                             "<div class=\"goods-pic-box\">\n" +
                             "<p class=\"goods-pic-link\" target=\"_blank\" style=\"cursor: pointer\">\n" +
-                            "<img src=\""+this.url+"\" class=\"goods-img\"></p>\n" +
+                            "<img src=\"http://127.0.0.1:8082/"+this.url+"\" class=\"goods-img\"></p>\n" +
                             "</div>\n" +
                             "</div>\n" +
                             "\n" +

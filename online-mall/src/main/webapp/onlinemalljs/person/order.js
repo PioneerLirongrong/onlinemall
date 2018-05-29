@@ -114,7 +114,7 @@ onlineMallOrder.prototype = {
                             "<li class=\"td td-item\">\n" +
                             "<div class=\"item-pic\">\n" +
                             "<a href=\"#\" class=\"J_MakePoint\">\n" +
-                            "<img src=" + this.goodsurl + "\n" +
+                            "<img src=http://127.0.0.1:8082/" + this.goodsurl + "\n" +
                             "class=\"itempic J_ItemImg\">\n" +
                             "</a>\n" +
                             "</div>\n" +
@@ -133,7 +133,7 @@ onlineMallOrder.prototype = {
                             "</li>\n" +
                             "<li class=\"td td-number\">\n" +
                             "<div class=\"item-number\">\n" +
-                            "<span>×</span>2\n" +
+                            "<span>×</span>"+this.goodscount+"\n" +
                             "</div>\n" +
                             "</li>\n" +
                             "<li class=\"td td-operation\">\n" +
@@ -198,7 +198,7 @@ onlineMallOrder.prototype = {
                             "<li class=\"td td-item\">\n" +
                             "<div class=\"item-pic\">\n" +
                             "<a href=\"#\" class=\"J_MakePoint\">\n" +
-                            "<img src=" + this.goodsurl + "\n" +
+                            "<img src=http://127.0.0.1:8082/" + this.goodsurl + "\n" +
                             "class=\"itempic J_ItemImg\">\n" +
                             "</a>\n" +
                             "</div>\n" +
@@ -217,7 +217,7 @@ onlineMallOrder.prototype = {
                             "</li>\n" +
                             "<li class=\"td td-number\">\n" +
                             "<div class=\"item-number\">\n" +
-                            "<span>×</span>2\n" +
+                            "<span>×</span>"+this.goodscount+"\n" +
                             "</div>\n" +
                             "</li>\n" +
                             "<li class=\"td td-operation\">\n" +
@@ -287,7 +287,7 @@ onlineMallOrder.prototype = {
                                 "<li class=\"td td-item\">\n" +
                                 "<div class=\"item-pic\">\n" +
                                 "<a href=\"#\" class=\"J_MakePoint\">\n" +
-                                "<img src=" + this.goodsurl + "\n" +
+                                "<img src=http://127.0.0.1:8082/" + this.goodsurl + "\n" +
                                 "class=\"itempic J_ItemImg\">\n" +
                                 "</a>\n" +
                                 "</div>\n" +
@@ -306,7 +306,7 @@ onlineMallOrder.prototype = {
                                 "</li>\n" +
                                 "<li class=\"td td-number\">\n" +
                                 "<div class=\"item-number\">\n" +
-                                "<span>×</span>2\n" +
+                                "<span>×</span>"+this.goodscount+"\n" +
                                 "</div>\n" +
                                 "</li>\n" +
                                 "<li class=\"td td-operation\">\n" +
@@ -377,7 +377,7 @@ onlineMallOrder.prototype = {
                                 "<li class=\"td td-item\">\n" +
                                 "<div class=\"item-pic\">\n" +
                                 "<a href=\"#\" class=\"J_MakePoint\">\n" +
-                                "<img src=" + this.goodsurl + "\n" +
+                                "<img src=http://127.0.0.1:8082/" + this.goodsurl + "\n" +
                                 "class=\"itempic J_ItemImg\">\n" +
                                 "</a>\n" +
                                 "</div>\n" +
@@ -396,7 +396,7 @@ onlineMallOrder.prototype = {
                                 "</li>\n" +
                                 "<li class=\"td td-number\">\n" +
                                 "<div class=\"item-number\">\n" +
-                                "<span>×</span>2\n" +
+                                "<span>×</span>"+this.goodscount+"\n" +
                                 "</div>\n" +
                                 "</li>\n" +
                                 "<li class=\"td td-operation\">\n" +
@@ -467,7 +467,7 @@ onlineMallOrder.prototype = {
                                 "<li class=\"td td-item\">\n" +
                                 "<div class=\"item-pic\">\n" +
                                 "<a href=\"#\" class=\"J_MakePoint\">\n" +
-                                "<img src=" + this.goodsurl + "\n" +
+                                "<img src=http://127.0.0.1:8082/" + this.goodsurl + "\n" +
                                 "class=\"itempic J_ItemImg\">\n" +
                                 "</a>\n" +
                                 "</div>\n" +
@@ -486,7 +486,7 @@ onlineMallOrder.prototype = {
                                 "</li>\n" +
                                 "<li class=\"td td-number\">\n" +
                                 "<div class=\"item-number\">\n" +
-                                "<span>×</span>2\n" +
+                                "<span>×</span>"+this.goodscount+"\n" +
                                 "</div>\n" +
                                 "</li>\n" +
                                 "<li class=\"td td-operation\">\n" +

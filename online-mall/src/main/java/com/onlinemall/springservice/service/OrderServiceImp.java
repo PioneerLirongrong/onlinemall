@@ -81,6 +81,7 @@ public class OrderServiceImp implements IOrderService {
         onlinemallOrder.setOrderchengjiaotime(new Date());
         onlinemallOrder.setOrderstatus(ORDER_WAIT_FAHUO);
         onlinemallOrder.setGoodsoperate("1");
+        onlinemallOrder.setGoodscount(1);
         onlinemallOrder.setOrdercreatetime(new Date());
         logger.info("{未完善其他信息之前的订单"+onlinemallOrder.toString()+"}");
         createOnlineMallShopCar(url,goodsid,onlinemallOrder);

@@ -35,11 +35,11 @@ onlineMallCollection.prototype = {
                             "<div class=\"s-item\">\n" +
                             "<div class=\"s-pic\">\n" +
                             "<a href=\"javascript:void(0)\" class=\"s-pic-link\">\n" +
-                            "<img src=\""+this.url+"\" class=\"s-pic-img s-guess-item-img\">\n" +
+                            "<img src=\"http://127.0.0.1:8082/"+this.url+"\" class=\"s-pic-img s-guess-item-img\">\n" +
                             "</a>\n" +
                             "</div>\n" +
                             "<div class=\"s-info\">\n" +
-                            "<div class=\"s-title\"><a href=\"javascript:void(0)\" title=\""+this.goodname+"\">"+this.goodname+"</a></div>\n"+
+                            "<div class=\"s-title\"><a href=\"javascript:void(0)\" title=\""+this.goodName+"\">"+this.goodName+"</a></div>\n"+
                             "<div class=\"s-title\">\n" +
                             "</div>\n" +
                             "<div class=\"s-price-box\">\n" +

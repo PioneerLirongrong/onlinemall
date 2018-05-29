@@ -68,7 +68,7 @@ onlineMallIntroduction.prototype = {
                                 "\n" +
                                 "<div class=\"box\">\n" +
                                 "<div class=\"tb-booth tb-pic tb-s310\">\n" +
-                                "<a href=\"" + this.url + "\"><img src=\"" + this.url + "\" alt=\"细节展示放大镜特效\" rel=\"../images/01.jpg\"\n" +
+                                "<a href=\"http://127.0.0.1:8082/" + this.url + "\"><img src=\"http://127.0.0.1:8082/" + this.url + "\" alt=\"细节展示放大镜特效\" rel=\"../images/01.jpg\"\n" +
                                 "class=\"jqzoom\"/></a>\n" +
                                 "</div>\n" +
                                 "</div>\n" +
