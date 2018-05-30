@@ -73,56 +73,56 @@
             <div class="bundle  bundle-last ">
                 <div class="clear"></div>
                 <div class="bundle-main" id="shopCarDiv">
-                    <ul class="item-content clearfix">
-                        <li class="td td-item">
-                            <div class="item-pic">
-                                <a href="" target="_blank" data-title="美康粉黛醉美东方唇膏口红正品 持久保湿滋润防水不掉色护唇彩妆"
-                                   class="J_MakePoint" data-point="tbcart.8.12">
-                                    <img src="../images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg"></a>
-                            </div>
-                            <div class="item-info">
-                                <div class="item-basic-info">
-                                    <a href="#" target="_blank" title="美康粉黛醉美唇膏 持久保湿滋润防水不掉色"
-                                       class="item-title J_MakePoint" data-point="tbcart.8.11">美康粉黛醉美唇膏 持久保湿滋润防水不掉色</a>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="td td-info">
-                            <div class="item-props item-props-can">
-                            </div>
-                        </li>
-                        <li class="td td-price">
-                            <div class="item-price price-promo-promo">
-                                <div class="price-content">
-                                    <div class="price-line">
-                                        <input id="price" type="text" disabled="disabled" class="J_Price price-now" tabindex="0" value="39.00">
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="td td-amount">
-                            <div class="amount-wrapper ">
-                                <div class="item-amount ">
-                                    <div class="sl">
-                                        <input class=" am-btn" name="" type="button" value="-" onclick="reduce(this.goodsid,this.queryurl)"/>
-                                        <input id="count" class="text_box" name="" type="text" value="3" style="width:30px;"/>
-                                        <input class=" am-btn" name="" type="button" value="+" onclick="addCount(this.goodsid,this.queryurl)"/>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="td td-sum">
-                            <div class="td-inner">
-                                <input id="emtotal1" type="text" tabindex="0" disabled="disabled" class="J_ItemSum number" value="117.00">
-                            </div>
-                        </li>
-                        <li class="td td-op">
-                            <div class="td-inner">
-                                <a onclick="deleteShopCar(this.id)" href="javascript:void(0);" class="delete">
-                                    删除</a>
-                            </div>
-                        </li>
-                    </ul>
+                    <%--<ul class="item-content clearfix">--%>
+                        <%--<li class="td td-item">--%>
+                            <%--<div class="item-pic">--%>
+                                <%--<a href="" target="_blank" data-title="美康粉黛醉美东方唇膏口红正品 持久保湿滋润防水不掉色护唇彩妆"--%>
+                                   <%--class="J_MakePoint" data-point="tbcart.8.12">--%>
+                                    <%--<img src="../images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg"></a>--%>
+                            <%--</div>--%>
+                            <%--<div class="item-info">--%>
+                                <%--<div class="item-basic-info">--%>
+                                    <%--<a href="#" target="_blank" title="美康粉黛醉美唇膏 持久保湿滋润防水不掉色"--%>
+                                       <%--class="item-title J_MakePoint" data-point="tbcart.8.11">美康粉黛醉美唇膏 持久保湿滋润防水不掉色</a>--%>
+                                <%--</div>--%>
+                            <%--</div>--%>
+                        <%--</li>--%>
+                        <%--<li class="td td-info">--%>
+                            <%--<div class="item-props item-props-can">--%>
+                            <%--</div>--%>
+                        <%--</li>--%>
+                        <%--<li class="td td-price">--%>
+                            <%--<div class="item-price price-promo-promo">--%>
+                                <%--<div class="price-content">--%>
+                                    <%--<div class="price-line">--%>
+                                        <%--<input id="price" type="text" disabled="disabled" class="J_Price price-now" tabindex="0" value="39.00">--%>
+                                    <%--</div>--%>
+                                <%--</div>--%>
+                            <%--</div>--%>
+                        <%--</li>--%>
+                        <%--<li class="td td-amount">--%>
+                            <%--<div class="amount-wrapper ">--%>
+                                <%--<div class="item-amount ">--%>
+                                    <%--<div class="sl">--%>
+                                        <%--<input class=" am-btn" name="" type="button" value="-" onclick="reduce(this.goodsid,this.queryurl)"/>--%>
+                                        <%--<input id="count" class="text_box" name="" type="text" value="3" style="width:30px;"/>--%>
+                                        <%--<input class=" am-btn" name="" type="button" value="+" onclick="addCount(this.goodsid,this.queryurl)"/>--%>
+                                    <%--</div>--%>
+                                <%--</div>--%>
+                            <%--</div>--%>
+                        <%--</li>--%>
+                        <%--<li class="td td-sum">--%>
+                            <%--<div class="td-inner">--%>
+                                <%--<input id="emtotal1" type="text" tabindex="0" disabled="disabled" class="J_ItemSum number" value="117.00">--%>
+                            <%--</div>--%>
+                        <%--</li>--%>
+                        <%--<li class="td td-op">--%>
+                            <%--<div class="td-inner">--%>
+                                <%--<a onclick="deleteShopCar(this.id)" href="javascript:void(0);" class="delete">--%>
+                                    <%--删除</a>--%>
+                            <%--</div>--%>
+                        <%--</li>--%>
+                    <%--</ul>--%>
                 </div>
             </div>
         </tr>
@@ -173,6 +173,7 @@
         data['params["userid"]'] = $.cookie("onlinemall_zc_userId");
         data['params["goodsid"]'] = goodsid;
         data['params["queryurl"]'] = queryUrl;
+        data['params["flag"]'] = "add";
         $.ajax({
             type: "POST",
             url: "/onlinemallShopCar/addShopCarItem.do",
@@ -199,7 +200,8 @@
         var orig = $("#count").val();
         var news = parseInt(orig) -arg;
         if(news <= 0){
-            news = 1;
+            alert("无法修改,可以选择删除该商品!!!!")
+            return;
         }
         $("#count").attr("value",news)
         var price = $("#price").val();
@@ -209,6 +211,7 @@
         data['params["userid"]'] = $.cookie("onlinemall_zc_userId");
         data['params["goodsid"]'] = goodsid;
         data['params["queryurl"]'] = queryUrl;
+        data['params["flag"]'] = "reduce";
         console.log(data)
         $.ajax({
             type: "POST",

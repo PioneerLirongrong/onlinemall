@@ -18,7 +18,7 @@ onlineMallSearch.prototype = {
         var parmValue = MD5_UTILS.getMap();
         console.log(parmValue["search"])
         if (typeof(parmValue["search"]) == "undefined") {
-            param = "羽绒服";
+            param = "连衣裙";
         } else {
             param = decodeURI(parmValue["search"]);
         }
@@ -33,6 +33,9 @@ onlineMallSearch.prototype = {
         var data = {}
         var queryUrl = GOOD_TYPE_QUERY_URL.Query(param) + ".do";
         console.log(queryUrl + "=====")
+        if(queryUrl == "/shop/listClothes.do"){
+            param = "连衣裙"
+        }
         data['params["goodsname"]'] = param;
         $.ajax({
             type: "POST",
@@ -77,12 +80,12 @@ onlineMallSearch.prototype = {
         var param = $("#searchInput").val();
         if (null == param || "" == param || typeof(param) == "undefined") {
             alert("未填写查抄信息,默认查找")
-            data['params["goodsname"]'] = "羽绒服";
+            data['params["goodsname"]'] = "连衣裙";
         } else {
             data['params["goodsname"]'] = param;
         }
         var queryUrl = GOOD_TYPE_QUERY_URL.Query(param) + ".do";
-        if (queryUrl == "/shop/listCollect") {
+        if (queryUrl == "/shop/listClothes") {
             alert("未匹配到改了类型的数据，查询默认数据")
         }
         console.log(queryUrl + "=====")

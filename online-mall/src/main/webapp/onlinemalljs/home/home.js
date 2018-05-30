@@ -62,7 +62,7 @@ onlineMallHome.prototype = {
         var param = "";
         var searchContent = $("#searchInput").val();
         if(null == searchContent || "" == searchContent || !searchContent){
-            param = "羽绒服";
+            param = "连衣裙";
         }else {
             param = searchContent;
         }

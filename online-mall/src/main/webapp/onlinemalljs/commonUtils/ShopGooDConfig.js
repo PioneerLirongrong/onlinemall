@@ -47,7 +47,7 @@ var GOOD_TYPE_QUERY_URL = {
         var arr5 = good5.split(" ");
         for(var item in arr5) {
             if(arr5[item].indexOf(name) > -1){
-                result =  stationerys[arr5]
+                result =  stationerys[good5]
                 return result;
             }
         }

@@ -56,10 +56,16 @@ public class ShopCarServiceImp implements IShopCarService {
             OnlinemallShopcarExample onlinemallShopcarExample = new OnlinemallShopcarExample();
             OnlinemallShopcarExample.Criteria criteria = onlinemallShopcarExample.createCriteria();
             criteria.andGoodsidEqualTo(goodsid);
+            criteria.andUseridEqualTo((String) params.getParams().get(USERID));
+            String flag = (String) params.getParams().get("flag");
+            int value = 1;
+            if(!"add".equals(flag)){
+                value = -1;
+            }
             List<OnlinemallShopcar> shopcars = onlinemallShopcarMapper.selectByExample(onlinemallShopcarExample);
             if (shopcars.size() != 0) {
                 OnlinemallShopcar shopcar = shopcars.get(0);
-                int count = Integer.valueOf(shopcar.getGoodcount()) + 1;
+                int count = Integer.valueOf(shopcar.getGoodcount()) + value;
                 shopcar.setGoodcount(count + "");
                 int i = onlinemallShopcarMapper.updateByExample(shopcar,onlinemallShopcarExample);
                 logger.info("{跟新后台的购物车该项为 "+shopcar.toString()+"}");
@@ -109,6 +115,7 @@ public class ShopCarServiceImp implements IShopCarService {
             onlinemallShopcar.setDiscouuntprice(onlinemallGoodsDrinking.getDiscouuntprice());
             onlinemallShopcar.setGoodtype(onlinemallGoodsDrinking.getDrinkingtype());
             onlinemallShopcar.setGood(onlinemallGoodsDrinking.getGoodsname());
+            onlinemallShopcar.setUrl(onlinemallGoodsDrinking.getUrl());
         } else if (url.contains("listNecessities")) {
             OnlinemallGoodsDailyNecessities onlinemallGoodsDailyNecessities = onlinemallGoodsDailyNecessitiesMapper.selectByPrimaryKey(goodsid);
             onlinemallShopcar.setGoodsname(onlinemallGoodsDailyNecessities.getGoodsname());
