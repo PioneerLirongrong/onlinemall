@@ -11,5 +11,5 @@
   4.在tomcat2的目录下新建resource目录,放入项目的图片
   5.分别进入两个tomcat的bin目录,执行脚本startup.sh,启动tomcat服务器
   6.启动netty后台的jar(java -jar onlinemall.jar >> netty.log 2>&1 &)
-  7.导入数据,执行onlinemall.sql文件
+  7.导入数据,执行onlinemall中的sql文件
 ```
